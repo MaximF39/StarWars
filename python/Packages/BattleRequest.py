@@ -1,0 +1,10 @@
+class BattleRequest:
+    id: int
+    award: int
+    players_count: int
+    max_players: int
+    max_ship_type: int
+    min_ship_type: int
+    type: int
+    cost: int
+    players: []

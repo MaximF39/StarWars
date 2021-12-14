@@ -1,0 +1,18 @@
+class ShipForSale:
+    id: bytearray
+    class_number: int
+    level: int
+    size: int
+    cost: int
+    weapon_slots: int
+    device_slots: int
+    armor: int
+    shields: int
+    max_energy: int
+    max_health: int
+    cpu: int
+    restrictions: list
+    features: list
+    satisfying: list
+    radar: int
+    max_speed: int

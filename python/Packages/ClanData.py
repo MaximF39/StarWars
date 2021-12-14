@@ -1,0 +1,23 @@
+class ClanData:
+    id: int
+    leader_id: int
+    leader_name: str
+    logo_file_name: str
+    name: str
+    short_name: str
+    description: str
+    aliace: int
+    join_requests_count: int
+    level: int
+    max_members: int
+    max_friends: int
+    points: int
+    cash: int
+    bonuses: int
+    friend_requests: int
+    next_level_points: int
+    next_level_cash: int
+    current_level_points: int
+    enemy_clans: list
+    friend_clans: list
+    members: list  # id
