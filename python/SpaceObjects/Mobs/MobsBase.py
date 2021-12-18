@@ -1,7 +1,7 @@
-import time
-
 from ...Packages.ShipState import ShipState
 from ...MyUtils.ThreadBase import ThreadBase
+
+from random import randint
 
 
 class Mobs(ShipState, ThreadBase):
@@ -25,18 +25,19 @@ class Mobs(ShipState, ThreadBase):
         self.health = dict_["health"]
         self.energy = dict_["energy"]
         self.speed = dict_["speed"]
-        self.repairHealth = dict_["repairHealth"]  # восстановление хп
-        self.repairEnergy = dict_["repairEnergy"]  # восстановление энки
+        self.repairHealth = dict_["repairHealth"]  # восстановление хп (int)
+        self.repairEnergy = dict_["repairEnergy"]  # восстановление энки (int)
         self.max_health = self.health
         self.max_energy = self.energy
 
     def main(self):
         self.start_update("__all_repair", 1)
-        self.start_update("start", 5)
+        self.start_update("start", 200 // self.speed)
 
     def start(self):
         objects = self.request_location()
         if not self.__isTaking and not self.__isAttack:
+            self.update()
             for obj in objects:
                 self.send_dev(obj)
         else:
@@ -46,21 +47,26 @@ class Mobs(ShipState, ThreadBase):
     def send_dev(self, object=None):
         typeObject: str = self.__examination(object)
         if typeObject == self.__variable[0]:
-            self.__attack(object.id)
+            self.__attack(object)
         elif typeObject == self.__variable[1] and object.class_number != self.class_number:
-            self.__attack(object.id)
+            self.__attack(object)
         elif typeObject == self.__variable[2]:
-            self.__take(object.guid)
+            self.__take(object)
 
     def update(self):
         self.move()
 
     def move(self):
-        pass
+        x, y = self.get_random_coords()
+        self.x += x
+        self.y += y
 
-    def get_player_damage(self, id: int, hp: int) -> None:
+    def get_random_coords(self) -> tuple:
+        return randint(-200, 200), randint(-200, 200)
+
+    def get_player_damage(self, id: int, hp: int):
         self.__set_health(hp)
-        self.__attack(id)
+        self.object_to_reach_id = id
 
     def get_device(self) -> list:
         return self.device
@@ -88,7 +94,7 @@ class Mobs(ShipState, ThreadBase):
         self.health = self.__repair(self.health, self.max_health, self.repairHealth)
         self.energy = self.__repair(self.energy, self.max_energy, self.repairEnergy)
 
-    def __repair(self, param, max_params, repair):
+    def __repair(self, param: int, max_params: int, repair: int):
         if param < max_params:
             param += repair
         else:
@@ -99,16 +105,20 @@ class Mobs(ShipState, ThreadBase):
         self.__isTaking: bool = False
         self.__isAttack: bool = False
 
-    def __attack(self, id: int):
+    def __attack(self, object):
         self.__isTaking = False
         self.__isAttack = True
-        self.object_to_reach_id = id
-        pass
+        self.object_to_reach_id = object.id
+        self.toObject(object)
 
-    def __take(self, guid: int):
+    def __take(self, object):
         self.__isTaking = True
-        self.object_to_reach_id = guid
-        pass
+        self.object_to_reach_id = object.guid
+        self.toObject(object)
+
+    def toObject(self, object):
+        self.x = object.x
+        self.y = object.y
 
     def __set_health(self, health: int):
         self.health -= health
