@@ -9,12 +9,13 @@ from random import randint
 class Mobs(ShipState, ThreadBase):
     class_number: int = 0
     __variable: list = ["player", "mob", "object", ""]
-
+    isTaking: bool = False
+    isAttack: bool = False
+    
     def __init__(self, dict_: dict):
-        self.__to_begin()
-
         self.device: list = dict_["device"]
         self.weapons: list = dict_["weapons"]
+
         self.x: float = dict_["x"]
         self.y: float = dict_["y"]
         self.state: float = dict_["state"]
@@ -38,7 +39,7 @@ class Mobs(ShipState, ThreadBase):
 
     def start(self):
         objects = self.request_location()
-        if not self.__isTaking and not self.__isAttack:
+        if not self.isTaking and not self.isAttack:
             self.update()
             for obj in objects:
                 self.send_dev(obj)
@@ -116,18 +117,14 @@ class Mobs(ShipState, ThreadBase):
             param = max_params
         return param
 
-    def __to_begin(self):
-        self.__isTaking: bool = False
-        self.__isAttack: bool = False
-
     def __attack(self, object):
-        self.__isTaking = False
-        self.__isAttack = True
+        self.isTaking = False
+        self.isAttack = True
         self.object_to_reach_id = object.id
         self.toObject(object)
 
     def __take(self, object):
-        self.__isTaking = True
+        self.isTaking = True
         self.object_to_reach_id = object.guid
         self.toObject(object)
 
