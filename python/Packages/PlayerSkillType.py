@@ -1,4 +1,4 @@
-class PlayerSkillType
+class PlayerSkillType:
     kinetic_weapons: int = 1
     energy_weapons: int = 2
     rocket_weapons: int = 3

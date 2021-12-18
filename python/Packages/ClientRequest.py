@@ -1,4 +1,5 @@
-class ClientCommands:
+class ClientRequest:
+    FLASH_CONNECT_REQUEST = 1819242556
     LOGIN = -2100000001
     MOVE = -2100000002
     LEAVE_LOCATION = -2100000003

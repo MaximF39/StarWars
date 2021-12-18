@@ -1,4 +1,4 @@
-class ClientCommands:
+class ServerRequest:
     MIN = -2000000000
     PLANETS_STATE = -2000000001
     SHIPS_POSITION = -2000000002

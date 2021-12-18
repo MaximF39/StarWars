@@ -1,3 +1,6 @@
 from python import Vacuum_Server
-
-Vacuum_Server.main()
+from python import test_sock
+# Vacuum_Server.main()
+test_sock.main()
+input()
+exit()
