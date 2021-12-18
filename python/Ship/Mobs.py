@@ -1,12 +1,10 @@
-from python.Packages.ShipState import ShipState
-from python.MyUtils.ThreadBase import ThreadBase
+from . import ThreadBase, BasePlayer
 
 from time import sleep
 from random import randint
 
 
-class Mobs(ShipState, ThreadBase):
-    class_number: int = 0
+class Mobs(BasePlayer, ThreadBase):
     _variable: list = ["player", "mob", "object", ""]
     isTaking: bool = False
     isAttack: bool = False
@@ -15,26 +13,13 @@ class Mobs(ShipState, ThreadBase):
     x_move = 300
     y_move = 300
 
-    def _init_(self, dict_: dict):
+    def __init__(self, dict_: dict):
+        super().__init__(dict_)
         self.device: list = dict_["device"]
         self.weapons: list = dict_["weapons"]
 
-        self.x: float = dict_["x"]
-        self.y: float = dict_["y"]
-        self.state: float = dict_["state"]
-        self.target_x: float = dict_["target_x"]
-        self.target_y: float = dict_["target_y"]
-        self.object_to_reach_id: int = dict_["object_to_reach_id"]
-        self.object_to_reach_type: int = dict_["object_to_reach_type"]
-        self.Player_relation: int = dict_["Player_relation"]
-        self.id = dict_["id"]
-        self.health = dict_["health"]
-        self.energy = dict_["energy"]
-        self.speed = dict_["speed"]
         self.repair_health = dict_["repair_health"]  # восстановление хп (int)
         self.recovery_energy = dict_["recovery_energy"]  # восстановление энки (int)
-        self.max_health = self.health
-        self.max_energy = self.energy
 
         self.update()
 
@@ -78,13 +63,13 @@ class Mobs(ShipState, ThreadBase):
     def move_random(self) -> tuple:
         return randint(-1 * self.x_move, self.x_move), randint(-1 * self.y_move, self.y_move)
 
-    def get_player_damage(self, id: int, hp: int):
+    def get_player_damage(self, id_: int, hp: int):
         self.get_damage(hp)
         if not self.isAttack:
             self.isAttack = True
-            self.object_to_reach_id = id
+            self.object_to_reach_id = id_
 
-    def use_device(self) -> list:
+    def use_device(self) -> list: # use device if have player and energy and check lvl player.
         pass
 
     def request_location(self):
@@ -102,13 +87,9 @@ class Mobs(ShipState, ThreadBase):
         self.new_cords()
         # send('I live')
 
-    def get_drop(self):
+    def get_drop(self): # TODO return experiences (maybe credits) and return items
         drop = dict()  # list(map(self.ratio, self.device + self.weapons))
         return drop
-
-    def ratio(self, object: int):
-        dict_: dict  # словарь с коэфами для объектов
-        return dict_[object]
 
     def new_cords(self):
         self.x = randint(-1 * self.x_max, self.x_max)
@@ -126,10 +107,10 @@ class Mobs(ShipState, ThreadBase):
 
     @ThreadBase.end_thread
     def _repair_health(self):
-        if self.health + self.repairHealth > self.max_health:
+        if self.health + self.repair_health > self.max_health:
             self.health = self.max_health
         else:
-            self.health += self.repairHealth
+            self.health += self.repair_health
 
     @ThreadBase.end_thread
     def _recovery_energy(self):
