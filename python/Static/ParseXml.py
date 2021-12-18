@@ -15,3 +15,8 @@ def parse_location() -> list:
     with open(_get_path_json("GalaxyMap"), 'r', encoding='utf-8-sig') as f:
         res = json.loads(f.read())
         return res
+
+def parse_ship():
+    with open(_get_path_json("ShipParameters"), 'r', encoding='utf-8-sig') as f:
+        res = json.loads(f.read())
+        return res
