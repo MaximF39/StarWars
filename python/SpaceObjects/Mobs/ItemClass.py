@@ -185,7 +185,7 @@ class ItemClass:
     GWither: int = 193
     AdminDev: int = 1000
 
-    def getDict(self):
+    def get_dict(self):
         ratio = {
             1: 0,
             2: 0,
