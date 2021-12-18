@@ -1,3 +1,5 @@
+import time
+
 from ...Packages.ShipState import ShipState
 from ...MyUtils.ThreadBase import ThreadBase
 
@@ -80,6 +82,19 @@ class Mobs(ShipState, ThreadBase):
         objects = response.object  # все объекты на локации
         return objects
 
+    def dead(self):
+        self.health = 0
+        self.new_coords()
+        self.drop = list(map(self.ratio, self.device + self.weapons))
+
+    def ratio(self, object: int):
+        dict_: dict # словарь с коэфами для объектов
+        return dict_[object]
+
+    def new_coords(self):
+        self.x = randint(0, 800)
+        self.y = randint(0, 800)
+
     def __examination(self, object) -> str:
         if object.id > 0:
             return self.__variable[0]
@@ -122,6 +137,8 @@ class Mobs(ShipState, ThreadBase):
 
     def __set_health(self, health: int):
         self.health -= health
+        if self.health <= 0:
+            self.dead()
 
     def __set_energy(self, energy: int):
-        self.energy -= energy
+        self.energy -= energy if self.energy >= 0 else 0
