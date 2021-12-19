@@ -1,4 +1,4 @@
-from . import Asteroid
+from python.Packages import Asteroid
 
 class AsteroidPackage:
     id: int
