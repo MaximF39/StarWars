@@ -1,4 +1,4 @@
-from . import MovableSpaceObject, parse_ship
+from . import MovableSpaceObject, parse_xml
 
 
 class Ship(MovableSpaceObject):
@@ -26,7 +26,7 @@ class Ship(MovableSpaceObject):
         self.get_ship()
 
     def get_ship(self):
-        for i in parse_ship():
+        for i in parse_xml():
             if i['classNumber'] == self.class_number:
                 self.weapon_slots = i['weaponSlots']
                 self.device_slots = i['deviceSlots']

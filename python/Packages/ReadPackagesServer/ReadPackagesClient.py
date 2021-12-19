@@ -1,5 +1,5 @@
-from .DotMap import DotMap
-from .ServerRequest import ServerRequest
+from ...MyUtils.DotMap import DotMap
+from ...Static.ServerRequest import ServerRequest
 
 
 class ReadPackagesClient:
@@ -257,8 +257,8 @@ class ReadPackagesClient:
         #         return self.shipUpdateInfo()
         #     case ServerRequest.TEAM_LIST:
         #         return self.teamList()
-            case _:
-                self.ships_position(decoder)
+        #     case _:
+                # print('НЕИЗВЕСТНЫЙ ПАКЕТ')
 
     # def flash_connect(self):
     #     decoder = PackageDecoder
@@ -519,11 +519,9 @@ class ReadPackagesClient:
         _loc6_: int = 0
         while _loc6_ < _loc5_:
             _loc3_ = DotMap()
-            _loc2_ = decoder.read_short()
-            _loc4_ = decoder.read_bytes(16)
+            _loc3_.id = decoder.read_short()
+            _loc3_.guid = decoder.read_bytes(16)
             _loc3_.reloadedTime = decoder.read_float()
-            data.append(_loc2_)
-            data.append(_loc4_)
             data.append(_loc3_)
             _loc6_ += 1
         return data
@@ -1481,7 +1479,7 @@ class ReadPackagesClient:
         _loc8_.x = decoder.read_float()
         _loc8_.y = decoder.read_float()
         _loc8_.sector = decoder.read_unsigned_byte()
-
+        data.append(_loc8_)
         cnt_ship: int = decoder.read_short()
         ship = []
         _loc10_: int = 0

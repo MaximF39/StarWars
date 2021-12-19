@@ -1,6 +1,7 @@
-from . import PackageDecoder
-from . import ReadPackagesClient
 import logger
+
+from .ReadPackagesClient import ReadPackagesClient
+from ..PackageDecoder import PackageDecoder
 
 class ReadPackages:
     decoder = PackageDecoder()
@@ -13,10 +14,10 @@ class ReadPackages:
             self.num_pack += 1
             PackNumber = self.decoder.read_int()
             res = self.read_packes.processPackages(PackNumber, self.decoder)
-            logger.logger.debug(f'{PackNumber}, {res}')
+            if self.num_pack > 30:
+                print(f'{PackNumber}, {res}')
 
             if len(self.decoder.data) == self.decoder.Position:
-                logger.logger.critical('Конец')
                 break
 
 
