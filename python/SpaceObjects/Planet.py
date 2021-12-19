@@ -31,8 +31,12 @@ class Planet(ThreadBase):
         self.is_sun = bool(6 > self.class_number)
         self.x = 0
         self.y = 0
+        self.shop = self.get_shop()
         self.update()
 
+    def get_shop(self):
+        # get data Base
+        return 'sss'
 
     def update(self):  # ready
         self.start_update('move', self.time_update)
