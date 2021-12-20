@@ -8,6 +8,7 @@ from python.Static.StaticSpaceObjectType import StaticSpaceObjectType
 
 
 class PackagesManager:
+    count_guid = 0
     _aAvailablePackages: list
     _iStateKey: int
     _iLastPackageLength: int
@@ -80,60 +81,60 @@ class PackagesManager:
                 return self.shipsPosition()
             case ServerRequest.SHIPS_STASE:
                 return self.shipsState()
-            #     case ServerRequest.MESSAGE:
-            #         return self.message()
-            #     case ServerRequest.PLAYER_SHIP_UPDATE:
-            #         return self.playerShipUpdate()
-            #     case ServerRequest.PLANETS_STATE:
-            #         return self.planetsState()
-            #     case ServerRequest.PLANETS_UPDATE:
-            #         return self.planetsUpdate()
-            #     case ServerRequest.REPOSITORY:
-            #         return self.repository()
-            #     case ServerRequest.CLAN_REPOSITORY:
-            #         return self.clanrepository()
-            #     case ServerRequest.WEAPON_TROUBLES:
-            #         return self.weaponTroubles()
-            #     case ServerRequest.SHIP:
-            #         return self.ship()
-            #     case ServerRequest.SHOOTS:
-            #         return self.shoots()
-            #     case ServerRequest.ITEMS:
-            #         return self.items()
+            case ServerRequest.MESSAGE:
+                return self.message()
+            case ServerRequest.PLAYER_SHIP_UPDATE:
+                return self.playerShipUpdate()
+            case ServerRequest.PLANETS_STATE:
+                return self.planetsState()
+            case ServerRequest.PLANETS_UPDATE:
+                return self.planetsUpdate()
+            case ServerRequest.REPOSITORY:
+                return self.repository()
+            case ServerRequest.CLAN_REPOSITORY:
+                return self.clanrepository()
+            case ServerRequest.WEAPON_TROUBLES:
+                return self.weaponTroubles()
+            case ServerRequest.SHIP:
+                return self.ship()
+            case ServerRequest.SHOOTS:
+                return self.shoots()
+            case ServerRequest.ITEMS:
+                return self.items()
             case ServerRequest.ACTIVE_DEVICES:
                 return self.activeDevices()
             case ServerRequest.ACTIVE_WEPONS:
                 return self.activeWeapons()
             case ServerRequest.HIDE_SHIP:
                 return self.hideShip()
-            #     case ServerRequest.SHIP_DESTROYED:
-            #         return self.shipDestroyed()
-            #     case ServerRequest.SHIP_JUMPED:
-            #         return self.shipJumped()
-            #     case ServerRequest.PLANET:
-            #         return self.planet()
-            #     case ServerRequest.INVENTORY:
-            #         return self.inventory()
-            #     case ServerRequest.TRADING_ITEMS:
-            #         return self.tradingItems()
-            #     case ServerRequest.RESOURCE_UPDATE_INFO:
-            #         return self.resourceUpdate()
-            #     case ServerRequest.ASTEROIDS:
-            #         return self.asteroids()
-            #     case ServerRequest.EFFECT_CREATED:
-            #         return self.effectCreated()
-            #     case ServerRequest.LOCATION_PLANET:
-            #         return self.locationPlanet()
+            case ServerRequest.SHIP_DESTROYED:
+                return self.shipDestroyed()
+            case ServerRequest.SHIP_JUMPED:
+                return self.shipJumped()
+            case ServerRequest.PLANET:
+                return self.planet()
+            case ServerRequest.INVENTORY:
+                return self.inventory()
+            case ServerRequest.TRADING_ITEMS:
+                return self.tradingItems()
+            case ServerRequest.RESOURCE_UPDATE_INFO:
+                return self.resourceUpdate()
+            case ServerRequest.ASTEROIDS:
+                return self.asteroids()
+            case ServerRequest.EFFECT_CREATED:
+                return self.effectCreated()
+            case ServerRequest.LOCATION_PLANET:
+                return self.locationPlanet()
             case ServerRequest.LOCATION_SYSTEM:
                 return self.locationSystem()
-            #     case ServerRequest.LOCATION_BATTLE:
-            #         return self.locationBattle()
+            case ServerRequest.LOCATION_BATTLE:
+                return self.locationBattle()
             case ServerRequest.PLAYER:
                 return self.player()
-            #     case ServerRequest.QUEST_MESSAGE:
-            #         return self.questMessage()
-            #     case ServerRequest.PLAYER_SKILLS:
-            #         return self.playerSkills()
+            case ServerRequest.QUEST_MESSAGE:
+                return self.questMessage()
+            case ServerRequest.PLAYER_SKILLS:
+                return self.playerSkills()
             case ServerRequest.PLAYER_SKILLS_DATA:
                 return self.playerSkillsData()
             case ServerRequest.PLAYER_SHIP:
@@ -540,14 +541,20 @@ class PackagesManager:
             creator.write_unsigned_byte(_loc2_["index"])
         return creator.get_package()
     #     #
-    #     # def playerShipUpdate(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: PlayerShip = PlayerShip()
-    #     #     creator.write_short(_loc2_.energy)
-    #     #     creator.write_short(_loc2_.health)
-    #     #     creator.write_unsigned_byte(_loc2_.controlLeft)
-    #     #     creator.write_unsigned_byte(_loc2_.controlUsed)
-    #     #     return creator.get_package()
+    def playerShipUpdate(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.PLAYER_SHIP_UPDATE
+        _loc2_ = DotMap({
+            "energy": 10,
+            "health": 10,
+            "controlLeft": 10,
+            "controlUsed": 10,
+        })
+        creator.write_short(_loc2_.energy)
+        creator.write_short(_loc2_.health)
+        creator.write_unsigned_byte(_loc2_.controlLeft)
+        creator.write_unsigned_byte(_loc2_.controlUsed)
+        return creator.get_package()
     #     #
     #     # def tradingShips(self) -> bytearray:
     #     #     creator = PackageCreator()
@@ -609,56 +616,50 @@ class PackagesManager:
     #     #         _loc15_ += 1
     #     #         return creator.get_package()
     #     #
-    #     # def tradingItems(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: int = 0
-    #     #     creator.write_int(_loc2_)
-    #     #     _loc3_: float = 0
-    #     #     creator.write_float(_loc3_)
-    #     #     _loc4_: float = 0
-    #     #     creator.write_float(_loc4_)
-    #     #     _loc5_: list = write_items(creator, True, True, True, True)
-    #     #     _loc6_: list = write_items(creator, True, True, True, True)
-    #     #     return creator.get_package()
+    def tradingItems(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.TRADING_ITEMS
+        _loc2_ = DotMap()
+        _loc3_ = DotMap()
+        _loc4_ = DotMap()
+        creator.write_int(_loc2_) # id
+        creator.write_float(_loc3_) # buyCoeficient
+        creator.write_float(_loc4_) # sellCoeficient
+        self.write_items(creator, True, True, True, True)
+        self.write_items(creator, True, True, True, True)
+        return creator.get_package()
     #     #
-    #     # def resourceUpdate(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: int = 0
-    #     #     creator.write_int(_loc2_)
-    #     #     _loc3_: float = 1
-    #     #     _loc4_: float = 1
-    #     #     _loc5_: list = self.write_items(creator, True, True)
-    #     #     _loc6_: list = self.write_items(creator, True, True)
-    #     #     return creator.get_package()
-    #     #
-    #     # def write_items(self, param2: bool, param3: bool, param4: bool = True, param5: bool = False):
-    #     #     creator = PackageCreator()
-    #     #     _loc6_: ItemPackage = None
-    #     #     _loc7_: list = list()
-    #     #     _loc8_: int = 0
-    #     #     creator.write_int(_loc8_)
-    #     #     _loc9_: int = 0
-    #     #     while _loc9_ < _loc8_:
-    #     #         _loc6_ = ItemPackage()
-    #     #         creator.write_int(_loc6_.classNumber)
-    #     #         # _loc6_.guid = write_guid(creator)
-    #     #         creator.write_int(_loc6_.wear)
-    #     #         if param4:
-    #     #             _loc6_.level = 0
-    #     #             creator.write_int(_loc6_.level)
-    #     #         else:
-    #     #             _loc6_.level = 1
-    #     #         if param2:
-    #     #             _loc6_.zeroCost = 0
-    #     #             creator.write_bool(_loc6_.zeroCost)
-    #     #         if param5:
-    #     #             creator.write_int()
-    #     #         if param3:
-    #     #             _loc6_.satisfying = False
-    #     #             creator.write_bool(_loc6_.satisfying)
-    #     #         _loc9_ += 1
-    #     #     return creator.get_package()
-    #     #
+    def resourceUpdate(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.RESOURCE_UPDATE_INFO
+        id_ = 22
+        creator.write_int(id_) # id
+        self.write_items(creator, True, True)
+        self.write_items(creator, True, True)
+        return creator.get_package()
+
+    def write_items(self, creator, param2: bool, param3: bool, param4: bool = True, param5: bool = False):
+        data = []
+        creator.write_int(len(data))
+        for i in data:
+            _loc6_ = DotMap(i)
+            creator.write_int(_loc6_.classNumber)
+            creator.write_bytes(_loc6_.guid)
+            creator.write_int(_loc6_.wear)
+            if param4:
+                _loc6_.level = 0
+                creator.write_int(_loc6_.level)
+            else:
+                _loc6_.level = 1
+            if param2:
+                _loc6_.zeroCost = 0
+                creator.write_bool(_loc6_.zeroCost)
+            if param5:
+                creator.write_int(12) # random don't use
+            if param3:
+                _loc6_.satisfying = False
+                creator.write_bool(_loc6_.satisfying)
+
     def shipsPosition(self) -> bytearray:
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.SHIPS_POSITION
@@ -686,167 +687,148 @@ class PackagesManager:
             creator.write_short(_loc2_.energy)
             creator.write_short(_loc2_.PlayerRelation)
         return creator.get_package()
+
+    def weaponTroubles(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.WEAPON_TROUBLES
+        data = []
+        creator.write_unsigned_byte(len(data))
+        for i in data:
+            _loc2_ = DotMap(i)
+            creator.write_unsigned_byte(_loc2_.trouble)
+            creator.write_unsigned_byte(_loc2_.index)
+        return creator.get_package()
+
+    def repository(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.REPOSITORY
+        _loc2_ = DotMap()
+        data = []
+        self.write_items(creator, False, False)
+        _loc4_ = DotMap()
+        creator.write_float(_loc4_.costCoef) # costCoef
+        creator.write_int(len(data))
+        for i in data:
+            _loc2_ = DotMap(i)
+            creator.write_int(_loc2_.classNumber)
+            creator.write_bytes(_loc2_.guid)
+            creator.write_int(_loc2_.wear)
+            creator.write_int(_loc2_.level)
+            creator.write_int(12) # random don't use
+        return creator.get_package()
+
+    def clanrepository(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.CLAN_REPOSITORY
+        data = []
+        self.write_items(creator, False, False)
+        _loc4_ = DotMap({"costCoef": 255.0})
+        creator.write_float(_loc4_.costCoef)
+        creator.write_int(len(data))
+        for i in data:
+            _loc2_ = DotMap()
+            creator.write_int(_loc2_.classNumber)
+            creator.write_bytes(_loc2_.guid)
+            creator.write_int(_loc2_.wear)
+            creator.write_int(_loc2_.level)
+            creator.write_int(12) # don't use
+        return creator.get_package()
+
+    def planetsState(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.PLANETS_STATE
+        data = []
+        creator.write_unsigned_byte(len(data))
+        for i in data:
+            _loc1_ = DotMap(i)
+            creator.write_int(_loc1_.id) # id planet
+            creator.write_float(_loc1_.angel) # angel
+        return creator.get_package()
+
+    def planetsUpdate(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.PLANETS_UPDATE
+        data = []
+        creator.write_unsigned_byte(len(data))
+        for i in data:
+            _loc1_ = DotMap(i)
+            creator.write_int(_loc1_.id)
+            creator.write_float(_loc1_.angel)
+            creator.write_bytes(_loc1_.race)
+            creator.write_bytes(_loc1_.aliance)
+            creator.write_int(_loc1_.clanID)
+        return creator.get_package()
     #     #
-    #     # def weaponTroubles(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: WeaponTrouble = None
-    #     #     _loc3_: int = 0
-    #     #     creator.write_unsigned_byte(_loc3_)
-    #     #     _loc4_: list = list()
-    #     #     _loc5_: int = 0
-    #     #     while _loc5_ < _loc3_:
-    #     #         _loc2_ = WeaponTrouble()
-    #     #         creator.write_unsigned_byte(_loc2_.trouble)
-    #     #         creator.write_unsigned_byte(_loc2_.index)
-    #     #         _loc5_ += 1
-    #     #     return creator.get_package()
+    def ship(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.SHIP
+        _loc3_ = DotMap()
+        creator.write_short(_loc3_.race)
+        creator.write_int(_loc3_.id)
+        creator.write_utf(_loc3_.Name)
+        creator.write_short(_loc3_.size)
+        creator.write_float(_loc3_.setPosition[0])
+        creator.write_float(_loc3_.setPosition[1])
+        creator.write_int(_loc3_.player.level)
+        creator.write_short(_loc3_.maxHealth)
+        creator.write_short(_loc3_.maxEnergy)
+        creator.write_int(_loc3_.player.avatar)
+        creator.write_unsigned_byte(_loc3_.maxSpeed) / 1000
+        creator.write_float(_loc3_.setMovePoint[0])
+        creator.write_float(_loc3_.setMovePoint[1])
+        creator.write_unsigned_byte(_loc3_.player.aliance)
+        creator.write_unsigned_byte(_loc3_.player.status)
+        creator.write_int(_loc3_.player.clanId)
+        droid_data = _loc3_.droid
+        creator.write_unsigned_byte(len(droid_data))
+        for i in droid_data:
+            _loc2_ = DotMap(i)
+            creator.write_unsigned_byte(_loc2_.id)
+            creator.write_short(_loc2_.type)
+            creator.write_short(_loc2_.weaponClass)
+            creator.write_short(_loc2_.health)
+        return creator.get_package()
     #     #
-    #     # def repository(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: ItemPackage = None
-    #     #     # _loc3_: list = write_items(creator, False, False)
-    #     #     _loc4_: float = creator.write_float()
-    #     #     _loc5_: list = list()
-    #     #     _loc6_: int = creator.write_int()
-    #     #     _loc7_: int = 0
-    #     #     while _loc7_ < _loc6_:
-    #     #         _loc2_ = ItemPackage()
-    #     #         creator.write_int(_loc2_.classNumber)
-    #     #         # _loc2_.guid = write_guid(creator)
-    #     #         creator.write_int(_loc2_.wear)
-    #     #         creator.write_int(_loc2_.level)
-    #     #         # creator.write_int()
-    #     #         _loc7_ += 1
-    #     #     return creator.get_package()
+    def planet(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.PLANET
+        _loc2_ = DotMap()
+        creator.write_bytes(_loc2_.classNumber)
+        creator.write_int(_loc2_.id)
+        creator.write_unsigned_byte(_loc2_.race)
+        creator.write_int(_loc2_.radius)
+        creator.write_int(_loc2_.size)
+        creator.write_float(_loc2_.serverAngle)
+        creator.write_bool(_loc2_.landable)
+        return creator.get_package()
     #     #
-    #     # def clanrepository(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: ItemPackage = None
-    #     #     # _loc3_: list = write_items(creator, False, False)
-    #     #     _loc4_: float = creator.write_float()
-    #     #     _loc5_: list = list()
-    #     #     _loc6_: int = creator.write_int()
-    #     #     _loc7_: int = 0
-    #     #     while _loc7_ < _loc6_:
-    #     #         _loc2_ = ItemPackage()
-    #     #         creator.write_int(_loc2_.classNumber)
-    #     #         # _loc2_.guid = write_guid(creator)
-    #     #         creator.write_int(_loc2_.wear)
-    #     #         creator.write_int(_loc2_.level)
-    #     #         # creator.write_int()
-    #     #         _loc7_ += 1
-    #     #
-    #     #     return creator.get_package()
-    #     #
-    #     # def planetsState(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: int = 0
-    #     #     _loc3_: float = None
-    #     #     _loc4_: int = 0
-    #     #     creator.write_unsigned_byte(_loc4_)
-    #     #     _loc5_: int = 0
-    #     #     while _loc5_ < _loc4_:
-    #     #         _loc2_ = 0
-    #     #         creator.write_int(_loc2_)
-    #     #         _loc3_ = 0
-    #     #         creator.write_float(_loc3_)
-    #     #     return creator.get_package()
-    #     #
-    #     # def planetsUpdate(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: int = 0
-    #     #     _loc3_: float = None
-    #     #     _loc4_: int = 0
-    #     #     _loc5_: int = 0
-    #     #     _loc6_: int = 0
-    #     #     _loc7_: int = 0
-    #     #     creator.write_unsigned_byte(_loc7_)
-    #     #     _loc8_: int = 0
-    #     #     while _loc8_ < _loc7_:
-    #     #         _loc2_ = 0
-    #     #         creator.write_int(_loc2_)
-    #     #         _loc3_ = 0
-    #     #         creator.write_float(_loc3_)
-    #     #         _loc4_ = 0
-    #     #         creator.write_bytes(_loc4_)
-    #     #         _loc5_ = 0
-    #     #         creator.write_bytes(_loc5_)
-    #     #         _loc6_ = 0
-    #     #         creator.write_int(_loc6_)
-    #     #     return creator.get_package()
-    #     #
-    #     # def ship(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: DroidData = None
-    #     #     # _loc3_: Ship = ShipsManager.createInstance(creator.write_short())
-    #     #     creator.write_int(_loc3_.id)
-    #     #     creator.write_utf(_loc3_.Name)
-    #     #     creator.write_short(_loc3_.size)
-    #     #     # _loc3_.setPosition = creator.write_float(), creator.write_float())
-    #     #     creator.write_int(_loc3_.player.level)
-    #     #     creator.write_short(_loc3_.maxHealth)
-    #     #     creator.write_short(_loc3_.maxEnergy)
-    #     #     creator.write_int(_loc3_.player.avatar)
-    #     #     creator.write_unsigned_byte(_loc3_.maxSpeed) / 1000
-    #     #     # _loc3_.setMovePoint(creator.write_float(), creator.write_float())
-    #     #     creator.write_unsigned_byte(_loc3_.player.aliance)
-    #     #     creator.write_unsigned_byte(_loc3_.player.status)
-    #     #     creator.write_int(_loc3_.player.clanId)
-    #     #     _loc4_: int = 0
-    #     #     creator.write_unsigned_byte(_loc4_)
-    #     #     _loc5_: int = 0
-    #     #     while _loc5_ < _loc4_:
-    #     #         _loc2_ = DroidData()
-    #     #         creator.write_unsigned_byte(_loc2_.id)
-    #     #         creator.write_short(_loc2_.type)
-    #     #         creator.write_short(_loc2_.weaponClass)
-    #     #         creator.write_short(_loc2_.health)
-    #     #         _loc5_ += 1
-    #     #     return creator.get_package()
-    #     #
-    #     # def planet(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     # _loc2_: Planet = PlanetsManager.createInstance(creator.write_bytes())
-    #     #     creator.write_int(_loc2_.id)
-    #     #     Race.defineById(self, creator.write_unsigned_byte(_loc2_.race))
-    #     #     creator.write_int(_loc2_.radius)
-    #     #     creator.write_int(_loc2_.size)
-    #     #     creator.write_float(_loc2_.serverAngle)
-    #     #     creator.write_bool(_loc2_.landable)
-    #     #     return creator.get_package()
-    #     #
-    #     # def inventory(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: Item = None
-    #     #     _loc3_: bytearray = None
-    #     #     _loc4_: list = list()
-    #     #     _loc5_: int = creator.write_short()
-    #     #     _loc6_: int = 0
-    #     #     while _loc6_ < _loc5_:
-    #     #         _loc2_ = ItemsManager.createInstance(creator.write_short())
-    #     #         _loc3_ = bytearray()
-    #     #         creator.write_bytes(_loc3_, 0, 16)
-    #     #         _loc2_.guid = _loc3_
-    #     #         creator.write_short(_loc2_.wear)
-    #     #         creator.write_bool(_loc2_.inUsing)
-    #     #         creator.write_unsigned_byte(_loc2_.level)
-    #     #         creator.write_bool(_loc2_.satisfying)
-    #     #         _loc6_ += 1
-    #     #     _loc7_: ShipParametersPackage
-    #     #     _loc7_ = ShipParametersPackage()
-    #     #     creator.write_unsigned_byte(_loc7_.armor)
-    #     #     creator.write_unsigned_byte(_loc7_.shields)
-    #     #     creator.write_short(_loc7_.usedSpace)
-    #     #     creator.write_short(_loc7_.cpu)
-    #     #     creator.write_short(_loc7_.cpuUsed)
-    #     #     creator.write_unsigned_byte(_loc7_.level)
-    #     #     creator.write_unsigned_byte(_loc7_.maxDroids)
-    #     #     _loc8_: list = list()
-    #     #     while creator.bytesAvailable > 0:
-    #     #         _loc2_ = ItemsManager.createInstance(creator.write_short())
-    #     #         creator.write_bytes(_loc2_.id)
-    #     #     return creator.get_package()
-    #     #
+    def inventory(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.INVENTORY
+        data = []
+        _loc5_: int = creator.write_short(len(data))
+        for i in data:
+            _loc2_ = DotMap(i)
+            creator.write_short(_loc2_.ItemClass)
+            creator.write_bytes(_loc2_.guid)
+            creator.write_short(_loc2_.wear)
+            creator.write_bool(_loc2_.inUsing)
+            creator.write_unsigned_byte(_loc2_.level)
+            creator.write_bool(_loc2_.satisfying)
+        ship = DotMap()
+        creator.write_unsigned_byte(ship.armor)
+        creator.write_unsigned_byte(ship.shields)
+        creator.write_short(ship.usedSpace)
+        creator.write_short(ship.cpu)
+        creator.write_short(ship.cpuUsed)
+        creator.write_unsigned_byte(ship.level)
+        creator.write_unsigned_byte(ship.maxDroids)
+        for i in data:
+            _loc2_ = DotMap(i)
+            creator.write_short(_loc2_.ItemClass)
+            creator.write_bytes(_loc2_.id)
+        return creator.get_package()
+
     def player(self) -> bytearray:
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.PLAYER
@@ -879,72 +861,64 @@ class PackagesManager:
         return creator.get_package()
 
     #     #
-    #     # def questMessage(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: str = None
-    #     #     _loc3_: QuestAward = None
-    #     #     _loc4_: QuestTarget = None
-    #     #     _loc5_: QuestPackage
-    #     #     _loc5_ = QuestPackage()
-    #     #     creator.write_int(_loc5_.questId)
-    #     #     creator.write_int(_loc5_.nextQuestId)
-    #     #     creator.write_int(_loc5_.giverType)
-    #     #     creator.write_int(_loc5_.status)
-    #     #     creator.write_utf(_loc5_.giverName)
-    #     #     _loc6_ = 0
-    #     #     creator.write_int(_loc6_)
-    #     #     _loc7_: int = 0
-    #     #     while _loc7_ < _loc6_:
-    #     #         _loc2_ = ''
-    #     #         creator.write_utf(_loc2_)
-    #     #         _loc7_ += 1
-    #     #     creator.write_int(_loc5_.ParentSystemID)
-    #     #     creator.write_unsigned_byte(_loc5_.LocationType)
-    #     #     creator.write_int(_loc5_.LocationID)
-    #     #     _loc8_ = 0
-    #     #     creator.write_int(_loc8_)
-    #     #     _loc9_: int = 0
-    #     #     while _loc9_ < _loc8_:
-    #     #         # _loc3_ = QuestAward()
-    #     #         creator.write_int(_loc3_.classNumber)
-    #     #         creator.write_int(_loc3_.level)
-    #     #         creator.write_int(_loc3_.type)
-    #     #         creator.write_int(_loc3_.value)
-    #     #         _loc9_ += 1
-    #     #     _loc10_ = 0
-    #     #     creator.write_int(_loc10_)
-    #     #     _loc11_: int = 0
-    #     #     while _loc11_ < _loc10_:
-    #     #         # _loc4_ = QuestTarget()
-    #     #         creator.write_int(_loc4_.targetId)
-    #     #         creator.write_int(_loc4_.targetSystemId)
-    #     #         creator.write_int(_loc4_.targetPlanetId)
-    #     #         creator.write_int(_loc4_.type)
-    #     #         creator.write_int(_loc4_.value)
-    #     #         _loc5_.targets.append(_loc4_)
-    #     #         _loc11_ += 1
-    #     #     return creator.get_package()
+    def questMessage(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.QUEST_MESSAGE
+        quest = DotMap()
+        creator.write_int(quest.questId)
+        creator.write_int(quest.nextQuestId)
+        creator.write_int(quest.giverType)
+        creator.write_int(quest.status)
+        creator.write_utf(quest.giverName)
+        data = []
+        creator.write_int(len(data))
+        for i in data:
+            _loc2_ = ''
+            creator.write_utf(_loc2_)
+        creator.write_int(quest.ParentSystemID)
+        creator.write_unsigned_byte(quest.LocationType)
+        creator.write_int(quest.LocationID)
+        quest_award = []
+        creator.write_int(len(quest_award))
+        for i in quest_award:
+            _loc3_ = DotMap(i)
+            creator.write_int(_loc3_.classNumber)
+            creator.write_int(_loc3_.level)
+            creator.write_int(_loc3_.type)
+            creator.write_int(_loc3_.value)
+        quest_target = []
+        creator.write_int(quest_target)
+        for i in quest_target:
+            _loc4_ = DotMap(i)
+            creator.write_int(_loc4_.targetId)
+            creator.write_int(_loc4_.targetSystemId)
+            creator.write_int(_loc4_.targetPlanetId)
+            creator.write_int(_loc4_.type)
+            creator.write_int(_loc4_.value)
+        return creator.get_package()
     #     #
-    #     # def playerSkills(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: PlayerSkills = PlayerSkills()
-    #     #     creator.write_unsigned_byte(_loc2_.level)
-    #     #     creator.write_int(_loc2_.experience)
-    #     #     creator.write_int(_loc2_.expForNext)
-    #     #     # write_skills(creator, _loc2_)
-    #     #     creator.write_int(_loc2_.freeSkills)
-    #     #     creator.write_int(_loc2_.expForFirstSkillLevel)
-    #     #     creator.write_float(_loc2_.expSkillGrowCoef)
-    #     #     creator.write_float(_loc2_.expSkillReduserCoef)
-    #     #     creator.write_unsigned_byte(_loc2_.maxSkill)
-    #     #     # _loc3_: PlayerStatistics = PlayerStatistics()
-    #     #     creator.write_unsigned_byte(_loc3_.status)
-    #     #     creator.write_unsigned_byte(_loc3_.level)
-    #     #     creator.write_int(_loc3_.pirateStatus)
-    #     #     creator.write_int(_loc3_.policeStatus)
-    #     #     creator.write_int(_loc3_.forNextLevel)
-    #     #     return creator.get_package()
-    #     #
+    def playerSkills(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.PLAYER_SKILLS_DATA
+        player_skills_data = DotMap()
+        creator.write_unsigned_byte(player_skills_data.level)
+        creator.write_int(player_skills_data.experience)
+        creator.write_int(player_skills_data.expForNext)
+        self.write_skills(creator, player_skills_data)
+        creator.write_int(player_skills_data.freeSkills)
+        creator.write_int(player_skills_data.expForFirstSkillLevel)
+        creator.write_float(player_skills_data.expSkillGrowCoef)
+        creator.write_float(player_skills_data.expSkillReduserCoef)
+        creator.write_unsigned_byte(player_skills_data.maxSkill)
+
+        player_statistics = DotMap()
+        creator.write_unsigned_byte(player_statistics.status)
+        creator.write_unsigned_byte(player_statistics.level)
+        creator.write_int(player_statistics.pirateStatus)
+        creator.write_int(player_statistics.policeStatus)
+        creator.write_int(player_statistics.forNextLevel)
+        return creator.get_package()
+
     def write_skills(self, creator, param2):
         creator.write_unsigned_byte(param2.control)
         creator.write_unsigned_byte(param2.defending)
@@ -1382,38 +1356,36 @@ class PackagesManager:
     #     #     creator.write_utf(_loc2_)
     #     #     return creator.get_package()
     #     #
-    #     # def locationPlanet(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: PlayerInfoData = None
-    #     #     _loc3_: Shop = None
-    #     #     _loc4_: Planet
-    #     #     _loc4_ = PlanetsManager.createInstance(creator.write_bytes())
-    #     #     _loc4_.id = creator.write
-    #     #     _int()
-    #     #     _loc4_.race = Race.defineById(self, creator.write_unsigned_byte())
-    #     #     creator = PackageCreator()
-    #     #     creator.write_int(_loc4_.radius)
-    #     #     creator.write_int(_loc4_.size)
-    #     #     creator.write_unsigned_byte(_loc4_.aliance)
-    #     #     creator.write_int(_loc4_.clanID)
-    #     #     creator.write_float(_loc4_.angle)
-    #     #     creator.write_unsigned_byte(_loc4_.QCount)
-    #     #     _loc5_: int = 0
-    #     #     creator.write_short(_loc5_)
-    #     #     _loc6_: int = 0
-    #     #     while _loc6_ < _loc5_:
-    #     #         _loc3_ = Shop()
-    #     #         creator.write_int(_loc3_.id)
-    #     #         creator.write_unsigned_byte(_loc3_.type)
-    #     #         _loc6_ += 1
-    #     #     _loc7_: list = []
-    #     #     while creator.bytesAvailable > 0:
-    #     #         _loc2_ = PlayerInfoData()
-    #     #         creator.write_int(_loc2_.id)
-    #     #         creator.write_utf(_loc2_.name)
-    #     #         creator.write_int(_loc2_.clanId)
-    #     #         creator.write_int(_loc2_.level)
-    #     #     return creator.get_package()
+    def locationPlanet(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.LOCATION_PLANET
+
+        _loc4_ = DotMap()
+        creator.write_bytes(_loc4_.classNumber)
+        creator.write_int(_loc4_.id)
+        creator.write_unsigned_byte(_loc4_.race)
+        creator.write_int(_loc4_.radius)
+        creator.write_int(_loc4_.size)
+        creator.write_unsigned_byte(_loc4_.aliance)
+        creator.write_int(_loc4_.clanID)
+        creator.write_float(_loc4_.angle)
+        creator.write_unsigned_byte(_loc4_.QCount)
+        shop_data = _loc4_.shop
+        creator.write_short(len(shop_data))
+        for i in shop_data:
+            _loc3_ = DotMap(i)
+            creator.write_int(_loc3_.id)
+            creator.write_unsigned_byte(_loc3_.type)
+
+        player_info_data = []
+        for i in player_info_data:
+            _loc2_ = DotMap(i)
+            creator.write_int(_loc2_.id)
+            creator.write_utf(_loc2_.name)
+            creator.write_int(_loc2_.clanId)
+            creator.write_int(_loc2_.level)
+            
+        return creator.get_package()
     #     #
     #     # def planetQuests(self) -> bytearray:
     #     #     creator = PackageCreator()
@@ -1496,138 +1468,124 @@ class PackagesManager:
 
         return creator.get_package()
 
-    #     # def locationBattle(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: Ship = None
-    #     #     _loc3_: int = 0
-    #     #     _loc4_: DroidData = None
-    #     #     _loc5_: int = 0
-    #     #     _loc6_: Battle
-    #     #     _loc6_ = Battle()
-    #     #     creator.write_int(_loc6_.id)
-    #     #     creator.write_float(_loc6_.x)
-    #     #     creator.write_float(_loc6_.y)
-    #     #     _loc7_ = 0
-    #     #     creator.write_short(_loc7_)
-    #     #     _loc8_: int = 0
-    #     #     while _loc8_ < _loc7_:
-    #     #         creator.write_short(_loc2_)
-    #     #         creator.write_int(_loc2_.id)
-    #     #         if _loc2_.id == Player.ship.id:
-    #     #             _loc2_ = Player.ship
-    #     #         creator.write_utf(_loc2_.Name)
-    #     #         creator.write_short(_loc2_.size)
-    #     #         # _loc2_.setPosition = eator.write_float(), creator.write_float())
-    #     #         creator.write_int(_loc2_.player)
-    #     #         creator.write_short(_loc2_.maxHealth)
-    #     #         creator.write_short(_loc2_.maxEnergy)
-    #     #         creator.write_int(_loc2_.player)
-    #     #         iance = creator.write_unsigned_byte(_loc2_.player)
-    #     #         atus = creator.write_unsigned_byte(_loc2_.player)
-    #     #         anId = creator.write_int(_loc2_.player)
-    #     #         creator.write_unsigned_byte(_loc3_)
-    #     #         _loc5_ = 0
-    #     #         while _loc5_ < _loc3_:
-    #     #             _loc4_ = DroidData()
-    #     #             creator.write_unsigned_byte(_loc4_.id)
-    #     #             creator.write_short(_loc4_.type)
-    #     #             creator.write_short(_loc4_.weaponClass)
-    #     #             creator.write_short(_loc4_.health)
-    #     #             _loc5_ += 1
-    #     #         _loc8_ += 1
-    #     #     return creator.get_package()
+    def locationBattle(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.LOCATION_BATTLE
+        _loc6_ = DotMap()
+        creator.write_int(_loc6_.id)
+        creator.write_float(_loc6_.x)
+        creator.write_float(_loc6_.y)
+        player_info_data = []
+        creator.write_short(len(player_info_data))
+        for i in player_info_data:
+            ship_data = DotMap(i)
+            creator.write_short(ship_data.race)
+            creator.write_int(ship_data.id)
+            creator.write_utf(ship_data.Name)
+            creator.write_short(ship_data.size)
+            creator.write_float(ship_data.setPosition[0])
+            creator.write_float(ship_data.setPosition[1])
+            creator.write_int(ship_data.player)
+            creator.write_short(ship_data.maxHealth)
+            creator.write_short(ship_data.maxEnergy)
+            creator.write_int(ship_data.player)
+            creator.write_unsigned_byte(ship_data.player.aliance)
+            creator.write_unsigned_byte(ship_data.player.status)
+            creator.write_int(ship_data.player.clanID)
+            droid_data = []
+            creator.write_unsigned_byte(len(droid_data))
+            for i in droid_data:
+                _loc4_ = DotMap(i)
+                creator.write_unsigned_byte(_loc4_.id)
+                creator.write_short(_loc4_.type)
+                creator.write_short(_loc4_.weaponClass)
+                creator.write_short(_loc4_.health)
+        return creator.get_package()
+
+    def shoots(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.SHOOTS
+        data = []
+        creator.write_short(len(data))
+        for i in data:
+            _loc2_ = DotMap(i)
+            creator.write_int(_loc2_.id)
+            shoot_data = _loc2_.shoot
+            creator.write_short(len(shoot_data))
+            for shoot in shoot_data:
+                _loc5_ = DotMap(shoot)
+                creator.write_short(_loc5_.classNumber)
+                creator.write_short(_loc5_.damage)
+                creator.write_unsigned_byte(_loc5_.destroyedTarget)
+                creator.write_int(_loc5_.targetId)
+                creator.write_unsigned_byte(_loc5_.targetType)
+                creator.write_unsigned_byte(_loc5_.muzzleIndex)
+        return creator.get_package()
     #     #
-    #     # def shoots(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_ = None  # ShipShoots
-    #     #     _loc3_: int = 0
-    #     #     _loc4_: int = 0
-    #     #     _loc5_ = None  # Shoot
-    #     #     _loc7_ = 0
-    #     #     creator.write_short(_loc7_)
-    #     #     _loc8_: int = 0
-    #     #     while _loc8_ < _loc7_:
-    #     #         _loc2_ = ShipShoots()
-    #     #         creator.write_int(_loc2_.id)
-    #     #         creator.write_short(_loc3_)
-    #     #         _loc4_ = 0
-    #     #         while _loc4_ < _loc3_:
-    #     #             _loc5_ = Shoot()
-    #     #             creator.write_short(_loc5_.classNumber)
-    #     #             creator.write_short(_loc5_.damage)
-    #     #             creator.write_unsigned_byte(_loc5_.destroyedTarget)
-    #     #             creator.write_int(_loc5_.targetId)
-    #     #             creator.write_unsigned_byte(_loc5_.targetType)
-    #     #             creator.write_unsigned_byte(_loc5_.muzzleIndex)
-    #     #             _loc4_ += 1
-    #     #         _loc8_ += 1
-    #     #     return creator.get_package()
+    def items(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.ITEMS
+        data = []
+        for i in data:
+            _loc2_ = DotMap(i)
+            creator.write_int(_loc2_.id)
+            creator.write_short(_loc2_.classNumber)
+            creator.write_short(_loc2_.x)
+            creator.write_short(_loc2_.y)
+        return creator.get_package()
+
+    def message(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.MESSAGE
+        _loc2_ =  DotMap({
+            "from_player": 'Max223',
+            "text": "Hello",
+            "type": 1,
+            "isPrivate": False,
+            "isAdmin": False,
+        })
+        creator.write_utf(_loc2_.from_player) # name player
+        creator.write_utf(_loc2_.text)
+        creator.write_unsigned_byte(_loc2_.type) # 1 - global  2 - local 3 - clan 4 - trade 5 - client chat
+        creator.write_bool(_loc2_.isPrivate)
+        creator.write_bool(_loc2_.isAdmin)
+        return creator.get_package()
     #     #
-    #     # def items(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: BattleItem = None
-    #     #     _loc3_: list = list()
-    #     #     if creator.bytesAvailable / 10 - int(creator.bytesAvailable / 10) == 0:
-    #     #         while creator.bytesAvailable >= 10:
-    #     #             _loc2_ = BattleItem()
-    #     #             creator.write_int(_loc2_.id)
-    #     #             creator.write_short(_loc2_.classNumber)
-    #     #             creator.write_short(_loc2_.x)
-    #     #             creator.write_short(_loc2_.y)
-    #     #             _loc3_.append(_loc2_)
-    #     #     return creator.get_package()
-    #     #
-    #     # def message(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: Message = Message()
-    #     #     _loc2_ = ''
-    #     #     creator.write_utf(_loc2_)
-    #     #     creator.write_utf(_loc2_.text)
-    #     #     creator.write_unsigned_byte(_loc2_.type)
-    #     #     creator.write_bool(_loc2_.isPrivate)
-    #     #     creator.write_bool(_loc2_.isAdmin)
-    #     #     return creator.get_package()
-    #     #
-    #     # def asteroids(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: AsteroidPackage = None
-    #     #     _loc3_: list = list()
-    #     #     if creator.bytesAvailable / 25 - int(creator.bytesAvailable / 25) == 0:
-    #     #         while creator.bytesAvailable >= 25:
-    #     #             _loc2_ = AsteroidPackage()
-    #     #             creator.write_int(_loc2_.id)
-    #     #             creator.write_float(_loc2_.x)
-    #     #             creator.write_float(_loc2_.y)
-    #     #             creator.write_float(_loc2_.targetX)
-    #     #             creator.write_float(_loc2_.targetY)
-    #     #             creator.write_unsigned_byte(_loc2_.speed) / 1000
-    #     #             creator.write_int(_loc2_.size)
-    #     #             _loc3_.append(_loc2_)
-    #     #     return creator.get_package()
-    #     #
-    #     # def effectCreated(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: EffectTarget = None
-    #     #     _loc3_: int = 0
-    #     #     creator.write_int(_loc3_)
-    #     #     _loc4_: int = 0
-    #     #     creator.write_unsigned_byte(_loc4_)
-    #     #     _loc5_: list = []
-    #     #     _loc6_: int = 0
-    #     #     while _loc6_ < _loc4_:
-    #     #         _loc2_ = EffectTarget()
-    #     #         creator.write_int(_loc2_.targetId)
-    #     #         creator.write_unsigned_byte(_loc2_.destroyedTarget)
-    #     #         creator.write_bool(_loc2_.effectFailed)
-    #     #         _loc6_ += 1
-    #     #     _loc7_: int = 0
-    #     #     creator.write_unsigned_byte(_loc7_)
-    #     #     _loc8_: float = 0
-    #     #     creator.write_float(_loc8_)
-    #     #     _loc9_: int = 0
-    #     #     creator.write_int(_loc9_)
-    #     #     return creator.get_package()
-    #     #
+    def asteroids(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.ASTEROIDS
+        data = []
+        for i in data:
+            _loc2_ = DotMap(i)
+            creator.write_int(_loc2_.id)
+            creator.write_float(_loc2_.x)
+            creator.write_float(_loc2_.y)
+            creator.write_float(_loc2_.targetX)
+            creator.write_float(_loc2_.targetY)
+            creator.write_unsigned_byte(_loc2_.speed) / 1000
+            creator.write_int(_loc2_.size)
+        return creator.get_package()
+
+    def effectCreated(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.EFFECT_CREATED
+        id_ = 22
+        creator.write_int(id_)
+        data = []
+        creator.write_unsigned_byte(len(data))
+        for i in data:
+            _loc2_ = DotMap(i)
+            creator.write_int(_loc2_.targetId)
+            creator.write_unsigned_byte(_loc2_.destroyedTarget)
+            creator.write_bool(_loc2_.effectFailed)
+        _loc7_: int = 0
+        creator.write_unsigned_byte(_loc7_) # EffectType
+        _loc8_: float = 1.0
+        creator.write_float(_loc8_) # don't use
+        _loc9_: int = 0
+        creator.write_int(_loc9_) # damage damageToShow
+        return creator.get_package()
+
     #     # def effectRemoved(self) -> bytearray:
     #     #     creator = PackageCreator()
     #     #     _loc2_: int = 0
@@ -1683,12 +1641,20 @@ class PackagesManager:
     #     #
     #     #     return creator.get_package()
     #     #
-    #     # def write_guid(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: bytearray = bytearray()
-    #     #     creator.write_bytes(_loc2_, 0, 16)
-    #     #     return _loc2_
-    #     #
+
+    def _create_guid(self):
+        guid = bytearray()
+        count_guid_fake = self.count_guid
+        for i in range(16):
+            guid.append(0)
+        pos = 0
+        while count_guid_fake:
+            guid[pos] = count_guid_fake % 256
+            count_guid_fake //= 256
+            pos += 1
+        self.count_guid += 1
+        return guid
+
     def hideShip(self) -> bytearray:
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.HIDE_SHIP
@@ -1696,17 +1662,19 @@ class PackagesManager:
         creator.write_int(_loc2_)
         return creator.get_package()
     #     #
-    #     # def shipDestroyed(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: int = 0
-    #     #     creator.write_int(_loc2_)
-    #     #     return creator.get_package()
+    def shipDestroyed(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.SHIP_DESTROYED
+        ship_destroyed = DotMap()
+        creator.write_int(ship_destroyed.id)
+        return creator.get_package()
     #     #
-    #     # def shipJumped(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: int = 0
-    #     #     creator.write_int(_loc2_)  # findShip
-    #     #     return creator.get_package()
+    def shipJumped(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.SHIP_JUMPED
+        location = DotMap()
+        creator.write_int(location.id)  # findShip
+        return creator.get_package()
     #     #
     def clan(self) -> bytearray:
         creator = PackageCreator()

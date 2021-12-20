@@ -1,4 +1,4 @@
-from PackageDecoder import PackageDecoder
+from .PackageDecoder import PackageDecoder
 from python.Static.ClientRequest import ClientRequest
 
 class ReadPackages:

@@ -81,6 +81,7 @@ def StartServer():
             SendPackage(send.processPackages(ServerRequest.SHIPS_POSITION), i)
             SendPackage(send.processPackages(ServerRequest.SHIPS_STASE), i)
             SendPackage(send.processPackages(ServerRequest.HIDE_SHIP), i)
+            # SendPackage(send.processPackages(ServerRequest.MESSAGE), i)
             send2(i)
             while True:
                 data = users[i].recv(16)

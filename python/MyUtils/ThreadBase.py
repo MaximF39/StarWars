@@ -5,7 +5,7 @@ class ThreadBase:
     """
             def __init__(self):
                 # ниже функций могут быть вызваны вне класса
-                self.start_update('hello') # self.hello будет работать в фоне
+                self.start_update('hello', 1) # self.hello будет работать в фоне
                 self.del_update('hello') # self.hello перестанет работать
 
             @ThreadBase.end_thread # ОБЯЗАТЕЛЬНО ОБЯЗАТЕЛЬНО ОБЯЗАТЕЛЬНО
@@ -16,12 +16,7 @@ class ThreadBase:
             # проверить включен ли цикл или нет можно с помощью
             # hasattr(self, {name_func}_thread_true)
             """
-    time_update: float
     all_name_func = []
-
-    # def __init__(self):
-    #     if not self.time_update:
-    #         raise NotImplemented(' Назначь self.time_update')
 
     def end_thread(func):
         def wrapper(self, f=''):

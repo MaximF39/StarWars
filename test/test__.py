@@ -1,11 +1,12 @@
-def Slave(self):
-    # try:
-    a = PackageDecoder()
-    a.data = self.Client.recv(8)
-    index = a.readInt()
-    if (index < Packages.ServerRequest.MIN and index > Packages.ServerRequest.MAX):
-        a.data = self.Client.recv(a.readInt(), socket.MSG_WAITALL)
-    Packages.PackagesMenager.initializePackage(index, a.data, self.id)
-# except:
-# import VacuumClient; VacuumClient.ConsoleLog(Localization.ResourceString.BotError.replace(Localization.ResourceString.NameIndex, self.User.login).replace(Localization.ResourceString.ErrorIndex, "Питон не умеет показывать ошибки 🤷"))
-# self.disconnect(True)
+guid = bytearray()
+num_guid = 0
+for i in range(16):
+    guid.append(0)
+
+pos = 0
+while num_guid:
+    guid[pos] = num_guid % 256
+    num_guid //= 256
+    pos += 1
+
+print(len(guid))
