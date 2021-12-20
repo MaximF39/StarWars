@@ -104,7 +104,7 @@ class BasePlayer(Ship, ThreadBase):
         self.repair_health = int(self.max_health / 200 + self.skills['repairing'] * 4)
 
     def __get_parameter_recovery_energy(self):
-        self.recovery_energy = int(self.max_energy / 50 + self.skills['repairing'] * 4)
+        self.recovery_energy = int(self.max_energy / 50 + self.skills['recovery_energy'] * 4)
 
     @ThreadBase.end_thread
     def _recovery_energy(self):
