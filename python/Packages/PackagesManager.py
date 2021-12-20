@@ -187,20 +187,20 @@ class PackagesManager:
                 return self.topRatingList()
             case ServerRequest.TOP_CLANS_LIST:
                 return self.topClansList()
-            #     case ServerRequest.NEWS_LIST:
-            #         return self.sList()
+            case ServerRequest.NEWS_LIST:
+                return self.newsList()
             # case ServerRequest.FLASH_CONNECT_REQUEST:
             #     return self.flash_connect()
             case ServerRequest.ONLINE:
                 return self.online()
             case ServerRequest.VERSION:
                 return self.version()
-            #     case ServerRequest.SHIP_HEALTH:
-            #         return self.shipHealth()
-            #     case ServerRequest.NPC_MESSAGE:
-            #         return self.npcMessage()
-            #     case ServerRequest.UPDATE_HOLD:
-            #         return self.updateHold()
+            case ServerRequest.SHIP_HEALTH:
+                return self.shipHealth()
+            case ServerRequest.NPC_MESSAGE:
+                return self.npcMessage()
+            case ServerRequest.UPDATE_HOLD:
+                return self.updateHold()
             #     case ServerRequest.GINETIC_LAB_OPTIONS:
             #         return self.gineticLabOptions()
             case ServerRequest.CLAN:
@@ -419,14 +419,14 @@ class PackagesManager:
         return creator.get_package()
 
     #
-    #     # def updateHold(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_ = False
-    #     #     creator.write_bool(_loc2_)
-    #     #     _loc3_: list = self.write_items(creator, True, True, True, _loc2_)
-    #     #     _loc4_: list
-    #     #     _loc4_ = self.write_items(creator, True, True, True, len(_loc2_))
-    #     #     return creator.get_package()
+    def updateHold(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.UPDATE_HOLD
+        update_hold = bool()
+        creator.write_bool(update_hold)
+        self.write_items(creator, True, True, True, update_hold)
+        self.write_items(creator, True, True, True, update_hold)
+        return creator.get_package()
     #     #
     #     # def gineticLabOptions(self) -> bytearray:
     #     #     creator = PackageCreator()
@@ -442,13 +442,13 @@ class PackagesManager:
     #     #         _loc5_ += 1
     #     #     return creator.get_package()
     #     #
-    #     # def npcMessage(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_: int = 0
-    #     #     creator.write_int(_loc2_)
-    #     #     _loc3_: int = 0
-    #     #     creator.write_int(_loc3_)
-    #     #     return creator.get_package()
+    def npcMessage(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.NPC_MESSAGE
+        npc_message = DotMap()
+        creator.write_int(npc_message.message) # message SystemMessageType
+        creator.write_int(npc_message.avatar) # avatar
+        return creator.get_package()
     #     #
     #     # def additionalQuestMessage(self) -> bytearray:
     #     #     creator = PackageCreator()
@@ -896,7 +896,7 @@ class PackagesManager:
             creator.write_int(_loc4_.type)
             creator.write_int(_loc4_.value)
         return creator.get_package()
-    #     #
+
     def playerSkills(self) -> bytearray:
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.PLAYER_SKILLS_DATA
@@ -1222,15 +1222,15 @@ class PackagesManager:
         creator.write_utf(version)
         return creator.get_package()
 
-    #     #
-    #     # def shipHealth(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc2_ = 0
-    #     #     _loc3_ = 0
-    #     #     creator.write_int(_loc2_)
-    #     #     creator.write_int(_loc3_)
-    #     #     return creator.get_package()
-    #     #
+
+    def shipHealth(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.SHIP_HEALTH
+        ship = DotMap
+        creator.write_int(ship.id)
+        creator.write_int(ship.health)
+        return creator.get_package()
+
     def online(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.ONLINE
@@ -1339,16 +1339,14 @@ class PackagesManager:
     #     #         _loc6_ += 1
     #     #     return creator.get_package()
     #     #
-    #     # def sList(self) -> bytearray:
-    #     #     creator = PackageCreator()
-    #     #     _loc3_ = 0
-    #     #     creator.write_int(_loc3_)
-    #     #     _loc5_: int = 0
-    #     #     while _loc5_ < _loc3_:
-    #     #         _loc2_ = ''
-    #     #         creator.write_utf(_loc2_)
-    #     #         _loc5_ += 1
-    #     #     return creator.get_package()
+    def newsList(self) -> bytearray:
+        creator = PackageCreator()
+        creator.PackageNumber = ServerRequest.NEWS_LIST
+        data = []
+        creator.write_int(len(data))
+        for i in data:
+            creator.write_utf(i) # text
+        return creator.get_package()
     #     #
     #     # def Evil(self) -> bytearray:
     #     #     creator = PackageCreator()
