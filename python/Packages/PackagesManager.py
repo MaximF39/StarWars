@@ -9,7 +9,7 @@ from python.Static.StaticSpaceObjectType import StaticSpaceObjectType
 
 class PackagesManager:
     count_guid = 0
-    _aAvailablePackages: list
+    _aAvailablePackages: list = list()
     _iStateKey: int
     _iLastPackageLength: int
     _iLastServerRequest: int
@@ -18,11 +18,8 @@ class PackagesManager:
     lastFiveStateKeys: list = list()
     stateLoop: int
 
-    # def initialize(self):
-    #     self._aAvailablePackages = list()
-    #
-    # def isValidPackageLength(self, creator: int) -> bool:
-    #     return 0 <= creator < 60000
+    def isValidPackageLength(self, creator: int) -> bool:
+        return 0 <= creator < 60000
 
     # def _parsePackages(self) -> bytearray:
     #     _loc1_: BasePackage = None

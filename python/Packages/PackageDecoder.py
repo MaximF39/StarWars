@@ -32,10 +32,10 @@ class PackageDecoder:
     def read_unsigned_byte(self):
         return self.read_bytes(1)[0]
 
-    def read_bytes(self, ByteLength) -> bytearray:
-        if ByteLength > (len(self.data) - self.Position):
+    def read_bytes(self, byte_len=16) -> bytearray:
+        if byte_len > (len(self.data) - self.Position):
             return bytearray(0)
-        buffer = bytearray(ByteLength)
+        buffer = bytearray(byte_len)
         if self.Position + len(buffer) <= len(self.data):
             for i in range(len(buffer)):
                 buffer[i] = self.data[self.Position + i]

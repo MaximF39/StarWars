@@ -1,8 +1,5 @@
-import time
-start = time.time()
-import uuid
-for i in range(200):
-    uuid.uuid4()
+from socket import socket
 
-end = time.time()
-print(end - start)
+server = socket()
+server.bind(("localhost", 10000))
+server.close()
