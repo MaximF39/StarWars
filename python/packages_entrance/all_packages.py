@@ -203,6 +203,7 @@ def location_system(Game, id_player):
             "y": static_space_object.y,
             "landable": static_space_object.landable,
         })))
+    print(location, players, planets, static_space_objects)
     return location, players, planets, static_space_objects
 
 def player_ship(Game, id_):

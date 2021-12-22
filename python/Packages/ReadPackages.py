@@ -278,11 +278,10 @@ class ReadPackages:
     def move(self, data) -> list:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
-        data.append(_loc4_.read_float())  # x
-        data.append(_loc4_.read_float())  # y
-        data.append(_loc4_.read_int())  # count
-        return data
+        x = _loc4_.read_float()  # x
+        y = _loc4_.read_float()  # y
+        _ = _loc4_.read_int()  # count
+        getattr(self.Game, f"Player_{self.id}").move(x, y)
 
     def leaveLocation(self, data) -> list:
         _loc1_: PackageDecoder = PackageDecoder()

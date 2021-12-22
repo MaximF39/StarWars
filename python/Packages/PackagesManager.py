@@ -3,8 +3,6 @@ from python.Static.ParseXml import parse_xml
 from python.MyUtils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
 from python.Packages.PackageCreator import PackageCreator
-from python.StarWars import StarWars as StarWarsClass
-
 
 class PackagesManager:
     count_guid = 0
@@ -16,9 +14,8 @@ class PackagesManager:
     # _iLastTime: int = getTimer()
     lastFiveStateKeys: list = list()
     stateLoop: int
-    Game: StarWarsClass
 
-    def __init__(self, id_, StarWars: StarWarsClass):
+    def __init__(self, id_:int, StarWars):
         self.id = id_
         self.Game = StarWars
 
@@ -514,7 +511,7 @@ class PackagesManager:
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.ACTIVE_DEVICES
         data_active_device = active_device(self.Game, self.id)
-        print(data_active_device)
+        # print(data_active_device)
         creator.write_unsigned_byte(len(data_active_device))
         for i in data_active_device:
             _loc3_ = DotMap(i)

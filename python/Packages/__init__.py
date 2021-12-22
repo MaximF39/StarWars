@@ -1,2 +1,2 @@
 from .__ReadPackagesServer.ReadPackages import ReadPackages
-from python.Packages.oldReadPackages.oldPackagesManager import PackagesManager
+from python.Packages.PackagesManager import PackagesManager

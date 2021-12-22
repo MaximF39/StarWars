@@ -16,8 +16,6 @@ class SpaceObject:
         self.race = data['race']
         self.aliance = data['aliance']
 
-    def set_space_object_on_location(self, id_location):
-        getattr(self.Game, f"Location_{id_location}").set_object_space(self.__dict__, self.type)
 
     # def createSelection(self, param1: uint, param2: int):
     #     _loc3_: = None

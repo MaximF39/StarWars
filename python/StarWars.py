@@ -22,7 +22,8 @@ class StarWars:
     def __create_locations(self):
         for location in parse_xml('GalaxyMap'):
             id_ = location['id']
-            setattr(self, f"Location_{id_}", Location(self, location))
+            print('create loc', location)
+            setattr(self, f"Location_{id_}", Location(self, location)) # окация сначала создаёт сама все объекты, а затем добавляет их всех
 
     def __create_mobs(self):
         pass

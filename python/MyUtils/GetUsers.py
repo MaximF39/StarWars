@@ -8,7 +8,7 @@ def json_all_users_update_log_passwd():
     for i in r.keys():
         name = i.decode()
         jsn[name] = r.get(name).decode()
-    print(jsn)
+    # print(jsn)
     with open("users_log_passwd.json", 'w') as f:
         json.dump(jsn, f)
 

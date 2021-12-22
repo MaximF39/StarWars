@@ -6,8 +6,6 @@ import ast
 
 class Player(BasePlayer):
     def __init__(self, Game, dict_):
-        print(dict_)
-        print("sp", dict_, type(dict_['id']))
         super().__init__(Game, dict_)
         self.ship = self.ship
         self.freeSkills = dict_['free_skills']

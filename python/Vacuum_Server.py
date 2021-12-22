@@ -30,13 +30,9 @@ class Server(ThreadBase):
         self.server.listen(1)
         conn, addr = self.server.accept()
         self.users.append(conn)
-        self.upgrade()
+        self.test()
         # s = PackagesManager(1, self.Game)
         # self.entrance_packages(s)
-
-    def upgrade(self):
-        self.test()
-        # self.start_update("test", -1)
 
     b = bytearray()
 
@@ -101,10 +97,6 @@ class Server(ThreadBase):
             #     self.SendPackage(self.Packages_Manager.processPackages(ServerRequest.SHIPS_POSITION, id_), conn)
 
     def test(self):
-        # while True:
-        #     conn = self.connect_new_user()
-        #     a = threading.Thread(target=self.get, args=(conn,))
-        #     a.start()
         a = threading.Thread(target=self.accept_pack)
         a.start()
 
@@ -129,7 +121,7 @@ class Server(ThreadBase):
                 PackageNumber, lenBytes = self.default_read_package(decoder)
                 if PackageNumber == -2100000001:
                     res = self.read_login(self.users[0].recv(lenBytes))
-                    self.id = res[0]
+                    self.id = int(res[0])
                     Packages_Manager = PackagesManager(self.id, self.Game)
                     print("Create", self.id)
                     self.Game.create_player(self.id)

@@ -3,10 +3,9 @@ from python.Static.ParseXml import parse_xml
 from python.MyUtils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
 from python.Packages.PackageCreator import PackageCreator
-from python.StarWars import StarWars as StarWarsClass
 
 
-class oldPackagesManager:
+class ssssssssssss:
     count_guid = 0
     _aAvailablePackages: list = list()
     _iStateKey: int

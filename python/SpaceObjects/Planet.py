@@ -27,6 +27,7 @@ class Planet(SpaceObject, ThreadBase):
         self.race = data['race']
         self.class_number = data['classNumber']
         self.aliance = data["aliance"]
+        self.location = data['location']
         self.is_sun = bool(6 > self.class_number)
         self.angel = float("inf") if 6 > self.class_number else None
         self.x = 300
@@ -34,6 +35,10 @@ class Planet(SpaceObject, ThreadBase):
         self.item_shop = self.get_item_shop()
         self.ship_shop = self.get_ship_shop()
         self.update()
+        self.set_planet_on_location(data["location"])
+
+    def set_planet_on_location(self, id_location):
+        getattr(self.Game, f"Location_{id_location}").set_planet(self.__dict__)
 
     def get_ship_shop(self):
         # packages_entrance data BaseClass

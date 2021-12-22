@@ -2,6 +2,7 @@ import ast
 import json
 from . import Ship
 # from .. import ThreadBase
+from ..Packages.PackagesManager import PackagesManager
 
 
 class BasePlayer(Ship):
@@ -11,8 +12,8 @@ class BasePlayer(Ship):
 
 
     def __init__(self, Game, dict_: dict):
-        # dict_['Types'] = 2
         super().__init__(Game, dict_)
+        self.type = 2
         self.location = dict_["location"]
         self.avatar = dict_['avatar']
         self.login: str = dict_["login"]
@@ -39,6 +40,10 @@ class BasePlayer(Ship):
         # self.trading = self.skills['trading']
         # self.repairing = self.skills['repairing']
         # self.defending = self.skills['defending'] # ?
+        self.set_ship_on_location(self.location)
+
+    def set_ship_on_location(self, id_location):
+        getattr(self.Game, f"Location_{id_location}").set_ship(self.__dict__)
 
     def object_to_reach_system(self, type_, id_):
         self.object_to_reach_type = type_
@@ -49,9 +54,15 @@ class BasePlayer(Ship):
     #     self.start_update("_level_status", 1)
     #     self.start_update("_level_experience", 1)
 
+
     def move(self, x, y):
-        self.x += x
-        self.x += y
+        self.x = x
+        self.y = y
+        self.packages_move()
+
+    def packages_move(self):
+        PackagesManager(self.id, self.Game).shipsPosition()
+
 
     def attack(self):
         self.attack_now = True

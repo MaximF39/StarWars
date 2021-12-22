@@ -31,37 +31,23 @@ class Location(ThreadBase):
         self.create_space_object()
         # self.ships()
 
-    def set_object_space(self, dict_, type_):
-        match type_:
-            case 1:
-                self._set_planet(dict_)
-            case 2:
-                self._set_ship(dict_)
-            case 3:
-                self._set_battle(dict_)
-            case 4:
-                self._set_item(dict_)
-            case 5:
-                self._set_static_space_object(dict_)
-            case 6:
-                self._set_asteroid(dict_)
 
-    def _set_asteroid(self, dict_):
+    def set_asteroid(self, dict_):
         self.asteroid.append(dict_)
 
-    def _set_item(self, dict_):
+    def set_item(self, dict_):
         self.items.append(dict_)
 
-    def _set_battle(self, dict_):
+    def set_battle(self, dict_):
         pass
 
-    def _set_ship(self, dict_:dict):
+    def set_ship(self, dict_:dict):
         self.players.append(dict_)
 
-    def _set_static_space_object(self, dict_:dict):
+    def set_static_space_object(self, dict_:dict):
         self.static_space_objects.append(dict_)
 
-    def _set_planet(self, dict_:dict):
+    def set_planet(self, dict_:dict):
         self.planets.append(dict_)
 
     def create_space_object(self):
@@ -69,13 +55,15 @@ class Location(ThreadBase):
         self.create_static_space_objects()
 
     def create_static_space_objects(self):
-        for id_, data_space_object in enumerate(self.SpaceObjects['data']):
-            data_space_object['id'] = id_
+        for data_space_object in self.SpaceObjects['data']:
+            id_ = data_space_object['id']
+            data_space_object['location'] = self.id
             setattr(self, f"StaticSpaceObjects_{id_}", StaticSpaceObjects(self.Game, data_space_object))
 
     def create_planets(self):
         for data_planet in self.Planets['data']:
             id_ = data_planet['id']
+            data_planet['location'] = self.id
             setattr(self, f'Planet_{id_}', Planet(self.Game, data_planet))
 
     def update(self):
