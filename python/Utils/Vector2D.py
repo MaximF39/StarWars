@@ -8,9 +8,9 @@ class Vector2D:
     length: float
     length2: float
 
-    def __init__(self, x=0, y=0):
-        self.length = self.calculate_length(x, y)
-        self.length2 = self.calculate_length2(x, y)
+    # def __init__(self, x=0, y=0):
+    #     self.length = self.calculate_length(x, y)
+    #     self.length2 = self.calculate_length2(x, y)
 
     def set_vector2D(self, x: float, y: float) -> None:
         """ save x and y"""
@@ -154,7 +154,7 @@ class Vector2D:
 
     def get_angle_between(self, p1) -> float:
         """ i don''t know how it works
-        well, they clearly get the angle between a vector and some axis, and between two vectors. The only confusing
+        well, they clearly packages_entrance the angle between a vector and some axis, and between two vectors. The only confusing
          part is what the angle of get_angle is counted from - that is, for which vectors the angle is zero.
          I think the answer is "for (-1,0) vectors", making it count the angle from the negative-y axis - which is
          pretty unconventional, normally in math you count from the positive x axis.

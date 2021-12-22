@@ -21,7 +21,7 @@ class Mobs(BasePlayer, ThreadBase):
 
     @ThreadBase.end_thread
     def trigger(self): # TODO
-        objects = self.request_location()  # get locations
+        objects = self.request_location()  # packages_entrance locations
         if self.pick_up_item or self.attack:
             if self.object_to_reach_id not in objects:
                 self.pick_up_item: bool = False

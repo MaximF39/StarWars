@@ -1,44 +1,46 @@
 import math
 # from . import parse_galaxy_map
 from . import ThreadBase, cfg_update
-from ..Base.SpaceObject import SpaceObject
+from ..BaseClass.SpaceObject import SpaceObject
 
 class Planet(SpaceObject, ThreadBase):
     name: str  # my
     class_number: int  #be bytes
-    radius: int = 100
+    radius: int = 1000
     laudable: bool = True
     is_sun: bool
     # clan_id: int # Зачем планете клан ид?
     x: int  # add
     y: int  # add
-    x0: int = 300  # центр окружности по х
-    y0: int = 300  # центр окружности по y
+    x0: int = 0  # центр окружности по х
+    y0: int = 0  # центр окружности по y
     speed: int = 12  #
     _i = 1  # Уголобразующий
     item_shop = {}
     ship_shop = {}
 
-    def __init__(self, data:dict):
-        super().__init__(data)
+    def __init__(self, Game, data:dict):
+        data['Types'] = 1
+        super().__init__(Game, data)
         self.id = data['id']
         self.name = data['Name']
         self.race = data['race']
         self.class_number = data['classNumber']
         self.aliance = data["aliance"]
         self.is_sun = bool(6 > self.class_number)
-        self.x = 0
-        self.y = 0
+        self.angel = float("inf") if 6 > self.class_number else None
+        self.x = 300
+        self.y = 300
         self.item_shop = self.get_item_shop()
         self.ship_shop = self.get_ship_shop()
         self.update()
 
     def get_ship_shop(self):
-        # get data Base
+        # packages_entrance data BaseClass
         return 'sss'
 
     def get_item_shop(self):
-        # get data Base
+        # packages_entrance data BaseClass
         return 'sss'
 
     def buy_item_shop(self):
@@ -55,6 +57,6 @@ class Planet(SpaceObject, ThreadBase):
         self._i += self.speed
         if self._i > 360:
             self._i = 1
-        angle = self._i * 3.14 / 180
-        self.x = int(100 * math.cos(angle) + self.x0) + self.radius
-        self.y = int(100 * math.sin(angle) + self.y0) + self.radius
+        self.angle = self._i * 3.14 / 180
+        self.x = int(self.radius * math.cos(self.angle) + self.x0)
+        self.y = int(self.radius * math.sin(self.angle) + self.y0)

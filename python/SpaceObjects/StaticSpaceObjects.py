@@ -1,12 +1,12 @@
-from ..Base.SpaceObject import SpaceObject
+from ..BaseClass.SpaceObject import SpaceObject
 
 class StaticSpaceObjects(SpaceObject):
     class_number: int
     laudable: bool
 
 
-    def __init__(self, data):
-        super().__init__(data)
-        self.class_number = data['type']
+    def __init__(self, Game, data):
+        data['Types'] = 5
+        super().__init__(Game, data)
         self.laudable = True
 

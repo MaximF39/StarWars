@@ -3,7 +3,7 @@ import pathlib
 
 from python.MyUtils.DotMap import DotMap
 
-bs = pathlib.Path(__file__).parent.joinpath('Xml')
+bs = pathlib.Path(__file__).parent.joinpath('Json')
 id_parse = ['Clans', "GalaxyMap"]
 guid_parse = ['AmmoParameters', "DeviceParameters", "DroidParameters",
               "EngineParameters", "ShipParameters", "WeaponParameters", "ResourseParameters"]

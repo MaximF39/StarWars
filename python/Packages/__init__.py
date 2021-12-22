@@ -1,3 +1,2 @@
-from ..Static.ServerRequest import ServerRequest
-from .ReadPackagesServer.ReadPackages import ReadPackages
-from .PackagesManager import PackagesManager
+from .__ReadPackagesServer.ReadPackages import ReadPackages
+from python.Packages.oldReadPackages.oldPackagesManager import PackagesManager

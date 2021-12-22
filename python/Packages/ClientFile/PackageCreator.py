@@ -1,7 +1,7 @@
 from python.Packages.ClientFile import PackageWriter
 from python.Packages import SpaceObject
 # from python.Packages import PlayerInfoData
-from python.Static import ClientRequest
+from python.Static.Type import ClientRequest
 
 
 class PackageCreator(PackageWriter):

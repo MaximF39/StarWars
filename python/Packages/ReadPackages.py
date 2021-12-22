@@ -1,10 +1,14 @@
 from .PackageDecoder import PackageDecoder
-from python.Static.ClientRequest import ClientRequest
+from python.Static.Type.ClientRequest import ClientRequest
 
 
 class ReadPackages:
     IocaI: str = "LOCAL_TRUSTED"
     Domain: str = "serverstarwars.com"
+
+    def __init__(self, Game, id_):
+        self.id = id_
+        self.Game = Game
 
     def main(self, command_type: int, *args):
         match command_type:
@@ -18,9 +22,9 @@ class ReadPackages:
                 return self.planetRequest(*args)
             case ClientRequest.SHIP_REQUEST:
                 return self.shipRequest(*args)
-            # case ClientRequest.ALREADY_LOGGED:
+            # case ClientRequest.ALREADY_LOGGED: # don't use
             #     return self.
-            # case ClientRequest.SESSION_ID:
+            # case ClientRequest.SESSION_ID: # don't use
             #     return self.
             case ClientRequest.OBJECT_TO_REACH:
                 return self.objectToReach(*args)
@@ -32,9 +36,9 @@ class ReadPackages:
                 return self.unuseItem(*args)
             case ClientRequest.OPEN_SHOP:
                 return self.openShop(*args)
-            # case ClientRequest.FAILED:
+            # case ClientRequest.FAILED: # use i don't find it
             #     return self.
-            # case ClientRequest.LOCATION_CHANGED:
+            # case ClientRequest.LOCATION_CHANGED: # don't use
             #     return self.
             case ClientRequest.INVENTORY:
                 return self.inventory(*args)
@@ -46,8 +50,9 @@ class ReadPackages:
                 return self.sendMessage(*args)
             case ClientRequest.REPAIR:
                 return self.repair(*args)
-            # case ClientRequest.MAP:
-            #     return self.
+            case ClientRequest.MAP:  # don't use
+                print('sssssssssssss ERROR ')
+            #     return self.bodylessCommand(*args)
             case ClientRequest.REGISTER:
                 return self.registration(*args)
             case ClientRequest.PLAYER_SKILLS:
@@ -58,7 +63,8 @@ class ReadPackages:
                 return self.droidClicked(*args)
             case ClientRequest.RESTORE_ENERGY:
                 return self.restoreEnergy(*args)
-            # case ClientRequest.USE_FREE_PARAMETERS:
+            case ClientRequest.USE_FREE_PARAMETERS:  # don't use
+                print('sssssssssss ERROR')
             #     return self.
             case ClientRequest.DROID_COMMAND:
                 return self.droidCommand(*args)
@@ -126,80 +132,80 @@ class ReadPackages:
                 return self.ClansList(*args)
             case ClientRequest.JOIN_TO_CLAN_REQUEST:
                 return self.joinToClanRequest(*args)
-            # case ClientRequest.GET_CLAN_REQUESTS:
-            #     return self.requests
-            # case ClientRequest.PLAYER_INFO:
-            #     return self.Info
+            case ClientRequest.GET_CLAN_REQUESTS:
+                return self.bodylessCommand(*args)
+            case ClientRequest.PLAYER_INFO:
+                return self.intValueCommand(*args)
             case ClientRequest.SAVE_CLAN_JOIN_REQUESTS:
                 return self.saveClanJoinRequests(*args)
-            # case ClientRequest.JOIN_TO_CLAN:
-            #     return self.
-            # case ClientRequest.CANCEL_CLAN_CREATE_REQUEST:
-            #     return self.
-            # case ClientRequest.GET_FRIEND_CLANS:
-            #     return self.
-            # case ClientRequest.GET_ENEMY_CLANS:
-            #     return self.enem
-            # case ClientRequest.REMOVE_CLAN_RELATION:
-            #     return self.
-            # case ClientRequest.ADD_CLAN_TO_ENEMIES:
-            #     return self.
-            # case ClientRequest.ADD_CLAN_FRIEND_REQUEST:
-            #     return self.
-            # case ClientRequest.GET_FRIEND_REQUESTS:
-            #     return self.
+            case ClientRequest.JOIN_TO_CLAN:
+                return self.boolValueCommand(*args)
+            case ClientRequest.CANCEL_CLAN_CREATE_REQUEST:
+                return self.bodylessCommand(*args)
+            case ClientRequest.GET_FRIEND_CLANS:
+                return self.bodylessCommand(*args)
+            case ClientRequest.GET_ENEMY_CLANS:
+                return self.bodylessCommand(*args)
+            case ClientRequest.REMOVE_CLAN_RELATION:
+                return self.intValueCommand(*args)
+            case ClientRequest.ADD_CLAN_TO_ENEMIES:
+                return self.intValueCommand(*args)
+            case ClientRequest.ADD_CLAN_FRIEND_REQUEST:
+                return self.intValueCommand(*args)
+            case ClientRequest.GET_FRIEND_REQUESTS:
+                return self.bodylessCommand(*args)
             case ClientRequest.SUBMIT_CLAN_FRIEND_REQUESTS:
                 return self.submitClanFriendRequests(*args)
-            # case ClientRequest.MOVE_CLAN_TO_NEXT_LEVEL:
-            #     return self.
-            # case ClientRequest.REMOVE_PLAYER_FROM_CLAN:
-            #     return self.
-            # case ClientRequest.GET_MISSIONS:
-            #     return self.
+            case ClientRequest.MOVE_CLAN_TO_NEXT_LEVEL:
+                return self.bodylessCommand(*args)
+            case ClientRequest.REMOVE_PLAYER_FROM_CLAN:
+                return self.intValueCommand(*args)
+            case ClientRequest.GET_MISSIONS:
+                return self.bodylessCommand(*args)
             case ClientRequest.CREATE_PILOT:
                 return self.createPilot(*args)
-            # case ClientRequest.TO_GAME:
-            #     return self.
-            # case ClientRequest.EXCHANGE_VOTES:
-            #     return self.
-            # case ClientRequest.CHANGE_SHIP:
-            #     return self.chan
-            # case ClientRequest.DELETE_PILOT:
-            #     return self.
-            # case ClientRequest.CANCEL_DELETE_PILOT:
-            #     return self.cance
-            # case ClientRequest.GET_MAP:
-            #     return self.map
-            # case ClientRequest.LEAVE_CLAN:
-            #     return self.
-            # case ClientRequest.EXCHANGE_VOTES_TO_BONUSES:
-            #     return self.
+            case ClientRequest.TO_GAME:
+                return self.intValueCommand(*args)
+            case ClientRequest.EXCHANGE_VOTES:
+                return self.intValueCommand(*args)
+            case ClientRequest.CHANGE_SHIP:
+                return self.intValueCommand(*args)
+            case ClientRequest.DELETE_PILOT:
+                return self.intValueCommand(*args)
+            case ClientRequest.CANCEL_DELETE_PILOT:
+                return self.intValueCommand(*args)
+            case ClientRequest.GET_MAP:
+                return self.bodylessCommand(*args)
+            case ClientRequest.LEAVE_CLAN:
+                return self.bodylessCommand(*args)
+            case ClientRequest.EXCHANGE_VOTES_TO_BONUSES:
+                return self.intValueCommand(*args)
             case ClientRequest.BUY_ITEM_BY_BONUSES:
                 return self.buyItemByBonuses(*args)
-            # case ClientRequest.TRADE_INVITATION:
-            #     return self.
+            case ClientRequest.TRADE_INVITATION:
+                return self.intValueCommand(*args)
             case ClientRequest.TRADE_INVITATION_RESULT:
                 return self.tradeInvitationResult(*args)
-            # case ClientRequest.TRADE_CASH:
-            #     return self.
+            case ClientRequest.TRADE_CASH:
+                return self.intValueCommand(*args)
             case ClientRequest.TRADE_ITEM_TO_SELL:
                 return self.tradeItemToSell(*args)
-            # case ClientRequest.TRADE_ITEM_TO_HOLD:
-            #     return self.
-            # case ClientRequest.TRADE_ACCEPTED:
-            #     return self.
-            # case ClientRequest.FINISH_TRADING_RESULT:
-            #     return self.
-            # case ClientRequest.TRADE_DENIED:
-            #     return self.trade
-            # case ClientRequest.UPDATE_HOLD:
-            #     return self.
-            # case ClientRequest.UPDATE_SHIP:
-            #     return self.
-            # case ClientRequest.LOST_ITEMS:
-            #     return self.
-            # case ClientRequest.CHANGE_LEADER:
-            #     return self.
+            case ClientRequest.TRADE_ITEM_TO_HOLD:
+                return self.guidValueCommand(*args)
+            case ClientRequest.TRADE_ACCEPTED:
+                return self.boolValueCommand(*args)
+            case ClientRequest.FINISH_TRADING_RESULT:
+                return self.boolValueCommand(*args)
+            case ClientRequest.TRADE_DENIED:
+                return self.bodylessCommand(*args)
+            case ClientRequest.UPDATE_HOLD:
+                return self.bodylessCommand(*args)
+            case ClientRequest.UPDATE_SHIP:
+                return self.bodylessCommand(*args)
+            case ClientRequest.LOST_ITEMS:
+                return self.bodylessCommand(*args)
+            case ClientRequest.CHANGE_LEADER:
+                return self.intValueCommand(*args)
             case ClientRequest.UPDATE_RESOURCE:
                 return self.updateresource(*args)
             case ClientRequest.CLAN_CREATE:
@@ -220,17 +226,19 @@ class ReadPackages:
                 return self.repairItem(*args)
             case ClientRequest.GETAUCTION:
                 return self.Auction(*args)
-            # case ClientRequest.GET_UPDATE_VALUE:
-            #     return self.boolValueCommand(*args) # ? floatValueCommand ?
+            case ClientRequest.GET_UPDATE_VALUE:
+                return self.intValueCommand(*args)
             case ClientRequest.OBJECT_TO_TEAM:
                 return self.addObjectToTeam(*args)
-            # case ClientRequest.REMOVE_PLAYER_FROM_TEAM:
-            #     return self.
+            case ClientRequest.REMOVE_PLAYER_FROM_TEAM:
+                return self.intValueCommand(*args)
             case ClientRequest.SEND_BAN:
                 return self.sendBan(*args)
-            # case ClientRequest.RESERV11:
+            case ClientRequest.RESERV11:  # don't use
+                print('ssssssss ERROR')
             #     return self.
-            # case ClientRequest.RESERV12:
+            case ClientRequest.RESERV12:  # don't use
+                print('sssssssss ERROR')
             #     return self.
             case ClientRequest.BUY_SHIP_BY_BONUSES:
                 return self.buyShipByBonuses(*args)
@@ -251,10 +259,10 @@ class ReadPackages:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
         data = []
-        data.append(_loc5_.read_utf())
-        data.append(_loc5_.read_utf())
-        data.append(_loc5_.read_utf())
-        data.append(_loc5_.read_utf())
+        data.append(_loc5_.read_utf())  # Vk_user_id
+        data.append(_loc5_.read_utf())  # don't use
+        data.append(_loc5_.read_utf())  # Vk_auth_key
+        data.append(_loc5_.read_utf())  # domain
         return data
 
     def registration(self, data) -> list:
@@ -271,9 +279,9 @@ class ReadPackages:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
         data = []
-        data.append(_loc4_.read_float())
-        data.append(_loc4_.read_float())
-        data.append(_loc4_.read_int())
+        data.append(_loc4_.read_float())  # x
+        data.append(_loc4_.read_float())  # y
+        data.append(_loc4_.read_int())  # count
         return data
 
     def leaveLocation(self, data) -> list:
@@ -307,26 +315,26 @@ class ReadPackages:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = []
-        data.append(_loc2_.read_int())
-        data.append(_loc2_.read_int())
+        data.append(_loc2_.read_int())  # ObjectToReachType
+        data.append(_loc2_.read_int())  # id
         return data
 
     def ObjectToAttack(self, data) -> list:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = []
-        data.append(_loc2_.read_int())
-        data.append(_loc2_.read_int())
+        data.append(_loc2_.read_int())  # ObjectToReachType
+        data.append(_loc2_.read_int())  # id
         return data
 
     def objectToReach(self, data) -> list:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
         data = []
-        data.append(_loc4_.read_int())
-        data.append(_loc4_.read_int())
-        data.append(_loc4_.read_int())
-        data.append(_loc4_.read_int())
+        data.append(_loc4_.read_int())  # ObjectToReachType
+        data.append(_loc4_.read_int())  # id
+        data.append(_loc4_.read_int())  # AlianceType ?
+        data.append(_loc4_.read_int())  # count
         return data
 
     def useItem(self, data) -> list:
@@ -400,11 +408,10 @@ class ReadPackages:
         return data
 
     def inventory(self, data) -> list:
-        # _loc1_: LocalConnection = LocalConnection()
         _loc1_ = PackageDecoder()
         _loc1_.data = data
         data = []
-        data.append(_loc1_.read_utf())
+        data.append(_loc1_.read_utf())  # domain ?!
         return data
 
     def reachableSystems(self, data) -> list:
@@ -414,14 +421,12 @@ class ReadPackages:
         return data
 
     def jumpTo(self, data) -> list:
-        # _loc3_: LocalConnection = LocalConnection()
-        _loc4_: PackageDecoder
         _loc4_ = PackageDecoder()
         _loc4_.data = data
         data = []
-        data.append(_loc4_.read_int())
-        data.append(_loc4_.read_int())
-        data.append(_loc4_.read_utf())
+        data.append(_loc4_.read_int())  # id location
+        data.append(_loc4_.read_int())  # clicked count
+        data.append(_loc4_.read_utf())  # domain
         return data
 
     def sendMessage(self, data) -> list:
@@ -480,9 +485,9 @@ class ReadPackages:
         _loc5_.data = data
         data = []
         data.append(_loc5_.read_bytes())
-        data.append(_loc5_.read_int())
-        data.append(_loc5_.read_bytes())
-        data.append(_loc5_.read_bytes())
+        data.append(_loc5_.read_int())  # id цели если 0 то не выбрана цель
+        data.append(_loc5_.read_unsigned_byte())  # id использовавшего
+        data.append(_loc5_.read_unsigned_byte())  # effect type
         return data
 
     def droidClicked(self, data) -> list:
@@ -512,7 +517,7 @@ class ReadPackages:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = []
-        data.append(_loc2_.read_int())
+        data.append(_loc2_.read_int())  # id quest
         return data
 
     def questsJournal(self, data) -> list:
@@ -578,7 +583,7 @@ class ReadPackages:
         data = []
         return data
 
-    def crearTargets(self, data) -> list:
+    def crearTargets(self, data) -> list:  # убрать дройдов всех
         _loc1_: PackageDecoder = PackageDecoder()
         _loc1_.data = data
         data = []
@@ -601,7 +606,7 @@ class ReadPackages:
         return data
 
     def commitSkills(self, data) -> dict:
-        from ..Static.PlayerSkillType import PlayerSkillType
+        from python.Static.Type.PlayerSkillType import PlayerSkillType
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = {}
@@ -624,7 +629,7 @@ class ReadPackages:
         return data
 
     def read_skill(self, player_skill_type, data, decoder):
-        data[decoder.read_bytes()] =  decoder.read_bytes() # player skill type
+        data[decoder.read_bytes()] = decoder.read_bytes()  # player skill type
         return data
 
     def applyGineticLabOption(self, data) -> list:
@@ -638,8 +643,8 @@ class ReadPackages:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
         data = []
-        data.append(_loc5_.read_int())
-        data.append(_loc5_.read_int())
+        data.append(_loc5_.read_int())  # id
+        data.append(_loc5_.read_int())  # count credits
         data.append(_loc5_.read_bool())
         data.append(_loc5_.read_bool())
         return data
@@ -812,8 +817,8 @@ class ReadPackages:
         _loc4_: int = 0
         while True:
             if len(_loc3_.data):
-                data.append(_loc3_.read_int()) # playerID)
-                data.append(_loc3_.read_bytes()) #result)
+                data.append(_loc3_.read_int())  # playerID)
+                data.append(_loc3_.read_bytes())  # result)
             else:
                 break
         return data

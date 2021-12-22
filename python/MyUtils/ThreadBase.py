@@ -29,13 +29,17 @@ class ThreadBase:
 
         return wrapper
 
-    def start_update(self, f_name: str, time_sec: float):
-        if time_sec == -1:
-            time_sec = 10 ** 6
+    def start_update(self, f_name: str, time_sec: float, i=None):
         f_name_thread = f"{f_name}_thread"
         f_name_thread_true = f"{f_name}_thread_true"
         self.all_name_func.append(f_name_thread)
-        setattr(self, f_name_thread, threading.Timer(time_sec, getattr(self, f_name)))
+        if time_sec == -1:
+            if i:
+                setattr(self, f_name_thread, threading.Thread(target=getattr(self, f_name), args=(i,)))
+            else:
+                setattr(self, f_name_thread, threading.Thread(target=getattr(self, f_name)))
+        else:
+            setattr(self, f_name_thread, threading.Timer(time_sec, getattr(self, f_name)))
         setattr(self, f_name_thread_true, True)
         getattr(self, f_name_thread).start()
 

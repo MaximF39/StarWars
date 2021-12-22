@@ -1,0 +1,27 @@
+from . import BaseTypeStr
+class AvatarStr(BaseTypeStr):
+    data = [
+    ["Omolenian",1],
+    ["OmolenianInstructor",2],
+    ["OmolenianMaster",3],
+    ["OmolenianDorid",4],
+    ["Irritian",1001],
+    ["IrritianInstructor",1002],
+    ["IrritianMaster",1003],
+    ["IrritianDorid",1004],
+    ["Anid",2001],
+    ["AnidInstructor",2002],
+    ["AnidMaster",2003],
+    ["AnidDorid",2004],
+    ["Medramill",3001],
+    ["MedramillInstructor",3002],
+    ["MedramillMaster",3003],
+    ["MedramillDorid",3004],
+    ["Gulduc",4001],
+    ["Kuka",4002],
+    ["Xenoruit",5001],
+    ["Kaanian",6001],
+    ["Engeneer",6002],
+    ["CASAI",6003],
+    ["SIZE",200],
+    ]

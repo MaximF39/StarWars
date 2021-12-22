@@ -1,2 +1,2 @@
-from ..Base.BasePlayer import BasePlayer
+from ..BaseClass.BasePlayer import BasePlayer
 from ..MyUtils.ThreadBase import ThreadBase
