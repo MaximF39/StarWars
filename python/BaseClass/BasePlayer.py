@@ -1,15 +1,16 @@
+# from ..Packages.
 import ast
 import json
+import time
+
 from . import Ship
-# from .. import ThreadBase
+from ..MyUtils.ThreadBase import ThreadBase
 from ..Packages.PackagesManager import PackagesManager
 
 
-class BasePlayer(Ship):
-    pick_up_item_now: bool = False
-    attack_now: bool = False
-    inventory = {}
-
+class BasePlayer(Ship, ThreadBase):
+    # object_to_reach:  = {}
+    # attack_now: dict = {}
 
     def __init__(self, Game, dict_: dict):
         super().__init__(Game, dict_)
@@ -17,15 +18,18 @@ class BasePlayer(Ship):
         self.location = dict_["location"]
         self.avatar = dict_['avatar']
         self.login: str = dict_["login"]
-        self.ship["login"] = self.login
         self.aliance: int = dict_["aliance"]
         self.race: int = dict_["race"]
         # self.state: float = dict_["state"]
+        self.health = self.ship['health']
+        self.on_planet = None
+        self.energy = self.ship['energy']
+        self.speed = self.ship['speed']
         self.target_x: float = self.x
         self.target_y: float = self.y
         self.object_to_reach_id: int = self.location
         self.object_to_reach_type: int = 7 # getattr(Game, f"Location_{self.object_to_reach_id}").type
-        self.Player_relation: int = dict_["PlayerRelation"]
+        self.PlayerRelation: int = dict_["PlayerRelation"]
         self.skills = ast.literal_eval(dict_['skills'])
         self.level: int = dict_["level"]
         self.status = dict_['status']
@@ -34,41 +38,71 @@ class BasePlayer(Ship):
         self.inventory = dict_['inventory']
         self.active_weapons = dict_['active_weapons']
         self.active_devices = dict_['active_devices']
+        self.ship["login"] = self.login
+        self.ship['race'] = self.race
+        self.upgrade()
         # self.attacking = self.skills['attacking']
         # self.tactics = self.skills['tactics']
         # self.targeting = self.skills['targeting']
         # self.trading = self.skills['trading']
         # self.repairing = self.skills['repairing']
         # self.defending = self.skills['defending'] # ?
-        self.set_ship_on_location(self.location)
-
-    def set_ship_on_location(self, id_location):
-        getattr(self.Game, f"Location_{id_location}").set_ship(self.__dict__)
 
     def object_to_reach_system(self, type_, id_):
         self.object_to_reach_type = type_
         self.object_to_reach_id = id_
-    # def upgrade(self):
-    #     self.start_update("_repair_health", 1)
-    #     self.start_update("_recovery_energy", 1)
-    #     self.start_update("_level_status", 1)
-    #     self.start_update("_level_experience", 1)
+
+
+    def upgrade(self):
+        pass
+        # self.start_update("land_on_space_object", 1)
+        # self.start_update("_repair_health", 1)
+        # self.start_update("_recovery_energy", 1)
+        # self.start_update("_level_status", 1)
+        # self.start_update("_level_experience", 1)
 
 
     def move(self, x, y):
         self.x = x
         self.y = y
+        self.target_x = x
+        self.target_y = y
         self.packages_move()
 
-    def packages_move(self):
-        PackagesManager(self.id, self.Game).shipsPosition()
 
+    def packages_move(self):
+        pass
+        # PacMan = PackagesManager(self.id, self.Game)
+        # print(type(self.Game.id_to_conn[self.id]))
+        # self.Game.id_to_conn[self.id].send(PacMan.shipsPosition([{'id':self.id, 'x':self.x, 'y':self.y,
+        #                                                           "targetX":self.target_x, "targetY":self.target_y}]))
+        # self.Game.id_to_conn[self.id].send(PacMan.shipsState([{'id':self.id, 'speed':self.speed, 'health':self.health,
+        #                                                           "energy":self.energy, "PlayerRelation":self.PlayerRelation}]))
+
+        # self.Game.id_to_conn[self.id].send(PacMan.shipsPosition([self.x, self.y]))
+        # self.Game.id_to_conn[self.id].send(PacMan.shipsState())
+        # self.Game.id_to_conn[self.id].send(PacMan.npcMessage())
 
     def attack(self):
         self.attack_now = True
 
-    def pick_up_item(self):
-        self.pick_up_item_now = True
+    def set_object_to_reach(self, data):
+        match data['type']:
+            case 1:
+                self.object_to_reach = getattr(getattr(self.Game, f"Location_{self.location}"), f'Planet_{data["id"]}')
+                time.sleep(1)
+                # if self.x == self.object_to_reach.x and self.y == self.object_to_reach.y:
+                self.on_planet = self.object_to_reach
+                PackagesManager(self.id, self.Game).locationPlanet()
+            case 5:
+                self.object_to_reach = getattr(getattr(self.Game, f"Location_{self.location}"), f'Static_space_object_{data["id"]}')
+                time.sleep(1)
+                # if self.x == self.object_to_reach.x and self.y == self.object_to_reach.y:
+                self.on_planet = self.object_to_reach
+                PackagesManager(self.id, self.Game).locationPlanet()
+
+
+
 
     def dead(self):
         self.get_drop() # send req

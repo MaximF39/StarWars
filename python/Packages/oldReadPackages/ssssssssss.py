@@ -1,4 +1,4 @@
-from python.packages_entrance.all_packages import *
+from python.Packages.PackagesEntry import *
 from python.Static.ParseXml import parse_xml
 from python.MyUtils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
@@ -895,22 +895,22 @@ class ssssssssssss:
 
     @staticmethod
     def write_skills(creator, param2) -> None:
-        creator.write_unsigned_byte(param2["control"])
-        creator.write_unsigned_byte(param2["defending"])
-        creator.write_unsigned_byte(param2["energyWeapons"])
-        creator.write_unsigned_byte(param2["kineticWeapons"])
-        creator.write_unsigned_byte(param2["mining"])
-        creator.write_unsigned_byte(param2["piloting"])
-        creator.write_unsigned_byte(param2["repairing"])
-        creator.write_unsigned_byte(param2["rocketWeapons"])
-        creator.write_unsigned_byte(param2["trading"])
-        creator.write_unsigned_byte(param2["attacking"])
-        creator.write_unsigned_byte(param2["tactics"])
-        creator.write_unsigned_byte(param2["targeting"])
-        creator.write_unsigned_byte(param2["electronics"])
-        creator.write_unsigned_byte(param2["biocemistry"])
-        creator.write_unsigned_byte(param2["mechanics"])
-        creator.write_unsigned_byte(param2["cybernetics"])
+        creator.write_unsigned_byte(param2["Control"])
+        creator.write_unsigned_byte(param2["Defending"])
+        creator.write_unsigned_byte(param2["EnergyWeapons"])
+        creator.write_unsigned_byte(param2["KineticWeapons"])
+        creator.write_unsigned_byte(param2["Mining"])
+        creator.write_unsigned_byte(param2["Piloting"])
+        creator.write_unsigned_byte(param2["Repairing"])
+        creator.write_unsigned_byte(param2["RocketWeapons"])
+        creator.write_unsigned_byte(param2["Trading"])
+        creator.write_unsigned_byte(param2["Attacking"])
+        creator.write_unsigned_byte(param2["Tactics"])
+        creator.write_unsigned_byte(param2["Targeting"])
+        creator.write_unsigned_byte(param2["Electronics"])
+        creator.write_unsigned_byte(param2["Biocemistry"])
+        creator.write_unsigned_byte(param2["Mechanics"])
+        creator.write_unsigned_byte(param2["Cybernetics"])
 
     def playerSkillsData(self) -> bytearray:
         creator = PackageCreator()

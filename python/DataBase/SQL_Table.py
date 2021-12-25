@@ -29,6 +29,7 @@ class PlayerDB(Base):
     bonus = Column(SmallInteger, nullable=False)
     planet = Column(SmallInteger,  default=0)
     location = Column(SmallInteger, nullable=False)
+    repository = Column(Text, default='[]')
     level = Column(SmallInteger, nullable=False)
     experience = Column(BigInteger, nullable=False)
     status = Column(SmallInteger, nullable=False)
@@ -50,11 +51,11 @@ class PlayerDB(Base):
     deleteEnqueued = Column(Boolean, default=False)
     canDelete = Column(Boolean, default=False)
     logged = Column(Boolean, default=False)
-    active_devices = Column(Text, nullable=False)
-    active_weapons = Column(Text, nullable=False)
+    active_devices = Column(Text, default='[]')
+    active_weapons = Column(Text, default='[]')
     rating = Column(Integer, nullable=False)
-    inventory = Column(Text, default='{}')
-    repository_station = Column(Text, default='{}')
+    inventory = Column(Text, default='[]')
+    angar = Column(Text, default='[]')
 
     # book = relationship("Book")  # 1 ко многим
     # сделать по клану связь игрока и в каком он клане

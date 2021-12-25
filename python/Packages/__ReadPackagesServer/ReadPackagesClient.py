@@ -786,7 +786,7 @@ class ReadPackagesClient:
     #     # def ship(self) -> list:
     #     #     
     #     #     _loc2_: DroidData = None
-    #     #     # _loc3_: Ship = ShipsManager.createInstance(decoder.read_short())
+    #     #     # _loc3_: Player = ShipsManager.createInstance(decoder.read_short())
     #     #     decoder.read_int(_loc3_.id)
     #     #     decoder.read_utf(_loc3_.Name)
     #     #     decoder.read_short(_loc3_.size)
@@ -943,22 +943,22 @@ class ReadPackagesClient:
     #     #
     def read_skills(self, decoder) -> DotMap:
         param2 = DotMap()
-        param2.control = decoder.read_unsigned_byte()
-        param2.defending = decoder.read_unsigned_byte()
-        param2.energyWeapons = decoder.read_unsigned_byte()
-        param2.kineticWeapons = decoder.read_unsigned_byte()
-        param2.mining = decoder.read_unsigned_byte()
-        param2.piloting = decoder.read_unsigned_byte()
-        param2.repairing = decoder.read_unsigned_byte()
-        param2.rocketWeapons = decoder.read_unsigned_byte()
-        param2.trading = decoder.read_unsigned_byte()
-        param2.attacking = decoder.read_unsigned_byte()
-        param2.tactics = decoder.read_unsigned_byte()
-        param2.targeting = decoder.read_unsigned_byte()
-        param2.electronics = decoder.read_unsigned_byte()
-        param2.biocemistry = decoder.read_unsigned_byte()
-        param2.mechanics = decoder.read_unsigned_byte()
-        param2.cybernetics = decoder.read_unsigned_byte()
+        param2.Control = decoder.read_unsigned_byte()
+        param2.Defending = decoder.read_unsigned_byte()
+        param2.EnergyWeapons = decoder.read_unsigned_byte()
+        param2.KineticWeapons = decoder.read_unsigned_byte()
+        param2.Mining = decoder.read_unsigned_byte()
+        param2.Piloting = decoder.read_unsigned_byte()
+        param2.Repairing = decoder.read_unsigned_byte()
+        param2.RocketWeapons = decoder.read_unsigned_byte()
+        param2.Trading = decoder.read_unsigned_byte()
+        param2.Attacking = decoder.read_unsigned_byte()
+        param2.Tactics = decoder.read_unsigned_byte()
+        param2.Targeting = decoder.read_unsigned_byte()
+        param2.Electronics = decoder.read_unsigned_byte()
+        param2.Biocemistry = decoder.read_unsigned_byte()
+        param2.Mechanics = decoder.read_unsigned_byte()
+        param2.Cybernetics = decoder.read_unsigned_byte()
         return param2
     #     #
     def playerSkillsData(self, decoder) -> list:
@@ -1558,7 +1558,7 @@ class ReadPackagesClient:
 
     #     # def locationBattle(self) -> list:
     #     #     
-    #     #     _loc2_: Ship = None
+    #     #     _loc2_: Player = None
     #     #     _loc3_: int = 0
     #     #     _loc4_: DroidData = None
     #     #     _loc5_: int = 0

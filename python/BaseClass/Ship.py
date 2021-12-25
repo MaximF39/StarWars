@@ -15,6 +15,7 @@ class Ship(MovableSpaceObject):
         self.ship['id'] =  data['id']
         self.ship['setPosition'] = [data['x'], data['y']]
         self.ship['team'] = -1
+        self.maxDroids = 2
         self.get_ship()
 
     def get_ship(self):

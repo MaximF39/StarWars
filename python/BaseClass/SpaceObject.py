@@ -155,7 +155,7 @@ class SpaceObject:
     #
     #     typeOfLocation(): int
     #
-    # if self is Ship:
+    # if self is Player:
     #     return ShipLocationType.SHIP
     #
     # if self is Planet:

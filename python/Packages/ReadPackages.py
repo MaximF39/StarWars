@@ -1,239 +1,253 @@
+from ..Packages.PackagesManager import PackagesManager
 from .PackageDecoder import PackageDecoder
 from python.Static.Type.ClientRequest import ClientRequest
+from ..Static.TypeStr.ClientRequestStr import ClientRequestStr as ClReq
+import os, pathlib
+from loguru import logger
 
 
 class ReadPackages:
-    IocaI: str = "LOCAL_TRUSTED"
-    Domain: str = "serverstarwars.com"
+    def __write_logger(self):
+        path = pathlib.Path(__file__).parent.parent.joinpath('DataBase').joinpath("PlayerLog")
+        os.chdir(path)
 
-    def __init__(self, Game, id_):
+        logger.add(f'Player_{self.id}.log',format="{time:YYYY-MM-DD HH:mm:ss.SSS}, {level}, {message}",
+                   rotation="128 KB",
+                   compression='zip', encoding='cp1251') #
+
+    def __init__(self, Game, id_, command_type, data):
         self.id = id_
         self.Game = Game
 
-    def main(self, command_type: int, *args):
+        self.__write_logger()
+
         match command_type:
             case ClientRequest.LOGIN:
-                return self.login(*args)
+                self.login(data)
             case ClientRequest.MOVE:
-                return self.move(*args)
+                self.move(data)
             case ClientRequest.LEAVE_LOCATION:
-                return self.leaveLocation(*args)
+                self.leaveLocation(data)
             case ClientRequest.PLANET_REQUEST:
-                return self.planetRequest(*args)
+                self.planetRequest(data)                
             case ClientRequest.SHIP_REQUEST:
-                return self.shipRequest(*args)
-            # case ClientRequest.ALREADY_LOGGED: # don't use
-            #     return self.
-            # case ClientRequest.SESSION_ID: # don't use
-            #     return self.
+                self.shipRequest(data)
+        #     # case ClientRequest.ALREADY_LOGGED: # don't use
+        #         return self.
+        #     # case ClientRequest.SESSION_ID: # don't use
+        #         return self.
             case ClientRequest.OBJECT_TO_REACH:
-                return self.objectToReach(*args)
+                self.objectToReach(data)
             case ClientRequest.OBJECT_EVIL:
-                return self.evil(*args)
+                self.evil(data)
             case ClientRequest.USE_ITEM:
-                return self.useItem(*args)
+                self.useItem(data)
             case ClientRequest.UNUSE_ITEM:
-                return self.unuseItem(*args)
+                self.unuseItem(data)
             case ClientRequest.OPEN_SHOP:
-                return self.openShop(*args)
+                self.openShop(data)
             # case ClientRequest.FAILED: # use i don't find it
-            #     return self.
-            # case ClientRequest.LOCATION_CHANGED: # don't use
-            #     return self.
+        #         return self.
+        # 
+        # 
+        #     # case ClientRequest.LOCATION_CHANGED: # don't use
+        #         return self.
+        # 
+        # 
             case ClientRequest.INVENTORY:
-                return self.inventory(*args)
+                self.inventory(data)
             case ClientRequest.HYPERJUMP:
-                return self.jumpTo(*args)
+                self.jumpTo(data)
             case ClientRequest.REACHABLE_SYSTEMS:
-                return self.reachableSystems(*args)
+                self.reachableSystems(data)
             case ClientRequest.MESSAGE:
-                return self.sendMessage(*args)
+                self.sendMessage(data)
             case ClientRequest.REPAIR:
-                return self.repair(*args)
+                self.repair(data)
             case ClientRequest.MAP:  # don't use
                 print('sssssssssssss ERROR ')
-            #     return self.bodylessCommand(*args)
+            #     return self.bodylessCommand(data)
             case ClientRequest.REGISTER:
-                return self.registration(*args)
+                self.registration(data)
             case ClientRequest.PLAYER_SKILLS:
-                return self.playerSkills(*args)
+                self.playerSkills(data)
             case ClientRequest.DEVICE_CLICKED:
-                return self.deviceClicked(*args)
+                self.deviceClicked(data)
             case ClientRequest.DROID_CLICKED:
-                return self.droidClicked(*args)
+                self.droidClicked(data)
             case ClientRequest.RESTORE_ENERGY:
-                return self.restoreEnergy(*args)
+                self.restoreEnergy(data)
             case ClientRequest.USE_FREE_PARAMETERS:  # don't use
                 print('sssssssssss ERROR')
             #     return self.
             case ClientRequest.DROID_COMMAND:
-                return self.droidCommand(*args)
+                self.droidCommand(data)
             case ClientRequest.BUY_SHIP:
-                return self.buyShip(*args)
+                self.buyShip(data)
             case ClientRequest.SHOW_QUEST:
-                return self.showQuest(*args)
+                self.showQuest(data)
             case ClientRequest.GET_QUEST:
-                return self.Quest(*args)
+                self.Quest(data)
             case ClientRequest.QUESTS_JOURNAL:
-                return self.questsJournal(*args)
+                self.questsJournal(data)
             case ClientRequest.PLANET_QUESTS:
-                return self.showPlanetQuests(*args)
+                self.showPlanetQuests(data)
             case ClientRequest.TRAINING:
-                return self.training(*args)
+                self.training(data)
             case ClientRequest.ARENA_REQUESTS:
-                return self.arenaRequests(*args)
+                self.arenaRequests(data)
             case ClientRequest.JOIN_TO_REQUEST:
-                return self.joinToRequest(*args)
+                self.joinToRequest(data)
             case ClientRequest.BATTLE_REQUEST_WINDOW_CLOSED:
-                return self.battleRequestWindowClosed(*args)
+                self.battleRequestWindowClosed(data)
             case ClientRequest.READY_TO_BATTLE:
-                return self.readyToBattle(*args)
+                self.readyToBattle(data)
             case ClientRequest.DROIDS_MODE:
-                return self.droidsMode(*args)
+                self.droidsMode(data)
             case ClientRequest.BUILD_DROID:
-                return self.buildDroid(*args)
+                self.buildDroid(data)
             case ClientRequest.SYNCRONIZE_HEALTH:
-                return self.syncronizeHealth(*args)
+                self.syncronizeHealth(data)
             case ClientRequest.CREATE_ARENA_REQUEST:
-                return self.createArenaRequest(*args)
+                self.createArenaRequest(data)
             case ClientRequest.BUY_ITEM:
-                return self.buyItem(*args)
+                self.buyItem(data)
             case ClientRequest.SELL_ITEM:
-                return self.sellItem(*args)
+                self.sellItem(data)
             case ClientRequest.DROP_ITEM:
-                return self.dropItem(*args)
+                self.dropItem(data)
             case ClientRequest.OBJECT_TO_ATTACK:
-                return self.ObjectToAttack(*args)
+                self.ObjectToAttack(data)
             case ClientRequest.COMMIT_SKILLS:
-                return self.commitSkills(*args)
+                self.commitSkills(data)
             case ClientRequest.APPLY_GINETIC_LAB_OPTION:
-                return self.applyGineticLabOption(*args)
+                self.applyGineticLabOption(data)
             case ClientRequest.CREAR_TARGETS:
-                return self.crearTargets(*args)
+                self.crearTargets(data)
             case ClientRequest.SEND_CREDITS:
-                return self.sendCredits(*args)
+                self.sendCredits(data)
             case ClientRequest.TO_REPOSITORY:
-                return self.toRepository(*args)
+                self.toRepository(data)
             case ClientRequest.RETURN_ITEM:
-                return self.returnItem(*args)
+                self.returnItem(data)
             case ClientRequest.LOAD_CLAN:
-                return self.loadClan(*args)
+                self.loadClan(data)
             case ClientRequest.CLAN_LOAD:
-                return self.clanLoad(*args)
+                self.clanLoad(data)
             case ClientRequest.CHECK_VALUE:
-                return self.checkValue(*args)
+                self.checkValue(data)
             case ClientRequest.ACCEPTED_CLAN_INFO:
-                return self.AcceptedClanInfo(*args)
+                self.AcceptedClanInfo(data)
             case ClientRequest.CREATE_CLAN:
-                return self.createClan(*args)
+                self.createClan(data)
             case ClientRequest.GET_CLANS_LETTERS:
-                return self.ClansLetters(*args)
+                self.ClansLetters(data)
             case ClientRequest.GET_CLANS_LIST:
-                return self.ClansList(*args)
+                self.ClansList(data)
             case ClientRequest.JOIN_TO_CLAN_REQUEST:
-                return self.joinToClanRequest(*args)
+                self.joinToClanRequest(data)
             case ClientRequest.GET_CLAN_REQUESTS:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.PLAYER_INFO:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.SAVE_CLAN_JOIN_REQUESTS:
-                return self.saveClanJoinRequests(*args)
+                self.saveClanJoinRequests(data)
             case ClientRequest.JOIN_TO_CLAN:
-                return self.boolValueCommand(*args)
+                self.boolValueCommand(data)
             case ClientRequest.CANCEL_CLAN_CREATE_REQUEST:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.GET_FRIEND_CLANS:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.GET_ENEMY_CLANS:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.REMOVE_CLAN_RELATION:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.ADD_CLAN_TO_ENEMIES:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.ADD_CLAN_FRIEND_REQUEST:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.GET_FRIEND_REQUESTS:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.SUBMIT_CLAN_FRIEND_REQUESTS:
-                return self.submitClanFriendRequests(*args)
+                self.submitClanFriendRequests(data)
             case ClientRequest.MOVE_CLAN_TO_NEXT_LEVEL:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.REMOVE_PLAYER_FROM_CLAN:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.GET_MISSIONS:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.CREATE_PILOT:
-                return self.createPilot(*args)
+                self.createPilot(data)
             case ClientRequest.TO_GAME:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.EXCHANGE_VOTES:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.CHANGE_SHIP:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.DELETE_PILOT:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.CANCEL_DELETE_PILOT:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.GET_MAP:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.LEAVE_CLAN:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.EXCHANGE_VOTES_TO_BONUSES:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.BUY_ITEM_BY_BONUSES:
-                return self.buyItemByBonuses(*args)
+                self.buyItemByBonuses(data)
             case ClientRequest.TRADE_INVITATION:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.TRADE_INVITATION_RESULT:
-                return self.tradeInvitationResult(*args)
+                self.tradeInvitationResult(data)
             case ClientRequest.TRADE_CASH:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.TRADE_ITEM_TO_SELL:
-                return self.tradeItemToSell(*args)
+                self.tradeItemToSell(data)
             case ClientRequest.TRADE_ITEM_TO_HOLD:
-                return self.guidValueCommand(*args)
+                self.guidValueCommand(data)
             case ClientRequest.TRADE_ACCEPTED:
-                return self.boolValueCommand(*args)
+                self.boolValueCommand(data)
             case ClientRequest.FINISH_TRADING_RESULT:
-                return self.boolValueCommand(*args)
+                self.boolValueCommand(data)
             case ClientRequest.TRADE_DENIED:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.UPDATE_HOLD:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.UPDATE_SHIP:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.LOST_ITEMS:
-                return self.bodylessCommand(*args)
+                self.bodylessCommand(data)
             case ClientRequest.CHANGE_LEADER:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.UPDATE_RESOURCE:
-                return self.updateresource(*args)
+                self.updateresource(data)
             case ClientRequest.CLAN_CREATE:
-                return self.clanCreate(*args)
+                self.clanCreate(data)
             case ClientRequest.TO_CLAN_REPOSITORY:
-                return self.toClanRepository(*args)
+                self.toClanRepository(data)
             case ClientRequest.RETURN_ITEM_CLAN:
-                return self.returnItemClan(*args)
+                self.returnItemClan(data)
             case ClientRequest.SET_PLAYER_ROLE:
-                return self.PlayerRole(*args)
+                self.PlayerRole(data)
             case ClientRequest.SEND_BONUSES:
-                return self.sendBonuses(*args)
+                self.sendBonuses(data)
             case ClientRequest.RENAME_PILOT:
-                return self.renamePilot(*args)
+                self.renamePilot(data)
             case ClientRequest.RESERV4:
-                return self.ClickedTime(*args)
+                self.ClickedTime(data)
             case ClientRequest.REPAIR_ITEM:
-                return self.repairItem(*args)
+                self.repairItem(data)
             case ClientRequest.GETAUCTION:
-                return self.Auction(*args)
+                self.Auction(data)
             case ClientRequest.GET_UPDATE_VALUE:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.OBJECT_TO_TEAM:
-                return self.addObjectToTeam(*args)
+                self.addObjectToTeam(data)
             case ClientRequest.REMOVE_PLAYER_FROM_TEAM:
-                return self.intValueCommand(*args)
+                self.intValueCommand(data)
             case ClientRequest.SEND_BAN:
-                return self.sendBan(*args)
+                self.sendBan(data)
             case ClientRequest.RESERV11:  # don't use
                 print('ssssssss ERROR')
             #     return self.
@@ -241,626 +255,602 @@ class ReadPackages:
                 print('sssssssss ERROR')
             #     return self.
             case ClientRequest.BUY_SHIP_BY_BONUSES:
-                return self.buyShipByBonuses(*args)
+                self.buyShipByBonuses(data)
             case _:
-                return print('Error unknow Packages')
+                print('Error unknow Packages')
 
-    def droidCommand(self, data) -> list:
+    def droidCommand(self, data) -> None:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
-        data = []
-        data.append(_loc5_.read_bytes(16))  # 16 или 1
-        data.append(_loc5_.read_int())
-        data.append(_loc5_.read_int())
-        data.append(_loc5_.read_int())
-        return data
-
-    def login(self, data) -> list:
+        data = {
+        'hz':_loc5_.read_bytes(16),  # 16 или 1
+        'hz2':_loc5_.read_int(),
+        'hz3':_loc5_.read_int(),
+        'hz4':_loc5_.read_int(),
+        }
+        logger.info(f'droidCommand {data}')
+    
+    def login(self, data):
         _loc5_ = PackageDecoder()
         _loc5_.data = data
-        data = []
-        data.append(_loc5_.read_utf())  # Vk_user_id
-        data.append(_loc5_.read_utf())  # don't use
-        data.append(_loc5_.read_utf())  # Vk_auth_key
-        data.append(_loc5_.read_utf())  # domain
-        return data
+        data = {
+            'id':_loc5_.read_utf(),  # Vk_user_id
+            "_": _loc5_.read_utf(),  # don't use
+            'AuthKey':_loc5_.read_utf(),  # Vk_auth_key
+            'Domain':_loc5_.read_utf()}  # domain
+        logger.critical(f'login {data}')
 
-    def registration(self, data) -> list:
+    def registration(self, data) -> None:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
-        data = []
-        data.append(_loc5_.read_utf())
-        data.append(_loc5_.read_utf())
-        data.append(_loc5_.read_utf())
-        data.append(_loc5_.read_int())
-        return data
+        data = {
+            'id': _loc5_.read_utf(),  # Vk_user_id
+            "_": _loc5_.read_utf(),  # don't use
+            'AuthKey': _loc5_.read_utf(),  # Vk_auth_key
+            'Domain': _loc5_.read_utf()}  # domain
+        logger.critical(f'registration {data}')
 
-    def move(self, data) -> list:
+    def move(self, data) -> None:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
+
         x = _loc4_.read_float()  # x
         y = _loc4_.read_float()  # y
         _ = _loc4_.read_int()  # count
+        logger.info(f'move {x}, {y}')
         getattr(self.Game, f"Player_{self.id}").move(x, y)
 
-    def leaveLocation(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def leaveLocation(self, data):
+        PackagesManager(self.id, self.Game).locationSystem()
+        logger.info(f'leaveLocation')
 
-    def evil(self, data) -> list:
+    def evil(self, data) -> None:
         oWriter = PackageDecoder()
         oWriter.data = data
-        data = []
-        data.append(oWriter.read_utf())
-        return data
+        info = oWriter.read_utf()
+        logger.info(f'evil {info}')
 
-    def planetRequest(self, data) -> list:
+    def planetRequest(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        id_ = _loc2_.read_int()
+        logger.info(f'Planet request {id_}')
 
-    def shipRequest(self, data) -> list:
+    def shipRequest(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        id_ = _loc2_.read_int()
+        logger.info(f'Planet request', id_)
 
-    def addObjectToTeam(self, data) -> list:
+    def addObjectToTeam(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())  # ObjectToReachType
-        data.append(_loc2_.read_int())  # id
-        return data
+        data = {
+            'ObjectToReachType': _loc2_.read_int(),
+            'id': _loc2_.read_int()}
+        logger.info(f'addObjectToTeam {data}')
 
-    def ObjectToAttack(self, data) -> list:
+    def ObjectToAttack(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())  # ObjectToReachType
-        data.append(_loc2_.read_int())  # id
-        return data
+        data = {
+        'ObjectToReachType':_loc2_.read_int(),  # ObjectToReachType
+        'id':_loc2_.read_int(),}  # id
+        logger.info(data)
 
-    def objectToReach(self, data) -> list:
+    def objectToReach(self, data):
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
-        data.append(_loc4_.read_int())  # ObjectToReachType
-        data.append(_loc4_.read_int())  # id
-        data.append(_loc4_.read_int())  # AlianceType ?
-        data.append(_loc4_.read_int())  # count
-        return data
+        data = {}
+        data['type'] = _loc4_.read_int()  # ObjectToReachType
+        data['id'] = _loc4_.read_int()  # id
+        data['aliance'] = _loc4_.read_int()  # AlianceType ?
+        _loc4_.read_int()  # count
+        logger.info(f'objectToReach {data}')
+        getattr(self.Game, f'Player_{self.id}').set_object_to_reach(data)
 
-    def useItem(self, data) -> list:
+    def useItem(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_bytes(16))
-        return data
+        data = {
+        'guid':_loc2_.read_bytes(16),}
+        logger.info(f'useItem {data}')
 
-    def unuseItem(self, data) -> list:
+    def unuseItem(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_bytes(16))
-        return data
+        data = {
+        'guid':_loc2_.read_bytes(16),}
+        logger.info(f'unuseItem {data}')
 
-    def buyItem(self, data) -> list:
+    def buyItem(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_bytes(16))
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'guid':_loc2_.read_bytes(16),
+        'count':_loc2_.read_int(),}
+        logger.info(f'buyItem {data}')
 
-    def sellItem(self, data) -> list:
+    def sellItem(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_bytes(16))
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'guid':_loc2_.read_bytes(16),
+        'count':_loc2_.read_int(),}
+        logger.info(f'sellItem {data}')
 
-    def updateresource(self, data) -> list:
+    def updateresource(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_bytes(16))
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'guid':_loc2_.read_bytes(16),
+        'count':_loc2_.read_int(),}
+        logger.info(f'updateresource {data}')
 
-    def clanCreate(self, data) -> list:
+    def clanCreate(self, data) -> None:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
-        data.append(_loc4_.read_utf())
-        data.append(_loc4_.read_utf())
-        data.append(_loc4_.read_utf())
-        return data
+        data = {
+        'name':_loc4_.read_utf(),
+        'description':_loc4_.read_utf(),
+        'name_short':_loc4_.read_utf(),}
+        logger.info(f'clanCreate {data}')
 
-    def dropItem(self, data, ) -> list:
+    def dropItem(self, data, ) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_bytes(16))
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'guid':_loc2_.read_bytes(16),
+        'count':_loc2_.read_int(),}
+        logger.info(f'dropItem {data}')
 
-    def repairItem(self, data) -> list:
+    def repairItem(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_bytes())
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'guid':_loc2_.read_bytes(),
+        'count':_loc2_.read_int(),}
+        logger.info(f'repairItem {data}')
 
-    def openShop(self, data, ) -> list:
+    def openShop(self, data, ) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        "type": _loc2_.read_int()}
+        match data['type']:
+            case 10004:
+                PackagesManager(self.id, self.Game).repository()
+            case 10005:
+                PackagesManager(self.id, self.Game).playerAngar()
+            case _:
+                PackagesManager(self.id, self.Game).tradingCash()
 
-    def inventory(self, data) -> list:
+
+        # PackagesManager(self.id, self.Game).clan()
+        logger.info(f'openShop {data}')
+
+    def inventory(self, data) -> None:
         _loc1_ = PackageDecoder()
         _loc1_.data = data
-        data = []
-        data.append(_loc1_.read_utf())  # domain ?!
-        return data
+        data = {
+        _loc1_.read_utf(), } # domain ?!
+        PacMan = PackagesManager(self.id, self.Game)
+        PacMan.inventory()
+        logger.info(f'inventory {data}')
 
-    def reachableSystems(self, data) -> list:
+    def reachableSystems(self, data) -> None:
         _loc1_: PackageDecoder = PackageDecoder()
         _loc1_.data = data
-        data = []
-        return data
+        data = {}
+        logger.info(f'reachableSystems {data}')
 
-    def jumpTo(self, data) -> list:
+    def jumpTo(self, data) -> None:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
-        data.append(_loc4_.read_int())  # id location
-        data.append(_loc4_.read_int())  # clicked count
-        data.append(_loc4_.read_utf())  # domain
-        return data
+        data = {
+        "id":_loc4_.read_int()}  # id location
+        _loc4_.read_int()  # clicked count
+        _loc4_.read_utf()  # domain
+        getattr(self.Game, f'Player_{self.id}').hyperJump(data["id"])
+        logger.info(f'jumpTo {data}')
 
-    def sendMessage(self, data) -> list:
+    def sendMessage(self, data) -> None:
         _loc4_: PackageDecoder
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
-        data.append(_loc4_.read_int())
-        data.append(_loc4_.read_utf())
-        data.append(_loc4_.read_bytes())
-        return data
+        data = {
+        'name':_loc4_.read_int(),
+        'text':_loc4_.read_utf(),
+        'type_chat':_loc4_.read_unsigned_byte(),} # 1 - global  2 - local 3 - clan 4 - trade 5 - client chat
+        logger.info(f'sendMessage {data}')
 
-    def sendBan(self, data) -> list:
+    def sendBan(self, data) -> None:
         _loc4_: PackageDecoder
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
-        data.append(_loc4_.read_utf())
-        data.append(_loc4_.read_utf())
-        data.append(_loc4_.read_bytes())
-        return data
+        data = {
+        'text1':_loc4_.read_utf(),
+        'text2':_loc4_.read_utf(),
+        'bool':_loc4_.read_bytes(),}
+        logger.info(f'sendBan {data}')
 
-    def repair(self, data) -> list:
+    def repair(self, data):
+        getattr(self.Game, f'Player_{self.id}').repair()
+        PackagesManager(self.id, self.Game).shipHealth()
+        logger.info(f'repair {data}')
+
+    def Auction(self, data) -> None:
         _loc1_: PackageDecoder = PackageDecoder()
         _loc1_.data = data
-        data = []
-        return data
+        data = {}
+        logger.info(f'Auction {data}')
 
-    def Auction(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def restoreEnergy(self, data):
+        logger.info(f'restoreEnergy {data}')
+        # getattr(self.Game, f'Player_{self.id}').restoreEnergy()
+        # PackagesManager(self.id, self.Game).()
 
-    def restoreEnergy(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def playerSkills(self, data):
+        PacMan = PackagesManager(self.id, self.Game)
+        PacMan.playerSkills()
+        logger.info(f'playerSkills {data}')
 
-    def playerSkills(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
-
-    def ClickedTime(self, data) -> list:
+    def ClickedTime(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        _loc2_.read_int()
-        return data
+        data = {
+        'hz':_loc2_.read_int()}
+        logger.info(f'ClickedTime {data}')
 
-    def deviceClicked(self, data) -> list:
+    def deviceClicked(self, data) -> None:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
-        data = []
-        data.append(_loc5_.read_bytes())
-        data.append(_loc5_.read_int())  # id цели если 0 то не выбрана цель
-        data.append(_loc5_.read_unsigned_byte())  # id использовавшего
-        data.append(_loc5_.read_unsigned_byte())  # effect type
-        return data
+        data = {
+        'guid':_loc5_.read_bytes(),
+        'damage_id':_loc5_.read_int(),  # id цели если 0 то не выбрана цель
+        'id':_loc5_.read_unsigned_byte(),  # id использовавшего
+        'effectType':_loc5_.read_unsigned_byte(), }
+        logger.info(f'deviceClicked {data}')
 
-    def droidClicked(self, data) -> list:
+    def droidClicked(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bytes())
-        data.append(_loc3_.read_bytes())
-        return data
+        data = {
+        'hz1':_loc3_.read_bytes(),
+        'hz2':_loc3_.read_bytes(),}
+        logger.info(f'droidClicked {data}')
 
-    def buyShip(self, data) -> list:
+    def buyShip(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bytes())
-        data.append(_loc3_.read_bool())
-        return data
+        data = {
+        'guid':_loc3_.read_bytes(),
+        'Yes or No':_loc3_.read_bool(),}
+        logger.info(f'buyShip {data}')
 
-    def showQuest(self, data) -> list:
+    def showQuest(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id':_loc2_.read_int(),}
+        logger.info(f'showQuest {data}')
 
-    def Quest(self, data) -> list:
+    def Quest(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())  # id quest
-        return data
+        data = {
+        'id':_loc2_.read_int(),}  # id quest
+        logger.info(f'Quest {data}')
 
-    def questsJournal(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def questsJournal(self, data) -> None:
+        logger.info(f'questsJournal {data}')
 
-    def showPlanetQuests(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def showPlanetQuests(self, data) -> None:
+        logger.info(f'showPlanetQuests {data}')
 
-    def training(self, data) -> list:
+    def training(self, data) -> None:
         _loc7_ = PackageDecoder()
         _loc7_.data = data
-        data = []
-        data.append(_loc7_.read_int())
-        data.append(_loc7_.read_int())
-        data.append(_loc7_.read_int())
-        data.append(_loc7_.read_int())
-        data.append(_loc7_.read_int())
-        data.append(_loc7_.read_int())
-        return data
+        data = {
+        'hz1':_loc7_.read_int(),
+        'hz2':_loc7_.read_int(),
+        'hz3':_loc7_.read_int(),
+        'hz4':_loc7_.read_int(),
+        'hz5':_loc7_.read_int(),
+        'hz6':_loc7_.read_int(),}
+        logger.info(f'training {data}')
 
-    def arenaRequests(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def arenaRequests(self, data) -> None:
+        logger.info(f'arenaRequests {data}')
 
-    def joinToRequest(self, data) -> list:
+    def joinToRequest(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id':_loc2_.read_int(),}
+        logger.info(f'joinToRequest {data}')
 
-    def battleRequestWindowClosed(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def battleRequestWindowClosed(self, data) -> None:
+        logger.info(f'battleRequestWindowClosed {data}')
 
-    def readyToBattle(self, data) -> list:
+    def readyToBattle(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id':_loc2_.read_int(),}
+        logger.info(f'readyToBattle {data}')
 
-    def droidsMode(self, data) -> list:
+    def droidsMode(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id':_loc2_.read_int(),}
+        logger.info(f'droidsMode {data}')
 
-    def buildDroid(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def buildDroid(self, data) -> None:
+        logger.info(f'buildDroid {data}')
 
-    def crearTargets(self, data) -> list:  # убрать дройдов всех
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def crearTargets(self, data) -> None:  # убрать дройдов всех
+        logger.info(f'crearTargets {data}')
 
-    def syncronizeHealth(self, data) -> list:
+    def syncronizeHealth(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id':_loc2_.read_int(),}
+        logger.info(f'syncronizeHealth {data}')
 
-    def createArenaRequest(self, data) -> list:
+    def createArenaRequest(self, data) -> None:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
-        data.append(_loc4_.read_bytes())
-        data.append(_loc4_.read_int())
-        data.append(_loc4_.read_bool())
-        return data
+        data = {
+        'type':_loc4_.read_unsigned_byte(), # read_bytes()
+        'id':_loc4_.read_int(),
+        'yes_or_no':_loc4_.read_bool(),}
+        logger.info(f'createArenaRequest {data}')
 
-    def commitSkills(self, data) -> dict:
+    def commitSkills(self, data):
         from python.Static.Type.PlayerSkillType import PlayerSkillType
-        _loc2_: PackageDecoder = PackageDecoder()
-        _loc2_.data = data
+        decoder: PackageDecoder = PackageDecoder()
+        decoder.data = data
         data = {}
-        self.read_skill(PlayerSkillType.Atacking, data, _loc2_)
-        self.read_skill(PlayerSkillType.Control, data, _loc2_)
-        self.read_skill(PlayerSkillType.Defending, data, _loc2_)
-        self.read_skill(PlayerSkillType.EnergyWeapons, data, _loc2_)
-        self.read_skill(PlayerSkillType.KineticWeapons, data, _loc2_)
-        self.read_skill(PlayerSkillType.Mining, data, _loc2_)
-        self.read_skill(PlayerSkillType.Piloting, data, _loc2_)
-        self.read_skill(PlayerSkillType.Repairing, data, _loc2_)
-        self.read_skill(PlayerSkillType.RocketWeapons, data, _loc2_)
-        self.read_skill(PlayerSkillType.Tactics, data, _loc2_)
-        self.read_skill(PlayerSkillType.Trading, data, _loc2_)
-        self.read_skill(PlayerSkillType.Targeting, data, _loc2_)
-        self.read_skill(PlayerSkillType.Electronics, data, _loc2_)
-        self.read_skill(PlayerSkillType.Mechanics, data, _loc2_)
-        self.read_skill(PlayerSkillType.Biocemistry, data, _loc2_)
-        self.read_skill(PlayerSkillType.Cybernetics, data, _loc2_)
-        return data
+        while len(decoder.data) > decoder.Position:
+            self.read_skill(data, decoder)
+        logger.info(f'commitSkills {data}')
+        getattr(self.Game, f'Player_{self.id}').commitSkills(data)
+        PacMan = PackagesManager(self.id, self.Game)
+        PacMan.playerSkills()
 
-    def read_skill(self, player_skill_type, data, decoder):
-        data[decoder.read_bytes()] = decoder.read_bytes()  # player skill type
-        return data
+    def read_skill(self, data, decoder):
+        from ..Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
+        type_ = decoder.read_unsigned_byte()
+        count = decoder.read_unsigned_byte()
+        data[PlayerSkillTypeStr().get_str(type_)] = count   # player skill type
 
-    def applyGineticLabOption(self, data) -> list:
+
+    def applyGineticLabOption(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id':_loc2_.read_int(),}
+        logger.info(f'read_skill {data}')
 
-    def sendCredits(self, data) -> list:
+    def sendCredits(self, data) -> None:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
-        data = []
-        data.append(_loc5_.read_int())  # id
-        data.append(_loc5_.read_int())  # count credits
-        data.append(_loc5_.read_bool())
-        data.append(_loc5_.read_bool())
-        return data
+        data = {
+        'id':_loc5_.read_int(),  # id
+        'count':_loc5_.read_int(),  # count credits
+        'bool1':_loc5_.read_bool(),
+        'bool2':_loc5_.read_bool(),}
+        logger.info(f'applyGineticLabOption {data}')
 
-    def sendBonuses(self, data) -> list:
+    def sendBonuses(self, data) -> None:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
-        data = []
-        data.append(_loc5_.read_int())
-        data.append(_loc5_.read_int())
-        data.append(_loc5_.read_bool())
-        data.append(_loc5_.read_bool())
-        return data
+        data = {
+        'id':_loc5_.read_int(),
+        'count':_loc5_.read_int(),
+        'bool1':_loc5_.read_bool(),
+        'bool2':_loc5_.read_bool(),}
+        logger.info(f'sendCredits {data}')
 
-    def toRepository(self, data) -> list:
+    def toRepository(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bytes())
-        data.append(_loc3_.read_int())
-        return data
+        data = {
+        'guid':_loc3_.read_bytes(),
+        'count':_loc3_.read_int(),}
+        logger.info(f'sendBonuses {data}')
 
-    def returnItem(self, data) -> list:
+    def returnItem(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bytes())
-        data.append(_loc3_.read_int())
-        return data
+        data = {
+        'guid':_loc3_.read_bytes(),
+        'count':_loc3_.read_int(),}
+        logger.info(f'toRepository {data}')
 
-    def toClanRepository(self, data) -> list:
+    def toClanRepository(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bytes())
-        data.append(_loc3_.read_int())
-        return data
+        data = {
+        'guid':_loc3_.read_bytes(),
+        'count':_loc3_.read_int(),}
+        logger.info(f'returnItem {data}')
 
-    def returnItemClan(self, data) -> list:
+    def returnItemClan(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bytes())
-        data.append(_loc3_.read_int())
-        return data
+        data = {
+        'guid':_loc3_.read_bytes(),
+        'count':_loc3_.read_int(),}
+        logger.info(f'toClanRepository {data}')
 
-    def loadClan(self, data) -> list:
+    def loadClan(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id_clan':_loc2_.read_int(),}
+        logger.info(f'returnItemClan {data}')
 
-    def clanLoad(self, data) -> list:
+    def clanLoad(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id_clan':_loc2_.read_int(),}
+        logger.info(f'loadClan {data}')
 
-    def checkValue(self, data) -> list:
+    def checkValue(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_int())
-        data.append(_loc3_.read_utf())
-        return data
+        data = {
+        'id':_loc3_.read_int(),
+        'text?':_loc3_.read_utf(),}
+        logger.info(f'clanLoad {data}')
 
-    def AcceptedClanInfo(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def AcceptedClanInfo(self, data) -> None:
+        logger.info(f'checkValue {data}')
 
-    def createClan(self, data) -> list:
+    def createClan(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_int())
-        return data
+        data = {
+        'id':_loc2_.read_int(),}
+        logger.info(f'AcceptedClanInfo {data}')
 
-    def ClansLetters(self, data) -> list:
-        _loc1_: PackageDecoder = PackageDecoder()
-        _loc1_.data = data
-        data = []
-        return data
+    def ClansLetters(self, data) -> None:
+        logger.info(f'createClan {data}')
 
-    def ClansList(self, data) -> list:
+    def ClansList(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_utf())
-        data.append(_loc3_.read_int())
-        return data
+        data = {
+        'text':_loc3_.read_utf(),
+        'id':_loc3_.read_int(),}
+        logger.info(f'ClansLetters {data}')
 
-    def joinToClanRequest(self, data) -> list:
+    def joinToClanRequest(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_int())
-        data.append(_loc3_.read_utf())
-        return data
+        data = {
+        'id':_loc3_.read_int(),
+        'text?':_loc3_.read_utf(),}
+        logger.info(f'ClansList {data}')
 
-    def bodylessCommand(self, data) -> list:
-        _loc2_: PackageDecoder = PackageDecoder()
-        _loc2_.data = data
-        data = []
-        return data
+    def bodylessCommand(self, data) -> None:
+        logger.info(f'joinToClanRequest {data}')
 
-    def guidValueCommand(self, data) -> list:
+    def guidValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bytes())
-        return data
+        data = {
+        'guid':_loc3_.read_bytes(),}
+        logger.info(f'bodylessCommand {data}')
 
-    def tradeItemToSell(self, data) -> list:
+    def tradeItemToSell(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bytes())
-        data.append(_loc3_.read_short())
-        return data
+        data = {
+        'guid':_loc3_.read_bytes(),
+        'count?':_loc3_.read_short(),}
+        logger.info(f'guidValueCommand {data}')
 
-    def intValueCommand(self, data) -> list:
+    def intValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_int())
-        return data
+        data = {
+        'id':_loc3_.read_int(),}
+        logger.info(f'tradeItemToSell {data}')
 
-    def floatValueCommand(self, data) -> list:
+    def floatValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_float())
-        return data
+        data = {
+        'float':_loc3_.read_float(),}
+        logger.info(f'intValueCommand {data}')
 
-    def boolValueCommand(self, data) -> list:
+    def boolValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_bool())
-        return data
+        data = {
+        'bool':_loc3_.read_bool(),}
+        logger.info(f'floatValueCommand {data}')
 
-    def submitClanFriendRequests(self, data) -> list:
+    def submitClanFriendRequests(self, data) -> None:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
+        data = {}
         for i in range(_loc4_.read_int()):
-            data.append(_loc4_.read_int())
-            data.append(_loc4_.read_int())
+            data[f'id_{i}'] = _loc4_.read_int(),
+            data[f'count_{i}'] = _loc4_.read_int(),
 
         for i in range(_loc4_.read_int()):
-            data.append(_loc4_.read_int())
-        return data
+            data['i'] = _loc4_.read_int(),
+        logger.info(f'boolValueCommand {data}')
 
-    def createPilot(self, data) -> list:
+    def createPilot(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
-        data = []
-        data.append(_loc2_.read_short())
-        data.append(_loc2_.read_utf())
-        return data
+        data = {
+        'id?':_loc2_.read_short(),
+        'authKey':_loc2_.read_utf(),}
+        logger.info(f'submitClanFriendRequests {data}')
 
-    def saveClanJoinRequests(self, data) -> list:
+    def saveClanJoinRequests(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        _loc4_: int = 0
+        data = {}
+        i = 0
         while True:
+            i += 1
             if len(_loc3_.data):
-                data.append(_loc3_.read_int())  # playerID)
-                data.append(_loc3_.read_bytes())  # result)
+                data[f'id_{i}'] = _loc3_.read_int(),  # playerID)
+                data[f'result_{i}'] = _loc3_.read_bytes(1),  # result)
             else:
                 break
-        return data
+        logger.info(f'createPilot {data}')
 
-    def buyItemByBonuses(self, data) -> list:
+    def buyItemByBonuses(self, data) -> None:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
-        data = []
-        data.append(_loc5_.read_short())
-        data.append(_loc5_.read_short())
-        data.append(_loc5_.read_int())
-        data.append(_loc5_.read_short())
-        return data
+        data = {
+        'id_item': _loc5_.read_short(),
+        'endurance': _loc5_.read_short(), #1000
+        'count3': _loc5_.read_int(), # 255
+        'count4': _loc5_.read_short(),} # 0
+        getattr(self.Game, f'Player_{self.id}').buyItemByBonuses()
+        logger.info(f'buyItemByBonuses {data}')
 
-    def buyShipByBonuses(self, data) -> list:
+    def buyShipByBonuses(self, data) -> None:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
-        data = []
-        data.append(_loc4_.read_short())
-        data.append(_loc4_.read_int())
-        data.append(_loc4_.read_short())
-        return data
+        data = {
+        'id_ship': _loc4_.read_short(),
+        'player_id': _loc4_.read_int(),
+        'hz3': _loc4_.read_short(),} # 0
+        logger.info(f'buyItemByBonuses {data}')
 
-    def tradeInvitationResult(self, data) -> list:
+    def tradeInvitationResult(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_int())
-        data.append(_loc3_.read_bool())
-        return data
+        data = {
+        'id':_loc3_.read_int(),
+        'bool':_loc3_.read_bool(),}
+        logger.info(f'tradeInvitationResult {data}')
 
-    def PlayerRole(self, data) -> list:
+    def PlayerRole(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_int())
-        data.append(_loc3_.read_int())
-        return data
+        data = {
+        'id':_loc3_.read_int(),
+        'role':_loc3_.read_int(),}
+        logger.info(f'PlayerRole {data}')
 
-    def renamePilot(self, data) -> list:
+    def renamePilot(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
-        data = []
-        data.append(_loc3_.read_int())
-        data.append(_loc3_.read_utf())
-        return data
+        data = {
+        'id':_loc3_.read_int(),
+        'role':_loc3_.read_utf(),}
+        logger.info(f'renamePilot {data}')

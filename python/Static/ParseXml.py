@@ -18,3 +18,11 @@ def parse_xml(file_name) -> list:
     with open(_get_path_json(file_name), 'r', encoding='utf-8-sig') as f:
         res = json.loads(f.read())
         return res
+
+def item_id(id_):
+    for file_name in guid_parse:
+        with open(_get_path_json(file_name), 'r', encoding='utf-8-sig') as f:
+            res = json.loads(f.read())
+            for item in res:
+                if item['classNumber'] == id_:
+                    return item

@@ -1,0 +1,491 @@
+2021-12-25 17:47:00.634, INFO, objectToReach {'type': 1, 'id': 16, 'aliance': 2}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:20.760, INFO, openShop {'type': 16}
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:21.646, INFO, leaveLocation
+2021-12-25 17:47:45.330, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:47:48.283, INFO, objectToReach {'type': 1, 'id': 16, 'aliance': 2}
+2021-12-25 17:47:48.283, INFO, objectToReach {'type': 1, 'id': 16, 'aliance': 2}
+2021-12-25 17:47:52.063, INFO, leaveLocation
+2021-12-25 17:47:52.063, INFO, leaveLocation
+2021-12-25 17:47:52.063, INFO, leaveLocation
+2021-12-25 17:47:53.559, INFO, jumpTo {'id': 74}
+2021-12-25 17:47:53.559, INFO, jumpTo {'id': 74}
+2021-12-25 17:47:53.559, INFO, jumpTo {'id': 74}
+2021-12-25 17:47:53.559, INFO, jumpTo {'id': 74}
+2021-12-25 17:47:55.586, INFO, objectToReach {'type': 1, 'id': 221, 'aliance': 2}
+2021-12-25 17:47:55.586, INFO, objectToReach {'type': 1, 'id': 221, 'aliance': 2}
+2021-12-25 17:47:55.586, INFO, objectToReach {'type': 1, 'id': 221, 'aliance': 2}
+2021-12-25 17:47:55.586, INFO, objectToReach {'type': 1, 'id': 221, 'aliance': 2}
+2021-12-25 17:47:55.586, INFO, objectToReach {'type': 1, 'id': 221, 'aliance': 2}
+2021-12-25 17:48:52.005, INFO, openShop {'type': 221}
+2021-12-25 17:48:52.005, INFO, openShop {'type': 221}
+2021-12-25 17:48:52.005, INFO, openShop {'type': 221}
+2021-12-25 17:48:52.005, INFO, openShop {'type': 221}
+2021-12-25 17:48:52.005, INFO, openShop {'type': 221}
+2021-12-25 17:48:52.005, INFO, openShop {'type': 221}
+2021-12-25 17:59:14.132, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:17.769, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2021-12-25 17:59:17.769, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2021-12-25 17:59:20.318, INFO, openShop {'type': 15}
+2021-12-25 17:59:20.318, INFO, openShop {'type': 15}
+2021-12-25 17:59:20.318, INFO, openShop {'type': 15}
+2021-12-25 17:59:23.877, INFO, openShop {'type': 15}
+2021-12-25 17:59:23.877, INFO, openShop {'type': 15}
+2021-12-25 17:59:23.877, INFO, openShop {'type': 15}
+2021-12-25 17:59:23.877, INFO, openShop {'type': 15}
+2021-12-25 17:59:24.629, INFO, openShop {'type': 15}
+2021-12-25 17:59:24.629, INFO, openShop {'type': 15}
+2021-12-25 17:59:24.629, INFO, openShop {'type': 15}
+2021-12-25 17:59:24.629, INFO, openShop {'type': 15}
+2021-12-25 17:59:24.629, INFO, openShop {'type': 15}
+2021-12-25 17:59:25.741, INFO, openShop {'type': 15}
+2021-12-25 17:59:25.741, INFO, openShop {'type': 15}
+2021-12-25 17:59:25.741, INFO, openShop {'type': 15}
+2021-12-25 17:59:25.741, INFO, openShop {'type': 15}
+2021-12-25 17:59:25.741, INFO, openShop {'type': 15}
+2021-12-25 17:59:25.741, INFO, openShop {'type': 15}
+2021-12-25 17:59:26.180, INFO, openShop {'type': 4}
+2021-12-25 17:59:26.180, INFO, openShop {'type': 4}
+2021-12-25 17:59:26.180, INFO, openShop {'type': 4}
+2021-12-25 17:59:26.180, INFO, openShop {'type': 4}
+2021-12-25 17:59:26.180, INFO, openShop {'type': 4}
+2021-12-25 17:59:26.180, INFO, openShop {'type': 4}
+2021-12-25 17:59:26.180, INFO, openShop {'type': 4}
+2021-12-25 17:59:27.253, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:27.253, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:27.253, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:27.253, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:27.253, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:27.253, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:27.253, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:27.253, INFO, inventory {'serverstarwars.com'}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 17:59:31.069, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:00:59.534, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:08.229, INFO, saveClanJoinRequests {'count1': 95, 'count2': 5, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:38.276, INFO, saveClanJoinRequests {'count1': 130, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:01:45.310, INFO, saveClanJoinRequests {'count1': 14, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:35.044, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:38.005, INFO, saveClanJoinRequests {'count1': 156, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:39.845, INFO, saveClanJoinRequests {'count1': 113, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:03:41.662, INFO, saveClanJoinRequests {'count1': 1000, 'count2': 5000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:06.956, INFO, saveClanJoinRequests {'count1': 7, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:04:14.996, INFO, saveClanJoinRequests {'count1': 8, 'count2': 1000, 'count3': 255, 'count4': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:10.142, INFO, buyItemByBonuses {'hz1': 2031, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:05:30.006, INFO, buyItemByBonuses {'hz1': 5999, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:00.477, INFO, buyItemByBonuses {'hz1': 6012, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:03.078, INFO, buyItemByBonuses {'hz1': 4026, 'hz2': 255, 'hz3': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:18.005, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:19.348, INFO, saveClanJoinRequests {'count1': 165, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:37.924, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:41.309, INFO, saveClanJoinRequests {'count1': 148, 'count2': 1, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}
+2021-12-25 18:06:53.220, INFO, saveClanJoinRequests {'count1': 100, 'count2': 0, 'count3': 255, 'count4': 0}

@@ -30,10 +30,10 @@ s = session()
 import json
 
 player_skills = {
-    'control': 0, 'defending': 0, 'energyWeapons': 0, 'kineticWeapons': 0,
-    'mining': 0, 'piloting': 3, 'repairing': 6, 'rocketWeapons': 0, 'trading': 0,
-    'attacking': 0, 'tactics': 0, 'targeting': 0, 'electronics': 0,
-    'biocemistry': 0, 'mechanics': 8, 'cybernetics': 8}
+    'Control': 0, 'Defending': 0, 'EnergyWeapons': 0, 'KineticWeapons': 0,
+    'Mining': 0, 'Piloting': 3, 'Repairing': 6, 'RocketWeapons': 0, 'Trading': 0,
+    'Attacking': 0, 'Tactics': 0, 'Targeting': 0, 'Electronics': 0,
+    'Biocemistry': 0, 'Mechanics': 8, 'Cybernetics': 8}
 
 player_skills_str = str(player_skills)
 
@@ -54,7 +54,7 @@ def listToString(list_):
 
 
 player = PlayerDB(
-    id=1656,
+    id=255,
     login="Max4",
     auth_key="my_authkey",
     passwd='passwd',
@@ -65,7 +65,9 @@ player = PlayerDB(
     location=7,
     level=25,
     experience=46877,
-    status=0,
+    status=1,
+    angar="[]",
+    repository="[]",
     # clanRequestStatus=
     # clanJoinRequestStatus=
     # PlayerRelation=
@@ -75,7 +77,7 @@ player = PlayerDB(
     rating=50000,
     # role=
     ship_class=2003,
-    skills=str({'control': 0, 'defending': 0, 'energyWeapons': 0, 'kineticWeapons': 0, 'mining': 0, 'piloting': 3, 'repairing': 6, 'rocketWeapons': 0, 'trading': 0, 'attacking': 0, 'tactics': 0, 'targeting': 0, 'electronics': 0, 'biocemistry': 0, 'mechanics': 8, 'cybernetics': 8}),
+    skills=str({'Control': 0, 'Defending': 0, 'EnergyWeapons': 0, 'KineticWeapons': 0, 'Mining': 0, 'Piloting': 3, 'Repairing': 6, 'RocketWeapons': 0, 'Trading': 0, 'Attacking': 0, 'Tactics': 0, 'Targeting': 0, 'Electronics': 0, 'Biocemistry': 0, 'Mechanics': 8, 'Cybernetics': 8}),
     free_skills=6,
     # expSkillGrowCoef=
     # expSkillReduserCoef=
