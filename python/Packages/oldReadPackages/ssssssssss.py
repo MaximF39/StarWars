@@ -726,7 +726,7 @@ class ssssssssssss:
         creator.write_unsigned_byte(len(data))
         for i in data:
             _loc1_ = DotMap(i)
-            creator.write_int(_loc1_.id)  # id planet
+            creator.write_int(_loc1_.id)  # id SpaceObject
             creator.write_float(_loc1_.angel)  # angel
         return creator.get_package()
 
@@ -741,7 +741,7 @@ class ssssssssssss:
             creator.write_float(_loc1_.angel)
             creator.write_bytes(_loc1_.race)
             creator.write_bytes(_loc1_.aliance)
-            creator.write_int(_loc1_.clanID)
+            creator.write_int(_loc1_.clanId)
         return creator.get_package()
 
     #     #
@@ -1291,7 +1291,7 @@ class ssssssssssss:
         creator.write_int(_loc4_.radius)
         creator.write_int(_loc4_.size)
         creator.write_unsigned_byte(_loc4_.aliance)
-        creator.write_int(_loc4_.clanID)
+        creator.write_int(_loc4_.clanId)
         creator.write_float(_loc4_.angle)
         creator.write_unsigned_byte(_loc4_.QCount)
         shop_data = _loc4_.shop
@@ -1329,9 +1329,9 @@ class ssssssssssss:
         creator.PackageNumber = ServerRequest.LOCATION_SYSTEM
         location, players, planets, static_space_objects = location_system(self.Game, self.id)
         creator.write_int(location[0]) # id
-        creator.write_float(location[1])  # location.x
-        creator.write_float(location[2])  # location.y
-        creator.write_unsigned_byte(location[3])  # location.sector
+        creator.write_float(location[1])  # Location.x
+        creator.write_float(location[2])  # Location.y
+        creator.write_unsigned_byte(location[3])  # Location.sector
         creator.write_short(len(players))
         for i in players:
             _loc2_ = DotMap(i)
@@ -1372,7 +1372,7 @@ class ssssssssssss:
             creator.write_float(_loc6_.angle)
             creator.write_bool(_loc6_.landable)
             creator.write_unsigned_byte(_loc6_.aliance)
-            creator.write_int(_loc6_.clanID)
+            creator.write_int(_loc6_.clanId)
 
         creator.write_short(len(static_space_objects))
         for static_space_object in static_space_objects:
@@ -1408,7 +1408,7 @@ class ssssssssssss:
             creator.write_int(ship_data.player)
             creator.write_unsigned_byte(ship_data.player.aliance)
             creator.write_unsigned_byte(ship_data.player.status)
-            creator.write_int(ship_data.player.clanID)
+            creator.write_int(ship_data.player.clanId)
             drodata = []
             creator.write_unsigned_byte(len(drodata))
             for i in drodata:
@@ -1464,7 +1464,7 @@ class ssssssssssss:
         })
         creator.write_utf(_loc2_.from_player)  # name player
         creator.write_utf(_loc2_.text)
-        creator.write_unsigned_byte(_loc2_.type)  # 1 - global  2 - local 3 - clan 4 - trade 5 - client chat
+        creator.write_unsigned_byte(_loc2_.type)  # 1 - global  2 - local 3 - clanId 4 - trade 5 - client chat
         creator.write_bool(_loc2_.isPrivate)
         creator.write_bool(_loc2_.isAdmin)
         return creator.get_package()
@@ -1832,7 +1832,7 @@ class ssssssssssss:
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.FRIEND_REQUESTS
         data = []
-        for i in data:  # clan Data
+        for i in data:  # clanId Data
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.id)
             creator.write_int(_loc2_.leaderID)

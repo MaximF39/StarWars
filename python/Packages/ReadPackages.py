@@ -369,6 +369,12 @@ class ReadPackages:
         data = {
         'guid':_loc2_.read_bytes(16),
         'count':_loc2_.read_int(),}
+        PacMan = PackagesManager(self.id, self.Game)
+        Player = getattr(self.Game, f'Player_{self.id}')
+        Player.buyItem(data)
+        PacMan.tradingItems()
+        # PacMan.inventory()
+        PacMan.updateValue(9, Player.cash)
         logger.info(f'buyItem {data}')
 
     def sellItem(self, data) -> None:
@@ -377,6 +383,12 @@ class ReadPackages:
         data = {
         'guid':_loc2_.read_bytes(16),
         'count':_loc2_.read_int(),}
+        Player = getattr(self.Game, f'Player_{self.id}')
+        Player.sellItem(data)
+        PacMan = PackagesManager(self.id, self.Game)
+        PacMan.tradingItems()
+        # PacMan.inventory()
+        PacMan.updateValue(9, Player.cash)
         logger.info(f'sellItem {data}')
 
     def updateresource(self, data) -> None:
@@ -417,16 +429,21 @@ class ReadPackages:
         _loc2_.data = data
         data = {
         "type": _loc2_.read_int()}
-        match data['type']:
+        PacMan = PackagesManager(self.id, self.Game)
+        match data['type']: # 1001 + race = shipShops
             case 10004:
-                PackagesManager(self.id, self.Game).repository()
+                PacMan.repository()
             case 10005:
-                PackagesManager(self.id, self.Game).playerAngar()
+                PacMan.playerAngar()
+            case 10009:
+                PacMan.clanrepository()
+            case 10002:
+                PacMan.tradingShips()
             case _:
-                PackagesManager(self.id, self.Game).tradingCash()
+                PacMan.tradingItems()
 
 
-        # PackagesManager(self.id, self.Game).clan()
+        # PackagesManager(self.id, self.Game).clanId()
         logger.info(f'openShop {data}')
 
     def inventory(self, data) -> None:
@@ -448,7 +465,7 @@ class ReadPackages:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
         data = {
-        "id":_loc4_.read_int()}  # id location
+        "id":_loc4_.read_int()}  # id Location
         _loc4_.read_int()  # clicked count
         _loc4_.read_utf()  # domain
         getattr(self.Game, f'Player_{self.id}').hyperJump(data["id"])
@@ -461,7 +478,7 @@ class ReadPackages:
         data = {
         'name':_loc4_.read_int(),
         'text':_loc4_.read_utf(),
-        'type_chat':_loc4_.read_unsigned_byte(),} # 1 - global  2 - local 3 - clan 4 - trade 5 - client chat
+        'type_chat':_loc4_.read_unsigned_byte(),} # 1 - global  2 - local 3 - clanId 4 - trade 5 - client chat
         logger.info(f'sendMessage {data}')
 
     def sendBan(self, data) -> None:
@@ -610,7 +627,6 @@ class ReadPackages:
         logger.info(f'createArenaRequest {data}')
 
     def commitSkills(self, data):
-        from python.Static.Type.PlayerSkillType import PlayerSkillType
         decoder: PackageDecoder = PackageDecoder()
         decoder.data = data
         data = {}
@@ -620,6 +636,7 @@ class ReadPackages:
         getattr(self.Game, f'Player_{self.id}').commitSkills(data)
         PacMan = PackagesManager(self.id, self.Game)
         PacMan.playerSkills()
+        logger.info(f'commitSkills {data}')
 
     def read_skill(self, data, decoder):
         from ..Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
@@ -633,7 +650,7 @@ class ReadPackages:
         _loc2_.data = data
         data = {
         'id':_loc2_.read_int(),}
-        logger.info(f'read_skill {data}')
+        logger.info(f'applyGineticLabOption {data}')
 
     def sendCredits(self, data) -> None:
         _loc5_ = PackageDecoder()
@@ -643,7 +660,7 @@ class ReadPackages:
         'count':_loc5_.read_int(),  # count credits
         'bool1':_loc5_.read_bool(),
         'bool2':_loc5_.read_bool(),}
-        logger.info(f'applyGineticLabOption {data}')
+        logger.info(f'sendCredits {data}')
 
     def sendBonuses(self, data) -> None:
         _loc5_ = PackageDecoder()
@@ -653,7 +670,7 @@ class ReadPackages:
         'count':_loc5_.read_int(),
         'bool1':_loc5_.read_bool(),
         'bool2':_loc5_.read_bool(),}
-        logger.info(f'sendCredits {data}')
+        logger.info(f'sendBonuses {data}')
 
     def toRepository(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -661,7 +678,7 @@ class ReadPackages:
         data = {
         'guid':_loc3_.read_bytes(),
         'count':_loc3_.read_int(),}
-        logger.info(f'sendBonuses {data}')
+        logger.info(f'toRepository {data}')
 
     def returnItem(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -669,7 +686,7 @@ class ReadPackages:
         data = {
         'guid':_loc3_.read_bytes(),
         'count':_loc3_.read_int(),}
-        logger.info(f'toRepository {data}')
+        logger.info(f'returnItem {data}')
 
     def toClanRepository(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -677,7 +694,7 @@ class ReadPackages:
         data = {
         'guid':_loc3_.read_bytes(),
         'count':_loc3_.read_int(),}
-        logger.info(f'returnItem {data}')
+        logger.info(f'toClanRepository {data}')
 
     def returnItemClan(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -685,21 +702,21 @@ class ReadPackages:
         data = {
         'guid':_loc3_.read_bytes(),
         'count':_loc3_.read_int(),}
-        logger.info(f'toClanRepository {data}')
+        logger.info(f'returnItemClan {data}')
 
     def loadClan(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = {
         'id_clan':_loc2_.read_int(),}
-        logger.info(f'returnItemClan {data}')
+        logger.info(f'loadClan {data}')
 
     def clanLoad(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = {
         'id_clan':_loc2_.read_int(),}
-        logger.info(f'loadClan {data}')
+        logger.info(f'clanLoad {data}')
 
     def checkValue(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -707,20 +724,20 @@ class ReadPackages:
         data = {
         'id':_loc3_.read_int(),
         'text?':_loc3_.read_utf(),}
-        logger.info(f'clanLoad {data}')
+        logger.info(f'checkValue {data}')
 
     def AcceptedClanInfo(self, data) -> None:
-        logger.info(f'checkValue {data}')
+        logger.info(f'AcceptedClanInfo {data}')
 
     def createClan(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = {
         'id':_loc2_.read_int(),}
-        logger.info(f'AcceptedClanInfo {data}')
+        logger.info(f'createClan {data}')
 
     def ClansLetters(self, data) -> None:
-        logger.info(f'createClan {data}')
+        logger.info(f'ClansLetters {data}')
 
     def ClansList(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -728,7 +745,7 @@ class ReadPackages:
         data = {
         'text':_loc3_.read_utf(),
         'id':_loc3_.read_int(),}
-        logger.info(f'ClansLetters {data}')
+        logger.info(f'ClansList {data}')
 
     def joinToClanRequest(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -736,17 +753,17 @@ class ReadPackages:
         data = {
         'id':_loc3_.read_int(),
         'text?':_loc3_.read_utf(),}
-        logger.info(f'ClansList {data}')
+        logger.info(f'joinToClanRequest {data}')
 
     def bodylessCommand(self, data) -> None:
-        logger.info(f'joinToClanRequest {data}')
+        logger.info(f'bodylessCommand {data}')
 
     def guidValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
         data = {
         'guid':_loc3_.read_bytes(),}
-        logger.info(f'bodylessCommand {data}')
+        logger.info(f'guidValueCommand {data}')
 
     def tradeItemToSell(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -754,28 +771,28 @@ class ReadPackages:
         data = {
         'guid':_loc3_.read_bytes(),
         'count?':_loc3_.read_short(),}
-        logger.info(f'guidValueCommand {data}')
+        logger.info(f'tradeItemToSell {data}')
 
     def intValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
         data = {
         'id':_loc3_.read_int(),}
-        logger.info(f'tradeItemToSell {data}')
+        logger.info(f'intValueCommand {data}')
 
     def floatValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
         data = {
         'float':_loc3_.read_float(),}
-        logger.info(f'intValueCommand {data}')
+        logger.info(f'floatValueCommand {data}')
 
     def boolValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
         _loc3_.data = data
         data = {
         'bool':_loc3_.read_bool(),}
-        logger.info(f'floatValueCommand {data}')
+        logger.info(f'boolValueCommand {data}')
 
     def submitClanFriendRequests(self, data) -> None:
         _loc4_ = PackageDecoder()
@@ -787,7 +804,7 @@ class ReadPackages:
 
         for i in range(_loc4_.read_int()):
             data['i'] = _loc4_.read_int(),
-        logger.info(f'boolValueCommand {data}')
+        logger.info(f'submitClanFriendRequests {data}')
 
     def createPilot(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
@@ -795,7 +812,7 @@ class ReadPackages:
         data = {
         'id?':_loc2_.read_short(),
         'authKey':_loc2_.read_utf(),}
-        logger.info(f'submitClanFriendRequests {data}')
+        logger.info(f'createPilot {data}')
 
     def saveClanJoinRequests(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -809,17 +826,21 @@ class ReadPackages:
                 data[f'result_{i}'] = _loc3_.read_bytes(1),  # result)
             else:
                 break
-        logger.info(f'createPilot {data}')
+        logger.info(f'saveClanJoinRequests {data}')
 
     def buyItemByBonuses(self, data) -> None:
         _loc5_ = PackageDecoder()
         _loc5_.data = data
         data = {
-        'id_item': _loc5_.read_short(),
+        'classNumber': _loc5_.read_short(),
         'endurance': _loc5_.read_short(), #1000
         'count3': _loc5_.read_int(), # 255
         'count4': _loc5_.read_short(),} # 0
-        getattr(self.Game, f'Player_{self.id}').buyItemByBonuses()
+        Player = getattr(self.Game, f'Player_{self.id}')
+        Player.buyItemByBonuses(data)
+        PacMan = PackagesManager(self.id, self.Game)
+        PacMan.inventory()
+        PacMan.updateValue(13, Player.bonus)
         logger.info(f'buyItemByBonuses {data}')
 
     def buyShipByBonuses(self, data) -> None:
@@ -829,7 +850,7 @@ class ReadPackages:
         'id_ship': _loc4_.read_short(),
         'player_id': _loc4_.read_int(),
         'hz3': _loc4_.read_short(),} # 0
-        logger.info(f'buyItemByBonuses {data}')
+        logger.info(f'buyShipByBonuses {data}')
 
     def tradeInvitationResult(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()

@@ -13,8 +13,8 @@ class SpaceObject:
         self.id = data['id']
         self.type = data['Types'] if 'Types' in data else None
         self.size = data['size'] if 'size' in data else 10000
-        self.race = data['race']
-        self.aliance = data['aliance']
+        self.race = data['race'] if 'race' in data else None
+        self.aliance = data['aliance'] if 'aliance' in data else None
 
 
     # def createSelection(self, param1: uint, param2: int):

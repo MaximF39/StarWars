@@ -1,7 +1,9 @@
+from .Item import Item
 import math
 # from . import parse_galaxy_map
 from . import ThreadBase, cfg_update
 from ..BaseClass.SpaceObject import SpaceObject
+from ..BaseClass.FakeShip import FakeShip
 
 class Planet(SpaceObject, ThreadBase):
     name: str  # my
@@ -26,10 +28,15 @@ class Planet(SpaceObject, ThreadBase):
         self.angle = float("inf") if 6 > self.classNumber else self._i * 3.14 / 180
         self.landable = False if self.is_sun else True
         self.players = []
-        self.shop = []
-        self.clanID = 0
-        self.QCount = 3
-        self.shop = data['shop']
+        self.clanId = 0 # Только чей клан захвачен, могут садиться на планету
+        self.QCount = 0 # Количество квестов
+        self.ships = []
+        for ship in data['ships']:
+            self.ships.append(FakeShip(self.Game, ship))
+        self.inventory = []
+        for item in data['inventory']:
+            self.inventory.append(Item(self.Game, item['classNumber'], self))
+        self.shops = data['shops']
         self.LocationClass = LocationClass
 
         if self.angle != float('inf'):
@@ -48,17 +55,9 @@ class Planet(SpaceObject, ThreadBase):
     def set_player(self, PlayerClass):
         self.players.append(PlayerClass)
 
-
-    def buy_item_shop(self):
-        pass
-
-    def sell_item_shop(self):
-        pass
-
     def update(self):  # ready
-        self.start_update('move', 5) # cfg_update['planet']
+        self.start_timer_update(self.move, 1) # cfg_update['SpaceObject']
 
-    @ThreadBase.end_thread
     def move(self):
         self._i += self.speed
         if self._i > 360:

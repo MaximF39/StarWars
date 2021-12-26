@@ -16,10 +16,9 @@ class Mobs(BasePlayer, ThreadBase):
         self.update()
 
     def update(self):
-        self.start_update("trigger", 1)
-        self.start_update("move", 3)
+        self.start_timer_update(self.trigger, 1)
+        self.start_timer_update(self.move, 1)
 
-    @ThreadBase.end_thread
     def trigger(self): # TODO
         objects = self.request_location()  # packages_entrance locations
         if self.pick_up_item or self.attack:
@@ -27,7 +26,6 @@ class Mobs(BasePlayer, ThreadBase):
                 self.pick_up_item: bool = False
                 self.attack: bool = False
 
-    @ThreadBase.end_thread
     def move_mobs(self):
         x, y = self.move_random()
         x_move = self.x + x

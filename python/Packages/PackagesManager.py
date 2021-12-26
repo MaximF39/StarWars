@@ -4,6 +4,7 @@ from python.Static.ParseXml import parse_xml
 from python.MyUtils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
 from python.Packages.PackageCreator import PackageCreator
+from ..cfg.cfg_sell_buy import cfg_sell_buy
 
 class PackagesManager:
     count_guid = 0
@@ -19,6 +20,7 @@ class PackagesManager:
     def __init__(self, id_:int, StarWars):
         self.id = id_
         self.Game = StarWars
+        self.Player = getattr(self.Game, f'Player_{self.id}')
 
     @staticmethod
     def isValidPackageLength(creator: int) -> bool:
@@ -525,47 +527,48 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.TRADING_SHIPS))
 
-        ship = DotMap()
+        data = self.Player.SpaceObject.ships
 
-        creator.write_int(ship.id)  # id
-        creator.write_int(ship.cost)  # ship cost
-        creator.write_float(ship.buy_coef)  # buyCoeficient
-        creator.write_float(ship.sell_coef)  # sellCoeficient
+        creator.write_int(10002)#ship.id)  # id
+        creator.write_int(100000)#ship.cost)  # ship cost
+        creator.write_float(2.0) #ship.buy_coef)  # buyCoeficient
+        creator.write_float(1.0) #ship.sell_coef)  # sellCoeficient
 
-        data = []
         creator.write_int(len(data))
-        _loc14_: list = list()
-        _loc15_: int = 0
-        for i in data:
-            _loc6_ = DotMap(i)
-            creator.write_bytes(_loc6_.id)
-            creator.write_short(_loc6_.classNumber)
-            creator.write_int(_loc6_.cost)
-            creator.write_short(_loc6_.size)
-            creator.write_unsigned_byte(_loc6_.weaponSlots)
-            creator.write_unsigned_byte(_loc6_.deviceSlots)
-            creator.write_unsigned_byte(_loc6_.armor)
-            creator.write_unsigned_byte(_loc6_.shields)
-            creator.write_short(_loc6_.maxEnergy)
-            creator.write_short(_loc6_.maxHealth)
-            creator.write_short(_loc6_.cpu)
-            creator.write_short(_loc6_.radar)
-            creator.write_unsigned_byte(_loc6_.maxSpeed)
-            data_restr = []
+        print(len(data))
+        for _loc6_ in data:
+            creator.write_unsigned_byte(22) #_loc6_.ship["id"]
+            creator.write_short(_loc6_.ship["classNumber"])
+            creator.write_int(_loc6_.ship["cost"])
+            creator.write_short(_loc6_.ship["size"])
+            creator.write_unsigned_byte(_loc6_.ship["weaponSlots"])
+            creator.write_unsigned_byte(_loc6_.ship["deviceSlots"])
+            creator.write_unsigned_byte(_loc6_.ship["armor"])
+            creator.write_unsigned_byte(_loc6_.ship["shields"])
+            creator.write_short(_loc6_.ship["maxEnergy"])
+            creator.write_short(_loc6_.ship["maxHealth"])
+            creator.write_short(_loc6_.ship["cpu"])
+            creator.write_short(_loc6_.ship["radar"])
+            creator.write_unsigned_byte(_loc6_.ship["maxSpeed"])
+            data_restr = _loc6_.ship["restrictions"]['data']
             creator.write_unsigned_byte(len(data_restr))
+            print('restr', len(data_restr))
             for i in data_restr:
                 _loc4_ = DotMap(i)
+                print(_loc4_)
                 creator.write_unsigned_byte(_loc4_.type)
                 creator.write_unsigned_byte(_loc4_.valueType)
                 creator.write_int(_loc4_.value)
-            data_ship_feature = []
+            data_ship_feature = _loc6_.ship["features"]['data']
             creator.write_unsigned_byte(len(data_ship_feature))
+            print(len(data_ship_feature))
             for i in data_ship_feature:
                 _loc5_ = DotMap(i)
+                print(i)
                 creator.write_unsigned_byte(_loc5_.type)
                 creator.write_int(_loc5_.value)
 
-            creator.write_bool(_loc6_.satisfying)
+            creator.write_bool(_loc6_.ship["satisfying"])
             self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def tradingItems(self):
@@ -573,17 +576,17 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.TRADING_ITEMS
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.TRADING_ITEMS))
-        _loc2_ = DotMap()
-        _loc3_ = DotMap()
-        _loc4_ = DotMap()
-        creator.write_int(_loc2_)  # id
-        creator.write_float(_loc3_)  # buyCoeficient
-        creator.write_float(_loc4_)  # sellCoeficient
-        self._write_items(creator, True, True, True, True)
-        self._write_items(creator, True, True, True, True)
+        Planet = getattr(self.Game, f'Player_{self.id}').SpaceObject
+        Player = getattr(self.Game, f'Player_{self.id}')
+        creator.write_int(Planet.id)  # id
+        creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_sell)  # sellCoeficient
+        creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_buy)  # buyCoeficient
+        items = Player.inventory
+        self._write_items(creator, items, True, True, True, True)
+        items = Planet.inventory
+        self._write_items(creator, items, True, True, True, True)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
-    #     #
     def resourceUpdate(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.RESOURCE_UPDATE_INFO
@@ -595,27 +598,26 @@ class PackagesManager:
         self._write_items(creator, True, True)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
-    def _write_items(self, creator, data, param2: bool, param3: bool, param4: bool = True,
+    def _write_items(self, creator, items, param2: bool, param3: bool, param4: bool = True,
                      param5: bool = False) -> None:
-        creator.write_int(len(data))
-        for i in data:
-            _loc6_ = DotMap(i)
-            creator.write_int(_loc6_.classNumber)
-            creator.write_bytes(_loc6_.guid)
-            creator.write_int(_loc6_.wear)
+        creator.write_int(len(items))
+        for item in items:
+            creator.write_int(item.classNumber)
+            creator.write_bytes(item.guid)
+            creator.write_int(item.wear)
             if param4:
-                _loc6_.level = 0
-                creator.write_int(_loc6_.level)
+                item.level = 0
+                creator.write_int(item.level)
             else:
-                _loc6_.level = 1
+                item.level = 1
             if param2:
-                _loc6_.zeroCost = 0
-                creator.write_bool(_loc6_.zeroCost)
+                item.zeroCost = 0
+                creator.write_bool(item.zeroCost)
             if param5:
                 creator.write_int(12)  # random don't use
             if param3:
-                _loc6_.satisfying = False
-                creator.write_bool(_loc6_.satisfying)
+                item.satisfying = False
+                creator.write_bool(item.satisfying)
 
     def shipsPosition(self):
         """ id, x, y, targetX, targetY """
@@ -717,7 +719,7 @@ class PackagesManager:
         creator.write_unsigned_byte(len(data))
         for i in data:
             _loc1_ = DotMap(i)
-            creator.write_int(_loc1_.id)  # id planet
+            creator.write_int(_loc1_.id)  # id SpaceObject
             creator.write_float(_loc1_.angel)  # angel
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
@@ -734,7 +736,7 @@ class PackagesManager:
             creator.write_float(_loc1_.angel)
             creator.write_bytes(_loc1_.race)
             creator.write_bytes(_loc1_.aliance)
-            creator.write_int(_loc1_.clanID)
+            creator.write_int(_loc1_.clanId)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     #     #
@@ -794,14 +796,13 @@ class PackagesManager:
         player = getattr(self.Game, f"Player_{self.id}")
         inventory = player.inventory
         _loc5_: int = creator.write_short(len(inventory))
-        for i in inventory:
-            _loc2_ = DotMap(i)
-            creator.write_short(_loc2_.ItemClass)
-            creator.write_bytes(_loc2_.guid)
-            creator.write_short(_loc2_.wear)
-            creator.write_bool(_loc2_.inUsing)
-            creator.write_unsigned_byte(_loc2_.level)
-            creator.write_bool(_loc2_.satisfying)
+        for ItemClass in inventory:
+            creator.write_short(ItemClass.classNumber)
+            creator.write_bytes(ItemClass.guid)
+            creator.write_short(ItemClass.wear)
+            creator.write_bool(ItemClass.inUsing)
+            creator.write_unsigned_byte(ItemClass.level)
+            creator.write_bool(ItemClass.satisfying)
         ship = player.ship
         ship = DotMap(ship)
         creator.write_unsigned_byte(ship.armor)
@@ -895,11 +896,11 @@ class PackagesManager:
         creator.write_unsigned_byte(Player.maxSkill)
         creator.write_unsigned_byte(Player.status)
         creator.write_unsigned_byte(Player.level)
-        if Player.pointStatus > 0:
+        if Player.point > 0:
             creator.write_int(0)
-            creator.write_int(Player.pointStatus)
+            creator.write_int(Player.point)
         else:
-            creator.write_int(Player.pointStatus)
+            creator.write_int(Player.point)
             creator.write_int(0)
         creator.write_int(Player.forNextLevel)
         self.Game.id_to_conn[self.id].send(creator.get_package())
@@ -1341,24 +1342,24 @@ class PackagesManager:
         print('Пакет отправлен', PacStr.get_str(ServerRequest.LOCATION_PLANET))
 
         player = getattr(self.Game, f'Player_{self.id}')
-        planet_info = player.on_planet
+        SpaceObject = player.SpaceObject
 
-        creator.write_unsigned_byte(planet_info.classNumber)
-        creator.write_int(planet_info.id)
-        creator.write_unsigned_byte(planet_info.race)
-        creator.write_int(planet_info.radius)
-        creator.write_int(planet_info.size)
-        creator.write_unsigned_byte(planet_info.aliance)
-        creator.write_int(planet_info.clanID)
-        creator.write_float(planet_info.angle)
-        creator.write_unsigned_byte(planet_info.QCount)
-        shop_data = planet_info.shop
-        creator.write_short(len(shop_data)) # len(shop_data))
+        creator.write_unsigned_byte(SpaceObject.classNumber)
+        creator.write_int(SpaceObject.id)
+        creator.write_unsigned_byte(SpaceObject.race)
+        creator.write_int(SpaceObject.radius)
+        creator.write_int(SpaceObject.size)
+        creator.write_unsigned_byte(SpaceObject.aliance)
+        creator.write_int(SpaceObject.clanId)
+        creator.write_float(SpaceObject.angle)
+        creator.write_unsigned_byte(SpaceObject.QCount)
+        shops = SpaceObject.shops
+        creator.write_short(len(shops)) # len(shop_data))
 
-        for i in shop_data:
-            _loc3_ = DotMap(i)
-            creator.write_int(_loc3_.id) #_loc3_.id)
-            creator.write_unsigned_byte(_loc3_.type)#_loc3_.type)
+        for type_shop in shops:
+            print(shops)
+            creator.write_int(type_shop["id"]) #_loc3_.id)
+            creator.write_unsigned_byte(type_shop["type"])#_loc3_.type)
 
         player_info_data = []
         for i in player_info_data:
@@ -1390,62 +1391,57 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.LOCATION_SYSTEM
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.LOCATION_SYSTEM))
-        data = PackagesEntry(self.Game, self.id).location_system
-        location, players, planets, static_space_objects = data[0], data[1], data[2], data[3],
-        creator.write_int(location[0]) # id
-        creator.write_float(location[1])  # location.x
-        creator.write_float(location[2])  # location.y
-        creator.write_unsigned_byte(location[3])  # location.sector
-        creator.write_short(len(players))
-        for i in players:
-            _loc2_ = DotMap(i)
+        Location = self.Player.Location
+        creator.write_int(Location.id) # id
+        creator.write_float(Location.x)  # Location.x
+        creator.write_float(Location.y)  # Location.y
+        creator.write_unsigned_byte(Location.sector)  # Location.sector
+        creator.write_short(len(Location.players))
+        for _loc2_ in Location.players:
             creator.write_short(_loc2_.race)
             creator.write_int(_loc2_.id)
-            creator.write_utf(_loc2_.Name)
+            creator.write_utf(_loc2_.login)
             creator.write_short(_loc2_.size)
-            creator.write_float(_loc2_.set_x)  # setPosition
-            creator.write_float(_loc2_.set_y)
-            creator.write_int(_loc2_.player.level)
+            creator.write_float(_loc2_.x)  # setPosition
+            creator.write_float(_loc2_.y)
+            creator.write_int(_loc2_.level)
             creator.write_short(_loc2_.maxHealth)
             creator.write_short(_loc2_.maxEnergy)
-            creator.write_int(_loc2_.player.avatar)
+            creator.write_int(_loc2_.avatar)
             creator.write_unsigned_byte(int(_loc2_.maxSpeed))
             creator.write_float(_loc2_.mov_x)
             creator.write_float(_loc2_.mov_y)  # setMovePoint
-            creator.write_unsigned_byte(_loc2_.player.aliance)
-            creator.write_unsigned_byte(_loc2_.player.status)
-            creator.write_int(_loc2_.player.clanId)
+            creator.write_unsigned_byte(_loc2_.aliance)
+            creator.write_unsigned_byte(_loc2_.status)
+            creator.write_int(_loc2_.clanId)
 
             creator.write_unsigned_byte(len(_loc2_.droid))
 
-            for droid in _loc2_.droid:
-                _loc4_ = DotMap(droid)
+            for _loc4_ in _loc2_.droid:
                 creator.write_unsigned_byte(_loc4_.id)
                 creator.write_short(_loc4_.type)
                 creator.write_short(_loc4_.weaponClass)
                 creator.write_short(_loc4_.health)
 
-        creator.write_short(len(planets))
-        for planet in planets:
-            _loc6_ = DotMap(planet)
-            creator.write_unsigned_byte(_loc6_.PlanetClass)
-            creator.write_int(_loc6_.id)
-            creator.write_unsigned_byte(_loc6_.race)
-            creator.write_int(_loc6_.radius)
-            creator.write_int(_loc6_.size)
-            creator.write_float(_loc6_.angle)
-            creator.write_bool(_loc6_.landable)
-            creator.write_unsigned_byte(_loc6_.aliance)
-            creator.write_int(_loc6_.clanID)
+        creator.write_short(len(Location.planets))
+        for planet in Location.planets:
+            creator.write_unsigned_byte(planet.classNumber)
+            creator.write_int(planet.id)
+            creator.write_unsigned_byte(planet.race)
+            creator.write_int(planet.radius)
+            creator.write_int(planet.size)
+            creator.write_float(planet.angle)
+            creator.write_bool(planet.landable)
+            creator.write_unsigned_byte(planet.aliance)
+            creator.write_int(planet.clanId)
 
-        creator.write_short(len(static_space_objects))
-        for static_space_object in static_space_objects:
-            _loc7_ = DotMap(static_space_object)
-            creator.write_int(_loc7_.StaticSpaceObjectType)
-            creator.write_int(_loc7_.id)
-            creator.write_float(_loc7_.x)
-            creator.write_float(_loc7_.y)
-            creator.write_bool(_loc7_.landable)
+        creator.write_short(len(Location.StaticSpaceObjects))
+        for StaticSpaceObject in Location.StaticSpaceObjects:
+            creator.write_int(StaticSpaceObject.StaticSpaceObjectType)
+            creator.write_int(StaticSpaceObject.id)
+            creator.write_float(StaticSpaceObject.x)
+            creator.write_float(StaticSpaceObject.y)
+            creator.write_bool(StaticSpaceObject.landable)
 
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
@@ -1454,31 +1450,29 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.LOCATION_BATTLE
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.LOCATION_BATTLE))
-        _loc6_ = DotMap()
+        _loc6_ = self.Player
         creator.write_int(_loc6_.id)
         creator.write_float(_loc6_.x)
         creator.write_float(_loc6_.y)
-        player_info_data = []
+        player_info_data = self.Player.ObjectToReach.players
         creator.write_short(len(player_info_data))
-        for i in player_info_data:
-            ship_data = DotMap(i)
+        for ship_data in player_info_data:
             creator.write_short(ship_data.race)
             creator.write_int(ship_data.id)
-            creator.write_utf(ship_data.Name)
+            creator.write_utf(ship_data.login)
             creator.write_short(ship_data.size)
-            creator.write_float(ship_data.setPosition[0])
-            creator.write_float(ship_data.setPosition[1])
-            creator.write_int(ship_data.player)
+            creator.write_float(ship_data.x)
+            creator.write_float(ship_data.y)
+            creator.write_int(ship_data.ship['classNumber']) # hz
             creator.write_short(ship_data.maxHealth)
             creator.write_short(ship_data.maxEnergy)
-            creator.write_int(ship_data.player)
-            creator.write_unsigned_byte(ship_data.player.aliance)
-            creator.write_unsigned_byte(ship_data.player.status)
-            creator.write_int(ship_data.player.clanID)
-            drodata = []
-            creator.write_unsigned_byte(len(drodata))
-            for i in drodata:
-                _loc4_ = DotMap(i)
+            creator.write_int(ship_data.ship['classNumber']) # hz
+            creator.write_unsigned_byte(ship_data.aliance)
+            creator.write_unsigned_byte(ship_data.status)
+            creator.write_int(ship_data.clanId)
+            droids = ship_data.droid
+            creator.write_unsigned_byte(len(droids))
+            for _loc4_ in droids:
                 creator.write_unsigned_byte(_loc4_.id)
                 creator.write_short(_loc4_.type)
                 creator.write_short(_loc4_.weaponClass)
@@ -1536,7 +1530,7 @@ class PackagesManager:
         })
         creator.write_utf(_loc2_.from_player)  # name player
         creator.write_utf(_loc2_.text)
-        creator.write_unsigned_byte(_loc2_.type)  # 1 - global  2 - local 3 - clan 4 - trade 5 - client chat
+        creator.write_unsigned_byte(_loc2_.type)  # 1 - global  2 - local 3 - clanId 4 - trade 5 - client chat
         creator.write_bool(_loc2_.isPrivate)
         creator.write_bool(_loc2_.isAdmin)
         self.Game.id_to_conn[self.id].send(creator.get_package())
@@ -1547,7 +1541,7 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.ASTEROIDS
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.ASTEROIDS))
-        data = []
+        data = self.Player.ObjectToReach.asteroids
         for i in data:
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.id)
@@ -1957,7 +1951,7 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.FRIEND_REQUESTS))
         data = []
-        for i in data:  # clan Data
+        for i in data:  # clanId Data
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.id)
             creator.write_int(_loc2_.leaderID)

@@ -122,19 +122,20 @@ class Server(ThreadBase):
         add_bytes(Entry_Pac.processPackages(ServerRequest.LOCATION_SYSTEM))  # LOCATION_SYSTEM
         add_bytes(Entry_Pac.processPackages(ServerRequest.ACTIVE_DEVICES))  # ACTIVE_DEVICES
         add_bytes(Entry_Pac.processPackages(ServerRequest.ACTIVE_WEPONS))  # ACTIVE_WEPONS
+        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 13, getattr(self.Game, f'Player_{self.id}').bonus))  # UPDATE_VALUE
         add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 14, 7))  # UPDATE_VALUE
         add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 15, 25))  # UPDATE_VALUE
         add_bytes(Entry_Pac.processPackages(ServerRequest.ACTIVE_DEVICES))  # ACTIVE_DEVICES
         add_bytes(Entry_Pac.processPackages(ServerRequest.PLAYER_SKILLS_DATA))  # PLAYER_SKILLS_DATA
-        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 9, 28906))  # UPDATE_VALUE
-        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 10))  # UPDATE_VALUE
-        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 11))  # UPDATE_VALUE
-        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 14, 7))  # UPDATE_VALUE
+        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 9, getattr(self.Game, f'Player_{self.id}').cash))  # UPDATE_VALUE
+        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 10, getattr(self.Game, f'Player_{self.id}').ControlUsed))  # UPDATE_VALUE
+        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 11, getattr(self.Game, f'Player_{self.id}').ControlLeft))  # UPDATE_VALUE
+        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 14, 15))  # UPDATE_VALUE
         add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 15, 25))  # UPDATE_VALUE
         add_bytes(Entry_Pac.processPackages(ServerRequest.ACTIVE_WEPONS))  # ACTIVE_WEPONS
         add_bytes(Entry_Pac.processPackages(ServerRequest.ACTIVE_DEVICES))  # ACTIVE_DEVICES
         add_bytes(Entry_Pac.processPackages(ServerRequest.CLAN))  # CLAN
-        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 3, 5903))
+        add_bytes(Entry_Pac.processPackages(ServerRequest.UPDATE_VALUE, 3, getattr(self.Game, f'Player_{self.id}').point))
         for _ in range(5):
             add_bytes(Entry_Pac.processPackages(ServerRequest.SHIPS_POSITION))  # UPDATE_VALUE
             add_bytes(Entry_Pac.processPackages(ServerRequest.SHIPS_POSITION))  # SHIPS_POSITION

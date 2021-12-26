@@ -1,7 +1,7 @@
 from . import MovableSpaceObject, parse_xml
 
 
-class Ship(MovableSpaceObject):
+class FakeShip:
     weapon_slots:list = []
     device_slots:list = []
     level:int
@@ -10,7 +10,6 @@ class Ship(MovableSpaceObject):
 
 
     def __init__(self, Game, data):
-        super().__init__(Game, data)
         self.classNumber = data["ship_class"]
         self.maxDroids = 2
         self.get_ship()
@@ -18,6 +17,9 @@ class Ship(MovableSpaceObject):
     def get_ship(self):
         for i in parse_xml("ShipParameters"):
             if i['classNumber'] == self.classNumber:
+                self.ship['classNumber'] = i['classNumber']
+                self.ship['cost'] = i["cost"]
+                self.ship['size'] = i["size"]
                 self.ship['weaponSlots'] = i["weaponSlots"]
                 self.ship['deviceSlots'] = i["deviceSlots"]
                 self.ship['armor'] = i["armor"]
@@ -29,14 +31,13 @@ class Ship(MovableSpaceObject):
                 self.ship['maxSpeed'] = i["maxSpeed"]
                 self.ship['restrictions'] = i["restrictions"]
                 self.ship['features'] = i["features"]
-                self.ship['classNumber'] = i["classNumber"]
+
                 self.ship['guid'] = i["guid"]
                 self.ship['wear'] = i["wear"]
                 self.ship['level'] = i["level"]
                 self.ship['inUsing'] = i["inUsing"]
                 self.ship['satisfying'] = i["satisfying"]
-                self.ship['size'] = i["size"]
-                self.ship['cost'] = i["cost"]
+
                 self.ship["health"] = self.ship["maxHealth"]
                 self.ship["energy"] = self.ship["maxEnergy"]
                 self.ship["speed"] = self.ship["maxSpeed"]

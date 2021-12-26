@@ -5,5 +5,4 @@ cfg_const = {
     "clanCreateLevelNeed": 8,
     "bonuses": 0,
     "maxSkill": 12,
-
 }

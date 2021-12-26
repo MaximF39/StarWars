@@ -1,7 +1,7 @@
 class Message:
     # global = 1
     # local = 2
-    # clan = 3
+    # clanId = 3
     # trade = 4
     # клиент чат = 5
     from_:str

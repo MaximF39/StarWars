@@ -1,6 +1,9 @@
-from ..Packages.PackagesManager import PackagesManager
-from . import Planet, cfg_update, ThreadBase
-from .StaticSpaceObject import StaticSpaceObject
+from . import Planet, ThreadBase
+from python.BaseClass.StaticSpaceObject import StaticSpaceObject
+from .StaticSpaceObjects.Hive import Hive
+from .StaticSpaceObjects.Portal import Portal
+from .StaticSpaceObjects.RepositoryStation import RepositoryStation
+from .StaticSpaceObjects.AsteroidsBelt import AsteroidsBelt
 
 
 class Location(ThreadBase):
@@ -26,7 +29,7 @@ class Location(ThreadBase):
         self.planets = []
         self.items = []
         self.asteroids = []
-        self.static_space_objects = []
+        self.StaticSpaceObjects = []
         self.create_space_object()
 
 
@@ -45,8 +48,19 @@ class Location(ThreadBase):
 
     def create_static_space_objects(self):
         for data_space_object in self.SpaceObjects['data']:
-            id_ = data_space_object['id']
-            setattr(self, f"Static_space_object_{id_}", StaticSpaceObject(self.Game, data_space_object, self))
+            data_space_object['id_location'] = self.id
+            id_ = -1 * data_space_object['id']
+            match id_:
+                case 1: # ASTEROIDS_BELT
+                    setattr(self, f"StaticSpaceObject_{id_}", AsteroidsBelt(self.Game, data_space_object, self))
+                case 2: # REPOSITORY_STATION
+                    setattr(self, f"StaticSpaceObject_{id_}", RepositoryStation(self.Game, data_space_object, self))
+                case 3:
+                    pass
+                case 4:
+                    setattr(self, f"StaticSpaceObject_{id_}", Portal(self.Game, data_space_object, self))
+                case 5:
+                    setattr(self, f"StaticSpaceObject_{id_}", Hive(self.Game, data_space_object, self))
 
     def create_planets(self):
         count_planet = 0
@@ -59,8 +73,8 @@ class Location(ThreadBase):
     def set_planet(self, classPlanet):
         self.planets.append(classPlanet)
 
-    def set_static_space_object(self, Static_space_object_class):
-        self.static_space_objects.append(Static_space_object_class)
+    def set_static_space_object(self, StaticSpaceObject_class):
+        self.StaticSpaceObjects.append(StaticSpaceObject_class)
 
     def update(self):
         self.location_items: None

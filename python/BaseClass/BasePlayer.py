@@ -9,37 +9,44 @@ from ..Packages.PackagesManager import PackagesManager
 
 
 class BasePlayer(Ship, ThreadBase):
-    # object_to_reach:  = {}
+    # ObjectToReach:  = {}
     # attack_now: dict = {}
 
     def __init__(self, Game, dict_: dict):
         super().__init__(Game, dict_)
+        self.ship['id'] = dict_['id']
+        self.ship['setPosition'] = [dict_['x'], dict_['y']]
+        self.ship['team'] = -1
         self.type = 2
-        self.location = dict_["location"]
+        self.Location = getattr(self.Game, f'Location_{dict_["Location"]}')
         self.avatar = dict_['avatar']
         self.login: str = dict_["login"]
         self.aliance: int = dict_["aliance"]
+        self.maxHealth = self.ship['maxHealth']
+        self.maxEnergy = self.ship['maxEnergy']
+        self.maxSpeed = self.ship['maxSpeed']
         self.race: int = dict_["race"]
         # self.state: float = dict_["state"]
         self.health = self.ship['health']
-        self.on_planet = None
+        self.SpaceObject = None
         self.energy = self.ship['energy']
         self.speed = self.ship['speed']
         self.target_x: float = self.x
         self.target_y: float = self.y
-        self.object_to_reach_id: int = self.location
+        self.object_to_reach_id: int = self.Location
         self.object_to_reach_type: int = 7 # getattr(Game, f"Location_{self.object_to_reach_id}").type
         self.PlayerRelation: int = dict_["PlayerRelation"]
         self.skills = ast.literal_eval(dict_['skills'])
         self.level: int = dict_["level"]
         self.status = dict_['status']
         self.experience = dict_['experience']
-        self.pointStatus = dict_['pointStatus']
-        self.inventory = dict_['inventory']
+        self.point = dict_['point']
+        self.inventory:list = dict_['inventory']
         self.active_weapons = dict_['active_weapons']
         self.active_devices = dict_['active_devices']
         self.ship["login"] = self.login
         self.ship['race'] = self.race
+        self.sendInfoLocation()
         self.upgrade()
         # self.attacking = self.skills['attacking']
         # self.tactics = self.skills['tactics']
@@ -48,10 +55,13 @@ class BasePlayer(Ship, ThreadBase):
         # self.repairing = self.skills['repairing']
         # self.defending = self.skills['defending'] # ?
 
+    def sendInfoLocation(self):
+        self.Location.set_player(self)
+
+
     def object_to_reach_system(self, type_, id_):
         self.object_to_reach_type = type_
         self.object_to_reach_id = id_
-
 
     def upgrade(self):
         pass
@@ -61,14 +71,12 @@ class BasePlayer(Ship, ThreadBase):
         # self.start_update("_level_status", 1)
         # self.start_update("_level_experience", 1)
 
-
     def move(self, x, y):
         self.x = x
         self.y = y
         self.target_x = x
         self.target_y = y
         self.packages_move()
-
 
     def packages_move(self):
         pass
@@ -87,20 +95,53 @@ class BasePlayer(Ship, ThreadBase):
         self.attack_now = True
 
     def set_object_to_reach(self, data):
+        PacMan = PackagesManager(self.id, self.Game)
         match data['type']:
             case 1:
-                self.object_to_reach = getattr(getattr(self.Game, f"Location_{self.location}"), f'Planet_{data["id"]}')
+                self.ObjectToReach = getattr(self.Location, f'Planet_{data["id"]}')
                 time.sleep(1)
-                # if self.x == self.object_to_reach.x and self.y == self.object_to_reach.y:
-                self.on_planet = self.object_to_reach
-                PackagesManager(self.id, self.Game).locationPlanet()
+                # if self.x == self.ObjectToReach.x and self.y == self.ObjectToReach.y:
+                self.SpaceObject = self.ObjectToReach
+                PacMan.locationPlanet()
             case 5:
-                self.object_to_reach = getattr(getattr(self.Game, f"Location_{self.location}"), f'Static_space_object_{data["id"]}')
-                time.sleep(1)
-                # if self.x == self.object_to_reach.x and self.y == self.object_to_reach.y:
-                self.on_planet = self.object_to_reach
-                PackagesManager(self.id, self.Game).locationPlanet()
+                data['id'] = -1 * data['id']
+                match data['id']:
+                    case 1:
 
+                        # self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
+                        self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
+                        time.sleep(1)
+                        self.ObjectToReach.set_player(self)
+                        # self.SpaceObject = self.ObjectToReach
+                        PacMan.locationBattle()
+                        PacMan.asteroids()
+                        # self.ObjectToReach.set_player(self)
+                        # self.SpaceObject = self.ObjectToReach
+                        # self.Location = self.SpaceObject
+                        # PacMan.locationSystem()
+                    case 2:
+                        self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
+                        time.sleep(1)
+                        self.SpaceObject = self.ObjectToReach
+                        PacMan.locationPlanet()
+                    case 3:
+                        self.ObjectToReach = getattr(getattr(self.Game, f"Location_{self.Location}"),
+                                                       f'StaticSpaceObject_{data["id"]}')
+                        time.sleep(1)
+                        self.SpaceObject = self.ObjectToReach
+                        # PacMan.asteroids()
+                    case 4:
+                        self.ObjectToReach = getattr(getattr(self.Game, f"Location_{self.Location}"), f'StaticSpaceObject_{data["id"]}')
+                        time.sleep(1)
+                        # if self.x == self.ObjectToReach.x and self.y == self.ObjectToReach.y:
+                        self.SpaceObject = self.ObjectToReach
+                        # PacMan.locationPlanet()
+                    case 5:
+                        self.ObjectToReach = getattr(getattr(self.Game, f"Location_{self.Location}"), f'StaticSpaceObject_{data["id"]}')
+                        time.sleep(1)
+                        # if self.x == self.ObjectToReach.x and self.y == self.ObjectToReach.y:
+                        self.SpaceObject = self.ObjectToReach
+                        # PacMan.locationPlanet()
 
 
 
@@ -111,14 +152,14 @@ class BasePlayer(Ship, ThreadBase):
         pass # send request
 
     # @ThreadBase.end_thread
-    def _level_status(self):
+    def _level_experience(self):
         if self.experience > 0:
-            self.level_experience += 1
+            self.level += 1
 
     # @ThreadBase.end_thread
-    def _level_experience(self):
-        if self.status:
-            self.level_status += 1
+    def _level_status(self):
+        if self.point:
+            self.status += 1
 
     def ship_position(self):
         return self.x, self.y

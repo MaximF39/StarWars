@@ -75,43 +75,43 @@ class PackagesEntry:
 
     @property
     def create_pilot(self):
-        for i in s.query(PlayerDB).filter_by(id=self.id):
+        for Player in s.query(PlayerDB).filter_by(id=self.id):
             return {
-            "id": i.id,
-            "login": i.login,
-            "auth_key": i.auth_key,
-            "passwd": i.passwd,
-            "clan_id": i.clan_id,
-            "credit": i.credit,
-            "bonus": i.bonus,
-            "planet": i.planet,
-            "location": i.location,
-            "level": i.level,
-            'repository': eval(i.repository),
-            "experience": i.experience,
-            "status": i.status,
-            "clanRequestStatus": i.clanRequestStatus,
-            "clanJoinRequestStatus": i.clanJoinRequestStatus,
-            "PlayerRelation": i.PlayerRelation,
-            "race": i.race,
-            "avatar": i.avatar,
-            "aliance": i.aliance,
-            "role": i.role,
-            "ship_class": i.ship_class,
-            "skills": i.skills,
-            "free_skills": i.free_skills,
-            "expSkillGrowCoef": i.expSkillGrowCoef,
-            "expSkillReduserCoef": i.expSkillReduserCoef,
-            "pointStatus": i.pointStatus,
-            "x": i.x,
-            "y": i.y,
-            "deleteEnqueued": i.deleteEnqueued,
-            "canDelete": i.canDelete,
-            "logged": i.logged,
-            "active_devices": eval(i.active_devices)['data'],
-            "active_weapons": eval(i.active_weapons)['data'],
-            "rating": i.rating,
-            "inventory": eval(i.inventory),
+            "id": Player.id,
+            "login": Player.login,
+            "auth_key": Player.auth_key,
+            "passwd": Player.passwd,
+            "clan_id": Player.clan_id,
+            "credit": Player.credit,
+            "bonus": Player.bonus,
+            "SpaceObject": Player.SpaceObject,
+            "Location": Player.Location,
+            "level": Player.level,
+            'repository': eval(Player.repository),
+            "experience": Player.experience,
+            "status": Player.status,
+            "clanRequestStatus": Player.clanRequestStatus,
+            "clanJoinRequestStatus": Player.clanJoinRequestStatus,
+            "PlayerRelation": Player.PlayerRelation,
+            "race": Player.race,
+            "avatar": Player.avatar,
+            "aliance": Player.aliance,
+            "role": Player.role,
+            "ship_class": Player.ship_class,
+            "skills": Player.skills,
+            "free_skills": Player.free_skills,
+            "expSkillGrowCoef": Player.expSkillGrowCoef,
+            "expSkillReduserCoef": Player.expSkillReduserCoef,
+            "point": Player.point,
+            "x": Player.x,
+            "y": Player.y,
+            "deleteEnqueued": Player.deleteEnqueued,
+            "canDelete": Player.canDelete,
+            "logged": Player.logged,
+            "active_devices": eval(Player.active_devices)['data'],
+            "active_weapons": eval(Player.active_weapons)['data'],
+            "rating": Player.rating,
+            "inventory": eval(Player.inventory),
             }
 
     @property
@@ -121,8 +121,7 @@ class PackagesEntry:
 
     @property
     def location_system(self):
-        id_location = getattr(self.Game, f"Player_{self.id}").location
-        Location = getattr(self.Game, f"Location_{id_location}")
+        Location = getattr(self.Game, f"Player_{self.id}").Location
         location = [Location.id, Location.x, Location.y, Location.sector]
         players = []
         for player_ in Location.players:
@@ -132,7 +131,7 @@ class PackagesEntry:
                     "avatar": player_.avatar,
                     "aliance": player_.aliance,
                     "status": player_.status,
-                    "clanId": player_.clan,
+                    "clanId": player_.clanId,
                 }),
                 "race": player_.race,
                 "id": player_.id,
@@ -159,10 +158,10 @@ class PackagesEntry:
                 "angle": planet.angle,
                 "landable": planet.landable,
                 "aliance": planet.aliance,
-                "clanID": planet.clanID,
+                "clanId": planet.clanId,
             }))
         static_space_objects = []
-        for static_space_object in Location.static_space_objects:
+        for static_space_object in Location.StaticSpaceObjects:
             static_space_objects.append(DotMap(({
                 "StaticSpaceObjectType": static_space_object.StaticSpaceObjectType,
                 "id": static_space_object.id,
@@ -203,7 +202,7 @@ class PackagesEntry:
             "race": player.race,
             "avatar": player.avatar,
             "aliance": player.aliance,
-            "clanId": player.clan,
+            "clanId": player.clanId,
             "role": player.role,
             "clanRequestStatus": player.clanRequestStatus,
             "clanJoinRequestStatus": player.clanJoinRequestStatus,
@@ -227,7 +226,7 @@ class PackagesEntry:
             'aliance': player_.aliance,
             'status': player_.status,
             'level': player_.level,
-            'clanId': player_.clan,
+            'clanId': player_.clanId,
             'deleteEnqueued': player_.deleteEnqueued,
             'canDelete': player_.canDelete,
             'logged': player_.logged,

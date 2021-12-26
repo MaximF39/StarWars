@@ -105,7 +105,7 @@ class ReadPackagesClient:
             #     case ServerRequest.SHIP_JUMPED:
             #         return self.shipJumped()
             #     case ServerRequest.PLANET:
-            #         return self.planet()
+            #         return self.SpaceObject()
             #     case ServerRequest.INVENTORY:
             #         return self.inventory()
             #     case ServerRequest.TRADING_ITEMS:
@@ -812,7 +812,7 @@ class ReadPackagesClient:
     #     #         _loc5_ += 1
     #     #     return decoder.get_package()
     #     #
-    #     # def planet(self) -> list:
+    #     # def SpaceObject(self) -> list:
     #     #     
     #     #     # _loc2_: Planet = PlanetsManager.createInstance(decoder.read_bytes())
     #     #     decoder.read_int(_loc2_.id)
@@ -1436,7 +1436,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc4_.radius)
     #     #     decoder.read_int(_loc4_.size)
     #     #     decoder.read_unsigned_byte(_loc4_.aliance)
-    #     #     decoder.read_int(_loc4_.clanID)
+    #     #     decoder.read_int(_loc4_.clanId)
     #     #     decoder.read_float(_loc4_.angle)
     #     #     decoder.read_unsigned_byte(_loc4_.QCount)
     #     #     _loc5_: int = 0
@@ -1535,7 +1535,7 @@ class ReadPackagesClient:
             _loc6_.angle = decoder.read_float()
             _loc6_.landable = decoder.read_bool()
             _loc6_.aliance = decoder.read_unsigned_byte()
-            _loc6_.clanID = decoder.read_int()
+            _loc6_.clanId = decoder.read_int()
 
             planet.append(_loc6_)
             _loc12_ += 1

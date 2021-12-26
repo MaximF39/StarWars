@@ -435,9 +435,9 @@ class EntryPac:
         data = PackagesEntry(self.Game, self.id).location_system
         location, players, planets, static_space_objects = data[0], data[1], data[2], data[3],
         creator.write_int(location[0]) # id
-        creator.write_float(location[1])  # location.x
-        creator.write_float(location[2])  # location.y
-        creator.write_unsigned_byte(location[3])  # location.sector
+        creator.write_float(location[1])  # Location.x
+        creator.write_float(location[2])  # Location.y
+        creator.write_unsigned_byte(location[3])  # Location.sector
         creator.write_short(len(players))
         for i in players:
             _loc2_ = DotMap(i)
@@ -478,7 +478,7 @@ class EntryPac:
             creator.write_float(_loc6_.angle)
             creator.write_bool(_loc6_.landable)
             creator.write_unsigned_byte(_loc6_.aliance)
-            creator.write_int(_loc6_.clanID)
+            creator.write_int(_loc6_.clanId)
 
         creator.write_short(len(static_space_objects))
         for static_space_object in static_space_objects:
