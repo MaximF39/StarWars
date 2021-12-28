@@ -1,5 +1,4 @@
-from . import MovableSpaceObject, parse_xml
-
+from ..Static.ParseXml import parse_xml
 
 class FakeShip:
     weapon_slots:list = []
@@ -10,6 +9,7 @@ class FakeShip:
 
 
     def __init__(self, Game, data):
+        self.Game = Game
         self.classNumber = data["ship_class"]
         self.maxDroids = 2
         self.get_ship()

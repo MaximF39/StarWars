@@ -1,3 +1,4 @@
+from ..Packages.PackagesManager import PackagesManager
 from .Item import Item
 import math
 # from . import parse_galaxy_map
@@ -43,17 +44,26 @@ class Planet(SpaceObject, ThreadBase):
             self._i += self.speed
             if self._i > 360:
                 self._i = 1
-            self.x = int(self.radius * math.cos(self.angle))
-            self.y = int(self.radius * math.sin(self.angle))
+            self.x = int(self.radius * math.sin(self.angle))
+            self.y = int(self.radius * math.cos(self.angle))
             self.update()
 
         self.send_info_location()
 
+    def SetPlayer(self, PlayerClass):
+        self.players.append(PlayerClass)
+        PlayerClass.SpaceObject = self
+        PacMan = PackagesManager(PlayerClass.id, self.Game)
+        PacMan.locationPlanet()
+
+    def OpenShopForPlayer(self, PlayerClass):
+        ItemsForPlayer = []
+        for Item_ in self.inventory:
+            ItemsForPlayer.append(Item_.SeeForPlayer(PlayerClass))
+        return ItemsForPlayer
+
     def send_info_location(self):
         self.LocationClass.set_planet(self)
-
-    def set_player(self, PlayerClass):
-        self.players.append(PlayerClass)
 
     def update(self):  # ready
         self.start_timer_update(self.move, 1) # cfg_update['SpaceObject']
@@ -63,6 +73,6 @@ class Planet(SpaceObject, ThreadBase):
         if self._i > 360:
             self._i = 1
         self.angle = self._i * 3.14 / 180
-        self.x = int(self.radius * math.cos(self.angle))
-        self.y = int(self.radius * math.sin(self.angle))
+        self.x = int(self.radius * math.sin(self.angle))
+        self.y = -1 * int(self.radius * math.cos(self.angle))
 

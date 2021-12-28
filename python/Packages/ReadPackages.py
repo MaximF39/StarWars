@@ -1,7 +1,6 @@
 from ..Packages.PackagesManager import PackagesManager
 from .PackageDecoder import PackageDecoder
 from python.Static.Type.ClientRequest import ClientRequest
-from ..Static.TypeStr.ClientRequestStr import ClientRequestStr as ClReq
 import os, pathlib
 from loguru import logger
 
@@ -12,13 +11,13 @@ class ReadPackages:
         os.chdir(path)
 
         logger.add(f'Player_{self.id}.log',format="{time:YYYY-MM-DD HH:mm:ss.SSS}, {level}, {message}",
-                   rotation="128 KB",
+                   rotation="512 KB",
                    compression='zip', encoding='cp1251') #
 
     def __init__(self, Game, id_, command_type, data):
         self.id = id_
         self.Game = Game
-
+        self.Player = getattr(self.Game, f'Player_{self.id}')
         self.__write_logger()
 
         match command_type:
@@ -298,10 +297,11 @@ class ReadPackages:
         y = _loc4_.read_float()  # y
         _ = _loc4_.read_int()  # count
         logger.info(f'move {x}, {y}')
-        getattr(self.Game, f"Player_{self.id}").move(x, y)
+        self.Player.move(x, y)
+
 
     def leaveLocation(self, data):
-        PackagesManager(self.id, self.Game).locationSystem()
+        self.Player.leaveLocation()
         logger.info(f'leaveLocation')
 
     def evil(self, data) -> None:
@@ -342,12 +342,13 @@ class ReadPackages:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
         data = {}
+        data = {}
         data['type'] = _loc4_.read_int()  # ObjectToReachType
         data['id'] = _loc4_.read_int()  # id
         data['aliance'] = _loc4_.read_int()  # AlianceType ?
         _loc4_.read_int()  # count
         logger.info(f'objectToReach {data}')
-        getattr(self.Game, f'Player_{self.id}').set_object_to_reach(data)
+        self.Player.set_object_to_reach(data)
 
     def useItem(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
@@ -430,17 +431,8 @@ class ReadPackages:
         data = {
         "type": _loc2_.read_int()}
         PacMan = PackagesManager(self.id, self.Game)
-        match data['type']: # 1001 + race = shipShops
-            case 10004:
-                PacMan.repository()
-            case 10005:
-                PacMan.playerAngar()
-            case 10009:
-                PacMan.clanrepository()
-            case 10002:
-                PacMan.tradingShips()
-            case _:
-                PacMan.tradingItems()
+        self.Player.OpenShop(data)
+
 
 
         # PackagesManager(self.id, self.Game).clanId()
@@ -468,7 +460,7 @@ class ReadPackages:
         "id":_loc4_.read_int()}  # id Location
         _loc4_.read_int()  # clicked count
         _loc4_.read_utf()  # domain
-        getattr(self.Game, f'Player_{self.id}').hyperJump(data["id"])
+        self.Player.hyperJump(data["id"])
         logger.info(f'jumpTo {data}')
 
     def sendMessage(self, data) -> None:
@@ -609,6 +601,7 @@ class ReadPackages:
 
     def crearTargets(self, data) -> None:  # убрать дройдов всех
         logger.info(f'crearTargets {data}')
+        self.Player.move(0, 0, True)
 
     def syncronizeHealth(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
@@ -639,7 +632,7 @@ class ReadPackages:
         logger.info(f'commitSkills {data}')
 
     def read_skill(self, data, decoder):
-        from ..Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
+        from ..Static.TypeStr import PlayerSkillTypeStr
         type_ = decoder.read_unsigned_byte()
         count = decoder.read_unsigned_byte()
         data[PlayerSkillTypeStr().get_str(type_)] = count   # player skill type
@@ -833,14 +826,14 @@ class ReadPackages:
         _loc5_.data = data
         data = {
         'classNumber': _loc5_.read_short(),
-        'endurance': _loc5_.read_short(), #1000
+        'endurance': _loc5_.read_short(), #1000 количество
         'count3': _loc5_.read_int(), # 255
         'count4': _loc5_.read_short(),} # 0
-        Player = getattr(self.Game, f'Player_{self.id}')
-        Player.buyItemByBonuses(data)
+
+        self.Player.buyItemByBonuses(data)
         PacMan = PackagesManager(self.id, self.Game)
         PacMan.inventory()
-        PacMan.updateValue(13, Player.bonus)
+        PacMan.updateValue(13, self.Player.bonus)
         logger.info(f'buyItemByBonuses {data}')
 
     def buyShipByBonuses(self, data) -> None:

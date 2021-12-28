@@ -159,7 +159,7 @@ class Vector2D:
          I think the answer is "for (-1,0) vectors", making it count the angle from the negative-y axis - which is
          pretty unconventional, normally in math you count from the positive x axis.
         """
-        _loc2_ = p1.get_angel() - self.get_angle()
+        _loc2_ = p1.get_angle() - self.get_angle()
         return self.validate_angle(_loc2_)
 
     def get_angle_in_degrees(self) -> float:

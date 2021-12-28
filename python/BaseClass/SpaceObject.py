@@ -1,6 +1,6 @@
-# from ..Utils.Vector2D import Vector2D
+from python.Utils.Vector2D import Vector2D
 
-class SpaceObject:
+class SpaceObject(Vector2D):
     id: int
     type: int
     size: int

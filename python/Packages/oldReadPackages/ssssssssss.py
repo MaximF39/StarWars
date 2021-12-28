@@ -1,6 +1,5 @@
-from python.Packages.PackagesEntry import *
-from python.Static.ParseXml import parse_xml
-from python.MyUtils.DotMap import DotMap
+from python.Static import parse_xml
+from python.Utils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
 from python.Packages.PackageCreator import PackageCreator
 

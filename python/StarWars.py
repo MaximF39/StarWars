@@ -1,4 +1,4 @@
-from .Static.ParseXml import parse_xml
+from python.Static.ParseXml import parse_xml
 from .SpaceObjects.Location import Location
 from time import time
 from .Player.Player import Player

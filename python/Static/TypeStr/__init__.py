@@ -1,1 +1,1 @@
-from ...BaseClass.BaseTypeStr import BaseTypeStr
+from python.BaseClass.BaseTypeStr import BaseTypeStr

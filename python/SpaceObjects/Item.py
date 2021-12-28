@@ -1,20 +1,19 @@
 from ..cfg.cfg_sell_buy import cfg_sell_buy
-from ..Static.ParseXml import item_id
-from python.BaseClass import SpaceObject
+from python.Static.ParseXml import item_id
 import uuid
-from ..Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
+from python.Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
 
-class Item(SpaceObject):
+class Item:
     guid: bytes
     cost: int
     inUsing: bool
     classNumber: int
 
-    def __init__(self, Game, classNumber, OwnerClass, wear=None):
+    def __init__(self, Game, classNumber, OwnerClass=None, wear=None):
         data = item_id(classNumber)
-        data['id'] = OwnerClass.id
         self.Owner = OwnerClass
-        super().__init__(Game, data)
+        self.Game = Game
+        self.size = data['size']
         self.guid = uuid.uuid4().bytes
         self.cost = data['cost']
         self.inUsing = data['inUsing']
@@ -23,14 +22,18 @@ class Item(SpaceObject):
         if wear:
             self.wear = wear
         else:
-            self.wear = 1 #data['wear'] # count or fix
+            self.wear = data['wear'] # count or fix
+        self.allSize = self.wear * self.size
         self.restrictions = None if not 'restrictions' in data else data['restrictions']['data']
         self.satisfying = self.get_satisfying
 
 
+    def SeeForPlayer(self, PlayerClass):
+        pass
+
     @property
     def get_satisfying(self):
-        if not self.restrictions or str(type(self.Owner)) == "<class 'python.SpaceObjects.Planet.Planet'>":
+        if not self.restrictions or not 'level' in self.Owner.__dict__:
             return True
         skills = self.Owner.skills
         SkillTypeStr = PlayerSkillTypeStr()
@@ -39,7 +42,8 @@ class Item(SpaceObject):
                 self.satisfying = False
                 break
 
-
+    def dropItem(self, count):
+        pass
 
     def sell(self, PlanetClass, count):
         if self.wear - count >= 0:

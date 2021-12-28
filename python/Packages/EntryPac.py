@@ -1,14 +1,16 @@
 from .PackagesEntry import PackagesEntry
-from ..MyUtils.DotMap import DotMap
-from ..Static.Type.ServerRequest import ServerRequest
+from ..Utils.DotMap import DotMap
+from python.Static.Type.ServerRequest import ServerRequest
 from ..Packages.PackageCreator import PackageCreator
-from ..Static.ParseXml import parse_xml
+from python.Static.ParseXml import parse_xml
 
 class EntryPac:
 
     def __init__(self, id_: int, StarWars):
         self.id = id_
         self.Game = StarWars
+        self.Player = getattr(self.Game, f'Player_{self.id}')
+        self.Location = self.Player.Location
 
     @staticmethod
     def isValidPackageLength(creator: int) -> bool:
@@ -16,7 +18,6 @@ class EntryPac:
 
     def processPackages(self, _loc1_: ServerRequest, *args):
         _loc2_: list = list()
-        from ..Static.TypeStr.ServerRequestStr import ServerRequestStr as SrReq
         match _loc1_:
             case ServerRequest.VERSION:
                 return self.version()
@@ -337,19 +338,40 @@ class EntryPac:
         return creator.get_package()
 
     def logged(self):
+        from ..cfg.cfg_const import cfg_const
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.LOGGED
-        logged = PackagesEntry(self.Game, self.id).logged
+        logged = DotMap({
+            'stateLoop': cfg_const['stateLoop'],
+            'bankSendOperationFee': cfg_const['bankSendOperationFee'],
+            'clanJoinCost': cfg_const['clanJoinCost'],
+            'clanCreateLevelNeed': cfg_const['clanCreateLevelNeed'],
+            'bonuses': cfg_const['bonuses']
+        })
         creator.write_int(logged.stateLoop)
         creator.write_unsigned_byte(logged.bankSendOperationFee)
         creator.write_int(logged.clanJoinCost)
         creator.write_unsigned_byte(logged.clanCreateLevelNeed)
         creator.write_int(logged.bonuses)
         # while True:
-        logged2 = PackagesEntry(self.Game, self.id).logged2
+        logged2 = DotMap({
+            'id': self.Player.id,
+            'name': self.Player.login,
+            'shipClass': self.Player.ship['classNumber'],
+            'shipCPU': self.Player.ship["cpu"],
+            'race': self.Player.race,
+            'aliance': self.Player.aliance,
+            'status': self.Player.status,
+            'level': self.Player.level,
+            'clanId': self.Player.clanId,
+            'deleteEnqueued': self.Player.deleteEnqueued,
+            'canDelete': self.Player.canDelete,
+            'logged': self.Player.logged,
+            'skills': self.Player.skills
+        })
         creator.write_int(logged2.id)
         creator.write_utf(logged2.name)
-        creator.write_short(logged2.shipClass)
+        creator.write_short(logged2.shipClass) #
         creator.write_short(logged2.shipCPU)
         creator.write_unsigned_byte(logged2.race)
         creator.write_unsigned_byte(logged2.aliance)
@@ -386,7 +408,20 @@ class EntryPac:
     def player(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.PLAYER
-        Player = PackagesEntry(self.Game, self.id).player
+        Player = DotMap({
+            "id": self.Player.id,
+            "login": self.Player.login,
+            "level": self.Player.level,
+            "cash": self.Player.cash,
+            "race": self.Player.race,
+            "avatar": self.Player.avatar,
+            "aliance": self.Player.aliance,
+            "clanId": self.Player.clanId,
+            "role": self.Player.role,
+            "clanRequestStatus": self.Player.clanRequestStatus,
+            "clanJoinRequestStatus": self.Player.clanJoinRequestStatus,
+            "PlayerRelation": self.Player.PlayerRelation,
+        })
         creator.write_int(Player.id)
         creator.write_utf(Player.login)
         creator.write_int(Player.level)
@@ -405,7 +440,22 @@ class EntryPac:
     def playerShip(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.PLAYER_SHIP
-        ship = PackagesEntry(self.Game, self.id).player_ship
+        ship = DotMap({
+            'id': self.Player.ship['id'],
+            'login': self.Player.ship['login'],
+            'race': self.Player.ship['race'],
+            'size': self.Player.ship['size'],
+            'energy': self.Player.ship["energy"],
+            'maxEnergy': self.Player.ship["maxEnergy"],
+            'setPosition': self.Player.ship["setPosition"],
+            'team': self.Player.ship["team"],
+            'maxSpeed': 180, # self.Player.ship["maxSpeed"]
+            'weaponSlots': self.Player.ship["weaponSlots"],
+            'deviceSlots': self.Player.ship["deviceSlots"],
+            'maxHealth': self.Player.ship["maxHealth"],
+            'radarRadius': self.Player.ship["radar"],
+            'cpu': self.Player.ship["cpu"],
+        })
         creator.write_int(ship.race) # raca
         creator.write_int(ship.id)
         creator.write_utf(ship.login)
@@ -415,7 +465,7 @@ class EntryPac:
         creator.write_float(ship.setPosition[0])
         creator.write_float(ship.setPosition[1])
         creator.write_int(ship.team)
-        creator.write_unsigned_byte(ship.maxSpeed)
+        creator.write_unsigned_byte(180) # ship.maxSpeed
         creator.write_unsigned_byte(ship.weaponSlots)
         creator.write_unsigned_byte(ship.deviceSlots)
         creator.write_int(ship.maxHealth)
@@ -432,8 +482,55 @@ class EntryPac:
     def locationSystem(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.LOCATION_SYSTEM
-        data = PackagesEntry(self.Game, self.id).location_system
-        location, players, planets, static_space_objects = data[0], data[1], data[2], data[3],
+        
+        location = [self.Location.id, self.Location.x, self.Location.y, self.Location.sector]
+        players = []
+        for player_ in self.Location.players:
+            players.append(DotMap({
+                "player": DotMap({
+                    "level": player_.level,
+                    "avatar": player_.avatar,
+                    "aliance": player_.aliance,
+                    "status": player_.status,
+                    "clanId": player_.clanId,
+                }),
+                "race": player_.race,
+                "id": player_.id,
+                "Name": player_.login,
+
+                "size": player_.ship["size"],
+                "set_x": player_.x,
+                "set_y": player_.y,
+                "maxHealth": player_.ship["maxHealth"],
+                "maxEnergy": player_.ship["maxEnergy"],
+                "maxSpeed": 180, # player_.ship["maxSpeed"]
+                "mov_x": player_.mov_x,
+                "mov_y": player_.mov_y,
+                "droid": player_.droid,
+            }))
+        planets = []
+        for planet in self.Location.planets:
+            planets.append(DotMap({
+                "PlanetClass": planet.classNumber,
+                "id": planet.id,
+                "race": planet.race,
+                "radius": planet.radius,
+                "size": planet.size,
+                "angle": planet.angle,
+                "landable": planet.landable,
+                "aliance": planet.aliance,
+                "clanId": planet.clanId,
+            }))
+        static_space_objects = []
+        for static_space_object in self.Location.StaticSpaceObjects:
+            static_space_objects.append(DotMap(({
+                "StaticSpaceObjectType": static_space_object.StaticSpaceObjectType,
+                "id": static_space_object.id,
+                "x": static_space_object.x,
+                "y": static_space_object.y,
+                "landable": static_space_object.landable,
+            })))
+
         creator.write_int(location[0]) # id
         creator.write_float(location[1])  # Location.x
         creator.write_float(location[2])  # Location.y
@@ -441,7 +538,7 @@ class EntryPac:
         creator.write_short(len(players))
         for i in players:
             _loc2_ = DotMap(i)
-            creator.write_short(_loc2_.race)
+            creator.write_short(_loc2_.race) #
             creator.write_int(_loc2_.id)
             creator.write_utf(_loc2_.Name)
             creator.write_short(_loc2_.size)
@@ -595,7 +692,7 @@ class EntryPac:
     def hideShip(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.HIDE_SHIP
-        creator.write_int(-13)
+        creator.write_int(-15)
         return creator.get_package()
 
 

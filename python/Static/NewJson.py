@@ -2,7 +2,7 @@ import json
 import pathlib
 from Type.ItemClass import ItemClass as Items
 
-# from python.MyUtils.DotMap import DotMap
+# from python.Utils.DotMap import DotMap
 
 bs = pathlib.Path(__file__).parent.joinpath('Json')
 id_parse = ['Clans', "GalaxyMap"]

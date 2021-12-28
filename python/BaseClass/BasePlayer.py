@@ -1,14 +1,15 @@
+import math
 # from ..Packages.
 import ast
 import json
+import threading
 import time
-
 from . import Ship
-from ..MyUtils.ThreadBase import ThreadBase
+from ..Utils.ThreadBase import ThreadBase
 from ..Packages.PackagesManager import PackagesManager
+from ..Utils.MyTime import MyTime
 
-
-class BasePlayer(Ship, ThreadBase):
+class BasePlayer(Ship, ThreadBase, MyTime):
     # ObjectToReach:  = {}
     # attack_now: dict = {}
 
@@ -17,6 +18,7 @@ class BasePlayer(Ship, ThreadBase):
         self.ship['id'] = dict_['id']
         self.ship['setPosition'] = [dict_['x'], dict_['y']]
         self.ship['team'] = -1
+        self.team = -1
         self.type = 2
         self.Location = getattr(self.Game, f'Location_{dict_["Location"]}')
         self.avatar = dict_['avatar']
@@ -29,10 +31,11 @@ class BasePlayer(Ship, ThreadBase):
         # self.state: float = dict_["state"]
         self.health = self.ship['health']
         self.SpaceObject = None
+        self.ObjectToReach = None
         self.energy = self.ship['energy']
         self.speed = self.ship['speed']
-        self.target_x: float = self.x
-        self.target_y: float = self.y
+        self.target_x = self.x
+        self.target_y = self.y
         self.object_to_reach_id: int = self.Location
         self.object_to_reach_type: int = 7 # getattr(Game, f"Location_{self.object_to_reach_id}").type
         self.PlayerRelation: int = dict_["PlayerRelation"]
@@ -46,6 +49,10 @@ class BasePlayer(Ship, ThreadBase):
         self.active_devices = dict_['active_devices']
         self.ship["login"] = self.login
         self.ship['race'] = self.race
+        self.hold = 0
+        self.OldTick = 0
+        self.OldTarget = False
+        # self.PacMan = PackagesManager(self.id, self.Game)
         self.sendInfoLocation()
         self.upgrade()
         # self.attacking = self.skills['attacking']
@@ -56,94 +63,106 @@ class BasePlayer(Ship, ThreadBase):
         # self.defending = self.skills['defending'] # ?
 
     def sendInfoLocation(self):
-        self.Location.set_player(self)
-
+        self.Location.EntryPlayer(self)
 
     def object_to_reach_system(self, type_, id_):
         self.object_to_reach_type = type_
         self.object_to_reach_id = id_
 
+    def add_item_inventory(self, ItemClass):
+        self.hold += ItemClass.allSize
+        self.inventory.append(ItemClass)
+
+    def remove_item_inventory(self, ItemClass):
+        self.hold -= ItemClass.size
+        self.inventory.remove(ItemClass)
+
     def upgrade(self):
         pass
-        # self.start_update("land_on_space_object", 1)
-        # self.start_update("_repair_health", 1)
-        # self.start_update("_recovery_energy", 1)
-        # self.start_update("_level_status", 1)
-        # self.start_update("_level_experience", 1)
+        # a = threading.Thread(target=self.move)
+        # a.start()
 
-    def move(self, x, y):
-        self.x = x
-        self.y = y
+    def leaveLocation(self):
+        print(self.SpaceObject)
+        self.x = self.SpaceObject.x
+        self.y = self.SpaceObject.y
+        self.SpaceObject = None
+        self.ObjectToReach = None
+        PacMan = PackagesManager(self.id, self.Game)
+        PacMan.shipsPosition()
+        PacMan.shipsState()
+        PacMan.ship()
+        PacMan.playerShip()
+        PacMan.locationSystem()
+
+    def target(self, x, y):
         self.target_x = x
         self.target_y = y
-        self.packages_move()
 
-    def packages_move(self):
-        pass
-        # PacMan = PackagesManager(self.id, self.Game)
-        # print(type(self.Game.id_to_conn[self.id]))
-        # self.Game.id_to_conn[self.id].send(PacMan.shipsPosition([{'id':self.id, 'x':self.x, 'y':self.y,
-        #                                                           "targetX":self.target_x, "targetY":self.target_y}]))
-        # self.Game.id_to_conn[self.id].send(PacMan.shipsState([{'id':self.id, 'speed':self.speed, 'health':self.health,
-        #                                                           "energy":self.energy, "PlayerRelation":self.PlayerRelation}]))
+    def WaitForCord(self, TimeSec):
+        time.sleep(TimeSec)
+        self.x = self.target_x
+        self.y = self.target_y
+        self.OldTarget = False
+        if self.ObjectToReach:
+            self.ObjectToReach.SetPlayer(self)
+            self.SpaceObject = self.ObjectToReach
+            self.ObjectToReach = False
 
-        # self.Game.id_to_conn[self.id].send(PacMan.shipsPosition([self.x, self.y]))
-        # self.Game.id_to_conn[self.id].send(PacMan.shipsState())
-        # self.Game.id_to_conn[self.id].send(PacMan.npcMessage())
+
+    def move(self, targetX, targetY, stop=False):
+        if stop:
+            self.del_update(self.WaitForCord)
+            self.OldTick = self.tick()
+            self.x += math.cos(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # x
+            self.y += math.sin(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # y
+            print(self.x, self.y)
+            self.target_x = self.x
+            self.target_y = self.y
+        elif self.OldTarget:
+            self.del_update(self.WaitForCord)
+            self.OldTick = self.tick()
+            self.x += math.cos(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # x
+            self.y += math.sin(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # y
+            print(self.x, self.y)
+            self.target_x = targetX
+            self.target_y = targetY
+            distance = self.distance(self.x - self.target_x, self.y - self.target_y)
+            TimeSecWait = distance / (2 * self.speed)
+            self.start_update(self.WaitForCord, TimeSecWait)
+        else:
+            self.OldTarget = True
+            self.target_x = targetX
+            self.target_y = targetY
+            distance = self.distance(self.x - self.target_x, self.y - self.target_y)
+            TimeSecWait = distance / (2 * self.speed)
+            self.start_update(self.WaitForCord, TimeSecWait)
+
+            self.tick()
 
     def attack(self):
         self.attack_now = True
 
     def set_object_to_reach(self, data):
-        PacMan = PackagesManager(self.id, self.Game)
         match data['type']:
             case 1:
                 self.ObjectToReach = getattr(self.Location, f'Planet_{data["id"]}')
-                time.sleep(1)
-                # if self.x == self.ObjectToReach.x and self.y == self.ObjectToReach.y:
-                self.SpaceObject = self.ObjectToReach
-                PacMan.locationPlanet()
+                self.move(self.ObjectToReach.x, self.ObjectToReach.y)
             case 5:
                 data['id'] = -1 * data['id']
                 match data['id']:
                     case 1:
-
-                        # self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
                         self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
-                        time.sleep(1)
-                        self.ObjectToReach.set_player(self)
-                        # self.SpaceObject = self.ObjectToReach
-                        PacMan.locationBattle()
-                        PacMan.asteroids()
-                        # self.ObjectToReach.set_player(self)
-                        # self.SpaceObject = self.ObjectToReach
-                        # self.Location = self.SpaceObject
-                        # PacMan.locationSystem()
+                        self.move(self.ObjectToReach.x, self.ObjectToReach.y)
                     case 2:
                         self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
-                        time.sleep(1)
-                        self.SpaceObject = self.ObjectToReach
-                        PacMan.locationPlanet()
-                    case 3:
-                        self.ObjectToReach = getattr(getattr(self.Game, f"Location_{self.Location}"),
-                                                       f'StaticSpaceObject_{data["id"]}')
-                        time.sleep(1)
-                        self.SpaceObject = self.ObjectToReach
-                        # PacMan.asteroids()
+                        self.move(self.ObjectToReach.x, self.ObjectToReach.y)
                     case 4:
-                        self.ObjectToReach = getattr(getattr(self.Game, f"Location_{self.Location}"), f'StaticSpaceObject_{data["id"]}')
-                        time.sleep(1)
-                        # if self.x == self.ObjectToReach.x and self.y == self.ObjectToReach.y:
-                        self.SpaceObject = self.ObjectToReach
-                        # PacMan.locationPlanet()
+                        self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
+                        self.move(self.ObjectToReach.x, self.ObjectToReach.y)
                     case 5:
-                        self.ObjectToReach = getattr(getattr(self.Game, f"Location_{self.Location}"), f'StaticSpaceObject_{data["id"]}')
-                        time.sleep(1)
-                        # if self.x == self.ObjectToReach.x and self.y == self.ObjectToReach.y:
-                        self.SpaceObject = self.ObjectToReach
-                        # PacMan.locationPlanet()
-
-
+                        self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
+                        self.move(self.ObjectToReach.x, self.ObjectToReach.y)
 
     def dead(self):
         self.get_drop() # send req

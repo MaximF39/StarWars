@@ -1,7 +1,9 @@
+import math
+
 from ..SpaceObjects.Item import Item
 from ..Packages.PackagesManager import PackagesManager
 from . import BasePlayer
-from ..MyUtils.ThreadBase import ThreadBase
+from ..Utils.ThreadBase import ThreadBase
 from ..cfg.cfg_level import cfg_level
 from ..cfg.cfg_status import cfg_status
 import json
@@ -36,21 +38,10 @@ class Player(BasePlayer, ThreadBase):
         self.forNextLevel = int(cfg_level[self.level + 1])
         self.expForFirstSkillLevel= self._get_exp_for_next_status()
         self.droid = []
-        self.send_info_location()
-
-    def upgrade(self):
-        self.start_timer_update(self.synchron_coord_on_space_object, 1)
-    #     self.start_update('sendPackagesUpdate', 1)
-    #
-    #
-    # @ThreadBase.end_thread
-    # def sendPackagesUpdate(self):
-    #     if not self.on_planet:
-    #         PacMan = PackagesManager(self.id, self.Game)
-    #         PacMan.locationSystem()
-
-    def send_info_location(self):
-        self.Location.set_player(self)
+        print('sspeed', self.speed)
+        print('sspeed2', self.ship['speed'])
+        print('classNumber', self.classNumber)
+        print('classNumber2', self.ship['classNumber'])
 
     def commitSkills(self, dict_:dict): # name : append count
         for k, v in dict_.items():
@@ -70,12 +61,26 @@ class Player(BasePlayer, ThreadBase):
             if item.guid == data['guid']:
                 item.buy(self, data['count'])
 
+    def OpenShop(self, data):
+        PacMan = PackagesManager(self.id, self.Game)
+        match data['type']:  # 1001 + race = shipShops
+            case 10004:
+                PacMan.repository()
+            case 10005:
+                PacMan.playerAngar()
+            case 10009:
+                PacMan.clanrepository()
+            case 10002:
+                PacMan.tradingShips()
+            case _:
+                PacMan.tradingItems()
+
     def buyItemByBonuses(self, dict_):
-        item = Item(self.Game, dict_["classNumber"], self)
-        bonus = item.cost // 1000
+        Item_ = Item(self.Game, dict_["classNumber"], self)
+        bonus = Item_.cost // 1000
         if self.bonus - bonus > 0:
             self.bonus -= bonus
-            self.inventory.append(item)
+            self.add_item_inventory(Item_)
 
     def repair(self):
         self.health = self.ship['maxHealth']
@@ -86,10 +91,22 @@ class Player(BasePlayer, ThreadBase):
             self.y = self.SpaceObject.y
 
     def hyperJump(self, id_location):
-        self.Location.remove_player(self)
-        self.Location = getattr(self.Game, f'Location_{id_location}')
-        self.Location.set_player(self)
-        PackagesManager(self.id, self.Game).locationSystem()
+        radius = 400 * len(self.Location.planets)
+        NextLocation = getattr(self.Game, f'Location_{id_location}')
+        self.ObjectToReach = NextLocation
+        tan = math.atan2(NextLocation.y - self.Location.y, NextLocation.x - self.Location.x)
+        x = radius * math.cos(tan)
+        y = radius * math.sin(tan)
+        self.move(x, y)
+
+    def get_credits(self, count):
+        self.cash += count
+        # self.PacMan.
+
+    def send_credits(self, count):
+        if self.cash >= count:
+            self.cash -= count
+            # self.PacMan.tradingCash()
 
     def restoreEnergy(self):
         self.energy = self.ship['maxEnergy']

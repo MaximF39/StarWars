@@ -1,6 +1,6 @@
 import json
 
-from python.MyUtils.DotMap import DotMap
+from python.Utils.DotMap import DotMap
 from python.DataBase.SQL_Table import PlayerDB
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -61,17 +61,6 @@ class PackagesEntry:
             }))
         return data
 
-    @property
-    def logged(self):
-        from ..cfg.cfg_const import cfg_const
-        res = DotMap({
-            'stateLoop': cfg_const['stateLoop'],
-            'bankSendOperationFee': cfg_const['bankSendOperationFee'],
-            'clanJoinCost': cfg_const['clanJoinCost'],
-            'clanCreateLevelNeed': cfg_const['clanCreateLevelNeed'],
-            'bonuses': cfg_const['bonuses']
-        })
-        return res
 
     @property
     def create_pilot(self):
@@ -114,121 +103,4 @@ class PackagesEntry:
             "inventory": eval(Player.inventory),
             }
 
-    @property
-    def active_device(self):
-        player = getattr(self.Game, f"Player_{self.id}")
-        return player.active_devices
 
-    @property
-    def location_system(self):
-        Location = getattr(self.Game, f"Player_{self.id}").Location
-        location = [Location.id, Location.x, Location.y, Location.sector]
-        players = []
-        for player_ in Location.players:
-            players.append(DotMap({
-                "player": DotMap({
-                    "level": player_.level,
-                    "avatar": player_.avatar,
-                    "aliance": player_.aliance,
-                    "status": player_.status,
-                    "clanId": player_.clanId,
-                }),
-                "race": player_.race,
-                "id": player_.id,
-                "Name": player_.login,
-
-                "size": player_.ship["size"],
-                "set_x": player_.x,
-                "set_y": player_.y,
-                "maxHealth": player_.ship["maxHealth"],
-                "maxEnergy": player_.ship["maxEnergy"],
-                "maxSpeed": player_.ship["maxSpeed"],
-                "mov_x": player_.mov_x,
-                "mov_y": player_.mov_y,
-                "droid": player_.droid,
-            }))
-        planets = []
-        for planet in Location.planets:
-            planets.append(DotMap({
-                "PlanetClass": planet.classNumber,
-                "id": planet.id,
-                "race": planet.race,
-                "radius": planet.radius,
-                "size": planet.size,
-                "angle": planet.angle,
-                "landable": planet.landable,
-                "aliance": planet.aliance,
-                "clanId": planet.clanId,
-            }))
-        static_space_objects = []
-        for static_space_object in Location.StaticSpaceObjects:
-            static_space_objects.append(DotMap(({
-                "StaticSpaceObjectType": static_space_object.StaticSpaceObjectType,
-                "id": static_space_object.id,
-                "x": static_space_object.x,
-                "y": static_space_object.y,
-                "landable": static_space_object.landable,
-            })))
-        return [location, players, planets, static_space_objects]
-
-    @property
-    def player_ship(self):
-        ship = getattr(self.Game, f"Player_{self.id}").ship
-        return DotMap({
-            'id': ship['id'],
-            'login': ship['login'],
-            'race': ship['race'],
-            'size': ship['size'],
-            'energy': ship["energy"],
-            'maxEnergy': ship["maxEnergy"],
-            'setPosition': ship["setPosition"],
-            'team': ship["team"],
-            'maxSpeed': ship["maxSpeed"],
-            'weaponSlots': ship["weaponSlots"],
-            'deviceSlots': ship["deviceSlots"],
-            'maxHealth': ship["maxHealth"],
-            'radarRadius': ship["radar"],
-            'cpu': ship["cpu"],
-        })
-
-    @property
-    def player(self):
-        player = getattr(self.Game, f"Player_{self.id}")
-        return DotMap({
-            "id": player.id,
-            "login": player.login,
-            "level": player.level,
-            "cash": player.cash,
-            "race": player.race,
-            "avatar": player.avatar,
-            "aliance": player.aliance,
-            "clanId": player.clanId,
-            "role": player.role,
-            "clanRequestStatus": player.clanRequestStatus,
-            "clanJoinRequestStatus": player.clanJoinRequestStatus,
-            "PlayerRelation": player.PlayerRelation,
-        })
-
-    @property
-    def active_weapon(self):
-        player = getattr(self.Game, f"Player_{self.id}")
-        return player.active_weapons
-
-    @property
-    def logged2(self):
-        player_ = getattr(self.Game, f"Player_{self.id}")
-        return DotMap({
-            'id': player_.id,
-            'name': player_.login,
-            'shipClass': player_.ship['classNumber'],
-            'shipCPU': player_.ship["cpu"],
-            'race': player_.race,
-            'aliance': player_.aliance,
-            'status': player_.status,
-            'level': player_.level,
-            'clanId': player_.clanId,
-            'deleteEnqueued': player_.deleteEnqueued,
-            'canDelete': player_.canDelete,
-            'logged': player_.logged,
-            'skills': player_.skills
-        })

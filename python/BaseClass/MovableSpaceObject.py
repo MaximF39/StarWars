@@ -1,5 +1,4 @@
 from . import SpaceObject
-from . import cfg_update
 
 
 class MovableSpaceObject(SpaceObject):

@@ -1,4 +1,5 @@
-from . import MovableSpaceObject, parse_xml
+from . import MovableSpaceObject
+from ..Static.ParseXml import parse_xml
 
 
 class Ship(MovableSpaceObject):
@@ -40,3 +41,4 @@ class Ship(MovableSpaceObject):
                 self.ship["health"] = self.ship["maxHealth"]
                 self.ship["energy"] = self.ship["maxEnergy"]
                 self.ship["speed"] = self.ship["maxSpeed"]
+                self.ship['cpuUsed'] = 0

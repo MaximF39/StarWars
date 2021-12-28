@@ -55,16 +55,16 @@ def listToString(list_):
 
 player = PlayerDB(
     id=255,
-    login="Max4",
+    login="Admin",
     auth_key="my_authkey",
     passwd='passwd',
     # clan_id=
-    credit=500000,
-    bonus=500,
+    credit=5000000,
+    bonus=5000,
     # SpaceObject=
     Location=7,
-    level=25,
-    experience=46877,
+    level=50,
+    experience=468770,
     status=1,
     angar="[]",
     repository="[]",
@@ -76,19 +76,19 @@ player = PlayerDB(
     aliance=3,
     rating=50000,
     # role=
-    ship_class=6203,
-    skills=str({'Control': 0, 'Defending': 0, 'EnergyWeapons': 0, 'KineticWeapons': 0, 'Mining': 0, 'Piloting': 3, 'Repairing': 6, 'RocketWeapons': 0, 'Trading': 0, 'Attacking': 0, 'Tactics': 0, 'Targeting': 0, 'Electronics': 0, 'Biocemistry': 0, 'Mechanics': 8, 'Cybernetics': 8}),
+    ship_class=5999,
+    skills=str({'Control': 12, 'Defending': 12, 'EnergyWeapons': 12, 'KineticWeapons': 12, 'Mining': 12, 'Piloting': 12, 'Repairing': 12, 'RocketWeapons': 12, 'Trading': 12, 'Attacking': 12, 'Tactics': 12, 'Targeting': 12, 'Electronics': 12, 'Biocemistry': 12, 'Mechanics': 12, 'Cybernetics': 12}),
     free_skills=60,
     # expSkillGrowCoef=
     # expSkillReduserCoef=
     point = 6000,
-    x=1308,
-    y=869,
+    x=0,
+    y=0,
     # deleteEnqueued=
     # canDelete=
     # logged=
-    active_weapons=str({'data': [{'classfloat': 61, 'index': 0}]}),
-    active_devices=str({'data': [{'id': 122, 'guid': bytearray(b'P:\x1e+{mcN\x82j\x0cK\x7f4&\xd2'), 'reloadedTime': 0.0}, {'id': 122, 'guid': bytearray(b'5\xc6\xf5-\x84\xc5\xecH\xba\xd0\x89\xd1\tq\x1a\x1e'), 'reloadedTime': 0.0}, {'id': 122, 'guid': bytearray(b'\x84\xea\xc8\x87\xc4\xc8;E\x8f\x04@\xf7\xc5J\x86h'), 'reloadedTime': 0.0}, {'id': 122, 'guid': bytearray(b'@\x9a\x1f\x95\xb3\x13\xf5J\xbba\xe0\x03\x14<\x80b'), 'reloadedTime': 0.0}, {'id': 124, 'guid': bytearray(b',g\xc3\xe0\x16s\xc7M\x99\xdd\xa37\x8a\xa1\x85L'), 'reloadedTime': 0.0}]}),
+    active_weapons=str({'data': []}),
+    active_devices=str({'data': []}),
 )
 s.add(player)
 s.commit()

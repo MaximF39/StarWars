@@ -18,12 +18,14 @@ class StaticSpaceObject(SpaceObject):
         self.aliance = 2
         self.clanId = 2
         self.angle = float('inf')
+        self.players = []
         self.QCount = 2
         self.shops = data['shops']
         self.send_info_location()
 
     def send_info_location(self):
         self.Location.set_static_space_object(self)
+
 
 
 

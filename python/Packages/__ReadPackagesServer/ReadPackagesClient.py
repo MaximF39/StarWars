@@ -1,4 +1,4 @@
-from ...MyUtils.DotMap import DotMap
+from ...Utils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
 
 

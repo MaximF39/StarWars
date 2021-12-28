@@ -1,5 +1,6 @@
 from ...BaseClass.StaticSpaceObject import StaticSpaceObject
 import random
+from ...Packages.PackagesManager import PackagesManager
 
 class AsteroidsBelt(StaticSpaceObject):
     id: int
@@ -14,8 +15,6 @@ class AsteroidsBelt(StaticSpaceObject):
         self.id_location = data['id_location']
         self.sector = 1
         self.players = []
-        self.planets = []
-        self.StaticSpaceObjects = []
         self.create_asteroid()
 
     def set_player(self, PlayerClass):
@@ -24,8 +23,10 @@ class AsteroidsBelt(StaticSpaceObject):
     def create_asteroid(self):
         for i in range(60):
             self.asteroid_id += 1
-            x = random.choice([-1, 1]) * random.randint(-3000, 3000)
-            y = random.choice([-1, 1]) * random.randint(-3000, 3000)
+            # x = random.choice([-1, 1]) * random.randint(0, 3000)
+            # y = random.choice([-1, 1]) * random.randint(0, 3000)
+            x = 3000
+            y = 3000
             targetX = random.random() * -x
             targetY = random.random() * -y
             size = random.randint(600, 2600)
@@ -40,6 +41,13 @@ class AsteroidsBelt(StaticSpaceObject):
             "speed": speed,
             }
             self.asteroids.append(asteroid)
+
+    def SetPlayer(self, PlayerClass):
+        self.players.append(PlayerClass)
+        PlayerClass.SpaceObject = self
+        PacMan = PackagesManager(PlayerClass.id, self.Game)
+        PacMan.locationBattle()
+        PacMan.asteroids()
 
     # def update(self):
     #     for id_asteroid in range(self.cnt_asteroid):
