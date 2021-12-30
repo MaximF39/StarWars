@@ -50,17 +50,25 @@ class Planet(SpaceObject, ThreadBase):
 
         self.send_info_location()
 
+
     def SetPlayer(self, PlayerClass):
         self.players.append(PlayerClass)
         PlayerClass.SpaceObject = self
         PacMan = PackagesManager(PlayerClass.id, self.Game)
         PacMan.locationPlanet()
 
-    def OpenShopForPlayer(self, PlayerClass):
+    def ShowForPlayer(self, PlayerClass):
         ItemsForPlayer = []
         for Item_ in self.inventory:
-            ItemsForPlayer.append(Item_.SeeForPlayer(PlayerClass))
+            ItemsForPlayer.append(Item_.FakeItem(PlayerClass))
         return ItemsForPlayer
+
+    def ShowShopItems(self, PlayerClass):
+        PacMan = PackagesManager(PlayerClass.id, self.Game)
+        ItemsForPlayer = []
+        for Item_ in self.inventory:
+            ItemsForPlayer.append(Item_.FakeItem(PlayerClass))
+        PacMan.tradingItems()
 
     def send_info_location(self):
         self.LocationClass.set_planet(self)

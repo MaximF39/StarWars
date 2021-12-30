@@ -1,24 +1,23 @@
-import time
-from datetime import datetime
+import copy
+from time import sleep
+import multiprocessing
+import threading
 
-class MyTime:
-    LastTime: float
-    Milliseconds: float
-    FPS = 60
+class e:
 
-    def __init__(self):
-        self.LastTime = self.Hash()
+    def __init__(self, text):
+        self.text = text
+        self.t()
 
-    def tick(self):
-        OldLastTime = self.LastTime
-        self.LastTime = self.Hash()
-        return ((self.LastTime - OldLastTime) / 10000000) * self.FPS
+    def t(self):
+        print(self.text)
 
-    def Hash(self) -> float:
-        return (datetime.now() - datetime(1, 1, 1)).total_seconds() * 10000000
-e = MyTime()
+s = e('hello')
 
-print(e.tick())
-time.sleep(1)
-print(e.tick())
-print(e.tick())
+g = copy.deepcopy(s)
+
+g.text = 'bad'
+g.t()
+
+s.t()
+

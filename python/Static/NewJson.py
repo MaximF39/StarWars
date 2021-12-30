@@ -69,4 +69,21 @@ def new_galaxy(file_name):
     with open(_get_path_json(file_name), 'w', encoding='utf-8-sig') as f:
         json.dump(res, f)
 
-print(new_galaxy("GalaxyMap"))
+
+def new_items():
+    guid_parse2 = {'AmmoParameters':1, "DeviceParameters":2, "DroidParameters":3,
+              "EngineParameters":6, "ShipParameters":5, "WeaponParameters":4, "ResourseParameters":1}
+    for key, value in guid_parse2.items():
+        with open(_get_path_json(key), 'r', encoding='utf-8-sig') as f:
+            res = json.loads(f.read())
+            for i in res:
+                i['Types'] = value
+                i['wear'] = 1
+                i['level'] = 0
+
+        with open(_get_path_json(key), 'w', encoding='utf-8-sig') as f:
+            json.dump(res, f)
+
+new_items()
+
+# print(new_galaxy("GalaxyMap"))

@@ -43,6 +43,7 @@ class Player(BasePlayer, ThreadBase):
         print('classNumber', self.classNumber)
         print('classNumber2', self.ship['classNumber'])
 
+
     def commitSkills(self, dict_:dict): # name : append count
         for k, v in dict_.items():
             if self.freeSkills - v >= 0 and self.skills[k] + v < 13:
@@ -62,18 +63,17 @@ class Player(BasePlayer, ThreadBase):
                 item.buy(self, data['count'])
 
     def OpenShop(self, data):
-        PacMan = PackagesManager(self.id, self.Game)
         match data['type']:  # 1001 + race = shipShops
             case 10004:
-                PacMan.repository()
+                self.SpaceObject.repository(self)
             case 10005:
-                PacMan.playerAngar()
+                self.SpaceObject.playerAngar(self)
             case 10009:
-                PacMan.clanrepository()
+                self.SpaceObject.clanrepository(self)
             case 10002:
-                PacMan.tradingShips()
+                self.SpaceObject.ShowShopShip(self)
             case _:
-                PacMan.tradingItems()
+                self.SpaceObject.ShowShopItems(self)
 
     def buyItemByBonuses(self, dict_):
         Item_ = Item(self.Game, dict_["classNumber"], self)

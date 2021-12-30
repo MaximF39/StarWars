@@ -529,7 +529,7 @@ class PackagesManager:
 
         data = self.Player.SpaceObject.ships
 
-        creator.write_int(10002)#ship.id)  # id
+        creator.write_int(5999)#ship.id)  # id
         creator.write_int(100000)#ship.cost)  # ship cost
         creator.write_float(2.0) #ship.buy_coef)  # buyCoeficient
         creator.write_float(1.0) #ship.sell_coef)  # sellCoeficient
@@ -537,7 +537,7 @@ class PackagesManager:
         creator.write_int(len(data))
         print(len(data))
         for _loc6_ in data:
-            creator.write_unsigned_byte(22) #_loc6_.ship["id"]
+            creator.write_unsigned_byte(5999) #_loc6_.ship["id"]
             creator.write_short(_loc6_.ship["classNumber"])
             creator.write_int(_loc6_.ship["cost"])
             creator.write_short(_loc6_.ship["size"])
@@ -581,10 +581,12 @@ class PackagesManager:
         creator.write_int(Planet.id)  # id
         creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_sell)  # sellCoeficient
         creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_buy)  # buyCoeficient
-        items = Player.inventory
-        self._write_items(creator, items, True, True, True, True)
-        items = Planet.OpenShopForPlayer(self.Player)
-        self._write_items(creator, items, True, True, True, True)
+
+        PlayerItems = self.Player.inventory
+        self._write_items(creator, PlayerItems, True, True, True, True)
+
+        PlanetItems = self.Player.SpaceObject.ShowForPlayer(self.Player)
+        self._write_items(creator, PlanetItems, True, True, True, True)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def resourceUpdate(self):
@@ -616,7 +618,6 @@ class PackagesManager:
             if param5:
                 creator.write_int(12)  # random don't use
             if param3:
-                item.satisfying = False
                 creator.write_bool(item.satisfying)
 
     def shipsPosition(self):
@@ -670,13 +671,11 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.REPOSITORY))
 
-        data = getattr(self.Game, f'Player_{self.id}').repository
-        data = [DotMap({"classNumber":1, "guid":bytearray(16), "wear":1, "level":3})]
+        data = self.Player.repository
         self._write_items(creator, data, False, False)
 
-
         creator.write_float(1.0)  # costCoef _loc4_.costCoef
-        creator.write_int(1)
+        creator.write_int(len(data))
         for i in data:
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.classNumber)
@@ -803,7 +802,7 @@ class PackagesManager:
         creator.write_short(player.hold) # Трюм
         creator.write_short(player.ship['cpu'])
         creator.write_short(player.ship['cpuUsed']) # ship.cpuUsed
-        creator.write_unsigned_byte(200) # player.ship['level']
+        creator.write_unsigned_byte(player.ship['level'])
         creator.write_unsigned_byte(3) # ship.maxDroids
 
         # for i in data: # Какие-то дополнительные предметы
@@ -811,26 +810,25 @@ class PackagesManager:
         #     creator.write_short(_loc2_.ItemClass)
         #     creator.write_bytes(_loc2_.id)
         self.Game.id_to_conn[self.id].send(creator.get_package())
-        self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def player(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.PLAYER
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.PLAYER))
-        Player = PackagesEntry(self.Game, self.id).player
-        creator.write_int(Player.id)
-        creator.write_utf(Player.login)
-        creator.write_int(Player.level)
-        creator.write_int(Player.cash)
-        creator.write_unsigned_byte(Player.race)
-        creator.write_int(Player.avatar)
-        creator.write_unsigned_byte(Player.aliance)
-        creator.write_int(Player.clanId)
-        creator.write_int(Player.role)
-        creator.write_unsigned_byte(Player.clanRequestStatus)
-        creator.write_unsigned_byte(Player.clanJoinRequestStatus)
-        creator.write_int(Player.PlayerRelation)
+
+        creator.write_int(self.Player.id)
+        creator.write_utf(self.Player.login)
+        creator.write_int(self.Player.level)
+        creator.write_int(self.Player.cash)
+        creator.write_unsigned_byte(self.Player.race)
+        creator.write_int(self.Player.avatar)
+        creator.write_unsigned_byte(self.Player.aliance)
+        creator.write_int(self.Player.clanId)
+        creator.write_int(self.Player.role)
+        creator.write_unsigned_byte(self.Player.clanRequestStatus)
+        creator.write_unsigned_byte(self.Player.clanJoinRequestStatus)
+        creator.write_int(self.Player.PlayerRelation)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     #     #
@@ -956,6 +954,7 @@ class PackagesManager:
         creator.write_float(self.Player.x)
         creator.write_float(self.Player.y)
         creator.write_int(self.Player.team)
+        print('maxSpeed 958', self.Player.maxSpeed)
         creator.write_unsigned_byte(self.Player.maxSpeed)
         creator.write_unsigned_byte(self.Player.ship['weaponSlots'])
         creator.write_unsigned_byte(self.Player.ship['deviceSlots'])
@@ -1382,7 +1381,6 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.LOCATION_SYSTEM
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.LOCATION_SYSTEM))
-        print('Player', self.Player.x, self.Player.y)
         Location = self.Player.Location
         creator.write_int(Location.id) # id
         creator.write_float(Location.x)  # Location.x
@@ -1400,6 +1398,7 @@ class PackagesManager:
             creator.write_short(Player.maxHealth)
             creator.write_short(Player.maxEnergy)
             creator.write_int(Player.avatar)
+            print('maxSpeed 1404', Player.maxSpeed)
             creator.write_unsigned_byte(int(Player.maxSpeed))
             creator.write_float(Player.target_x)
             creator.write_float(Player.target_y)  # setMovePoint
@@ -1826,31 +1825,29 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def logged(self):
+        from ..cfg.cfg_const import cfg_const
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.LOGGED
-        PacStr = ServerRequestStr()
-        print('Пакет отправлен', PacStr.get_str(ServerRequest.LOGGED))
-        logged = PackagesEntry(self.Game, self.id).logged
-        creator.write_int(logged.stateLoop)
-        creator.write_unsigned_byte(logged.bankSendOperationFee)
-        creator.write_int(logged.clanJoinCost)
-        creator.write_unsigned_byte(logged.clanCreateLevelNeed)
-        creator.write_int(logged.bonuses)
-        # while True:
-        logged2 = PackagesEntry(self.Game, self.id).logged2
-        creator.write_int(logged2.id)
-        creator.write_utf(logged2.name)
-        creator.write_short(logged2.shipClass)
-        creator.write_short(logged2.shipCPU)
-        creator.write_unsigned_byte(logged2.race)
-        creator.write_unsigned_byte(logged2.aliance)
-        creator.write_unsigned_byte(logged2.status)
-        creator.write_unsigned_byte(logged2.level)
-        creator.write_int(logged2.clanId)
-        creator.write_bool(logged2.deleteEnqueued)
-        creator.write_bool(logged2.canDelete)
-        creator.write_bool(logged2.logged) # Отвечает за вход
-        self.write_skills(creator, logged2.skills)
+
+        creator.write_int(cfg_const['stateLoop'])
+        creator.write_unsigned_byte(cfg_const['bankSendOperationFee'])
+        creator.write_int(cfg_const['clanJoinCost'])
+        creator.write_unsigned_byte(cfg_const['clanCreateLevelNeed'])
+        creator.write_int(cfg_const['bonuses'])
+
+        creator.write_int(self.Player.id)
+        creator.write_utf(self.Player.login)
+        creator.write_short(self.Player.classNumber)  #
+        creator.write_short(self.Player.ship['cpu'])
+        creator.write_unsigned_byte(self.Player.race)
+        creator.write_unsigned_byte(self.Player.aliance)
+        creator.write_unsigned_byte(self.Player.status)
+        creator.write_unsigned_byte(self.Player.level)
+        creator.write_int(self.Player.clanId)
+        creator.write_bool(self.Player.deleteEnqueued)
+        creator.write_bool(self.Player.canDelete)
+        creator.write_bool(True)  # Отвечает за вход
+        self.write_skills(creator, self.Player.skills)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerInfo(self):
@@ -1870,6 +1867,7 @@ class PackagesManager:
             'clanPoints': 10,
             'role': 10
         })
+        print('PLAYER INFO STATIC SEND')
         creator.write_int(_loc2_.id)
         creator.write_utf(_loc2_.name)
         creator.write_unsigned_byte(_loc2_.level)

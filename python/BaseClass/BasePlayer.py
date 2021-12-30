@@ -99,8 +99,7 @@ class BasePlayer(Ship, ThreadBase, MyTime):
         self.target_x = x
         self.target_y = y
 
-    def WaitForCord(self, TimeSec):
-        time.sleep(TimeSec)
+    def WaitForCord(self):
         self.x = self.target_x
         self.y = self.target_y
         self.OldTarget = False
@@ -112,33 +111,33 @@ class BasePlayer(Ship, ThreadBase, MyTime):
 
     def move(self, targetX, targetY, stop=False):
         if stop:
-            self.del_update(self.WaitForCord)
-            self.OldTick = self.tick()
-            self.x += math.cos(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # x
-            self.y += math.sin(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # y
-            print(self.x, self.y)
-            self.target_x = self.x
-            self.target_y = self.y
+            if self.OldTarget:
+                self.del_thread_timer(self.WaitForCord)
+                self.OldTick = self.tick()
+                self.x += math.cos(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # x
+                self.y += math.sin(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # y
+                self.target_x = self.x
+                self.target_y = self.y
+                self.OldTarget = False
         elif self.OldTarget:
-            self.del_update(self.WaitForCord)
+            self.del_thread_timer(self.WaitForCord)
             self.OldTick = self.tick()
             self.x += math.cos(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # x
             self.y += math.sin(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # y
-            print(self.x, self.y)
             self.target_x = targetX
             self.target_y = targetY
             distance = self.distance(self.x - self.target_x, self.y - self.target_y)
-            TimeSecWait = distance / (2 * self.speed)
-            self.start_update(self.WaitForCord, TimeSecWait)
+            TimeSecWait = distance / self.speed
+            self.start_timer_update(self.WaitForCord, TimeSecWait)
         else:
             self.OldTarget = True
             self.target_x = targetX
             self.target_y = targetY
             distance = self.distance(self.x - self.target_x, self.y - self.target_y)
-            TimeSecWait = distance / (2 * self.speed)
-            self.start_update(self.WaitForCord, TimeSecWait)
-
+            TimeSecWait = distance / self.speed
+            self.start_timer_update(self.WaitForCord, TimeSecWait)
             self.tick()
+
 
     def attack(self):
         self.attack_now = True

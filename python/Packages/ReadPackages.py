@@ -11,7 +11,7 @@ class ReadPackages:
         os.chdir(path)
 
         logger.add(f'Player_{self.id}.log',format="{time:YYYY-MM-DD HH:mm:ss.SSS}, {level}, {message}",
-                   rotation="512 KB",
+                   rotation="5 MB",
                    compression='zip', encoding='cp1251') #
 
     def __init__(self, Game, id_, command_type, data):
@@ -370,12 +370,7 @@ class ReadPackages:
         data = {
         'guid':_loc2_.read_bytes(16),
         'count':_loc2_.read_int(),}
-        PacMan = PackagesManager(self.id, self.Game)
-        Player = getattr(self.Game, f'Player_{self.id}')
-        Player.buyItem(data)
-        PacMan.tradingItems()
-        # PacMan.inventory()
-        PacMan.updateValue(9, Player.cash)
+        self.Player.buyItem(data)
         logger.info(f'buyItem {data}')
 
     def sellItem(self, data) -> None:
@@ -386,10 +381,6 @@ class ReadPackages:
         'count':_loc2_.read_int(),}
         Player = getattr(self.Game, f'Player_{self.id}')
         Player.sellItem(data)
-        PacMan = PackagesManager(self.id, self.Game)
-        PacMan.tradingItems()
-        # PacMan.inventory()
-        PacMan.updateValue(9, Player.cash)
         logger.info(f'sellItem {data}')
 
     def updateresource(self, data) -> None:
@@ -430,12 +421,7 @@ class ReadPackages:
         _loc2_.data = data
         data = {
         "type": _loc2_.read_int()}
-        PacMan = PackagesManager(self.id, self.Game)
         self.Player.OpenShop(data)
-
-
-
-        # PackagesManager(self.id, self.Game).clanId()
         logger.info(f'openShop {data}')
 
     def inventory(self, data) -> None:

@@ -11,7 +11,7 @@ class MyTime:
     def tick(self):
         OldLastTime = self.LastTime
         self.LastTime = self.Hash()
-        return ((self.LastTime - OldLastTime) / 10000000) * (2 * self.speed)
+        return ((self.LastTime - OldLastTime) / 10000000) * self.speed
 
     def Hash(self) -> float:
         return (datetime.now() - datetime(1, 1, 1)).total_seconds() * 10000000

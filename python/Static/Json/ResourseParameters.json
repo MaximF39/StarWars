@@ -8,7 +8,7 @@
     "satisfying": false,
     "size": 0.150000006,
     "cost": 3,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 49,
@@ -19,7 +19,7 @@
     "satisfying": false,
     "size": 0.180000007,
     "cost": 1,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 54,
@@ -30,7 +30,7 @@
     "satisfying": false,
     "size": 0.100000001,
     "cost": 10,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 53,
@@ -41,7 +41,7 @@
     "satisfying": false,
     "size": 0.170000002,
     "cost": 3,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 52,
@@ -52,7 +52,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 5,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 51,
@@ -63,7 +63,7 @@
     "satisfying": false,
     "size": 0.100000001,
     "cost": 2,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 56,
@@ -74,7 +74,7 @@
     "satisfying": false,
     "size": 0.100000001,
     "cost": 12,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 55,
@@ -85,7 +85,7 @@
     "satisfying": false,
     "size": 0.100000001,
     "cost": 5,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 102,
@@ -96,7 +96,7 @@
     "satisfying": false,
     "size": 0.150000006,
     "cost": 25,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 115,
@@ -107,7 +107,7 @@
     "satisfying": false,
     "size": 0.300000012,
     "cost": 1,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 116,
@@ -118,7 +118,7 @@
     "satisfying": false,
     "size": 0.270000011,
     "cost": 1,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 117,
@@ -129,7 +129,7 @@
     "satisfying": false,
     "size": 0.280000001,
     "cost": 1,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 118,
@@ -140,7 +140,7 @@
     "satisfying": false,
     "size": 0.300000012,
     "cost": 1,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 119,
@@ -151,7 +151,7 @@
     "satisfying": false,
     "size": 0.330000013,
     "cost": 1,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 120,
@@ -162,7 +162,7 @@
     "satisfying": false,
     "size": 0.170000002,
     "cost": 1,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 121,
@@ -173,7 +173,7 @@
     "satisfying": false,
     "size": 0.200000003,
     "cost": 1,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 131,
@@ -184,7 +184,7 @@
     "satisfying": false,
     "size": 0.0299999993,
     "cost": 5,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 132,
@@ -195,7 +195,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 6,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 136,
@@ -206,7 +206,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 3,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 133,
@@ -217,7 +217,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 40000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 135,
@@ -228,7 +228,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 60000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 134,
@@ -239,7 +239,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 60000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 162,
@@ -250,7 +250,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 100000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 164,
@@ -261,7 +261,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 120000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 163,
@@ -272,7 +272,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 120000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 165,
@@ -283,7 +283,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 140000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 167,
@@ -294,7 +294,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 200000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 166,
@@ -305,7 +305,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 200000,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 137,
@@ -316,7 +316,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 30,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 138,
@@ -327,7 +327,7 @@
     "satisfying": false,
     "size": 0.0500000007,
     "cost": 100,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 143,
@@ -338,7 +338,7 @@
     "satisfying": false,
     "size": 0.200000003,
     "cost": 38,
-    "Types": 0
+    "Types": 1
   },
   {
     "classNumber": 148,
@@ -349,6 +349,6 @@
     "satisfying": false,
     "size": 5,
     "cost": 60000,
-    "Types": 0
+    "Types": 1
   }
 ]
