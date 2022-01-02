@@ -487,19 +487,17 @@ class PackagesManager:
 
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
-    #     #
     def activeWeapons(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.ACTIVE_WEPONS
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.ACTIVE_WEPONS))
-        player = getattr(self.Game, f"Player_{self.id}")
-        data_active_weapons = player.active_weapons
+
+        data_active_weapons = self.Player.active_weapons
         creator.write_unsigned_byte(len(data_active_weapons))
-        for i in data_active_weapons:
-            _loc2_ = i
-            creator.write_short(_loc2_['classfloat'])
-            creator.write_unsigned_byte(_loc2_["index"])
+        for active_weapons in data_active_weapons:
+            creator.write_short(active_weapons['classfloat'])
+            creator.write_unsigned_byte(active_weapons["index"])
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     #     #
@@ -577,7 +575,6 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.TRADING_ITEMS))
         Planet = getattr(self.Game, f'Player_{self.id}').SpaceObject
-        Player = getattr(self.Game, f'Player_{self.id}')
         creator.write_int(Planet.id)  # id
         creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_sell)  # sellCoeficient
         creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_buy)  # buyCoeficient
@@ -606,7 +603,10 @@ class PackagesManager:
         for item in items:
             creator.write_int(item.classNumber)
             creator.write_bytes(item.guid)
-            creator.write_int(item.wear)
+            try:
+                creator.write_int(item.wear)
+            except:
+                print('error', item.wear, item.classNumber, item.level)
             if param4:
                 item.level = 0
                 creator.write_int(item.level)

@@ -5,10 +5,11 @@ devices:
 drop:{вероятность(до 1)): [количество(можно диапазон), предмет]}
 level:
 
-item_level: 1 Ammo && resoursers
-item_level: 2 Weapons
-item_level: 3 Droids
-item_level: 4 Engines
-item_level: 5 Ships
-item_level: 6 Devices
+item_level: 1 Resources
+item_level: 2 Ammo
+item_level: 3 Engines
+item_level: 4 Weapons
+item_level: 5 Devices
+item_level: 6 Droids
+item_level: 7 Ships
 

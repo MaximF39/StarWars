@@ -1,5 +1,5 @@
 from ..Packages.PackagesManager import PackagesManager
-from .Item import Item
+from .Item import item
 import math
 # from . import parse_galaxy_map
 from . import ThreadBase, cfg_update
@@ -35,8 +35,8 @@ class Planet(SpaceObject, ThreadBase):
         for ship in data['ships']:
             self.ships.append(FakeShip(self.Game, ship))
         self.inventory = []
-        for item in data['inventory']:
-            self.inventory.append(Item(self.Game, item['classNumber'], self))
+        for item_ in data['inventory']:
+            self.inventory.append(item(self.Game, item_['classNumber'], self, item_['count'] if 'count' in item_ else None))
         self.shops = data['shops']
         self.LocationClass = LocationClass
 
@@ -60,14 +60,14 @@ class Planet(SpaceObject, ThreadBase):
     def ShowForPlayer(self, PlayerClass):
         ItemsForPlayer = []
         for Item_ in self.inventory:
-            ItemsForPlayer.append(Item_.FakeItem(PlayerClass))
+            ItemsForPlayer.append(Item_.ItemForPlayer(PlayerClass))
         return ItemsForPlayer
 
     def ShowShopItems(self, PlayerClass):
         PacMan = PackagesManager(PlayerClass.id, self.Game)
         ItemsForPlayer = []
         for Item_ in self.inventory:
-            ItemsForPlayer.append(Item_.FakeItem(PlayerClass))
+            ItemsForPlayer.append(Item_.ItemForPlayer(PlayerClass))
         PacMan.tradingItems()
 
     def send_info_location(self):

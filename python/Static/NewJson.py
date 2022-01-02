@@ -17,7 +17,8 @@ def _get_path_json(text: str) -> pathlib.Path:
         return bs.joinpath(text + '.json')
 
 
-def new_galaxy(file_name):
+def new_galaxy():
+    file_name = 'GalaxyMap'
     with open(_get_path_json(file_name), 'r', encoding='utf-8-sig') as f:
         res = json.loads(f.read())
         for i in res:
@@ -42,20 +43,20 @@ def new_galaxy(file_name):
                                     {'classNumber':Items.Shield}, {'classNumber':Items.Energon}, {'classNumber':Items.MAntiFazer},
                                     {'classNumber':Items.RepairDroid}, {'classNumber':Items.MRepair2}, {'classNumber':Items.MedramillEngine},
                                     {'classNumber':Items.MedramillEngine2}, {'classNumber':Items.MedramilMiner},
-                                    {'classNumber':Items.MedramillInfantry}, {'classNumber':Items.MedramillArmored}, {'classNumber':Items.MTrash}]
+                                    {'classNumber':Items.MedramillInfantry}, {'classNumber':Items.MedramillArmored}, {'classNumber':Items.MTrash, "count": 1000}]
                             case 3:
                                 dict_planet['inventory'] = [{'classNumber':Items.AnidRezak}, {'classNumber':Items.AnidUnzipper}, {'classNumber':Items.Turbo}, {'classNumber':Items.Processor}, {'classNumber':Items.Nitrinium},
                                                                                                      {'classNumber':Items.AnidEngine}, {'classNumber':Items.AnidEngine2}, {'classNumber':Items.AnidMiner}, {'classNumber':Items.AnidInfantry},
-                                                                                                                                                               {'classNumber':Items.AnidArmored}, {'classNumber':Items.ATrash}]
+                                                                                                                                                               {'classNumber':Items.AnidArmored}, {'classNumber':Items.ATrash, "count": 1000}]
                             case 1:
                                 dict_planet['inventory'] = [{'classNumber':Items.OmolenianRezak}, {'classNumber':Items.OmolenianUnzipper}, {'classNumber':Items.Generator}, {'classNumber':Items.Damage},
                                                                                                 {'classNumber':Items.Armor}, {'classNumber':Items.Phaser}, {'classNumber':Items.OmolenianEngine}, {'classNumber':Items.OmolenianEngine2},
                                                                                                                                                       {'classNumber':Items.OmolenianEngine3}, {'classNumber':Items.OmolenianMiner}, {'classNumber':Items.OmolenianInfantry},
-                                                                                                                                                                                                       {'classNumber':Items.OmolenianArmored}, {'classNumber':Items.OTrash}]
+                                                                                                                                                                                                       {'classNumber':Items.OmolenianArmored}, {'classNumber':Items.OTrash, "count": 1000}]
                             case 2:
                                 dict_planet['inventory'] =  [{'classNumber':Items.Jalo}, {'classNumber':Items.IrritianUnzipper}, {'classNumber':Items.Aglu}, {'classNumber':Items.Repair}, {'classNumber':Items.MetaController},
                                                                                                 {'classNumber':Items.IrritianEngine}, {'classNumber':Items.IrritianEngine2}, {'classNumber':Items.IrritianMiner},
-                                                                                                                                                {'classNumber':Items.IrritianInfantry}, {'classNumber':Items.IrritianArmored}, {'classNumber':Items.ITrash}]
+                                                                                                                                                {'classNumber':Items.IrritianInfantry}, {'classNumber':Items.IrritianArmored}, {'classNumber':Items.ITrash, "count": 1000}]
 
                         dict_planet['shops'] = [{'id': dict_planet['id'], 'type':1}]
                         if dict_planet['id'] < 50:
@@ -71,8 +72,8 @@ def new_galaxy(file_name):
 
 
 def new_items():
-    guid_parse2 = {'AmmoParameters':1, "DeviceParameters":2, "DroidParameters":3,
-              "EngineParameters":6, "ShipParameters":5, "WeaponParameters":4, "ResourseParameters":1}
+    guid_parse2 = {'AmmoParameters':2, "DeviceParameters":5, "DroidParameters": 6,
+              "EngineParameters":3, "ShipParameters":7, "WeaponParameters":4, "ResourseParameters":1}
     for key, value in guid_parse2.items():
         with open(_get_path_json(key), 'r', encoding='utf-8-sig') as f:
             res = json.loads(f.read())
@@ -84,6 +85,6 @@ def new_items():
         with open(_get_path_json(key), 'w', encoding='utf-8-sig') as f:
             json.dump(res, f)
 
-new_items()
+new_galaxy()
 
 # print(new_galaxy("GalaxyMap"))

@@ -74,15 +74,20 @@ class Server(ThreadBase):
         self.entry()
         # read_packages = ReadPackages(self.id)
         while True:
-            decoder = PackageDecoder()
-            decoder.data = self.conn.recv(16)
-            PackageNumberGet = decoder.read_int()
-            decoder.read_int() # секунды
-            decoder.read_int() # Не известная хрень
-            lenBytes = decoder.read_int()
-            decoder.data = self.conn.recv(lenBytes)
-            my_thread = threading.Thread(target=self.get_package, args=(PackageNumberGet, decoder.data))
-            my_thread.start()
+            try:
+                decoder = PackageDecoder()
+                decoder.data = self.conn.recv(16)
+                PackageNumberGet = decoder.read_int()
+                decoder.read_int() # секунды
+                decoder.read_int() # Не известная хрень
+                lenBytes = decoder.read_int()
+                decoder.data = self.conn.recv(lenBytes)
+                my_thread = threading.Thread(target=self.get_package, args=(PackageNumberGet, decoder.data))
+                my_thread.start()
+            except:
+                import main
+                main.main()
+                exit()
 
     def get_package(self, pack_number, data):
         ReadPackages(self.Game, self.id, pack_number, data)

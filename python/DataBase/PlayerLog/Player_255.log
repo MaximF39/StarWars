@@ -1,0 +1,290 @@
+2022-01-02 14:24:20.853, INFO, inventory {'serverstarwars.com'}
+2022-01-02 14:24:21.137, INFO, jumpTo {'id': 26}
+2022-01-02 14:24:21.137, INFO, jumpTo {'id': 26}
+2022-01-02 14:24:23.266, INFO, move -14.0, -615.0
+2022-01-02 14:24:23.266, INFO, move -14.0, -615.0
+2022-01-02 14:24:23.266, INFO, move -14.0, -615.0
+2022-01-02 14:24:24.393, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 14:24:24.393, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 14:24:24.393, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 14:24:24.393, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:06:33.731, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:06:33.995, INFO, jumpTo {'id': 26}
+2022-01-02 17:06:33.995, INFO, jumpTo {'id': 26}
+2022-01-02 17:06:35.426, INFO, move -71.0, -561.0
+2022-01-02 17:06:35.426, INFO, move -71.0, -561.0
+2022-01-02 17:06:35.426, INFO, move -71.0, -561.0
+2022-01-02 17:06:35.698, INFO, move -35.0, -721.0
+2022-01-02 17:06:35.698, INFO, move -35.0, -721.0
+2022-01-02 17:06:35.698, INFO, move -35.0, -721.0
+2022-01-02 17:06:35.698, INFO, move -35.0, -721.0
+2022-01-02 17:06:36.279, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:06:36.279, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:06:36.279, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:06:36.279, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:06:36.279, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:10:00.336, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:00.590, INFO, jumpTo {'id': 26}
+2022-01-02 17:10:00.590, INFO, jumpTo {'id': 26}
+2022-01-02 17:10:01.339, INFO, move 142.0, -330.0
+2022-01-02 17:10:01.339, INFO, move 142.0, -330.0
+2022-01-02 17:10:01.339, INFO, move 142.0, -330.0
+2022-01-02 17:10:01.569, INFO, move 173.0, -394.0
+2022-01-02 17:10:01.569, INFO, move 173.0, -394.0
+2022-01-02 17:10:01.569, INFO, move 173.0, -394.0
+2022-01-02 17:10:01.569, INFO, move 173.0, -394.0
+2022-01-02 17:10:01.792, INFO, move 183.0, -487.0
+2022-01-02 17:10:01.792, INFO, move 183.0, -487.0
+2022-01-02 17:10:01.792, INFO, move 183.0, -487.0
+2022-01-02 17:10:01.792, INFO, move 183.0, -487.0
+2022-01-02 17:10:01.792, INFO, move 183.0, -487.0
+2022-01-02 17:10:02.898, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.898, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.898, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.898, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.898, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.898, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.940, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.940, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.940, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.940, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.940, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.940, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:02.940, INFO, objectToReach {'type': 5, 'id': -1, 'aliance': 4}
+2022-01-02 17:10:05.905, INFO, jumpTo {'id': 38}
+2022-01-02 17:10:05.905, INFO, jumpTo {'id': 38}
+2022-01-02 17:10:05.905, INFO, jumpTo {'id': 38}
+2022-01-02 17:10:05.905, INFO, jumpTo {'id': 38}
+2022-01-02 17:10:05.905, INFO, jumpTo {'id': 38}
+2022-01-02 17:10:05.905, INFO, jumpTo {'id': 38}
+2022-01-02 17:10:05.905, INFO, jumpTo {'id': 38}
+2022-01-02 17:10:05.905, INFO, jumpTo {'id': 38}
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.562, INFO, move 1321.0, -141.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:10.767, INFO, move 1233.0, -145.0
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.157, INFO, objectToReach {'type': 1, 'id': 37, 'aliance': 2}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:12.954, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:13.881, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:45.243, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:10:45.503, INFO, jumpTo {'id': 26}
+2022-01-02 17:10:45.503, INFO, jumpTo {'id': 26}
+2022-01-02 17:10:46.714, INFO, move -127.0, -555.0
+2022-01-02 17:10:46.714, INFO, move -127.0, -555.0
+2022-01-02 17:10:46.714, INFO, move -127.0, -555.0
+2022-01-02 17:10:47.814, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:10:47.814, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:10:47.814, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:10:47.814, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:20:22.588, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:20:22.842, INFO, jumpTo {'id': 26}
+2022-01-02 17:20:22.842, INFO, jumpTo {'id': 26}
+2022-01-02 17:20:23.648, INFO, move 12.0, -347.0
+2022-01-02 17:20:23.648, INFO, move 12.0, -347.0
+2022-01-02 17:20:23.648, INFO, move 12.0, -347.0
+2022-01-02 17:20:23.928, INFO, move 118.0, -471.0
+2022-01-02 17:20:23.928, INFO, move 118.0, -471.0
+2022-01-02 17:20:23.928, INFO, move 118.0, -471.0
+2022-01-02 17:20:23.928, INFO, move 118.0, -471.0
+2022-01-02 17:20:24.263, INFO, move 177.0, -541.0
+2022-01-02 17:20:24.263, INFO, move 177.0, -541.0
+2022-01-02 17:20:24.263, INFO, move 177.0, -541.0
+2022-01-02 17:20:24.263, INFO, move 177.0, -541.0
+2022-01-02 17:20:24.263, INFO, move 177.0, -541.0
+2022-01-02 17:20:24.568, INFO, move 148.0, -662.0
+2022-01-02 17:20:24.568, INFO, move 148.0, -662.0
+2022-01-02 17:20:24.568, INFO, move 148.0, -662.0
+2022-01-02 17:20:24.568, INFO, move 148.0, -662.0
+2022-01-02 17:20:24.568, INFO, move 148.0, -662.0
+2022-01-02 17:20:24.568, INFO, move 148.0, -662.0
+2022-01-02 17:20:24.952, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:20:24.952, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:20:24.952, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:20:24.952, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:20:24.952, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:20:24.952, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:20:24.952, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:22:25.045, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:22:25.347, INFO, jumpTo {'id': 26}
+2022-01-02 17:22:25.347, INFO, jumpTo {'id': 26}
+2022-01-02 17:22:26.097, INFO, move 57.0, -387.0
+2022-01-02 17:22:26.097, INFO, move 57.0, -387.0
+2022-01-02 17:22:26.097, INFO, move 57.0, -387.0
+2022-01-02 17:22:26.543, INFO, move 98.0, -528.0
+2022-01-02 17:22:26.543, INFO, move 98.0, -528.0
+2022-01-02 17:22:26.543, INFO, move 98.0, -528.0
+2022-01-02 17:22:26.543, INFO, move 98.0, -528.0
+2022-01-02 17:22:27.514, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:22:27.514, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:22:27.514, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:22:27.514, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:22:27.514, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:11.746, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:23:12.004, INFO, jumpTo {'id': 26}
+2022-01-02 17:23:12.004, INFO, jumpTo {'id': 26}
+2022-01-02 17:23:12.674, INFO, move 2.0, -451.0
+2022-01-02 17:23:12.674, INFO, move 2.0, -451.0
+2022-01-02 17:23:12.674, INFO, move 2.0, -451.0
+2022-01-02 17:23:13.049, INFO, move 59.0, -540.0
+2022-01-02 17:23:13.049, INFO, move 59.0, -540.0
+2022-01-02 17:23:13.049, INFO, move 59.0, -540.0
+2022-01-02 17:23:13.049, INFO, move 59.0, -540.0
+2022-01-02 17:23:13.473, INFO, move 98.0, -671.0
+2022-01-02 17:23:13.473, INFO, move 98.0, -671.0
+2022-01-02 17:23:13.473, INFO, move 98.0, -671.0
+2022-01-02 17:23:13.473, INFO, move 98.0, -671.0
+2022-01-02 17:23:13.473, INFO, move 98.0, -671.0
+2022-01-02 17:23:13.854, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:13.854, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:13.854, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:13.854, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:13.854, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:13.854, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:21.152, INFO, leaveLocation
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:23:22.178, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:24:38.582, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:24:38.848, INFO, jumpTo {'id': 26}
+2022-01-02 17:24:38.848, INFO, jumpTo {'id': 26}
+2022-01-02 17:24:41.474, INFO, move -91.0, -746.0
+2022-01-02 17:24:41.474, INFO, move -91.0, -746.0
+2022-01-02 17:24:41.474, INFO, move -91.0, -746.0
+2022-01-02 17:24:42.090, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:24:42.090, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:24:42.090, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:24:42.090, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:24:46.656, INFO, openShop {'type': 15}
+2022-01-02 17:24:46.656, INFO, openShop {'type': 15}
+2022-01-02 17:24:46.656, INFO, openShop {'type': 15}
+2022-01-02 17:24:46.656, INFO, openShop {'type': 15}
+2022-01-02 17:24:46.656, INFO, openShop {'type': 15}
+2022-01-02 17:24:49.569, INFO, openShop {'type': 15}
+2022-01-02 17:24:49.569, INFO, openShop {'type': 15}
+2022-01-02 17:24:49.569, INFO, openShop {'type': 15}
+2022-01-02 17:24:49.569, INFO, openShop {'type': 15}
+2022-01-02 17:24:49.569, INFO, openShop {'type': 15}
+2022-01-02 17:24:49.569, INFO, openShop {'type': 15}
+2022-01-02 17:24:50.264, INFO, openShop {'type': 15}
+2022-01-02 17:24:50.264, INFO, openShop {'type': 15}
+2022-01-02 17:24:50.264, INFO, openShop {'type': 15}
+2022-01-02 17:24:50.264, INFO, openShop {'type': 15}
+2022-01-02 17:24:50.264, INFO, openShop {'type': 15}
+2022-01-02 17:24:50.264, INFO, openShop {'type': 15}
+2022-01-02 17:24:50.264, INFO, openShop {'type': 15}
+2022-01-02 17:24:53.657, INFO, openShop {'type': 15}
+2022-01-02 17:24:53.657, INFO, openShop {'type': 15}
+2022-01-02 17:24:53.657, INFO, openShop {'type': 15}
+2022-01-02 17:24:53.657, INFO, openShop {'type': 15}
+2022-01-02 17:24:53.657, INFO, openShop {'type': 15}
+2022-01-02 17:24:53.657, INFO, openShop {'type': 15}
+2022-01-02 17:24:53.657, INFO, openShop {'type': 15}
+2022-01-02 17:24:53.657, INFO, openShop {'type': 15}
+2022-01-02 17:27:56.199, INFO, inventory {'serverstarwars.com'}
+2022-01-02 17:27:56.463, INFO, jumpTo {'id': 26}
+2022-01-02 17:27:56.463, INFO, jumpTo {'id': 26}
+2022-01-02 17:27:57.194, INFO, move 59.0, -409.0
+2022-01-02 17:27:57.194, INFO, move 59.0, -409.0
+2022-01-02 17:27:57.194, INFO, move 59.0, -409.0
+2022-01-02 17:27:57.424, INFO, move 96.0, -464.0
+2022-01-02 17:27:57.424, INFO, move 96.0, -464.0
+2022-01-02 17:27:57.424, INFO, move 96.0, -464.0
+2022-01-02 17:27:57.424, INFO, move 96.0, -464.0
+2022-01-02 17:27:57.671, INFO, move 125.0, -541.0
+2022-01-02 17:27:57.671, INFO, move 125.0, -541.0
+2022-01-02 17:27:57.671, INFO, move 125.0, -541.0
+2022-01-02 17:27:57.671, INFO, move 125.0, -541.0
+2022-01-02 17:27:57.671, INFO, move 125.0, -541.0
+2022-01-02 17:27:57.904, INFO, move 142.0, -630.0
+2022-01-02 17:27:57.904, INFO, move 142.0, -630.0
+2022-01-02 17:27:57.904, INFO, move 142.0, -630.0
+2022-01-02 17:27:57.904, INFO, move 142.0, -630.0
+2022-01-02 17:27:57.904, INFO, move 142.0, -630.0
+2022-01-02 17:27:57.904, INFO, move 142.0, -630.0
+2022-01-02 17:27:58.407, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:27:58.407, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:27:58.407, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:27:58.407, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:27:58.407, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:27:58.407, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:27:58.407, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-02 17:28:00.568, INFO, openShop {'type': 15}
+2022-01-02 17:28:00.568, INFO, openShop {'type': 15}
+2022-01-02 17:28:00.568, INFO, openShop {'type': 15}
+2022-01-02 17:28:00.568, INFO, openShop {'type': 15}
+2022-01-02 17:28:00.568, INFO, openShop {'type': 15}
+2022-01-02 17:28:00.568, INFO, openShop {'type': 15}
+2022-01-02 17:28:00.568, INFO, openShop {'type': 15}
+2022-01-02 17:28:00.568, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}
+2022-01-02 17:28:04.255, INFO, openShop {'type': 15}

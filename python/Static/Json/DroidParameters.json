@@ -1,1 +1,461 @@
-﻿[{"energyCost": 40, "armor": 1, "droidType": 1001, "weaponClass": 62, "health": 135, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 1}], "Length": 1}, "classNumber": 66, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 10, "cost": 1200, "Types": 3, "type": 3}, {"energyCost": 45, "armor": 0, "droidType": 3001, "weaponClass": 61, "health": 210, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 1}], "Length": 1}, "classNumber": 67, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 12, "cost": 1300, "Types": 3, "type": 3}, {"energyCost": 35, "armor": 0, "droidType": 2001, "weaponClass": 37, "health": 233, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 1}], "Length": 1}, "classNumber": 68, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 11, "cost": 1700, "Types": 3, "type": 3}, {"energyCost": 60, "armor": 0, "droidType": 4001, "weaponClass": 1, "health": 210, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 1}], "Length": 1}, "classNumber": 69, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 15, "cost": 1500, "Types": 3, "type": 3}, {"energyCost": 70, "armor": 5, "droidType": 1003, "weaponClass": 2, "health": 300, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 71, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 20, "cost": 3200, "Types": 3, "type": 3}, {"energyCost": 120, "armor": 1, "droidType": 1004, "weaponClass": 12, "health": 255, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 13}], "Length": 1}, "classNumber": 72, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 20, "cost": 5800, "Types": 3, "type": 3}, {"energyCost": 50, "armor": 2, "droidType": 1002, "weaponClass": 6, "health": 255, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 70, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 15, "cost": 2000, "Types": 3, "type": 3}, {"energyCost": 130, "armor": 3, "droidType": 1005, "weaponClass": 4, "health": 390, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 13}], "Length": 1}, "classNumber": 73, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 25, "cost": 7300, "Types": 3, "type": 3}, {"energyCost": 53, "armor": 1, "droidType": 2002, "weaponClass": 35, "health": 255, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 94, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 14, "cost": 2200, "Types": 3, "type": 3}, {"energyCost": 67, "armor": 5, "droidType": 2003, "weaponClass": 31, "health": 330, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 95, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 20, "cost": 4300, "Types": 3, "type": 3}, {"energyCost": 53, "armor": 2, "droidType": 3002, "weaponClass": 18, "health": 255, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 96, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 14, "cost": 2200, "Types": 3, "type": 3}, {"energyCost": 67, "armor": 5, "droidType": 3003, "weaponClass": 24, "health": 285, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 97, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 23, "cost": 4300, "Types": 3, "type": 3}, {"energyCost": 53, "armor": 2, "droidType": 4002, "weaponClass": 39, "health": 255, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 98, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 20, "cost": 2200, "Types": 3, "type": 3}, {"energyCost": 67, "armor": 5, "droidType": 4003, "weaponClass": 41, "health": 315, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 99, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 25, "cost": 4300, "Types": 3, "type": 3}, {"energyCost": 100, "armor": 5, "droidType": 7001, "weaponClass": 109, "health": 300, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 3}], "Length": 1}, "classNumber": 129, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 25, "cost": 50000, "Types": 3, "type": 3}, {"energyCost": 120, "armor": 5, "droidType": 7002, "weaponClass": 127, "health": 300, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 161, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 25, "cost": 60000, "Types": 3, "type": 3}, {"energyCost": 120, "armor": 5, "droidType": 7003, "weaponClass": 6, "health": 300, "restrictions": {"data": [{"type": 3, "valueType": 3, "Value": 2}], "Length": 1}, "classNumber": 168, "guid": "", "wear": 1, "level": 0, "inUsing": false, "satisfying": false, "size": 25, "cost": 60000, "Types": 3, "type": 3}]
+﻿[
+  {
+    "energyCost": 40,
+    "armor": 1,
+    "droidType": 1001,
+    "weaponClass": 62,
+    "health": 135,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 1
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 66,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 10,
+    "cost": 1200,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 45,
+    "armor": 0,
+    "droidType": 3001,
+    "weaponClass": 61,
+    "health": 210,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 1
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 67,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 12,
+    "cost": 1300,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 35,
+    "armor": 0,
+    "droidType": 2001,
+    "weaponClass": 37,
+    "health": 233,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 1
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 68,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 11,
+    "cost": 1700,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 60,
+    "armor": 0,
+    "droidType": 4001,
+    "weaponClass": 1,
+    "health": 210,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 1
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 69,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 15,
+    "cost": 1500,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 70,
+    "armor": 5,
+    "droidType": 1003,
+    "weaponClass": 2,
+    "health": 300,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 71,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 20,
+    "cost": 3200,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 120,
+    "armor": 1,
+    "droidType": 1004,
+    "weaponClass": 12,
+    "health": 255,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 13
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 72,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 20,
+    "cost": 5800,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 50,
+    "armor": 2,
+    "droidType": 1002,
+    "weaponClass": 6,
+    "health": 255,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 70,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 15,
+    "cost": 2000,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 130,
+    "armor": 3,
+    "droidType": 1005,
+    "weaponClass": 4,
+    "health": 390,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 13
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 73,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 25,
+    "cost": 7300,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 53,
+    "armor": 1,
+    "droidType": 2002,
+    "weaponClass": 35,
+    "health": 255,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 94,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 14,
+    "cost": 2200,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 67,
+    "armor": 5,
+    "droidType": 2003,
+    "weaponClass": 31,
+    "health": 330,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 95,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 20,
+    "cost": 4300,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 53,
+    "armor": 2,
+    "droidType": 3002,
+    "weaponClass": 18,
+    "health": 255,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 96,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 14,
+    "cost": 2200,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 67,
+    "armor": 5,
+    "droidType": 3003,
+    "weaponClass": 24,
+    "health": 285,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 97,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 23,
+    "cost": 4300,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 53,
+    "armor": 2,
+    "droidType": 4002,
+    "weaponClass": 39,
+    "health": 255,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 98,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 20,
+    "cost": 2200,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 67,
+    "armor": 5,
+    "droidType": 4003,
+    "weaponClass": 41,
+    "health": 315,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 99,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 25,
+    "cost": 4300,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 100,
+    "armor": 5,
+    "droidType": 7001,
+    "weaponClass": 109,
+    "health": 300,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 3
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 129,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 25,
+    "cost": 50000,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 120,
+    "armor": 5,
+    "droidType": 7002,
+    "weaponClass": 127,
+    "health": 300,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 161,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 25,
+    "cost": 60000,
+    "Types": 6,
+    "type": 3
+  },
+  {
+    "energyCost": 120,
+    "armor": 5,
+    "droidType": 7003,
+    "weaponClass": 6,
+    "health": 300,
+    "restrictions": {
+      "data": [
+        {
+          "type": 3,
+          "valueType": 3,
+          "Value": 2
+        }
+      ],
+      "Length": 1
+    },
+    "classNumber": 168,
+    "guid": "",
+    "wear": 1,
+    "level": 0,
+    "inUsing": false,
+    "satisfying": false,
+    "size": 25,
+    "cost": 60000,
+    "Types": 6,
+    "type": 3
+  }
+]

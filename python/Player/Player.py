@@ -1,6 +1,6 @@
 import math
 
-from ..SpaceObjects.Item import Item
+from ..SpaceObjects.Item import item
 from ..Packages.PackagesManager import PackagesManager
 from . import BasePlayer
 from ..Utils.ThreadBase import ThreadBase
@@ -76,7 +76,7 @@ class Player(BasePlayer, ThreadBase):
                 self.SpaceObject.ShowShopItems(self)
 
     def buyItemByBonuses(self, dict_):
-        Item_ = Item(self.Game, dict_["classNumber"], self)
+        Item_ = item(self.Game, dict_["classNumber"], self)
         bonus = Item_.cost // 1000
         if self.bonus - bonus > 0:
             self.bonus -= bonus
