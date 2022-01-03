@@ -9,7 +9,7 @@ class PlayerSkillTypeStr(BaseTypeStr):
     ["Trading", 8],
     ["Control", 11],
     ["Defending", 14],
-    ["Atacking", 16],
+    ["Attacking", 16],
     ["Tactics", 17],
     ["Piloting", 18],
     ["Targeting", 19],

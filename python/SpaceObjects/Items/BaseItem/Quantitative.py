@@ -18,36 +18,47 @@ class Quantitative(baseItem):
     def get_cost(self, count):
         return self.cost * count
 
-    def create_class(self, PlayerClass, count):
+    def create_class(self, PlayerClass, count, droidUsing):
         class_ = copy.copy(self)
         class_.Owner = PlayerClass
         class_.wear = count
+        if droidUsing:
+            self.inUsing = droidUsing
         return class_
 
-
     def buy(self, PlayerClass, count):
-        if PlayerClass.cash >= self.get_cost(count)and self.wear >= count:
-            PlayerClass.cash -= int(self.cost * count * cfg_sell_buy(PlayerClass.skills['Trading']).coef_buy)
-            self.separation(PlayerClass, count)
+        PlayerClass.cash -= int(self.cost * count * cfg_sell_buy(PlayerClass.skills['Trading']).coef_buy)
+        self.separation(PlayerClass, count)
 
-            PacMan = PackagesManager(PlayerClass.id, self.Game)
-            PacMan.tradingItems()
-            PacMan.updateValue(9, PlayerClass.cash)
+        PacMan = PackagesManager(PlayerClass.id, self.Game)
+        PacMan.tradingItems()
+        PacMan.updateValue(9)
+
+    def sell(self, PlanetClass, count):
+        self.Owner.cash += int(self.cost * count * cfg_sell_buy(self.Owner.skills['Trading']).coef_sell)
+        self.separation(PlanetClass, count)
+
+        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan.tradingItems()
+        PacMan.updateValue(9)
 
     @property
     def get_satisfying(self):
         return True
 
-    @property
-    def get_inUsing(self):
-        return False
-
-    def separation(self, Whom, count): # Кому, сколько(количество)
-        Whom.inventory.append(self.create_class(Whom, count))
+    def separation(self, Whom, count, droidUsing=False): # Кому, сколько(количество)
+        Whom.inventory.append(self.create_class(Whom, count, droidUsing))
         self.wear -= count
         if self.wear == 0:
             self.Owner.inventory.remove(self)
 
-    def dropItem(self, count):
+
+    def drop(self, count):
         if self.wear >= count:
+            self.x = self.Owner.x
+            self.y = self.Owner.y
             self.separation(self.Owner.Location, count)
+
+
+        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan.items()

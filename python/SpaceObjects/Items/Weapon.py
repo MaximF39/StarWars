@@ -7,7 +7,15 @@ class Weapon(NoQuantitative):
         super().__init__(Game, classNumber, OwnerClass)
 
     def use(self):
-        self.Owner.active_weapons.append(self)
+        self.Owner.use_weapon(self)
+        self.inUsing = True
+
+        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan.activeWeapons()
+
+    def unuse(self):
+        self.Owner.unuse_weapon(self)
+        self.inUsing = False
 
         PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.activeWeapons()

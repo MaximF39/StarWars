@@ -17,7 +17,7 @@ class baseItem:
         self.cost = data['cost']
         self.restrictions = None if not 'restrictions' in data else data['restrictions']['data']
         self.satisfying = self.get_satisfying
-        self.inUsing = self.get_inUsing
+        self.inUsing = False
 
     def ItemForPlayer(self, PlayerClass):
         FakeClass = copy.copy(self)

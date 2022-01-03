@@ -7,7 +7,10 @@ class Engine(NoQuantitative):
         super().__init__(Game, classNumber, OwnerClass)
 
     def use(self):
-        self.Owner.active_weapons.append(self)
-        raise 'dont'
-        # PacMan = PackagesManager(self.Owner.id, self.Game)
-        # PacMan.()
+        self.Owner.replace_engine(self)
+
+        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan.inventory()
+
+    def unuse(self):
+        print('Нельзя снять двигатель')

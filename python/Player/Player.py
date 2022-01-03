@@ -19,13 +19,14 @@ class Player(BasePlayer, ThreadBase):
         self.canDelete = dict_['canDelete']
         self.logged = dict_['logged']
         self.clanId = dict_["clan_id"]
+        self.point = dict_['point']
         self.PlayerRelation = dict_['PlayerRelation']
         self.rating = dict_['rating']
         self.cash = dict_['credit']
         self.bonus = dict_['bonus']
         self.repository = dict_['repository']
         self.role = dict_['role']
-        self.ControlUsed = self.skills['Control'] # - self.droid.all_control ?
+        self.ControlUsed = 0
         self.ControlLeft = self.skills['Control']
         self.expSkillGrowCoef = dict_["expSkillGrowCoef"]
         self.expSkillReduserCoef = dict_["expSkillReduserCoef"]
@@ -37,6 +38,7 @@ class Player(BasePlayer, ThreadBase):
         self.policeStatus = 0 if 0 > self.point else self.point
         self.forNextLevel = int(cfg_level[self.level + 1])
         self.expForFirstSkillLevel= self._get_exp_for_next_status()
+        self.engine = None
         self.droid = []
         print('sspeed', self.speed)
         print('sspeed2', self.ship['speed'])
@@ -51,16 +53,18 @@ class Player(BasePlayer, ThreadBase):
                 self.skills[k] += v
 
     def sellItem(self, data):
-        for item in self.inventory:
-            if item.guid == data['guid']:
-                print(self.cash)
-                item.sell(self.SpaceObject, data['count'])
-                print(self.cash)
+        for item_ in self.inventory:
+            if item_.guid == data['guid']:
+                if item_.wear >= data['count']:
+                    item_.sell(self.SpaceObject, data['count'])
+                break
 
     def buyItem(self, data):
-        for item in self.SpaceObject.inventory:
-            if item.guid == data['guid']:
-                item.buy(self, data['count'])
+        for item_ in self.SpaceObject.inventory:
+            if item_.guid == data['guid']:
+                if self.cash >= item_.get_cost(data['count']) and item_.wear >= data['count']:
+                    item_.buy(self, data['count'])
+                break
 
     def OpenShop(self, data):
         match data['type']:  # 1001 + race = shipShops
@@ -111,8 +115,52 @@ class Player(BasePlayer, ThreadBase):
     def restoreEnergy(self):
         self.energy = self.ship['maxEnergy']
 
-    def use_droid(self):
-        self.droid.append({})
+    def use_item(self, data):
+        for item_ in self.inventory:
+            if item_.guid == data['guid']:
+                item_.use()
+
+    def unuse_item(self, data):
+        for item_ in self.inventory:
+            if item_.guid == data['guid']:
+                item_.unuse()
+
+    def use_weapon(self, ItemClass):
+        self.active_weapons.append(ItemClass)
+        # self.inventory.remove(ItemClass)
+
+    def unuse_weapon(self, ItemClass):
+        self.active_weapons.remove(ItemClass)
+        # self.inventory.append(ItemClass)
+
+    def use_device(self, ItemClass):
+        self.active_devices.append(ItemClass)
+        # self.inventory.remove(ItemClass)
+
+    def unuse_device(self, ItemClass):
+        self.active_devices.remove(ItemClass)
+        # self.inventory.append(ItemClass)
+
+    def replace_engine(self, ItemClass):
+        if self.engine:
+            self.engine.inUsing = False
+        self.engine = ItemClass
+        self.engine.inUsing = True
+        # self.inventory.remove(ItemClass)
+
+    def use_droid(self, item_):
+        item_.separation(self, 1, True)
+        self.ControlUsed += item_.Control
+        self.ControlLeft -= item_.Control
+
+    def unuse_droid(self, item_):
+        item_.separation(self, 1)
+
+    def drop_item(self, data):
+        for item_ in self.inventory:
+            if item_.guid == data['guid']:
+                item_.drop(data['count'])
+                break
 
     def _get_exp_for_next_status(self):
         return cfg_status[self.status + 1]

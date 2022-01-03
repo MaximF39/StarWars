@@ -355,6 +355,7 @@ class ReadPackages:
         _loc2_.data = data
         data = {
         'guid':_loc2_.read_bytes(16),}
+        self.Player.use_item(data)
         logger.info(f'useItem {data}')
 
     def unuseItem(self, data) -> None:
@@ -362,6 +363,7 @@ class ReadPackages:
         _loc2_.data = data
         data = {
         'guid':_loc2_.read_bytes(16),}
+        self.Player.unuse_item(data)
         logger.info(f'unuseItem {data}')
 
     def buyItem(self, data) -> None:
@@ -406,6 +408,7 @@ class ReadPackages:
         data = {
         'guid':_loc2_.read_bytes(16),
         'count':_loc2_.read_int(),}
+        self.Player.drop_item(data)
         logger.info(f'dropItem {data}')
 
     def repairItem(self, data) -> None:
@@ -512,7 +515,8 @@ class ReadPackages:
         _loc3_.data = data
         data = {
         'hz1':_loc3_.read_bytes(),
-        'hz2':_loc3_.read_bytes(),}
+        'guid':_loc3_.read_bytes(),}
+        self.Player.use_item(data)
         logger.info(f'droidClicked {data}')
 
     def buyShip(self, data) -> None:
@@ -618,7 +622,7 @@ class ReadPackages:
         logger.info(f'commitSkills {data}')
 
     def read_skill(self, data, decoder):
-        from ..Static.TypeStr import PlayerSkillTypeStr
+        from ..Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
         type_ = decoder.read_unsigned_byte()
         count = decoder.read_unsigned_byte()
         data[PlayerSkillTypeStr().get_str(type_)] = count   # player skill type
@@ -819,7 +823,7 @@ class ReadPackages:
         self.Player.buyItemByBonuses(data)
         PacMan = PackagesManager(self.id, self.Game)
         PacMan.inventory()
-        PacMan.updateValue(13, self.Player.bonus)
+        PacMan.updateValue(13)
         logger.info(f'buyItemByBonuses {data}')
 
     def buyShipByBonuses(self, data) -> None:

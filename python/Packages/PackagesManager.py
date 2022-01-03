@@ -479,9 +479,8 @@ class PackagesManager:
         player = getattr(self.Game, f"Player_{self.id}")
         data_active_device = player.active_devices
         creator.write_unsigned_byte(len(data_active_device))
-        for i in data_active_device:
-            _loc3_ = DotMap(i)
-            creator.write_short(_loc3_.id)
+        for _loc3_ in data_active_device:
+            creator.write_short(_loc3_.classNumber)
             creator.write_bytes(_loc3_.guid)
             creator.write_float(_loc3_.reloadedTime)
 
@@ -493,11 +492,11 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.ACTIVE_WEPONS))
 
-        data_active_weapons = self.Player.active_weapons
-        creator.write_unsigned_byte(len(data_active_weapons))
-        for active_weapons in data_active_weapons:
-            creator.write_short(active_weapons['classfloat'])
-            creator.write_unsigned_byte(active_weapons["index"])
+        active_weapons = self.Player.active_weapons
+        creator.write_unsigned_byte(len(active_weapons))
+        for active_weapon in active_weapons:
+            creator.write_short(active_weapon.classNumber)
+            creator.write_unsigned_byte(5)#active_weapon.index) # hz
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     #     #
@@ -603,10 +602,7 @@ class PackagesManager:
         for item in items:
             creator.write_int(item.classNumber)
             creator.write_bytes(item.guid)
-            try:
-                creator.write_int(item.wear)
-            except:
-                print('error', item.wear, item.classNumber, item.level)
+            creator.write_int(item.wear)
             if param4:
                 item.level = 0
                 creator.write_int(item.level)
@@ -1498,13 +1494,12 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.ITEMS
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.ITEMS))
-        data = []
-        for i in data:
-            _loc2_ = DotMap(i)
-            creator.write_int(_loc2_.id)
-            creator.write_short(_loc2_.classNumber)
-            creator.write_short(_loc2_.x)
-            creator.write_short(_loc2_.y)
+        data = self.Location.inventory
+        for item_ in data:
+            creator.write_int(self.Location.id)
+            creator.write_short(item_.classNumber)
+            creator.write_short(int(item_.x))
+            creator.write_short(int(item_.y))
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def message(self):
@@ -1622,16 +1617,13 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.DROID_BUILDING_DIALOG
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.DROID_BUILDING_DIALOG))
-        _loc3_ = DotMap()
-        creator.write_bytes(_loc3_.deviceGuid)
-        data = []
-        creator.write_int(len(data))
-        for i in data:
-            _loc2_ = DotMap(i)
-            creator.write_bytes(_loc2_.guid)
-            creator.write_int(_loc2_.classNumber)
-            creator.write_int(_loc2_.level)
-            creator.write_int(_loc2_.energyCost)
+        creator.write_bytes(16)# hz _loc3_.deviceGuid)
+        creator.write_int(len(self.Player.droids))#len(data))
+        for droid in self.Player.droids:
+            creator.write_bytes(droid.guid)
+            creator.write_int(droid.classNumber)
+            creator.write_int(droid.level)
+            creator.write_int(droid.energyCost)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def hideShip(self):
@@ -1973,6 +1965,41 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.UPDATE_VALUE))
         creator.write_unsigned_byte(num_pack)
+        match num_pack:
+            case 1:
+                 value = self.Player.Clan.cash #clan Cash
+            case 2:
+                value = clanPoints
+            case 3:
+                value = PlayerClanPoint
+            case 4:
+                value = ClanFriendRequests
+            case 5:
+                value = ClanLevel
+            case 6:
+                value = ClanNextLevelPoints
+            case 7:
+                value = ClanMaxMembers
+            case 8:
+                value = ClanJoinRequestStatus
+            case 9:
+                value = self.Player.cash
+            case 10:
+                value = self.Player.ControlUsed
+            case 11:
+                value = self.Player.ControlLeft
+            case 12:
+                value = self.Player.clanId
+            case 13:
+                value = self.Player.bonus
+            case 14:
+                value = 20#self.Player.HyperRadius
+            case 15:
+                value = 20#self.Player.HyperCost
+            case 16:
+                value = self.Player.ClanLeader
+            case 17:
+                value = self.Player.ClanBonuses
         creator.write_int(value)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 

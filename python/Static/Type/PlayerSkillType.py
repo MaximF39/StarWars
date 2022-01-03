@@ -7,7 +7,7 @@ class PlayerSkillType:
     Trading: int = 8
     Control: int = 11
     Defending: int = 14
-    Atacking: int = 16
+    Attacking: int = 16
     Tactics: int = 17
     Piloting: int = 18
     Targeting: int = 19

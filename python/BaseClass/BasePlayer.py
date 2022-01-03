@@ -43,7 +43,6 @@ class BasePlayer(Ship, ThreadBase, MyTime):
         self.level: int = dict_["level"]
         self.status = dict_['status']
         self.experience = dict_['experience']
-        self.point = dict_['point']
         self.inventory:list = dict_['inventory']
         self.active_weapons = dict_['active_weapons']
         self.active_devices = dict_['active_devices']
@@ -147,6 +146,10 @@ class BasePlayer(Ship, ThreadBase, MyTime):
             case 1:
                 self.ObjectToReach = getattr(self.Location, f'Planet_{data["id"]}')
                 self.move(self.ObjectToReach.x, self.ObjectToReach.y)
+            case 4:
+                print('data items', data)
+                # self.ObjectToReach = self.
+                # self.move(self.ObjectToReach.x, self.ObjectToReach.y)
             case 5:
                 data['id'] = -1 * data['id']
                 match data['id']:
@@ -165,9 +168,6 @@ class BasePlayer(Ship, ThreadBase, MyTime):
 
     def dead(self):
         self.get_drop() # send req
-
-    def use_device(self):
-        pass # send request
 
     # @ThreadBase.end_thread
     def _level_experience(self):

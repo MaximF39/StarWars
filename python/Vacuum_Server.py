@@ -118,12 +118,12 @@ class Server(ThreadBase):
         PacMan.processPackages(ServerRequest.PLAYER_SHIP)  # PLAYER_SHIP
         PacMan.processPackages(ServerRequest.TO_GAME)  # TO_GAME
         PacMan.processPackages(ServerRequest.LOCATION_SYSTEM)  # LOCATION_SYSTEM
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 13, Player.bonus)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 9, Player.cash)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 10, Player.ControlUsed)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 11, Player.ControlLeft)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 14, 15)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 15, 25)  # UPDATE_VALUE
+        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 13)  # UPDATE_VALUE
+        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 9)  # UPDATE_VALUE
+        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 10)  # UPDATE_VALUE
+        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 11)  # UPDATE_VALUE
+        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 14)  # UPDATE_VALUE
+        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 15)  # UPDATE_VALUE
         PacMan.processPackages(ServerRequest.ACTIVE_WEPONS)  # ACTIVE_WEPONS
         PacMan.processPackages(ServerRequest.ACTIVE_DEVICES)  # ACTIVE_DEVICES
         PacMan.processPackages(ServerRequest.CLAN)  # CLAN

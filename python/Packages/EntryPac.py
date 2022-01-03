@@ -109,7 +109,7 @@ class EntryPac:
         cnt: int = len(top_players)
         creator.write_int(cnt)
         for i in top_players:
-            _loc2_ = i  # PlayerData()
+            _loc2_ = i
             creator.write_utf(_loc2_.login)
             creator.write_int(_loc2_.level)
             creator.write_int(_loc2_.points)

@@ -28,7 +28,7 @@ class Location(ThreadBase):
         self.y = data['y']
         self.players = []
         self.planets = []
-        self.items = []
+        self.inventory = []
         self.asteroids = []
         self.StaticSpaceObjects = []
         self.create_space_object()

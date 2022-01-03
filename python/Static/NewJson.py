@@ -42,21 +42,21 @@ def new_galaxy():
                                     {'classNumber':Items.LaserGun}, {'classNumber':Items.Battery},  {'classNumber':Items.MedramillUnzipper},
                                     {'classNumber':Items.Shield}, {'classNumber':Items.Energon}, {'classNumber':Items.MAntiFazer},
                                     {'classNumber':Items.RepairDroid}, {'classNumber':Items.MRepair2}, {'classNumber':Items.MedramillEngine},
-                                    {'classNumber':Items.MedramillEngine2}, {'classNumber':Items.MedramilMiner},
-                                    {'classNumber':Items.MedramillInfantry}, {'classNumber':Items.MedramillArmored}, {'classNumber':Items.MTrash, "count": 1000}]
+                                    {'classNumber':Items.MedramillEngine2}, {'classNumber':Items.MedramilMiner, 'count': 10},
+                                    {'classNumber':Items.MedramillInfantry, 'count': 10}, {'classNumber':Items.MedramillArmored, 'count': 10}, {'classNumber':Items.MTrash, "count": 1000}]
                             case 3:
                                 dict_planet['inventory'] = [{'classNumber':Items.AnidRezak}, {'classNumber':Items.AnidUnzipper}, {'classNumber':Items.Turbo}, {'classNumber':Items.Processor}, {'classNumber':Items.Nitrinium},
-                                                                                                     {'classNumber':Items.AnidEngine}, {'classNumber':Items.AnidEngine2}, {'classNumber':Items.AnidMiner}, {'classNumber':Items.AnidInfantry},
-                                                                                                                                                               {'classNumber':Items.AnidArmored}, {'classNumber':Items.ATrash, "count": 1000}]
+                                                                                                     {'classNumber':Items.AnidEngine}, {'classNumber':Items.AnidEngine2}, {'classNumber':Items.AnidMiner, 'count': 10}, {'classNumber':Items.AnidInfantry, 'count': 10},
+                                                                                                                                                               {'classNumber':Items.AnidArmored, 'count': 10}, {'classNumber':Items.ATrash, "count": 1000}]
                             case 1:
                                 dict_planet['inventory'] = [{'classNumber':Items.OmolenianRezak}, {'classNumber':Items.OmolenianUnzipper}, {'classNumber':Items.Generator}, {'classNumber':Items.Damage},
                                                                                                 {'classNumber':Items.Armor}, {'classNumber':Items.Phaser}, {'classNumber':Items.OmolenianEngine}, {'classNumber':Items.OmolenianEngine2},
-                                                                                                                                                      {'classNumber':Items.OmolenianEngine3}, {'classNumber':Items.OmolenianMiner}, {'classNumber':Items.OmolenianInfantry},
-                                                                                                                                                                                                       {'classNumber':Items.OmolenianArmored}, {'classNumber':Items.OTrash, "count": 1000}]
+                                                                                                                                                      {'classNumber':Items.OmolenianEngine3}, {'classNumber':Items.OmolenianMiner, 'count': 10}, {'classNumber':Items.OmolenianInfantry, 'count': 10},
+                                                                                                                                                                                                       {'classNumber':Items.OmolenianArmored, 'count': 10}, {'classNumber':Items.OTrash, "count": 1000}]
                             case 2:
                                 dict_planet['inventory'] =  [{'classNumber':Items.Jalo}, {'classNumber':Items.IrritianUnzipper}, {'classNumber':Items.Aglu}, {'classNumber':Items.Repair}, {'classNumber':Items.MetaController},
-                                                                                                {'classNumber':Items.IrritianEngine}, {'classNumber':Items.IrritianEngine2}, {'classNumber':Items.IrritianMiner},
-                                                                                                                                                {'classNumber':Items.IrritianInfantry}, {'classNumber':Items.IrritianArmored}, {'classNumber':Items.ITrash, "count": 1000}]
+                                                                                                {'classNumber':Items.IrritianEngine}, {'classNumber':Items.IrritianEngine2}, {'classNumber':Items.IrritianMiner, 'count': 10},
+                                                                                                                                                {'classNumber':Items.IrritianInfantry, 'count': 10}, {'classNumber':Items.IrritianArmored, 'count': 10}, {'classNumber':Items.ITrash, "count": 1000}]
 
                         dict_planet['shops'] = [{'id': dict_planet['id'], 'type':1}]
                         if dict_planet['id'] < 50:

@@ -16,25 +16,33 @@ class NoQuantitative(baseItem):
     def add_inventory(self):
         pass
 
-    def get_size(self):
+    def get_size(self, count=None):
         return self.size
 
-    def get_cost(self):
+    def get_cost(self, count=None):
         return self.cost
 
-    def create_class(self, PlayerClass):
+    def create_class(self, PlayerClass, count=None):
         class_ = copy.copy(self)
         class_.Owner = PlayerClass
         return class_
 
-    def buy(self, PlayerClass):
+    def buy(self, PlayerClass, count):
         if PlayerClass.cash - self.cost > 0:
             PlayerClass.cash -= int(self.cost * cfg_sell_buy(PlayerClass.skills['Trading']).coef_buy)
             self.separation(PlayerClass)
 
             PacMan = PackagesManager(PlayerClass.id, self.Game)
             PacMan.tradingItems()
-            PacMan.updateValue(9, PlayerClass.cash)
+            PacMan.updateValue(9)
+
+    def sell(self, PlanetClass, count=None):
+        self.Owner.cash += int(self.cost * cfg_sell_buy(self.Owner.skills['Trading']).coef_sell)
+        self.separation(PlanetClass)
+
+        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan.tradingItems()
+        PacMan.updateValue(9)
 
     @property
     def get_satisfying(self):
@@ -46,6 +54,9 @@ class NoQuantitative(baseItem):
             match skill["type"]:
                 case 2:
                     if skill['Value'] > skills[SkillTypeStr.get_str(skill['valueType'])]:
+                        return False
+                case 3:
+                    if skills["Control"] > skill['Value']:
                         return False
                 case 4:
                     if skill['Value'] > self.Owner.ship['cpu']:
@@ -60,16 +71,18 @@ class NoQuantitative(baseItem):
                     print('Не понятный тип', skill['type'])
         return True
 
-    @property
-    def get_inUsing(self):
-        return True
 
-    def separation(self, Whom):
+    def separation(self, Whom, count=None):
         Whom.inventory.append(self.create_class(Whom))
         self.Owner.inventory.remove(self)
 
-    def dropItem(self):
+    def drop(self, count=None):
+        self.x = self.Owner.x
+        self.y = self.Owner.y
         self.separation(self.Owner.Location)
+
+        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan.items()
 
     def repair(self):
         if self.Owner.cash > (self.fullRepair - self.wear) * self.repair_cost:
