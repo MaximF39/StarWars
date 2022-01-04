@@ -3,7 +3,6 @@ from sqlalchemy import func as sql_max
 from sqlalchemy.orm import sessionmaker
 from SQL_Table import PlayerDB
 # from .cfg_postgres import *
-import psycopg2
 
 host = "127.0.0.1"
 db_name_user = "postgres"

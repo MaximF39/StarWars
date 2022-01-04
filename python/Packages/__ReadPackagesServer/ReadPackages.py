@@ -1,5 +1,3 @@
-import logger
-
 from .ReadPackagesClient import ReadPackagesClient
 from ..PackageDecoder import PackageDecoder
 

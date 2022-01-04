@@ -1971,7 +1971,7 @@ class PackagesManager:
             case 2:
                 value = clanPoints
             case 3:
-                value = PlayerClanPoint
+                value = self.Player.point # Player.point
             case 4:
                 value = ClanFriendRequests
             case 5:

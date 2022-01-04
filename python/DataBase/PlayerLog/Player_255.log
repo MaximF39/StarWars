@@ -3870,3 +3870,58 @@ bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'), 
 2022-01-03 16:32:04.350, INFO, inventory {'serverstarwars.com'}
 2022-01-03 16:32:04.350, INFO, inventory {'serverstarwars.com'}
 2022-01-03 16:32:04.350, INFO, inventory {'serverstarwars.com'}
+2022-01-04 13:04:44.718, INFO, inventory {'serverstarwars.com'}
+2022-01-04 13:04:45.864, INFO, move -77.0, -291.0
+2022-01-04 13:04:45.864, INFO, move -77.0, -291.0
+2022-01-04 13:04:46.065, INFO, move -90.0, -339.0
+2022-01-04 13:04:46.065, INFO, move -90.0, -339.0
+2022-01-04 13:04:46.065, INFO, move -90.0, -339.0
+2022-01-04 13:04:46.287, INFO, move -71.0, -390.0
+2022-01-04 13:04:46.287, INFO, move -71.0, -390.0
+2022-01-04 13:04:46.287, INFO, move -71.0, -390.0
+2022-01-04 13:04:46.287, INFO, move -71.0, -390.0
+2022-01-04 13:04:46.631, INFO, move -41.0, -454.0
+2022-01-04 13:04:46.631, INFO, move -41.0, -454.0
+2022-01-04 13:04:46.631, INFO, move -41.0, -454.0
+2022-01-04 13:04:46.631, INFO, move -41.0, -454.0
+2022-01-04 13:04:46.631, INFO, move -41.0, -454.0
+2022-01-04 13:04:46.712, INFO, inventory {'serverstarwars.com'}
+2022-01-04 13:04:46.712, INFO, inventory {'serverstarwars.com'}
+2022-01-04 13:04:46.712, INFO, inventory {'serverstarwars.com'}
+2022-01-04 13:04:46.712, INFO, inventory {'serverstarwars.com'}
+2022-01-04 13:04:46.712, INFO, inventory {'serverstarwars.com'}
+2022-01-04 13:04:46.712, INFO, inventory {'serverstarwars.com'}
+2022-01-04 13:04:48.000, INFO, move 32.0, -612.0
+2022-01-04 13:04:48.000, INFO, move 32.0, -612.0
+2022-01-04 13:04:48.000, INFO, move 32.0, -612.0
+2022-01-04 13:04:48.000, INFO, move 32.0, -612.0
+2022-01-04 13:04:48.000, INFO, move 32.0, -612.0
+2022-01-04 13:04:48.000, INFO, move 32.0, -612.0
+2022-01-04 13:04:48.000, INFO, move 32.0, -612.0
+2022-01-04 13:04:48.340, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-04 13:04:48.340, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-04 13:04:48.340, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-04 13:04:48.340, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-04 13:04:48.340, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-04 13:04:48.340, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-04 13:04:48.340, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-04 13:04:48.340, INFO, objectToReach {'type': 1, 'id': 15, 'aliance': 2}
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:48.659, INFO, playerSkills b''
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}
+2022-01-04 13:04:50.248, INFO, openShop {'type': 15}

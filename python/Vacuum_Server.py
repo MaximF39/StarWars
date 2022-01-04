@@ -127,7 +127,7 @@ class Server(ThreadBase):
         PacMan.processPackages(ServerRequest.ACTIVE_WEPONS)  # ACTIVE_WEPONS
         PacMan.processPackages(ServerRequest.ACTIVE_DEVICES)  # ACTIVE_DEVICES
         PacMan.processPackages(ServerRequest.CLAN)  # CLAN
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 3, Player.point) # s
+        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 3) # s
         PacMan.processPackages(ServerRequest.SHIPS_POSITION)  # SHIPS_POSITION
         PacMan.processPackages(ServerRequest.SHIPS_STASE)  # SHIPS_POSITION
         PacMan.processPackages(ServerRequest.HIDE_SHIP) # s
