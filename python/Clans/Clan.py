@@ -52,10 +52,11 @@ class Clan(ThreadBase):
             need = cfg_clan.level
             if self.cash >= need["credit"] and self.bonus >= need["bonus"]:
                 self.lvl += 1
+                self.cash -= need["credit"]
+                self.bonus -= need["bonus"]
 
     def friendRequest(self, ClanClass):
         self.friendRequestList.append(ClanClass)
-        del self.friendRequestList[self.friendRequestList.index(ClanClass)]
 
     def addEnemies(self, clanClass):
         self.enemyClans.append(clanClass)
@@ -66,6 +67,9 @@ class Clan(ThreadBase):
 
     def acceptFriend(self, ClanClass):
         self.friendClans.append(ClanClass)
+        del self.friendRequestList[self.friendRequestList.index(ClanClass)]
+        if ClanClass in self.enemyClans:
+            del self.enemyClans[self.enemyClans.index(ClanClass)]
 
     def nextLevelPoints(self):
         for levelPoint in cfg_clan.points:
