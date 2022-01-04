@@ -1587,7 +1587,7 @@ class ssssssssssss:
     def clan(self) -> bytearray:
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.CLAN
-        data = parse_xml('Clans')  # Если больше 1 клан, то сломается
+        data = parse_xml('Clan')  # Если больше 1 клан, то сломается
         for i in data:
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.id)

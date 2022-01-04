@@ -5,20 +5,21 @@ from python.Utils.ThreadBase import ThreadBase
 class Clan(ThreadBase):
 
     def __init__(self, Game, dict_):
-        self.name = dict_['name']
-        self.shortName = dict_['shortName']
         self.Game = Game
-        self.Leader = getattr(self.Game, f'Player_{dict_["lider_id"]}')
+        self.name = dict_['name']
+        self.shortName = dict_['short_name']
+        self.description = dict_['description']
+        self.Leader = getattr(self.Game, f'Player_{dict_["owner_id"]}')
         self.cash = dict_['cash']
         self.bonus = dict_['bonus']
         self.repository: list = dict_['repository']
-        self.lvl = dict_["lvl"]  # need get lever clan
-        self.enemyClans: list = dict_["enemyClans"]  # get list enemy, if there are no enemies get empty list[]
-        self.friendClans: list = dict_["friendClans"]  # as well as at the top
-        self.maxMembers: int
-        self.maxFriends: int
-        self.points: int = 0
-        self.nextLevelPointsValue: int = 0 # next level point
+        self.level = dict_["level"]  # need get lever clan
+        self.enemies: list = dict_["enemies"]  # get list enemy, if there are no enemies get empty list[]
+        self.friends: list = dict_["friends"]  # as well as at the top
+        self.maxMembers: int = cfg_clan.members[self.level]
+        self.maxFriends: int = cfg_clan.friends[self.level]
+        self.rating: int = self.rating()
+        self.nextLevelPointsValue: int = 0 # next level points
         self.friendRequestList = []
         self.newPlayerRequestList = {}  # key = player and valuer = message
         self.members = []
@@ -28,15 +29,12 @@ class Clan(ThreadBase):
         self.start_timer_update(self.playerPoints, 600)
 
     def playerPoints(self):
-        self.points = sum([player.point for player in self.members])  # one variable, more productive
-        # and two variable, more easy
+        self.rating = sum(member.points for member in self.members)
 
-        # self.points = 0
-        # for player in self.members:
-        #     self.points += player.point
-
-    def sendCash(self, cash):
-        self.cash -= cash
+    def sendCash(self, cash, Whom):
+        if self.cash >= cash:
+            self.cash -= cash
+            Whom.getCash(cash)
 
     def getCash(self, cash):
         self.cash += cash
@@ -48,34 +46,30 @@ class Clan(ThreadBase):
         self.bonus += bonus
 
     def moveNextLevel(self):
-        if self.lvl != max(cfg_clan.level):
-            need = cfg_clan.level
+        if self.level != max(cfg_clan.level):
+            need = cfg_clan.level[self.level]
             if self.cash >= need["credit"] and self.bonus >= need["bonus"]:
-                self.lvl += 1
                 self.cash -= need["credit"]
                 self.bonus -= need["bonus"]
+                self.level += 1
 
     def friendRequest(self, ClanClass):
         self.friendRequestList.append(ClanClass)
+        self.friendRequestList.remove(ClanClass)
 
     def addEnemies(self, clanClass):
-        self.enemyClans.append(clanClass)
-        if clanClass in self.friendClans:
-            del self.friendClans[self.friendClans.index(clanClass)]
+        self.enemies.append(clanClass)
+        if clanClass in self.friends:
+            self.friends.remove(clanClass)
         if clanClass in self.friendRequestList:
-            del self.friendRequestList[self.friendRequestList.index(clanClass)]
+            self.friendRequestList.remove(clanClass)
 
     def acceptFriend(self, ClanClass):
-        self.friendClans.append(ClanClass)
-        del self.friendRequestList[self.friendRequestList.index(ClanClass)]
-        if ClanClass in self.enemyClans:
-            del self.enemyClans[self.enemyClans.index(ClanClass)]
+        if self.maxFriends > len(self.friends):
+            self.friends.append(ClanClass)
 
     def nextLevelPoints(self):
-        for levelPoint in cfg_clan.points:
-            if self.points <= cfg_clan.points[levelPoint]:
-                self.nextLevelPointsValue = self.points - cfg_clan.points[levelPoint]
-                break
+        return cfg_clan.points[self.level + 1]
 
     def joinRequestStatus(self, playerClass, result):
         pass
@@ -95,7 +89,8 @@ class Clan(ThreadBase):
         self.newPlayerRequestList[playerClass] = message
 
     def removeMember(self, playerClass):
-        del self.members[self.members.index(playerClass)]
+        if playerClass in self.members:
+            self.members.remove(playerClass)
 
     def deleteClan(self):
         pass

@@ -15,6 +15,7 @@ class StarWars:
 
     def __create_game(self):
         self.__create_locations()
+        # self.__create_clans()
 
     def update_online(self, online):
         self.online = online
@@ -30,6 +31,9 @@ class StarWars:
         for location in parse_xml('GalaxyMap'):
             id_ = location['id']
             setattr(self, f"Location_{id_}", Location(self, location))
+
+    # def __create_clans(self):
+    #     clans =
 
     def __create_mobs(self):
         pass

@@ -6,4 +6,4 @@ class PlayerData:
     race:int
     ship_class:int
     _i_clan_id: int
-    _o_clan: None # Clans
+    _o_clan: None # Clan

@@ -44,7 +44,7 @@ class PlayerDB(Base):
     free_skills = Column(SmallInteger, default=0)
     expSkillGrowCoef = Column(SmallInteger, default=2)
     expSkillReduserCoef = Column(SmallInteger, default=10)
-    point = Column(BigInteger, default=0)
+    points = Column(BigInteger, default=0)
     x = Column(SmallInteger, nullable=False)
     y = Column(SmallInteger, nullable=False)
     deleteEnqueued = Column(Boolean, default=False)
@@ -58,22 +58,29 @@ class PlayerDB(Base):
 
     # book = relationship("Book")  # 1 ко многим
     # сделать по клану связь игрока и в каком он клане
-#
-# class ClanDB(BaseClass):
-#     __tablename__ = 'ClanDB'
-#
-#     id = Column(Integer, primary_key=True)
-#     creator_id = Column(Integer, primary_key=False)
-#     owner = Column(Integer, primary_key=False)
-#     name = Column(String(10), nullable=False)
-#     short_name = Column(String(4), nullable=False)
-#     description = Column(String(1000),  default='') # use Text
-#     level = Column(SmallInteger, nullable=False)
-#     count_rating = Column(Integer, nullable=False)
-#     credit = Column(BigInteger, nullable=False)
-#     bonus = Column(SmallInteger, nullable=False)
-#     type = Column(SmallInteger, nullable=False)
 
+class ClanDB(Base):
+    __tablename__ = 'ClanDB'
+
+    key = Column(Integer, primary_key=True)
+    id = Column(Integer, nullable=False)
+    creator_id = Column(Integer, primary_key=False)
+    owner_id = Column(Integer, primary_key=False)
+    members = Column(Text, default='[]') # id, role
+    name = Column(String(12), nullable=False)
+    shortName = Column(String(4), nullable=False)
+    description = Column(String(1000),  default='') # use Text
+    level = Column(SmallInteger, nullable=False)
+    rating = Column(Integer, nullable=False)
+    cash = Column(BigInteger, nullable=False)
+    bonus = Column(SmallInteger, nullable=False)
+    type = Column(SmallInteger, nullable=False)
+    repository = Column(Text, default='[]')
+    aliance = Column(SmallInteger, nullable=False)
+    race = Column(SmallInteger, nullable=False)
+    enemies = Column(Text, default='[]')
+    friends = Column(Text, default='[]')
+    logoFileName = Column(Text, default='')
 
     # book = relationship("Book")  # 1 ко многим
 

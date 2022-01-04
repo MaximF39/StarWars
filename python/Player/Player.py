@@ -19,7 +19,7 @@ class Player(BasePlayer, ThreadBase):
         self.canDelete = dict_['canDelete']
         self.logged = dict_['logged']
         self.clanId = dict_["clan_id"]
-        self.point = dict_['point']
+        self.points = dict_['points']
         self.PlayerRelation = dict_['PlayerRelation']
         self.rating = dict_['rating']
         self.cash = dict_['credit']
@@ -34,8 +34,8 @@ class Player(BasePlayer, ThreadBase):
         self.clanJoinRequestStatus = dict_['clanJoinRequestStatus']
         self.mov_x = self.target_x
         self.mov_y = self.target_y
-        self.pirateStatus = 0 if self.point > 0 else self.point
-        self.policeStatus = 0 if 0 > self.point else self.point
+        self.pirateStatus = 0 if self.points > 0 else self.points
+        self.policeStatus = 0 if 0 > self.points else self.points
         self.forNextLevel = int(cfg_level[self.level + 1])
         self.expForFirstSkillLevel= self._get_exp_for_next_status()
         self.engine = None

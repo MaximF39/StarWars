@@ -1271,9 +1271,9 @@ class PackagesManager:
         for i in players:
             _loc2_ = i
             creator.write_int(_loc2_.id)
-            creator.write_int(_loc2_.points)
+            creator.write_int(_loc2_.rating)
             creator.write_int(_loc2_.leaderID)
-            creator.write_unsigned_byte(_loc2_.aliace)
+            creator.write_unsigned_byte(_loc2_.aliance)
             creator.write_unsigned_byte(_loc2_.level)
             creator.write_utf(_loc2_.name)
             creator.write_utf(_loc2_.shortName)
@@ -1660,7 +1660,7 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.CLAN
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.CLAN))
-        data = parse_xml('Clans')  # Если больше 1 клан, то сломается
+        data = parse_xml('Clan')  # Если больше 1 клан, то сломается
         for i in data:
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.id)

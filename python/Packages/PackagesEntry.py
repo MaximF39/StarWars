@@ -1,7 +1,7 @@
 import json
 
 from python.Utils.DotMap import DotMap
-from python.DataBase.SQL_Table import PlayerDB
+from python.DataBase.SQL_Table import PlayerDB, ClanDB
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from python.cfg.cfg_postgres import *
@@ -34,17 +34,20 @@ class PackagesEntry:
 
     @property
     def top_clan_list(self):
-        res = [DotMap({
-            'id': 184,
-            'points': 7343124,
-            'leaderID': 1523,
-            'aliace': 2,
-            'level': 1,
-            'name': 'Id 55maxik55 шмот дешего',
-            'shortName': 'VK',
-            'logoFileName': ''
-        })]
-        return res
+        res2 = s.query(ClanDB, func.max(ClanDB.id).over(order_by=ClanDB.rating))
+        data = []
+        for top_clan, _ in res2[:-10:-1] if len(list(res2)) > 10 else res2[::-1]:
+            data.append(DotMap({
+                'id': top_clan.id,
+                'rating': top_clan.rating,
+                'leaderID': top_clan.owner_id,
+                'aliance': top_clan.aliance,
+                'level': top_clan.level,
+                'name': top_clan.name,
+                'shortName': top_clan.shortName,
+                'logoFileName': top_clan.logoFileName,
+            }))
+        return data
 
     @property
     def top_rating_list(self):
@@ -91,7 +94,7 @@ class PackagesEntry:
             "free_skills": Player.free_skills,
             "expSkillGrowCoef": Player.expSkillGrowCoef,
             "expSkillReduserCoef": Player.expSkillReduserCoef,
-            "point": Player.point,
+            "points": Player.points,
             "x": Player.x,
             "y": Player.y,
             "deleteEnqueued": Player.deleteEnqueued,
@@ -103,4 +106,35 @@ class PackagesEntry:
             "inventory": eval(Player.inventory),
             }
 
+    def get_clans(self):
+        clans = []
+        for Clan in s.query(ClanDB).all():
+            clans.append({
+            'key': Clan.key,
+            'id': Clan.id,
+            'creator_id': Clan.creator_id,
+            'owner_id': Clan.owner_id,
+            'members': Clan.members,
+            'name': Clan.name,
+            'short_name': Clan.short_name,
+            'description': Clan.description,
+            'level': Clan.level,
+            'rating': Clan.rating,
+            'cash': Clan.cash,
+            'bonus': Clan.bonus,
+            'type': Clan.type,
+            'repository': Clan.repository,
+            'aliance': Clan.aliance,
+            'race': Clan.race,
+            'enemies': Clan.enemies,
+            'friends': Clan.friends,
+            'logoFileName': Clan.logoFileName})
+        return clans
+
+if __name__ == '__main__':
+    cl = PackagesEntry(55, 'ss')
+    cl.get_clans()
+    # print(len(cl.get_clans()))
+    for i in cl.get_clans():
+        print(i)
 

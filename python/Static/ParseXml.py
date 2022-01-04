@@ -4,7 +4,7 @@ import pathlib
 from python.Utils.DotMap import DotMap
 
 bs = pathlib.Path(__file__).parent.joinpath('Json')
-__id_parse = ['Clans', "GalaxyMap"]
+__id_parse = ['Clan', "GalaxyMap"]
 __guid_parse = ['AmmoParameters', "DeviceParameters", "DroidParameters",
               "EngineParameters", "ShipParameters", "WeaponParameters", "ResourseParameters"]
 
