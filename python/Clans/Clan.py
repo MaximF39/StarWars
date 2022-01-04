@@ -1,4 +1,6 @@
+from python.cfg import cfg_clan
 from python.Utils.ThreadBase import ThreadBase
+
 
 class Clan(ThreadBase):
 
@@ -9,13 +11,14 @@ class Clan(ThreadBase):
         self.Leader = getattr(self.Game, f'Player_{dict_["lider_id"]}')
         self.cash = dict_['cash']
         self.bonus = dict_['bonus']
-        self.repository = dict_['repository']
+        self.repository: list = dict_['repository']
         self.lvl = dict_["lvl"]  # need get lever clan
         self.enemyClans: list = dict_["enemyClans"]  # get list enemy, if there are no enemies get empty list[]
         self.friendClans: list = dict_["friendClans"]  # as well as at the top
         self.maxMembers: int
         self.maxFriends: int
         self.points: int = 0
+        self.nextLevelPointsValue: int = 0 # next level point
         self.friendRequestList = []
         self.newPlayerRequestList = {}  # key = player and valuer = message
         self.members = []
@@ -33,39 +36,53 @@ class Clan(ThreadBase):
         #     self.points += player.point
 
     def sendCash(self, cash):
-        self.cash = cash
+        self.cash -= cash
 
-    def getCash(self):
-        return self.cash
+    def getCash(self, cash):
+        self.cash += cash
 
     def sendBonus(self, bonus):
-        self.bonus = bonus
+        self.bonus -= bonus
 
-    def getBonus(self):
-        return self.bonus
+    def getBonus(self, bonus):
+        self.bonus += bonus
 
     def moveNextLevel(self):
-        self.lvl += 1
+        if self.lvl != max(cfg_clan.level):
+            need = cfg_clan.level
+            if self.cash >= need["credit"] and self.bonus >= need["bonus"]:
+                self.lvl += 1
 
     def friendRequest(self, ClanClass):
         self.friendRequestList.append(ClanClass)
+        del self.friendRequestList[self.friendRequestList.index(ClanClass)]
 
     def addEnemies(self, clanClass):
         self.enemyClans.append(clanClass)
-        del self.friendRequestList[self.friendRequestList.index(clanClass)]
+        if clanClass in self.friendClans:
+            del self.friendClans[self.friendClans.index(clanClass)]
+        if clanClass in self.friendRequestList:
+            del self.friendRequestList[self.friendRequestList.index(clanClass)]
 
     def acceptFriend(self, ClanClass):
         self.friendClans.append(ClanClass)
 
     def nextLevelPoints(self):
-        # need list with point for different level clan
-        pass
+        for levelPoint in cfg_clan.points:
+            if self.points <= cfg_clan.points[levelPoint]:
+                self.nextLevelPointsValue = self.points - cfg_clan.points[levelPoint]
+                break
 
     def joinRequestStatus(self, playerClass, result):
         pass
 
-    def buyBonusItem(self):
-        pass
+    def buyBonusItem(self, price, item):
+        if self.bonus >= price:
+            self.bonus -= price
+            self.repository.append(item)
+            return True  # if the purchase has been completed
+        else:
+            return False
 
     def setPlayerRole(self, PlayerClass, role):
         self.members[self.members.index(PlayerClass)].role = role
