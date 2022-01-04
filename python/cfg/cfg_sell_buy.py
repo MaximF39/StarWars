@@ -5,8 +5,8 @@ class cfg_sell_buy:
 
     @property
     def coef_sell(self):
-        return (100 + 2 * int(self.trading ** 1.15)) / 100 # 1 + 0.34 # 1.34
+        return (30 + 2 * int(self.trading ** 1.15)) / 100 # 0.3 + 0.34 # 0.64
 
     @property
     def coef_buy(self):
-        return (200 - 2 * int(self.trading ** 1.15)) / 100 # 2 - 0.34 = 1.66
+        return (130 - 2 * int(self.trading ** 1.15)) / 100 # 1.3 - 0.34 = 0.96

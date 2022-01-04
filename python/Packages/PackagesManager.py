@@ -1612,18 +1612,18 @@ class PackagesManager:
         creator.write_utf(_loc2_)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
-    def droidBuildingDialog(self):
+    def droidBuildingDialog(self, droid):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.DROID_BUILDING_DIALOG
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.DROID_BUILDING_DIALOG))
-        creator.write_bytes(16)# hz _loc3_.deviceGuid)
-        creator.write_int(len(self.Player.droids))#len(data))
-        for droid in self.Player.droids:
-            creator.write_bytes(droid.guid)
-            creator.write_int(droid.classNumber)
-            creator.write_int(droid.level)
-            creator.write_int(droid.energyCost)
+        creator.write_bytes(droid.guid)# hz _loc3_.deviceGuid)
+        creator.write_int(1)#len(self.Player.droids))#len(data))
+        # for droid in self.Player.droids:
+        creator.write_bytes(droid.guid)
+        creator.write_int(droid.classNumber)
+        creator.write_int(droid.level)
+        creator.write_int(droid.energyCost)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def hideShip(self):

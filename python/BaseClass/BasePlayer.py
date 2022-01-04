@@ -83,6 +83,7 @@ class BasePlayer(Ship, ThreadBase, MyTime):
 
     def leaveLocation(self):
         print(self.SpaceObject)
+        self.SpaceObject.leaveLocation(self)
         self.x = self.SpaceObject.x
         self.y = self.SpaceObject.y
         self.SpaceObject = None

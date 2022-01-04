@@ -127,10 +127,12 @@ class Player(BasePlayer, ThreadBase):
 
     def use_weapon(self, ItemClass):
         self.active_weapons.append(ItemClass)
+        self.ship['cpuUsed'] += ItemClass.cpu
         # self.inventory.remove(ItemClass)
 
     def unuse_weapon(self, ItemClass):
         self.active_weapons.remove(ItemClass)
+        self.ship['cpuUsed'] -= ItemClass.cpu
         # self.inventory.append(ItemClass)
 
     def use_device(self, ItemClass):
@@ -155,6 +157,8 @@ class Player(BasePlayer, ThreadBase):
 
     def unuse_droid(self, item_):
         item_.separation(self, 1)
+        self.ControlUsed -= item_.Control
+        self.ControlLeft += item_.Control
 
     def drop_item(self, data):
         for item_ in self.inventory:

@@ -98,8 +98,6 @@ class Server(ThreadBase):
     def get_entry_pack(self):
         PacMan = PackagesManager(self.id, self.Game)
 
-        Player = getattr(self.Game, f'Player_{self.id}')
-
         PacMan.processPackages(ServerRequest.VERSION)  # VERSION
         PacMan.processPackages(ServerRequest.ONLINE)  # ONLINE
         PacMan.processPackages(ServerRequest.TOP_LIST)  # TOP_LIST

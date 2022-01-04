@@ -85,6 +85,6 @@ def new_items():
         with open(_get_path_json(key), 'w', encoding='utf-8-sig') as f:
             json.dump(res, f)
 
-new_galaxy()
+new_items()
 
 # print(new_galaxy("GalaxyMap"))

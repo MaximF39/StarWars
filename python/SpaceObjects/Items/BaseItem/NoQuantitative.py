@@ -55,14 +55,12 @@ class NoQuantitative(baseItem):
                 case 2:
                     if skill['Value'] > skills[SkillTypeStr.get_str(skill['valueType'])]:
                         return False
-                case 3:
-                    if skills["Control"] > skill['Value']:
-                        return False
                 case 4:
                     if skill['Value'] > self.Owner.ship['cpu']:
+                        self.cpu = skill['Value']
                         return False
                 case 5:
-                    if self.Owner.status > skill['Value']:  # -3 > -2
+                    if self.Owner.status > skill['Value']:  # -3 > -2 пир или коп и ниже тоже
                         return False
                 case 6:
                     if self.Owner.status < skill['Value']:  # 3 < 2 # player < need -> False

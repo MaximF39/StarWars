@@ -25,7 +25,7 @@ class Droid(Quantitative):
 
         PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.inventory()
-        PacMan.droidBuildingDialog()
+        PacMan.droidBuildingDialog(self)
 
     def unuse(self):
         self.Owner.unuse_droid(self)

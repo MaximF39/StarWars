@@ -70,6 +70,9 @@ class Planet(SpaceObject, ThreadBase):
             ItemsForPlayer.append(Item_.ItemForPlayer(PlayerClass))
         PacMan.tradingItems()
 
+    def leaveLocation(self, playerClass):
+        self.players.remove(playerClass)
+
     def send_info_location(self):
         self.LocationClass.set_planet(self)
 

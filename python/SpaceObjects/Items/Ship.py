@@ -6,5 +6,5 @@ class Ship(NoQuantitative):
     def __init__(self, Game, classNumber, OwnerClass):
         super().__init__(Game, classNumber, OwnerClass)
 
-    def use(self):
-        pass
+    # def use(self):
+    #     pass

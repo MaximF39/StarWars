@@ -17,19 +17,18 @@ class AsteroidsBelt(StaticSpaceObject):
         self.players = []
         self.create_asteroid()
 
-    def set_player(self, PlayerClass):
-        self.players.append(PlayerClass)
-
     def create_asteroid(self):
         for i in range(60):
             self.asteroid_id += 1
-            # x = random.choice([-1, 1]) * random.randint(0, 3000)
-            # y = random.choice([-1, 1]) * random.randint(0, 3000)
-            x = 3000
-            y = 3000
-            targetX = random.random() * -x
-            targetY = random.random() * -y
-            size = random.randint(600, 2600)
+            x = random.randint(-3000, 3000)
+            if abs(x) > 2700:
+                y = random.randint(-3000, 3000)
+            else:
+                y = random.choice([-1, 1]) * random.randint(2500, 3000)
+
+            targetX = int(random.random() * -x)
+            targetY = int(random.random() * -y)
+            size = random.randint(600, 3000)
             speed = 60 - size // 100
             asteroid = {
             "id": self.asteroid_id,

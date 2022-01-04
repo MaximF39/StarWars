@@ -26,6 +26,9 @@ class StaticSpaceObject(SpaceObject):
     def send_info_location(self):
         self.Location.set_static_space_object(self)
 
+    def leaveLocation(self, PlayerClass):
+        self.players.remove(PlayerClass)
+
 
 
 
