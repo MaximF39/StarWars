@@ -17,13 +17,13 @@ def item(Game, classNumber, OwnerClass, count=None):
         case 3:
             return Engine(Game, classNumber, OwnerClass)
         case 4:
-            return Ship(Game, classNumber, OwnerClass)
+            return Weapon(Game, classNumber, OwnerClass)
         case 5:
             return Device(Game, classNumber, OwnerClass)
         case 6:
             return Droid(Game, classNumber, OwnerClass, count)
         case 7:
-            return Weapon(Game, classNumber, OwnerClass)
+            return Ship(Game, classNumber, OwnerClass)
 
 def get_type(classNumber):
     return item_id(classNumber)['Types']

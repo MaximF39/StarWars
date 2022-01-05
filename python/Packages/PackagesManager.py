@@ -1528,6 +1528,9 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.ASTEROIDS))
         data = self.Player.ObjectToReach.asteroids
+        print('len data', len(data))
+        for i in range(3):
+            print(data[-i])
         for i in data:
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.id)

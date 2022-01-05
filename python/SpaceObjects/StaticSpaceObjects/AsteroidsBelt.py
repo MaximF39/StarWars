@@ -1,6 +1,7 @@
 from ...BaseClass.StaticSpaceObject import StaticSpaceObject
 import random
 from ...Packages.PackagesManager import PackagesManager
+from .Asteroid import Asteroid
 
 class AsteroidsBelt(StaticSpaceObject):
     id: int
@@ -20,31 +21,35 @@ class AsteroidsBelt(StaticSpaceObject):
     def create_asteroid(self):
         for i in range(60):
             self.asteroid_id += 1
-            # mod = random.choice([0.1, -0.1, 1, -1])
-            # x = mod * random.randint(-3000, 3000)
-            # targetX = -mod * random.randint(-3000, 3000)
-            # if 301 > abs(x):
-            #     y = random.randint(-3000, 3000)
-            #     targetY = -y
-            # else:
-            #     y = random.choice([-1, 1]) * random.randint(2700, 3000)
-            #     targetY = -y
+            mod = random.choice([0.1, -0.1, 1, -1])
+            x = mod * random.randint(-3000, 3000)
+            targetX = -mod * random.randint(-3000, 3000)
+            if 301 > abs(x):
+                y = random.randint(-3000, 3000)
+                targetY = -y
+            else:
+                y = random.choice([-1, 1]) * random.randint(2700, 3000)
+                targetY = -y
             x = 0
             y = 0
             targetX = 1
             targetY = 1
             size = random.randint(600, 3000)
             speed = 60 - size // 100
-            asteroid = {
-            "id": self.asteroid_id,
-            "x": x,  # сделать, чтобы создавались по краям и летели через середину
-            "y": y,
-            "targetX": targetX,
-            "targetY": targetY,
-            "size": size,
-            "speed": speed,
-            }
-            self.asteroids.append(asteroid)
+            Aster = Asteroid(
+                {
+                    "id": self.asteroid_id,
+                    "x": x,  # сделать, чтобы создавались по краям и летели через середину
+                    "y": y,
+                    "targetX": targetX,
+                    "targetY": targetY,
+                    "size": size,
+                    "speed": speed,
+                },
+                self.Game
+            )
+
+            self.asteroids.append(Aster)
 
     def SetPlayer(self, PlayerClass):
         self.players.append(PlayerClass)

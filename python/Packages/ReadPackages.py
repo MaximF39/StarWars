@@ -342,7 +342,6 @@ class ReadPackages:
         _loc4_ = PackageDecoder()
         _loc4_.data = data
         data = {}
-        data = {}
         data['type'] = _loc4_.read_int()  # ObjectToReachType
         data['id'] = _loc4_.read_int()  # id
         data['aliance'] = _loc4_.read_int()  # AlianceType ?

@@ -1,7 +1,8 @@
-# class Item:
-#
-#     def __init__(self, classOwner):
-#         self.Owner:'Owner' = classOwner
-#         self.Owner.
-#
-# print('hello')
+from datetime import datetime
+
+from threading import Thread
+
+def myPrint(*args):
+    print(datetime.now(), args)
+
+myPrint(1, 2, 3, [1, 2, 3], {'1':1, '2':2})

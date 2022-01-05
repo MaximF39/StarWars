@@ -58,6 +58,7 @@ class NoQuantitative(baseItem):
                 case 4:
                     if skill['Value'] > self.Owner.ship['cpu']:
                         self.cpu = skill['Value']
+                        print('create cpu', self.cpu)
                         return False
                 case 5:
                     if self.Owner.status > skill['Value']:  # -3 > -2 пир или коп и ниже тоже
