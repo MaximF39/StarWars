@@ -41,6 +41,7 @@ class PackagesEntry:
                 'id': top_clan.id,
                 'rating': top_clan.rating,
                 'leaderID': top_clan.owner_id,
+                'leaderName': 'Admin',
                 'aliance': top_clan.aliance,
                 'level': top_clan.level,
                 'name': top_clan.name,

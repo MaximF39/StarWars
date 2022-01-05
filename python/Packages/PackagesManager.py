@@ -883,11 +883,11 @@ class PackagesManager:
         creator.write_unsigned_byte(Player.maxSkill)
         creator.write_unsigned_byte(Player.status)
         creator.write_unsigned_byte(Player.level)
-        if Player.point > 0:
+        if Player.points > 0:
             creator.write_int(0)
-            creator.write_int(Player.point)
+            creator.write_int(Player.points)
         else:
-            creator.write_int(Player.point)
+            creator.write_int(Player.points)
             creator.write_int(0)
         creator.write_int(Player.forNextLevel)
         self.Game.id_to_conn[self.id].send(creator.get_package())
@@ -1660,7 +1660,7 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.CLAN
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.CLAN))
-        data = parse_xml('Clan')  # Если больше 1 клан, то сломается
+        data = PackagesEntry(self.Game, self.id).top_clan_list # parse_xml('Clan')  # Если больше 1 клан, то сломается
         for i in data:
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.id)
@@ -1669,7 +1669,7 @@ class PackagesManager:
             creator.write_utf(_loc2_.logoFileName)
             creator.write_utf(_loc2_.name)
             creator.write_utf(_loc2_.shortName)
-            creator.write_unsigned_byte(_loc2_.alliance)
+            creator.write_unsigned_byte(_loc2_.aliance)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerClan(self):
@@ -1971,7 +1971,7 @@ class PackagesManager:
             case 2:
                 value = clanPoints
             case 3:
-                value = self.Player.point # Player.point
+                value = self.Player.points # Player.point
             case 4:
                 value = ClanFriendRequests
             case 5:
