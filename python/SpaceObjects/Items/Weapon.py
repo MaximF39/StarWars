@@ -5,7 +5,7 @@ class Weapon(NoQuantitative):
 
     def __init__(self, Game, classNumber, OwnerClass):
         super().__init__(Game, classNumber, OwnerClass)
-        self.cpu = self.Owner.ship['cpu']
+        # self.cpu = self.Owner.ship['cpu']
 
     def use(self):
         self.Owner.use_weapon(self)
