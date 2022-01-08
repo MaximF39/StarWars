@@ -3,7 +3,7 @@ import copy
 from python.Static.ParseXml import item_id
 import uuid
 
-class baseItem:
+class BaseItem:
 
     def __init__(self, Game, classNumber, OwnerClass):
         self.Owner = OwnerClass
