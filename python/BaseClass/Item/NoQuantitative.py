@@ -1,11 +1,11 @@
 import copy
 
-from ....Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
-from ....cfg.cfg_sell_buy import cfg_sell_buy
-from ....Packages.PackagesManager import PackagesManager
-from .baseItem import baseItem
+from python.Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
+from python.cfg.cfg_sell_buy import cfg_sell_buy
+from python.Packages.PackagesManager import PackagesManager
+from python.BaseClass.Item.BaseItem import BaseItem
 
-class NoQuantitative(baseItem):
+class NoQuantitative(BaseItem):
     fullRepair = 1000
 
     def __init__(self, Game, classNumber, OwnerClass):

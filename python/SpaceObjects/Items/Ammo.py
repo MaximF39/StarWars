@@ -1,4 +1,4 @@
-from .BaseItem.Quantitative import Quantitative
+from python.BaseClass.Item.Quantitative import Quantitative
 
 class Ammo(Quantitative):
 

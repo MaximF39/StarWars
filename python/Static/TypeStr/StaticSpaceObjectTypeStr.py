@@ -1,4 +1,4 @@
-from . import BaseTypeStr
+from python.BaseClass.Other.BaseTypeStr import BaseTypeStr
 class StaticSpaceObjectTypeStr(BaseTypeStr):
     data = [
     ["ASTEROIDS_BELT", 1], # астеройдный пояс

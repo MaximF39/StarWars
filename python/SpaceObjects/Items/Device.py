@@ -1,4 +1,4 @@
-from .BaseItem.NoQuantitative import NoQuantitative
+from python.BaseClass.Item.NoQuantitative import NoQuantitative
 from python.Packages.PackagesManager import PackagesManager
 from python.Utils.ThreadBase import ThreadBase
 from python.Utils.MyTime import MyTime

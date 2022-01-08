@@ -1,4 +1,4 @@
-from . import BaseTypeStr
+from python.BaseClass.Other.BaseTypeStr import BaseTypeStr
 class ServerRequestStr(BaseTypeStr):
     data = [
     ["MIN", -2000000000],

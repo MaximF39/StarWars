@@ -1,4 +1,4 @@
-from . import BaseTypeStr
+from python.BaseClass.Other.BaseTypeStr import BaseTypeStr
 class PlayerSkillTypeStr(BaseTypeStr):
     data = [
     ["KineticWeapons", 1],

@@ -1,4 +1,4 @@
-from . import BaseTypeStr
+from python.BaseClass.Other.BaseTypeStr import BaseTypeStr
 class UpdateValueTypeStr(BaseTypeStr):
     data = [
     ["ClanCash", 1],

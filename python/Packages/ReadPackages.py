@@ -8,7 +8,11 @@ from loguru import logger
 class ReadPackages:
     def __write_logger(self):
         path = pathlib.Path(__file__).parent.parent.joinpath('DataBase').joinpath("PlayerLog")
-        os.chdir(path)
+        if os.path.exists(path):
+            os.chdir(path)
+        else:
+            os.mkdir(path)
+            os.chdir(path)
 
         logger.add(f'Player_{self.id}.log',format="{time:YYYY-MM-DD HH:mm:ss.SSS}, {level}, {message}",
                    rotation="5 MB",

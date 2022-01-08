@@ -1,10 +1,10 @@
 import copy
 
-from ....cfg.cfg_sell_buy import cfg_sell_buy
-from ....Packages.PackagesManager import PackagesManager
-from .baseItem import baseItem
+from python.cfg.cfg_sell_buy import cfg_sell_buy
+from python.Packages.PackagesManager import PackagesManager
+from python.BaseClass.Item.BaseItem import BaseItem
 
-class Quantitative(baseItem):
+class Quantitative(BaseItem):
 
     def __init__(self, Game, classNumber, OwnerClass, count):
         self.wear = count

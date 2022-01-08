@@ -1,4 +1,4 @@
-from . import BaseTypeStr
+from python.BaseClass.Other.BaseTypeStr import BaseTypeStr
 class ClientRequestStr(BaseTypeStr):
     data = [
     ["LOGIN", -2100000001],

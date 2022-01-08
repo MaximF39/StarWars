@@ -1,4 +1,4 @@
-from . import BaseTypeStr
+from python.BaseClass.Other.BaseTypeStr import BaseTypeStr
 class ShipLocationTypeStr(BaseTypeStr):
     data = [
     ["PLANET", 1],

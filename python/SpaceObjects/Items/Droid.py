@@ -1,4 +1,4 @@
-from .BaseItem.Quantitative import Quantitative
+from python.BaseClass.Item.Quantitative import Quantitative
 from python.Packages.PackagesManager import PackagesManager
 from ...Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
 

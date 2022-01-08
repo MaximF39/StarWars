@@ -1,4 +1,4 @@
-from . import BaseTypeStr
+from python.BaseClass.Other.BaseTypeStr import BaseTypeStr
 class PlanetClassStr(BaseTypeStr):
     data = [
     ["SUN",  1],
