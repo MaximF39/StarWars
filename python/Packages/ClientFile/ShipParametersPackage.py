@@ -1,9 +1,0 @@
-class ShipParametersPackage:
-    _armor: int
-    shields: int
-    used_space: int
-    cpu: int
-    cpu_used: int
-    level: int
-    max_droids: int
-    droids: int
