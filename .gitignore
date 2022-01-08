@@ -152,6 +152,5 @@ cython_debug/
 .idea/
 test/
 test/test.py
-*.zip
-*.log
-*.log
+/*.zip
+/*.log

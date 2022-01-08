@@ -48,8 +48,8 @@ class Server(ThreadBase):
         decoder.read_int()
         lenBytes = decoder.read_int()
         decoder.data = self.conn.recv(lenBytes)
-        my_thread = threading.Thread(target=self.get_id, args=(decoder.data,))
-        my_thread.start()
+        time.sleep(0.5)
+        self.get_id(decoder.data)
 
     def get_id(self, data):
         d = PackageDecoder()
@@ -70,7 +70,6 @@ class Server(ThreadBase):
 
     def get(self):
         self.entry()
-        # read_packages = ReadPackages(self.id)
         while True:
             try:
                 decoder = PackageDecoder()
@@ -93,37 +92,72 @@ class Server(ThreadBase):
     def get_entry_pack(self):
         PacMan = PackagesManager(self.id, self.Game)
 
-        PacMan.processPackages(ServerRequest.VERSION)  # VERSION
-        PacMan.processPackages(ServerRequest.ONLINE)  # ONLINE
-        PacMan.processPackages(ServerRequest.TOP_LIST)  # TOP_LIST
-        PacMan.processPackages(ServerRequest.TOP_CLANS_LIST)  # TOP_CLANS_LIST
-        PacMan.processPackages(ServerRequest.TOP_RATING_LIST)  # TOP_RATING_LIST
-        PacMan.processPackages(ServerRequest.WEAPONS_PARAMETERS)  # WEAPONS_PARAMETERS
-        PacMan.processPackages(ServerRequest.AMMOS_PARAMETERS)  # AMMOS_PARAMETERS
-        PacMan.processPackages(ServerRequest.RESOURCE_PARAMETERS)  # RESOURCE_PARAMETERS
-        PacMan.processPackages(ServerRequest.ENGINES_PARAMETERS)  # ENGINES_PARAMETERS
-        PacMan.processPackages(ServerRequest.DEVICE_PARAMETERS)  # DEVICE_PARAMETERS
-        PacMan.processPackages(ServerRequest.DROID_PARAMETERS)  # DROID_PARAMETERS
-        PacMan.processPackages(ServerRequest.MAP)  # MAP
-        PacMan.processPackages(ServerRequest.SHIP_PARAMETERS)  # SHIP_PARAMETERS
-        PacMan.processPackages(ServerRequest.LOGGED)  # LOGGED
-        PacMan.processPackages(ServerRequest.PLAYER)  # PLAYER
-        PacMan.processPackages(ServerRequest.PLAYER_SHIP)  # PLAYER_SHIP
-        PacMan.processPackages(ServerRequest.TO_GAME)  # TO_GAME
-        PacMan.processPackages(ServerRequest.LOCATION_SYSTEM)  # LOCATION_SYSTEM
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 13)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 9)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 10)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 11)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 14)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 15)  # UPDATE_VALUE
-        PacMan.processPackages(ServerRequest.ACTIVE_WEPONS)  # ACTIVE_WEPONS
-        PacMan.processPackages(ServerRequest.ACTIVE_DEVICES)  # ACTIVE_DEVICES
-        PacMan.processPackages(ServerRequest.CLAN)  # CLAN
-        PacMan.processPackages(ServerRequest.UPDATE_VALUE, 3) # s
-        PacMan.processPackages(ServerRequest.SHIPS_POSITION)  # SHIPS_POSITION
-        PacMan.processPackages(ServerRequest.SHIPS_STASE)  # SHIPS_POSITION
-        PacMan.processPackages(ServerRequest.HIDE_SHIP) # s
+        barray = bytearray()
+
+        for pack in PacMan.processPackages(ServerRequest.VERSION):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.ONLINE):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.TOP_LIST):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.TOP_CLANS_LIST):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.TOP_RATING_LIST):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.WEAPONS_PARAMETERS):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.AMMOS_PARAMETERS):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.RESOURCE_PARAMETERS):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.ENGINES_PARAMETERS):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.DEVICE_PARAMETERS):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.DROID_PARAMETERS):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.MAP):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.SHIP_PARAMETERS):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.LOGGED):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.PLAYER):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.PLAYER_SHIP):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.TO_GAME):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.LOCATION_SYSTEM):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.UPDATE_VALUE, 13):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.UPDATE_VALUE, 9):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.UPDATE_VALUE, 10):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.UPDATE_VALUE, 11):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.UPDATE_VALUE, 14):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.UPDATE_VALUE, 15):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.ACTIVE_WEPONS):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.ACTIVE_DEVICES):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.CLAN):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.UPDATE_VALUE, 3):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.SHIPS_POSITION):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.SHIPS_STASE):
+            barray.append(pack)
+        for pack in PacMan.processPackages(ServerRequest.HIDE_SHIP):
+            barray.append(pack)
+
+        self.Game.id_to_conn[self.id].send(barray)
 
     @staticmethod
     def write_to_log(p1: str, to_log: bool) -> None:

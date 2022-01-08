@@ -28,7 +28,7 @@ class EntryPac:
             case ServerRequest.TOP_RATING_LIST:
                 return self.topRatingList()
             case ServerRequest.TOP_CLANS_LIST:
-                return self.topClansList()
+                return self.topClansList(*args)
             case ServerRequest.WEAPONS_PARAMETERS:
                 return self.weaponsParameters()
             case ServerRequest.RESOURCE_PARAMETERS:
@@ -50,7 +50,7 @@ class EntryPac:
             case ServerRequest.PLAYER_SHIP:
                 return self.playerShip()
             case ServerRequest.TO_GAME:
-                return self.toGame()
+                return self.toGame(*args)
             case ServerRequest.LOCATION_SYSTEM:
                 return self.locationSystem()
             case ServerRequest.ACTIVE_DEVICES:
@@ -473,10 +473,13 @@ class EntryPac:
         creator.write_short(ship.cpu)
         return creator.get_package()
 
-    def toGame(self):
+    def toGame(self, mod=False):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.TO_GAME
-        return creator.get_package()
+        if not mod:
+            pass
+        else:
+            return creator.get_package()
 
 
     def locationSystem(self):
