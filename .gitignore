@@ -155,3 +155,4 @@ test/test.py
 python/DataBase/PlayerLog/Player_255.log
 *.zip
 *.log
+*.log
