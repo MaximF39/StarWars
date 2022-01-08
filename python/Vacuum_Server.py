@@ -38,8 +38,6 @@ class Server(ThreadBase):
         self.Game.update_online(self.online)
         my_thread = threading.Thread(target=self.get)
         my_thread.start()
-        my_thread = threading.Thread(target=self.send)
-        my_thread.start()
 
     def entry(self):
         print('entry')
@@ -91,9 +89,6 @@ class Server(ThreadBase):
 
     def get_package(self, pack_number, data):
         ReadPackages(self.Game, self.id, pack_number, data)
-
-    def send(self):
-        time.sleep(1)
 
     def get_entry_pack(self):
         PacMan = PackagesManager(self.id, self.Game)

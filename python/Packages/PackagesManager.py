@@ -7,14 +7,6 @@ from python.Packages.PackageCreator import PackageCreator
 from ..cfg.cfg_sell_buy import cfg_sell_buy
 
 class PackagesManager:
-    count_guid = 0
-    _aAvailablePackages: list = list()
-    _iStateKey: int
-    _iLastPackageLength: int
-    _iLastServerRequest: int
-    _aBuffer: bytearray
-    # _iLastTime: int = getTimer()
-    lastFiveStateKeys: list = list()
     stateLoop: int
 
     def __init__(self, id_:int, StarWars):

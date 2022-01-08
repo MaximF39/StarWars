@@ -1,0 +1,73 @@
+package planets
+{
+   public class PlanetClass
+   {
+
+      public static var SUN:int = 1;
+
+      public static var WHITE_SUN:int = 2;
+
+      public static var RED_SUN:int = 3;
+
+      public static var GREEN_SUN:int = 4;
+
+      public static var BLUE_SUN:int = 5;
+
+      public static var EARTH:int = 11;
+
+      public static var MARS:int = 12;
+
+      public static var EARTH1:int = 13;
+
+      public static var MARS1:int = 14;
+
+      public static var MARS2:int = 15;
+
+      public static var MOON:int = 16;
+
+      public static var MOON1:int = 17;
+
+      public static var VENUS:int = 18;
+
+      public static var SATURN:int = 19;
+
+      public static var PLUTO:int = 20;
+
+      public static var ICE_PLANET:int = 21;
+
+      public static var WATER_PLANET:int = 22;
+
+      public static var MOON2:int = 23;
+
+      public static var JUPITER:int = 24;
+
+      public static var JUPITER1:int = 25;
+
+      public static var MERCURY:int = 26;
+
+      public static var NEPTUNE:int = 27;
+
+      public static var URANUS:int = 28;
+
+
+      public function PlanetClass()
+      {
+         super();
+      }
+
+      public static function isSun(param1:int) : Boolean
+      {
+         switch(param1)
+         {
+            case SUN:
+            case WHITE_SUN:
+            case RED_SUN:
+            case GREEN_SUN:
+            case BLUE_SUN:
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+}

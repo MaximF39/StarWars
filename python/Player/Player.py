@@ -1,4 +1,5 @@
 import math
+from typing import Match
 
 from ..SpaceObjects.Item import item
 from ..Packages.PackagesManager import PackagesManager
@@ -9,6 +10,7 @@ from ..cfg.cfg_status import cfg_status
 import json
 import ast
 from ..cfg.cfg_const import cfg_const
+
 
 class Player(BasePlayer, ThreadBase):
     def __init__(self, Game, dict_):
@@ -37,7 +39,7 @@ class Player(BasePlayer, ThreadBase):
         self.pirateStatus = 0 if self.points > 0 else self.points
         self.policeStatus = 0 if 0 > self.points else self.points
         self.forNextLevel = int(cfg_level[self.level + 1])
-        self.expForFirstSkillLevel= self._get_exp_for_next_status()
+        self.expForFirstSkillLevel = self._get_exp_for_next_status()
         self.engine = None
         self.droid = []
         print('sspeed', self.speed)
@@ -45,8 +47,7 @@ class Player(BasePlayer, ThreadBase):
         print('classNumber', self.classNumber)
         print('classNumber2', self.ship['classNumber'])
 
-
-    def commitSkills(self, dict_:dict): # name : append count
+    def commitSkills(self, dict_: dict):  # name : append count
         for k, v in dict_.items():
             if self.freeSkills - v >= 0 and self.skills[k] + v < 13:
                 self.freeSkills -= v
@@ -169,3 +170,106 @@ class Player(BasePlayer, ThreadBase):
     def _get_exp_for_next_status(self):
         return cfg_status[self.status + 1]
 
+    def device_clicked(self, data):
+        if self.cnt_active_device > self.ship["deviceSlots"]:
+            for item in self.active_devices:
+                if data["guid"] == item.guid:
+                    item.clicked()
+                    break
+
+    def add_effect(self, effect):
+        match effect:
+            case 1:
+                pass
+            case 2:
+                pass
+            case 3:
+                pass
+            case 4:
+                pass
+            case 5:
+                pass
+            case 6:
+                pass
+            case 7:
+                pass
+            case 8:
+                pass
+            case 9:
+                pass
+            case 10:
+                pass
+            case 11:
+                pass
+            case 12:
+                pass
+            case 13:
+                pass
+            case 14:
+                pass
+            case 15:
+                pass
+            case 16:
+                pass
+            case 17:
+                pass
+            case 18:
+                pass
+            case 19:
+                pass
+            case 20:
+                pass
+            case 21:
+                pass
+            case 22:
+                pass
+            case 23:
+                pass
+            case 24:
+                pass
+            case 25:
+                pass
+            case 26:
+                pass
+            case 27:
+                pass
+            case 28:
+                pass
+            case 29:
+                pass
+            case 30:
+                pass
+            case 31:
+                pass
+            case 32:
+                pass
+            case 33:
+                pass
+            case 34:
+                pass
+            case 35:
+                pass
+            case 36:
+                pass
+            case 37:
+                pass
+            case 38:
+                pass
+            case 39:
+                pass
+            case 40:
+                pass
+            case 41:
+                pass
+            case 42:
+                pass
+            case 43:
+                pass
+            case 44:
+                pass
+            case 45:
+                pass
+            case 46:
+                pass
+            case 47:
+                pass

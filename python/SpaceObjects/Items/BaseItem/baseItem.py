@@ -8,6 +8,7 @@ class baseItem:
     def __init__(self, Game, classNumber, OwnerClass):
         self.Owner = OwnerClass
         self.Game = Game
+        self.data = item_id(classNumber)
         data = item_id(classNumber)
         self.type = data['Types']
         self.classNumber = data['classNumber']
