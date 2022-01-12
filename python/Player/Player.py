@@ -81,7 +81,8 @@ class Player(BasePlayer, ThreadBase):
                 self.SpaceObject.ShowShopItems(self)
 
     def buyItemByBonuses(self, dict_):
-        Item_ = item(self.Game, dict_["classNumber"], self)
+        raise 'Надо сделать'
+        Item_ = item(self.Game, dict_["classNumber"], self, )
         bonus = Item_.cost // 1000
         if self.bonus - bonus > 0:
             self.bonus -= bonus
@@ -129,12 +130,10 @@ class Player(BasePlayer, ThreadBase):
     def use_weapon(self, ItemClass):
         self.active_weapons.append(ItemClass)
         self.ship['cpuUsed'] += ItemClass.cpu
-        # self.inventory.remove(ItemClass)
 
     def unuse_weapon(self, ItemClass):
         self.active_weapons.remove(ItemClass)
         self.ship['cpuUsed'] -= ItemClass.cpu
-        # self.inventory.append(ItemClass)
 
     def use_device(self, ItemClass):
         self.active_devices.append(ItemClass)
@@ -142,14 +141,14 @@ class Player(BasePlayer, ThreadBase):
 
     def unuse_device(self, ItemClass):
         self.active_devices.remove(ItemClass)
-        # self.inventory.append(ItemClass)
 
     def replace_engine(self, ItemClass):
         if self.engine:
             self.engine.inUsing = False
+            self.inventory.append(self.engine)
         self.engine = ItemClass
         self.engine.inUsing = True
-        # self.inventory.remove(ItemClass)
+        self.inventory.remove(ItemClass)
 
     def use_droid(self, item_):
         item_.separation(self, 1, True)
@@ -177,6 +176,9 @@ class Player(BasePlayer, ThreadBase):
                     item.clicked()
                     break
 
-    def add_effect(self, effect):
+    @property
+    def __name__(self):
+        return self.__class__.__name__
 
+    def add_effect(self, effect):
         pass

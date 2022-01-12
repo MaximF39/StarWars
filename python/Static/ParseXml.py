@@ -6,7 +6,9 @@ from python.Utils.DotMap import DotMap
 bs = pathlib.Path(__file__).parent.joinpath('Json')
 __id_parse = ['Clan', "GalaxyMap"]
 __guid_parse = ['AmmoParameters', "DeviceParameters", "DroidParameters",
-              "EngineParameters", "ShipParameters", "WeaponParameters", "ResourseParameters"]
+              "EngineParameters", "WeaponParameters", "ResourseParameters"]
+
+__ship = ["ShipParameters"]
 
 def _get_path_json(text: str) -> pathlib.Path:
     if text.split('.')[-1] == 'json':
@@ -21,6 +23,14 @@ def parse_xml(file_name) -> list:
 
 def item_id(id_):
     for file_name in __guid_parse:
+        with open(_get_path_json(file_name), 'r', encoding='utf-8-sig') as f:
+            res = json.loads(f.read())
+            for item in res:
+                if item['classNumber'] == id_:
+                    return item
+
+def ship_id(id_):
+    for file_name in __ship:
         with open(_get_path_json(file_name), 'r', encoding='utf-8-sig') as f:
             res = json.loads(f.read())
             for item in res:

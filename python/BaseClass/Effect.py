@@ -1,6 +1,7 @@
 class Effect:
 
-    def __init__(self):
+    def __init__(self, Owner):
+        self.Owner = Owner
         self.effect = None
 
     def get_effect(self):

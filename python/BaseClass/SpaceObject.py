@@ -1,3 +1,5 @@
+import uuid
+
 from python.Utils.Vector2D import Vector2D
 
 class SpaceObject(Vector2D):
@@ -10,7 +12,13 @@ class SpaceObject(Vector2D):
     def __init__(self, StarWars, data):
         super().__init__()
         self.Game = StarWars
-        self.id = data['id']
+        if 'id' in data:
+            self.id = data['id']
+        elif 'guid' in data:
+            self.guid = data['guid']
+        else:
+            self.guid = uuid.uuid4().bytes
+            # self.id = None
         self.type = data['Types'] if 'Types' in data else None
         self.size = data['size'] if 'size' in data else 10000
         self.race = data['race'] if 'race' in data else None

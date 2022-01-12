@@ -340,6 +340,7 @@ class ReadPackages:
         data = {
         'ObjectToReachType':_loc2_.read_int(),  # ObjectToReachType
         'id':_loc2_.read_int(),}  # id
+        self.Player.attack(data)
         logger.info(data)
 
     def objectToReach(self, data):

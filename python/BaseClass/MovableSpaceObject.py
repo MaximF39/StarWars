@@ -11,7 +11,7 @@ class MovableSpaceObject(SpaceObject):
     def __init__(self, Game, data):
         super().__init__(Game, data)
         self.speed = data['speed'] if 'speed' in data else None
-        self.x = data['x']
-        self.y = data['y']
-        self.target_x = data['x'] # data['target_x']
-        self.target_y = data['y'] # data['target_y']
+        self.x = data['x'] if 'x' in data else None
+        self.y = data['y'] if 'y' in data else None
+        self.target_x = data['target_x'] if 'target_x' in data else None
+        self.target_y = data['target_y'] if 'target_y' in data else None

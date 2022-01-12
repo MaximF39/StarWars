@@ -414,7 +414,7 @@ class PackagesManager:
         creator.write_int(len(data))
         _loc5_: int = 0
         for quest in data:
-            _loc2_ = DotMap(i)
+            _loc2_ = DotMap(quest)
             creator.write_int(_loc2_.id)
             creator.write_int(_loc2_.playersCount)
             creator.write_int(_loc2_.maxPlayers)
@@ -486,9 +486,9 @@ class PackagesManager:
         print('Пакет отправлен', PacStr.get_str(ServerRequest.ACTIVE_WEPONS))
         active_weapons = self.Player.active_weapons
         creator.write_unsigned_byte(len(active_weapons))
-        for active_weapon in active_weapons:
+        for count, active_weapon in enumerate(active_weapons):
             creator.write_short(active_weapon.classNumber)
-            creator.write_unsigned_byte(5)#active_weapon.index) # hz
+            creator.write_unsigned_byte(count + 1) #active_weapon.index) # hz
         if not mod:
             self.Game.id_to_conn[self.id].send(creator.get_package())
         else:
@@ -557,11 +557,14 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.TRADING_ITEMS))
         Planet = self.Player.SpaceObject
+
         creator.write_int(Planet.id)  # id
+
         creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_sell)  # sellCoeficient
         creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_buy)  # buyCoeficient
 
         PlayerItems = self.Player.inventory
+        # print('Pplayer Items', list(map(lambda x: x.satisfying, PlayerItems)))
         self._write_items(creator, PlayerItems, True, True, True, True)
 
         PlanetItems = self.Player.SpaceObject.ShowForPlayer(self.Player)
@@ -1368,8 +1371,8 @@ class PackagesManager:
             creator.write_float(Player.x)  # setPosition
             creator.write_float(Player.y)
             creator.write_int(Player.level)
-            creator.write_short(Player.maxHealth)
-            creator.write_short(Player.maxEnergy)
+            creator.write_short(Player.health)
+            creator.write_short(Player.energy)
             creator.write_int(Player.avatar)
             creator.write_unsigned_byte(int(Player.maxSpeed))
             creator.write_float(Player.target_x)

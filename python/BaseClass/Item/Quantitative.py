@@ -6,9 +6,9 @@ from python.BaseClass.Item.BaseItem import BaseItem
 
 class Quantitative(BaseItem):
 
-    def __init__(self, Game, classNumber, OwnerClass, count):
-        self.wear = count
-        super().__init__(Game, classNumber, OwnerClass)
+    def __init__(self, Game, classNumber, Owner, data):
+        self.wear = data['count']
+        super().__init__(Game, classNumber, Owner, data)
 
     def add_inventory(self):
         pass
@@ -19,27 +19,27 @@ class Quantitative(BaseItem):
     def get_cost(self, count):
         return self.cost * count
 
-    def create_class(self, PlayerClass, count, droidUsing):
+    def create_class(self, Player, count, droidUsing):
         class_ = copy.copy(self)
-        class_.Owner = PlayerClass
+        class_.Player = Player
         class_.wear = count
         if droidUsing:
             self.inUsing = droidUsing
         return class_
 
-    def buy(self, PlayerClass, count):
-        PlayerClass.cash -= int(self.cost * count * cfg_sell_buy(PlayerClass.skills['Trading']).coef_buy)
-        self.separation(PlayerClass, count)
+    def buy(self, Player, count):
+        Player.cash -= int(self.cost * count * cfg_sell_buy(Player.skills['Trading']).coef_buy)
+        self.separation(Player, count)
 
-        PacMan = PackagesManager(PlayerClass.id, self.Game)
+        PacMan = PackagesManager(Player.id, self.Game)
         PacMan.tradingItems()
         PacMan.updateValue(9)
 
-    def sell(self, PlanetClass, count):
-        self.Owner.cash += int(self.cost * count * cfg_sell_buy(self.Owner.skills['Trading']).coef_sell)
-        self.separation(PlanetClass, count)
+    def sell(self, Planet, count):
+        self.Player.cash += int(self.cost * count * cfg_sell_buy(self.Player.skills['Trading']).coef_sell)
+        self.separation(Planet, count)
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan = PackagesManager(self.Player.id, self.Game)
         PacMan.tradingItems()
         PacMan.updateValue(9)
 
@@ -51,15 +51,15 @@ class Quantitative(BaseItem):
         Whom.inventory.append(self.create_class(Whom, count, droidUsing))
         self.wear -= count
         if self.wear == 0:
-            self.Owner.inventory.remove(self)
+            self.Player.inventory.remove(self)
 
 
     def drop(self, count):
         if self.wear >= count:
-            self.x = self.Owner.x
-            self.y = self.Owner.y
-            self.separation(self.Owner.Location, count)
+            self.x = self.Player.x
+            self.y = self.Player.y
+            self.separation(self.Player.Location, count)
 
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan = PackagesManager(self.Player.id, self.Game)
         PacMan.items()

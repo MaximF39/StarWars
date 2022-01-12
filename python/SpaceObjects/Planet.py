@@ -36,7 +36,7 @@ class Planet(SpaceObject, ThreadBase):
             self.ships.append(FakeShip(self.Game, ship))
         self.inventory = []
         for item_ in data['inventory']:
-            self.inventory.append(item(self.Game, item_['classNumber'], self, item_['count'] if 'count' in item_ else None))
+            self.inventory.append(item(self.Game, item_['classNumber'], self, item_))
         self.shops = data['shops']
         self.LocationClass = LocationClass
 
@@ -50,6 +50,9 @@ class Planet(SpaceObject, ThreadBase):
 
         self.send_info_location()
 
+    @property
+    def __name__(self):
+        return self.__class__.__name__
 
     def SetPlayer(self, PlayerClass):
         self.players.append(PlayerClass)
@@ -64,10 +67,11 @@ class Planet(SpaceObject, ThreadBase):
         return ItemsForPlayer
 
     def ShowShopItems(self, PlayerClass):
-        PacMan = PackagesManager(PlayerClass.id, self.Game)
         ItemsForPlayer = []
         for Item_ in self.inventory:
             ItemsForPlayer.append(Item_.ItemForPlayer(PlayerClass))
+
+        PacMan = PackagesManager(PlayerClass.id, self.Game)
         PacMan.tradingItems()
 
     def leaveLocation(self, playerClass):

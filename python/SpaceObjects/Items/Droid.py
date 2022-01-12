@@ -12,25 +12,25 @@ class Droid(Quantitative):
 
     @property
     def get_satisfying(self):
-        if self.restrictions is None or not 'level' in self.Owner.__dict__:
+        if self.restrictions is None or not 'level' in self.Player.__dict__:
             return True
-        skills = self.Owner.skills
+        skills = self.Player.skills
         if self.Control > skills["Control"]:
             return False
         return True
 
     def use(self):
-        self.Owner.use_droid(self)
+        self.Player.use_droid(self)
         self.inUsing = True
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan = PackagesManager(self.Player.id, self.Game)
         PacMan.inventory()
         PacMan.droidBuildingDialog(self)
 
     def unuse(self):
-        self.Owner.unuse_droid(self)
+        self.Player.unuse_droid(self)
         self.inUsing = False
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan = PackagesManager(self.Player.id, self.Game)
         PacMan.inventory()
 

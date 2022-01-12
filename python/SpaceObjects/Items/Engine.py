@@ -3,13 +3,13 @@ from python.Packages.PackagesManager import PackagesManager
 
 class Engine(NoQuantitative):
 
-    def __init__(self, Game, classNumber, OwnerClass):
-        super().__init__(Game, classNumber, OwnerClass)
+    def __init__(self, Game, classNumber, OwnerClass, data):
+        super().__init__(Game, classNumber, OwnerClass, data)
 
     def use(self):
-        self.Owner.replace_engine(self)
+        self.Player.replace_engine(self)
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan = PackagesManager(self.Player.id, self.Game)
         PacMan.inventory()
 
     def unuse(self):

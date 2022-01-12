@@ -139,8 +139,12 @@ class BasePlayer(Ship, ThreadBase, MyTime):
             self.tick()
 
 
-    def attack(self):
+    def attack(self, data):
         self.attack_now = True
+        self.ObjectToAttack = getattr(self.Game, f'Player_{data["id"]}')
+        print('active ', self.active_weapons)
+        for weapon in self.active_weapons:
+            weapon.attack()
 
     def set_object_to_reach(self, data):
         match data['type']:
@@ -248,6 +252,8 @@ class BasePlayer(Ship, ThreadBase, MyTime):
             self.health = 0
             self.dead()
         self.health -= damage
+        PacMan = PackagesManager(self.id, self.Game)
+        PacMan.locationSystem()
 
     def __get_reduction_energy(self, reduction_energy):
         if 0 > self.energy - reduction_energy:

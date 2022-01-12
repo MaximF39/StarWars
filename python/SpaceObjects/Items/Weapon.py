@@ -7,8 +7,8 @@ from time import sleep
 
 class Weapon(NoQuantitative, ThreadBase, MyTime):
 
-    def __init__(self, Game, classNumber, OwnerClass):
-        super().__init__(Game, classNumber, OwnerClass)
+    def __init__(self, Game, classNumber, OwnerClass, data):
+        super().__init__(Game, classNumber, OwnerClass, data)
         self.reloadTimeNow = 0
         self.autoShots = self.data["autoShots"]
         self.radius = self.data["radius"]
@@ -23,26 +23,25 @@ class Weapon(NoQuantitative, ThreadBase, MyTime):
                 self.cpu = type_["Value"]
 
     def use(self):
-        self.Owner.use_weapon(self)
+        self.Player.use_weapon(self)
         self.inUsing = True
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan = PackagesManager(self.Player.id, self.Game)
         PacMan.activeWeapons()
 
     def unuse(self):
-        self.Owner.unuse_weapon(self)
+        self.Player.unuse_weapon(self)
         self.inUsing = False
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan = PackagesManager(self.Player.id, self.Game)
         PacMan.activeWeapons()
-
-    def clicked(self):
-        self.Owner.attack()
 
     def attack(self):
         self.bool_attack = True
+        PacMan = PackagesManager(self.Player.id, self.Game)
         while self.bool_attack:
-            self.Owner.ObjectToAttack.get_damage(self.autoShots * randint(self.minDamage, self.maxDamage))
+            self.Player.ObjectToAttack.get_damage(self.autoShots * randint(self.minDamage, self.maxDamage))
+            PacMan.locationSystem()
             sleep(self.reloadTime)
 
     def get_reload_time(self):

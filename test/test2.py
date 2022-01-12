@@ -1,21 +1,11 @@
-import copy
-
-class test:
-    def create_class(self):
-        fake = copy.copy(self)
-        return fake
-
-class Owner(test):
-
-    def __init__(self):
-        print('crate')
-
-    def pr(self):
-        print('e')
 
 
+class test2:
 
-e = Owner()
-s = e.create_class()
-s.create_class()
-s.pr()
+    def __init__(self, ss:"test):
+        self.owner = ss
+        print('test2')
+        self.Player.
+
+    def get_attack(self):
+        print('attack')
