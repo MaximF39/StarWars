@@ -272,7 +272,7 @@ class ReadPackages:
         'hz4':_loc5_.read_int(),
         }
         logger.info(f'droidCommand {data}')
-    
+
     def login(self, data):
         _loc5_ = PackageDecoder()
         _loc5_.data = data
@@ -385,9 +385,9 @@ class ReadPackages:
         data = {
         'guid':_loc2_.read_bytes(16),
         'count':_loc2_.read_int(),}
+        logger.info(f'sellItem {data}')
         Player = getattr(self.Game, f'Player_{self.id}')
         Player.sellItem(data)
-        logger.info(f'sellItem {data}')
 
     def updateresource(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
@@ -428,8 +428,8 @@ class ReadPackages:
         _loc2_.data = data
         data = {
         "type": _loc2_.read_int()}
-        self.Player.OpenShop(data)
         logger.info(f'openShop {data}')
+        self.Player.OpenShop(data)
 
     def inventory(self, data) -> None:
         _loc1_ = PackageDecoder()
@@ -509,8 +509,8 @@ class ReadPackages:
         _loc5_.data = data
         data = {
         'guid':_loc5_.read_bytes(),
-        'damage_id':_loc5_.read_int(),  # id цели если 0 то не выбрана цель
-        'id':_loc5_.read_unsigned_byte(),  # id использовавшего
+        'ship_id':_loc5_.read_int(),  # id цели если 0 то исползуется сам на себя
+        'id_droid':_loc5_.read_unsigned_byte(),  # id использовавшего
         'effectType':_loc5_.read_unsigned_byte(), }
         logger.info(f'deviceClicked {data}')
 

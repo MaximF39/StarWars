@@ -11,3 +11,7 @@ class RepositoryStation(StaticSpaceObject):
         self.players.append(PlayerClass)
         PacMan = PackagesManager(PlayerClass.id, self.Game)
         PacMan.locationPlanet()
+
+    def repository(self, Player):
+        PacMan = PackagesManager(Player.id, self.Game)
+        PacMan.repository()

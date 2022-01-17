@@ -1,102 +1,101 @@
+from python.Static.Type.EffectType import EffectType
+
 class Effect:
 
-    def __init__(self, Owner):
-        self.Owner = Owner
-        self.effect = None
+    def __init__(self, Owner, effect):
+        self.effect = effect
 
-    def get_effect(self):
+    def get_effect(self, **kwargs):
         match self.effect:
-            case 1:
+            case EffectType.Damage:
+                self.Player.get_effect(**kwargs)
+            case EffectType.Shield:
                 pass
-            case 2:
+            case EffectType.Speed:
                 pass
-            case 3:
+            case EffectType.Acid:
                 pass
-            case 4:
+            case EffectType.Slow:
                 pass
-            case 5:
+            case EffectType.EnergyBurn:
                 pass
-            case 6:
+            case EffectType.AsteroidsDestroyer:
                 pass
-            case 7:
+            case EffectType.Armor:
                 pass
-            case 8:
+            case EffectType.SplashDamage:
                 pass
-            case 9:
+            case EffectType.ReloadTime:
                 pass
-            case 10:
+            case EffectType.CPU:
                 pass
-            case 11:
+            case EffectType.BlockShooting:
                 pass
-            case 12:
+            case EffectType.RepairSpeed:
                 pass
-            case 13:
+            case EffectType.BlockEnergyDamage:
                 pass
-            case 14:
+            case EffectType.ReflectDamage:
                 pass
-            case 15:
+            case EffectType.RestoreEnergySpeed:
                 pass
-            case 16:
+            case EffectType.BlockBuildDroids:
                 pass
-            case 17:
+            case EffectType.ShootToSelf:
                 pass
-            case 18:
+            case EffectType.Blind:
                 pass
-            case 19:
+            case EffectType.DestroyDroid:
                 pass
-            case 20:
+            case EffectType.MakeDamage:
                 pass
-            case 21:
+            case EffectType.MakeDamageInRadius:
                 pass
-            case 22:
+            case EffectType.EffectsProtection:
                 pass
-            case 23:
+            case EffectType.MissleDefence:
                 pass
-            case 24:
+            case EffectType.ReturnDroids:
                 pass
-            case 25:
+            case EffectType.RemoveEffects:
                 pass
-            case 26:
+            case EffectType.Freeze:
                 pass
-            case 27:
+            case EffectType.GetEnergy:
                 pass
-            case 28:
+            case EffectType.GetHealth:
                 pass
-            case 29:
+            case EffectType.BuildDroid:
                 pass
-            case 30:
+            case EffectType.ReflectedDamage:
                 pass
-            case 31:
+            case EffectType.DroidsDamage:
                 pass
-            case 32:
+            case EffectType.Vampire:
+                self.Player.get_health(**kwargs)
+            case EffectType.MaxHealth:
                 pass
-            case 33:
+            case EffectType.DodgeEffect:
                 pass
-            case 34:
+            case EffectType.RadarDistance:
                 pass
-            case 35:
+            case EffectType.ToEnergy:
                 pass
-            case 36:
+            case EffectType.RestoreDevices:
                 pass
-            case 37:
+            case EffectType.DestroyDevices:
                 pass
-            case 38:
+            case EffectType.DamageToDistace:
                 pass
-            case 39:
+            case EffectType.TargetMarker:
                 pass
-            case 40:
+            case EffectType.DroidsDef:
                 pass
-            case 41:
+            case EffectType.RepairFromMax:
                 pass
-            case 42:
+            case EffectType.RepairFromEnergy:
                 pass
-            case 43:
+            case EffectType.Hiding:
                 pass
-            case 44:
-                pass
-            case 45:
-                pass
-            case 46:
-                pass
-            case 47:
+            case EffectType.DamageDef:
                 pass

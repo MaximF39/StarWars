@@ -1,7 +1,7 @@
 import copy
 
 from python.Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
-from python.cfg.cfg_sell_buy import cfg_sell_buy
+from python.cfg.cfg_trading import cfg_trading
 from python.Packages.PackagesManager import PackagesManager
 from python.BaseClass.Item.BaseItem import BaseItem
 
@@ -12,6 +12,7 @@ class NoQuantitative(BaseItem):
         super().__init__(Game, classNumber, Owner, data)
         self.wear = self.fullRepair
         self.repair_cost = self.cost / 500
+        self.count = 1
 
     def add_inventory(self):
         pass
@@ -24,20 +25,19 @@ class NoQuantitative(BaseItem):
 
     def create_class(self, Player, count=None):
         class_ = copy.copy(self)
-        class_.Player = Player
-        class_.get_satisfying
+        class_.get_owner(Player)
         return class_
 
-    def buy(self, Player, count):
-        Player.cash -= int(self.cost * cfg_sell_buy(Player.skills['Trading']).coef_buy)
-        self.separation(Player)
+    def buy(self, Player, count, Game):
+        self.Game = Game
+        self.separation(Player, count)
 
         PacMan = PackagesManager(Player.id, self.Game)
         PacMan.tradingItems()
         PacMan.updateValue(9)
 
-    def sell(self, Planet, count=None):
-        self.Player.cash += int(self.cost * cfg_sell_buy(self.Player.skills['Trading']).coef_sell)
+    def sell(self, Planet, count, Game):
+        self.Game = Game
         self.separation(Planet)
 
         PacMan = PackagesManager(self.Player.id, self.Game)
@@ -45,10 +45,9 @@ class NoQuantitative(BaseItem):
         PacMan.updateValue(9)
 
     @property
-    def get_satisfying(self, m=True):
-        if m:
-            if self.restrictions is None or 'Planet' == self.Player.__name__:
-                return True
+    def get_satisfying(self):
+        if self.restrictions is None or not self.Player or self.Player.__name__ == 'Planet':
+            return True
         skills = self.Player.skills
         SkillTypeStr = PlayerSkillTypeStr()
         for skill in self.restrictions:
@@ -71,8 +70,11 @@ class NoQuantitative(BaseItem):
 
 
     def separation(self, Whom, count=None):
-        Whom.inventory.append(self.create_class(Whom))
-        self.Player.inventory.remove(self)
+        Whom.add_item(self.create_class(Whom))
+        if self.Player:
+            self.Player.inventory.remove(self)
+        else:
+            self.guid = self.get_guid
 
     def drop(self, count=None):
         self.x = self.Player.x

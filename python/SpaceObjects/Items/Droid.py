@@ -12,7 +12,7 @@ class Droid(Quantitative):
 
     @property
     def get_satisfying(self):
-        if self.restrictions is None or not 'level' in self.Player.__dict__:
+        if self.restrictions is None or self.Player is None or self.Player.__name__ == 'Planet':
             return True
         skills = self.Player.skills
         if self.Control > skills["Control"]:

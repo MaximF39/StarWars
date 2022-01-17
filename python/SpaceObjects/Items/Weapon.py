@@ -4,11 +4,14 @@ from python.Utils.ThreadBase import ThreadBase
 from random import randint
 from python.Utils.MyTime import MyTime
 from time import sleep
+from python.BaseClass.Effect import Effect
 
-class Weapon(NoQuantitative, ThreadBase, MyTime):
+
+class Weapon(NoQuantitative, ThreadBase, MyTime, Effect):
 
     def __init__(self, Game, classNumber, OwnerClass, data):
         super().__init__(Game, classNumber, OwnerClass, data)
+        # Effect.__init__(self, Game, data["effect"])
         self.reloadTimeNow = 0
         self.autoShots = self.data["autoShots"]
         self.radius = self.data["radius"]
@@ -21,6 +24,7 @@ class Weapon(NoQuantitative, ThreadBase, MyTime):
         for type_ in self.data["restrictions"]["data"]:
             if type_["type"] == 4:
                 self.cpu = type_["Value"]
+
 
     def use(self):
         self.Player.use_weapon(self)
@@ -40,7 +44,9 @@ class Weapon(NoQuantitative, ThreadBase, MyTime):
         self.bool_attack = True
         PacMan = PackagesManager(self.Player.id, self.Game)
         while self.bool_attack:
-            self.Player.ObjectToAttack.get_damage(self.autoShots * randint(self.minDamage, self.maxDamage))
+            damage = self.autoShots * randint(self.minDamage, self.maxDamage)
+            self.Player.ObjectToAttack.get_damage(damage)
+            self.get_effect(damage)
             PacMan.locationSystem()
             sleep(self.reloadTime)
 

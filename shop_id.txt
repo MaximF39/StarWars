@@ -13,3 +13,18 @@ item_Types: 5 Devices
 item_Types: 6 Droids
 item_Types: 7 Ships
 
+
+type_static object
+
+
+ASTEROIDS_BELT: int = 1 # астеройдный пояс
+
+REPOSITORY_STATION: int = 2 # хран
+    2
+GARBALE_DUMP: int = 3 # не существует
+PORTAL: int = 4 # портал
+HIVE: int = 5 # улей
+
+
+
+

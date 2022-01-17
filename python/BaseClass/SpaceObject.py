@@ -2,7 +2,7 @@ import uuid
 
 from python.Utils.Vector2D import Vector2D
 
-class SpaceObject(Vector2D):
+class SpaceObject:
     id: int
     type: int
     size: int
@@ -10,20 +10,21 @@ class SpaceObject(Vector2D):
     aliance: int
 
     def __init__(self, StarWars, data):
-        super().__init__()
         self.Game = StarWars
-        if 'id' in data:
-            self.id = data['id']
-        elif 'guid' in data:
-            self.guid = data['guid']
+        if data:
+            if 'id' in data:
+                self.id = data['id']
+            elif 'guid' in data:
+                self.guid = data['guid']
+            else:
+                self.guid = uuid.uuid4().bytes
+                # self.id = None
+            self.type = data['Types'] if 'Types' in data else None
+            self.size = data['size'] if 'size' in data else 10000
+            self.race = data['race'] if 'race' in data else None
+            self.aliance = data['aliance'] if 'aliance' in data else None
         else:
             self.guid = uuid.uuid4().bytes
-            # self.id = None
-        self.type = data['Types'] if 'Types' in data else None
-        self.size = data['size'] if 'size' in data else 10000
-        self.race = data['race'] if 'race' in data else None
-        self.aliance = data['aliance'] if 'aliance' in data else None
-
 
     # def createSelection(self, param1: uint, param2: int):
     #     _loc3_: = None

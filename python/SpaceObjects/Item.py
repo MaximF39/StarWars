@@ -9,7 +9,9 @@ from python.Static.ParseXml import item_id
 from python.Static.ParseXml import ship_id
 
 
-def item(Game, classNumber, OwnerClass, data):
+def item(classNumber, Game=None, OwnerClass=None, data=None):
+    if data is None:
+        data = {'count': 1}
     match get_type(classNumber):
         case 1:
             return Resource(Game, classNumber, OwnerClass, data)

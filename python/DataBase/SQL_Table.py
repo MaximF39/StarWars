@@ -22,7 +22,7 @@ class PlayerDB(Base):
     id = Column(Integer, nullable=False)
     login = Column(String(10), nullable=False)
     auth_key = Column(String(32), nullable=False)
-    passwd = Column(String(32), nullable=False) # желательно тип хэш, если есть
+    passwd = Column(String(32), nullable=False) # Убрать будет вход по ауткею
     clan_id = Column(SmallInteger, default=0)
     credit = Column(BigInteger, nullable=False)
     bonus = Column(SmallInteger, nullable=False)
@@ -45,8 +45,8 @@ class PlayerDB(Base):
     expSkillGrowCoef = Column(SmallInteger, default=2)
     expSkillReduserCoef = Column(SmallInteger, default=10)
     points = Column(BigInteger, default=0)
-    x = Column(SmallInteger, nullable=False)
-    y = Column(SmallInteger, nullable=False)
+    x = Column(SmallInteger, nullable=True) # Если есть Спасе обжект
+    y = Column(SmallInteger, nullable=True) # Если на планете
     deleteEnqueued = Column(Boolean, default=False)
     canDelete = Column(Boolean, default=False)
     logged = Column(Boolean, default=False)

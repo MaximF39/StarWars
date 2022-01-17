@@ -1,11 +1,11 @@
-from python.cfg.cfg_sell_buy import cfg_sell_buy
+from python.cfg.cfg_trading import cfg_trading
 from python.Static.TypeStr.ServerRequestStr import ServerRequestStr
 from python.Packages.PackagesEntry import *
 from python.Static.ParseXml import parse_xml
 from python.Utils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
 from python.Packages.PackageCreator import PackageCreator
-from ..cfg.cfg_sell_buy import cfg_sell_buy
+from ..cfg.cfg_trading import cfg_trading
 
 class PackagesManager:
     stateLoop: int
@@ -38,7 +38,7 @@ class PackagesManager:
             case ServerRequest.REPOSITORY:
                 return self.repository()
             case ServerRequest.CLAN_REPOSITORY:
-                return self.clanrepository()
+                return self.clan_repository()
             case ServerRequest.WEAPON_TROUBLES:
                 return self.weaponTroubles()
             case ServerRequest.SHIP:
@@ -515,8 +515,8 @@ class PackagesManager:
 
         creator.write_int(5999)#ship.id)  # id
         creator.write_int(100000)#ship.cost)  # ship cost
-        creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_buy) #ship.buy_coef)  # buyCoeficient
-        creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_sell) #ship.sell_coef)  # sellCoeficient
+        creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_buy) #ship.buy_coef)  # buyCoeficient
+        creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_sell) #ship.sell_coef)  # sellCoeficient
 
         creator.write_int(len(data))
         print(len(data))
@@ -558,17 +558,14 @@ class PackagesManager:
         print('Пакет отправлен', PacStr.get_str(ServerRequest.TRADING_ITEMS))
         Planet = self.Player.SpaceObject
 
-        creator.write_int(Planet.id)  # id
+        creator.write_int(1) # type shop
+        creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_sell)  # sellCoeficient
+        creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_buy)  # buyCoeficient
 
-        creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_sell)  # sellCoeficient
-        creator.write_float(cfg_sell_buy(self.Player.skills['Trading']).coef_buy)  # buyCoeficient
+        self._write_items(creator, self.Player.inventory, True, True, True, True)
 
-        PlayerItems = self.Player.inventory
-        # print('Pplayer Items', list(map(lambda x: x.satisfying, PlayerItems)))
-        self._write_items(creator, PlayerItems, True, True, True, True)
+        self._write_items(creator, Planet.fake_items(self.Player), True, True, True, True)
 
-        PlanetItems = self.Player.SpaceObject.ShowForPlayer(self.Player)
-        self._write_items(creator, PlanetItems, True, True, True, True)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def resourceUpdate(self):
@@ -584,19 +581,16 @@ class PackagesManager:
 
     def _write_items(self, creator:PackageCreator, items, param2: bool, param3: bool, param4: bool = True,
                      param5: bool = False) -> None:
+
         creator.write_int(len(items))
         for item in items:
             creator.write_int(item.classNumber)
             creator.write_bytes(item.guid)
             creator.write_int(item.wear)
             if param4:
-                item.level = 0
-                creator.write_int(item.level)
-            else:
-                item.level = 1
+                creator.write_int(0) #item.level)
             if param2:
-                item.zeroCost = 0
-                creator.write_bool(item.zeroCost)
+                creator.write_bool(0) # zeroCost
             if param5:
                 creator.write_int(12)  # random don't use
             if param3:
@@ -657,10 +651,11 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.REPOSITORY))
 
-        data = self.Player.repository
-        self._write_items(creator, data, False, False)
+        self._write_items(creator, self.Player.repository, False, False)
 
-        creator.write_float(1.0)  # costCoef _loc4_.costCoef
+        creator.write_float(1.0)  # costCoef _loc4_.costCoef # проверить пакет хранилища
+        data = self.Player.inventory
+        print('data', data)
         creator.write_int(len(data))
         for rep in data:
             _loc2_ = DotMap(rep)
@@ -671,7 +666,7 @@ class PackagesManager:
             creator.write_int(12)  # random don't use
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
-    def clanrepository(self):
+    def clan_repository(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.CLAN_REPOSITORY
         PacStr = ServerRequestStr()
@@ -930,10 +925,10 @@ class PackagesManager:
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.PLAYER_SHIP))
 
-        creator.write_int(self.Player.race) # raca
+        creator.write_int(self.Player.ship['classNumber']) # raca
         creator.write_int(self.Player.id)
         creator.write_utf(self.Player.login)
-        creator.write_int(self.Player.size)
+        creator.write_int(self.Player.ship['size'])
         creator.write_int(self.Player.energy)
         creator.write_int(self.Player.maxEnergy)
         creator.write_float(self.Player.x)
@@ -1324,8 +1319,8 @@ class PackagesManager:
         creator.write_short(len(shops)) # len(shop_data))
 
         for type_shop in shops:
-            creator.write_int(type_shop["id"]) #_loc3_.id)
-            creator.write_unsigned_byte(type_shop["type"])#_loc3_.type)
+            creator.write_int(type_shop) #SpaceObject.id) #_loc3_.id)
+            creator.write_unsigned_byte(type_shop)#_loc3_.type)
 
         player_info_data = []
         for player in player_info_data:
@@ -1418,14 +1413,14 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.LOCATION_BATTLE
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.LOCATION_BATTLE))
-        _loc6_ = self.Player
-        creator.write_int(_loc6_.id)
-        creator.write_float(_loc6_.x)
-        creator.write_float(_loc6_.y)
+
+        creator.write_int(self.Player.id)
+        creator.write_float(self.Player.x)
+        creator.write_float(self.Player.y)
         player_info_data = self.Player.ObjectToReach.players
         creator.write_short(len(player_info_data))
         for ship_data in player_info_data:
-            creator.write_short(ship_data.race)
+            creator.write_short(ship_data.classNumber)
             creator.write_int(ship_data.id)
             creator.write_utf(ship_data.login)
             creator.write_short(ship_data.size)
@@ -1507,9 +1502,7 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.ASTEROIDS
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.ASTEROIDS))
-        data = self.Player.ObjectToReach.asteroids
-        for asteroid in data:
-            asteroid = DotMap(asteroid)
+        for asteroid in self.Player.SpaceObject.asteroids:
             creator.write_int(asteroid.id)
             creator.write_float(asteroid.x)
             creator.write_float(asteroid.y)

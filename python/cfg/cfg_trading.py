@@ -1,4 +1,4 @@
-class cfg_sell_buy:
+class cfg_trading:
 
     def __init__(self, trading):
         self.trading = trading

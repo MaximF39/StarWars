@@ -32,8 +32,5 @@ class StarWars:
             id_ = location['id']
             setattr(self, f"Location_{id_}", Location(self, location))
 
-    # def __create_clans(self):
-    #     clans =
-
     def __create_mobs(self):
         pass

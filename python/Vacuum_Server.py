@@ -31,6 +31,7 @@ class Server(ThreadBase):
 
     def main(self) -> None:
         server = socket()
+
         server.bind(('localhost', 10010))
         server.listen(1)
         self.conn, addr = server.accept()

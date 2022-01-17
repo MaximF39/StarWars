@@ -61,7 +61,7 @@ class Mobs(BasePlayer, ThreadBase):
     def dead(self):
         self.get_drop() # send request
         # send("i'm dead")
-        self.del_all_update()
+        # self.del_all_update()
         sleep(60)
         self.update()
         self.new_cords()

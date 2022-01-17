@@ -1,5 +1,6 @@
 from python.BaseClass.SpaceObject import SpaceObject
 from random import randint
+from python.cfg.cfg_shop_type import repository
 
 class StaticSpaceObject(SpaceObject):
     class_number: int
@@ -20,7 +21,7 @@ class StaticSpaceObject(SpaceObject):
         self.angle = float('inf')
         self.players = []
         self.QCount = 2
-        self.shops = data['shops']
+        self.shops = repository
         self.send_info_location()
 
     def send_info_location(self):

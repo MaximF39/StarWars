@@ -2,9 +2,10 @@ import random
 from random import randint
 from python.Packages.PackagesManager import PackagesManager
 from python.SpaceObjects.Item import item
+from python.Utils.ThreadBase import ThreadBase
+from python.Utils.Vector2D import Vector2D
 
-
-class Asteroid:
+class Asteroid(ThreadBase):
     IronOre: int = 49
     TitanOre: int = 51
     GoldOre: int = 53
@@ -21,16 +22,36 @@ class Asteroid:
         132: 0.2
     }
 
-    def __init__(self, dict_: dict, Game):
-        self.id = dict_["id"]
-        self.x = dict_["x"]
-        self.y = dict_["y"]
-        self.targetX = dict_["targetX"]
-        self.targetY = dict_["targetY"]
-        self.size = dict_["size"]
-        self.speed = dict_["speed"]
+    def __init__(self, id_, Game, AsteroidsBelt):
+        self.id = id_
         self.Game = Game
+        self.AsteroidsBelt = AsteroidsBelt
+
+        type_ = random.choice([1, 2])
+        mod_x = random.choice([-1, 1])
+        mod_y = random.choice([-1, 1])
+        match type_:
+            case 1:  # big X small Y # 1
+                random_x = (0, 3000)
+                random_y = (2700, 3000)
+            case _:  # Big Y small x # 2
+                random_x = (2700, 3000)
+                random_y = (0, 3000)
+
+        self.x = mod_x * random.randint(*random_x)
+        self.targetX = -mod_x * random.randint(*random_x)
+        self.y = mod_y * random.randint(*random_y)
+        self.targetY = -mod_y * random.randint(*random_y)
+
+        self.size = random.randint(600, 3000)
+        self.speed = 60 - self.size // 100
+
+        # self.start_timer_update(self.end_target, Vector2D.Distance(Vector2D(self.x, self.y), Vector2D(self.targetX, self.targetY)) / self.speed)
+        self.start_timer_update(self.end_target, Vector2D(self.x, self.y, self.speed).time_wait(Vector2D(self.targetX, self.targetY)))
         # self.type_ore = dict_["type_ore"] # number
+
+    def get_coords(self):
+        pass
 
     def drop(self, PlayerKill):
         item_dict = {}
@@ -43,4 +64,11 @@ class Asteroid:
         PacMan.locationBattle()
         PacMan.items()
 
+    def end_target(self):
+        self.AsteroidsBelt.remove_asteroid(self)
 
+    def get_damage(self, damage):
+        self.size -= damage
+        if 0 >= self.size:
+            # self.drop()
+            print('kill asteroid')

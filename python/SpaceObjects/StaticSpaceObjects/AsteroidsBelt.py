@@ -5,58 +5,43 @@ from .Asteroid import Asteroid
 
 class AsteroidsBelt(StaticSpaceObject):
     id: int
-    asteroid_id: int = 0
+    max_asteroid_id = 0
     asteroids = []
+    entry_count_asteroid = 60
     # cnt_asteroid: int
 
     def __init__(self, Game, data: dict, LocationClass):
         super().__init__(Game, data, LocationClass)
         self.id = data['id']
-        # self.LocationClass()
-        self.id_location = data['id_location']
+        self.type_ore = int(str(self.id)[1:])
         self.sector = 1
         self.players = []
         self.create_asteroid()
 
+    # def get_type(self):
+    #     self.
+
     def create_asteroid(self):
         for i in range(60):
-            self.asteroid_id += 1
-            mod = random.choice([0.1, -0.1, 1, -1])
-            x = mod * random.randint(-3000, 3000)
-            targetX = -mod * random.randint(-3000, 3000)
-            if 301 > abs(x):
-                y = random.randint(-3000, 3000)
-                targetY = -y
-            else:
-                y = random.choice([-1, 1]) * random.randint(2700, 3000)
-                targetY = -y
-            x = 0
-            y = 0
-            targetX = 1
-            targetY = 1
-            size = random.randint(600, 3000)
-            speed = 60 - size // 100
-            Aster = Asteroid(
-                {
-                    "id": self.asteroid_id,
-                    "x": x,  # сделать, чтобы создавались по краям и летели через середину
-                    "y": y,
-                    "targetX": targetX,
-                    "targetY": targetY,
-                    "size": size,
-                    "speed": speed,
-                },
-                self.Game
-            )
-
-            self.asteroids.append(Aster)
+            self.max_asteroid_id += 1
+            self.asteroids.append(Asteroid(self.max_asteroid_id, self.Game, self))
 
     def SetPlayer(self, PlayerClass):
         self.players.append(PlayerClass)
         PlayerClass.SpaceObject = self
+
         PacMan = PackagesManager(PlayerClass.id, self.Game)
         PacMan.locationBattle()
         PacMan.asteroids()
+
+    def remove_asteroid(self, AsteroidClass):
+        for Aster in self.asteroids:
+            if Aster == AsteroidClass:
+                self.asteroids.remove(Aster)
+                for player in self.players:
+                    PacMan = PackagesManager(player.id, self.Game)
+                    PacMan.asteroids()
+
 
     # def update(self):
     #     for id_asteroid in range(self.cnt_asteroid):

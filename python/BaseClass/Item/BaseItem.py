@@ -21,6 +21,13 @@ class BaseItem(MovableSpaceObject):
 
     def ItemForPlayer(self, Player):
         Fake = copy.copy(self)
-        Fake.Player = Player
-        Fake.satisfying = Fake.get_satisfying
+        Fake.get_owner(Player)
         return Fake
+
+    def get_owner(self, class_, count=None):
+        self.Player = class_
+        self.get_satisfying
+
+    @property
+    def get_guid(self):
+        return uuid.uuid4().bytes

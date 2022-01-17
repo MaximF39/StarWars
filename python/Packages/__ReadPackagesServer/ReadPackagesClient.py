@@ -1,4 +1,4 @@
-from ...Utils.DotMap import DotMap
+from python.Utils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
 
 
@@ -68,7 +68,6 @@ class ReadPackagesClient:
     #     return
 
     def processPackages(self, _loc1_: int, decoder) -> list:
-        _loc2_: list = list()
         match _loc1_:
             case ServerRequest.SHIPS_POSITION:
                 return self.ships_position(decoder)
@@ -108,8 +107,8 @@ class ReadPackagesClient:
             #         return self.SpaceObject()
             #     case ServerRequest.INVENTORY:
             #         return self.inventory()
-            #     case ServerRequest.TRADING_ITEMS:
-            #         return self.tradingItems()
+            case ServerRequest.TRADING_ITEMS:
+                return self.tradingItems(decoder)
             #     case ServerRequest.RESOURCE_UPDATE_INFO:
             #         return self.resourceUpdate()
             #     case ServerRequest.ASTEROIDS:
@@ -152,8 +151,8 @@ class ReadPackagesClient:
                 return self.shipParameters(decoder)
             case ServerRequest.LOGGED:
                 return self.logged(decoder)
-            #     case ServerRequest.REACHABLE_SYSTEMS:
-            #         return self.reachableSystems()
+            case ServerRequest.REACHABLE_SYSTEMS:
+                return self.reachableSystems(decoder)
             #     case ServerRequest.SYSTEM_MESSAGE:
             #         return self.systemMessage()
             #     case ServerRequest.LOG_MESSAGE:
@@ -213,12 +212,12 @@ class ReadPackagesClient:
             # case ServerRequest.PLAYER_INFO:
             #     return self.playerInfo()
 
-            #     case ServerRequest.PLAYER_LOGGED_ON:
-            #         return self.playerLoggedOn()
+            case ServerRequest.PLAYER_LOGGED_ON:
+                return self.playerLoggedOn(decoder)
             #     case ServerRequest.PLAYER_LOGGED_OFF:
             #         return self.playerLoggedOff()
-            #     case ServerRequest.PLAYER_CLAN:
-            #         return self.playerClan()
+            case ServerRequest.PLAYER_CLAN:
+                return self.playerClan(decoder)
             #     case ServerRequest.FRIEND_CLANS:
             #         return self.friendClans()
             #     case ServerRequest.ENEMY_CLANS:
@@ -609,18 +608,16 @@ class ReadPackagesClient:
     #     #         _loc15_ += 1
     #     #         return decoder.get_package()
     #     #
-    #     # def tradingItems(self) -> list:
-    #     #     
-    #     #     _loc2_: int = 0
-    #     #     decoder.read_int(_loc2_)
-    #     #     _loc3_: float = 0
-    #     #     decoder.read_float(_loc3_)
-    #     #     _loc4_: float = 0
-    #     #     decoder.read_float(_loc4_)
-    #     #     _loc5_: list = read_items(decoder, True, True, True, True)
-    #     #     _loc6_: list = read_items(decoder, True, True, True, True)
-    #     #     return decoder.get_package()
-    #     #
+    def tradingItems(self, decoder) -> list:
+        _loc2_: int = decoder.read_int()
+        _loc3_: float = decoder.read_float()
+        _loc4_: float = decoder.read_float()
+        # print(_loc2_, _loc3_, _loc4_)
+        _loc5_ = self.read_items(decoder, True, True, True, True)
+        _loc6_ = self.read_items(decoder, True, True, True, True)
+        # print(_loc2_, _loc3_, _loc4_, _loc5_, _loc6_, sep='\n')
+        return _loc2_, _loc3_, _loc4_, _loc5_, _loc6_
+
     #     # def resourceUpdate(self) -> list:
     #     #     
     #     #     _loc2_: int = 0
@@ -631,34 +628,33 @@ class ReadPackagesClient:
     #     #     _loc6_: list = self.read_items(decoder, True, True)
     #     #     return decoder.get_package()
     #     #
-    #     # def read_items(self, param2: bool, param3: bool, param4: bool = True, param5: bool = False):
-    #     #     
-    #     #     _loc6_: ItemPackage = None
-    #     #     _loc7_: list = list()
-    #     #     _loc8_: int = 0
-    #     #     decoder.read_int(_loc8_)
-    #     #     _loc9_: int = 0
-    #     #     while _loc9_ < _loc8_:
-    #     #         _loc6_ = ItemPackage()
-    #     #         decoder.read_int(_loc6_.classfloat)
-    #     #         # _loc6_.guid = read_guid(decoder)
-    #     #         decoder.read_int(_loc6_.wear)
-    #     #         if param4:
-    #     #             _loc6_.level = 0
-    #     #             decoder.read_int(_loc6_.level)
-    #     #         else:
-    #     #             _loc6_.level = 1
-    #     #         if param2:
-    #     #             _loc6_.zeroCost = 0
-    #     #             decoder.read_bool(_loc6_.zeroCost)
-    #     #         if param5:
-    #     #             decoder.read_int()
-    #     #         if param3:
-    #     #             _loc6_.satisfying = False
-    #     #             decoder.read_bool(_loc6_.satisfying)
-    #     #         _loc9_ += 1
-    #     #     return decoder.get_package()
-    #     #
+    def read_items(self, decoder, param2: bool, param3: bool, param4: bool = True, param5: bool = False):
+
+        _loc8_ = decoder.read_int()
+        _loc9_: int = 0
+        e = []
+        while _loc9_ < _loc8_:
+            i = DotMap()
+            i.classfloat = decoder.read_int()
+            i.guid = self.read_guid(decoder)
+            i.wear = decoder.read_int()
+            if param4:
+                # print(i)
+                i.level = decoder.read_int()
+            else:
+                i.level = 1
+            if param2:
+                zeroCost = 0
+                i.zeroCost = decoder.read_bool()
+            if param5:
+                i.hz = decoder.read_int()
+            if param3:
+                satisfying = False
+                i.satisfying = decoder.read_bool()
+            _loc9_ += 1
+            e.append(i)
+        return e
+
     def ships_position(self, decoder) -> list:
         data = []
         hz = decoder.read_int()
@@ -1292,23 +1288,21 @@ class ReadPackagesClient:
         return data
 
     #     #
-    #     # def reachableSystems(self) -> list:
-    #     #     
-    #     #     _loc2_: ReachableSystem = None
-    #     #     cnt_system: int = 0
-    #     #     decoder.read_unsigned_byte(cnt_system)
-    #     #     _loc5_: int = 0
-    #     #     while _loc5_ < cnt_system:
-    #     #         # _loc2_ = ReachableSystem()
-    #     #         decoder.read_unsigned_byte(_loc2_.id)
-    #     #         decoder.read_bool(_loc2_.current)
-    #     #         decoder.read_short(_loc2_.energyForJump)
-    #     #         _loc5_ += 1
-    #     #     _loc6_: int = 0
-    #     #     decoder.read_unsigned_byte(_loc6_)
-    #     #     _loc7_: int = 0
-    #     #     decoder.read_unsigned_byte(_loc7_)
-    #     #     return decoder.get_package()
+    def reachableSystems(self, decoder) -> list:
+        d = DotMap()
+        _loc3_= decoder.read_unsigned_byte()
+        _loc5_: int = 0
+        while _loc5_ < _loc3_:
+            _loc2_ = ReachableSystem()
+            decoder.read_unsigned_byte(_loc2_.id)
+            decoder.read_bool(_loc2_.current)
+            decoder.read_short(_loc2_.energyForJump)
+            _loc5_ += 1
+        _loc6_: int = 0
+        decoder.read_unsigned_byte(_loc6_)
+        _loc7_: int = 0
+        decoder.read_unsigned_byte(_loc7_)
+        return decoder.get_package()
     #     #
     def version(self, decoder):
         decoder.read_int()
@@ -1743,11 +1737,9 @@ class ReadPackagesClient:
     #     #
     #     #     return decoder.get_package()
     #     #
-    #     # def read_guid(self) -> list:
-    #     #     
-    #     #     _loc2_: bytearray = bytearray()
-    #     #     decoder.read_bytes(_loc2_, 0, 16)
-    #     #     return _loc2_
+    def read_guid(self, decoder) -> list:
+        guid = decoder.read_bytes(16)
+        return guid
     #     #
     def hideShip(self, decoder) -> list:
         data = []
@@ -1782,53 +1774,52 @@ class ReadPackagesClient:
         data.append(_loc2_)
         return data
 
-    #     # def playerClan(self) -> list:
-    #     #     
-    #     #     _loc2_: int = 0
-    #     #     _loc3_: int = 0
-    #     #     _loc4_ = None  # PlayerInfoData
-    #     #     _loc5_: ClanData
-    #     #     _loc5_ = ClanData()
-    #     #     decoder.read_int(_loc5_.id)
-    #     #     decoder.read_int(_loc5_.leaderID)
-    #     #     decoder.read_utf(_loc5_.leaderName)
-    #     #     decoder.read_utf(_loc5_.logoFileName)
-    #     #     decoder.read_utf(_loc5_.name)
-    #     #     decoder.read_utf(_loc5_.shortName)
-    #     #     decoder.read_unsigned_byte(_loc5_.aliace)
-    #     #     decoder.read_utf(_loc5_.description)
-    #     #     decoder.read_short(_loc5_.joinRequestsCount)
-    #     #     decoder.read_int(_loc5_.points)
-    #     #     decoder.read_int(_loc5_.cash)
-    #     #     decoder.read_unsigned_byte(_loc5_.level)
-    #     #     decoder.read_unsigned_byte(_loc5_.maxMembers)
-    #     #     decoder.read_unsigned_byte(_loc5_.maxFriends)
-    #     #     decoder.read_short(_loc5_.friendRequests)
-    #     #     decoder.read_int(_loc5_.currentLevelPoints)
-    #     #     decoder.read_int(_loc5_.nextLevelPoints)
-    #     #     decoder.read_int(_loc5_.nextLevelCash)
-    #     #     decoder.read_int(_loc5_.bonuses)
-    #     #     # cnt = _loc2_
-    #     #     decoder.read_int(_loc2_)
-    #     #     _loc3_ = 0
-    #     #     while _loc3_ < _loc2_:
-    #     #         # _loc5_.enemyClans.append(decoder.read_int())
-    #     #         _loc3_ += 1
-    #     #     decoder.read_int(_loc2_)
-    #     #     _loc3_ = 0
-    #     #     while _loc3_ < _loc2_:
-    #     #         # _loc5_.friendClans.append(decoder.read_int())
-    #     #         _loc3_ += 1
-    #     #     decoder.read_int(_loc2_)
-    #     #     _loc3_ = 0
-    #     #     while _loc3_ < _loc2_:
-    #     #         _loc4_ = PlayerInfoData()
-    #     #         decoder.read_int(_loc4_.id)
-    #     #         decoder.read_int(_loc4_.role)
-    #     #         decoder.read_utf(_loc4_.name)
-    #     #         _loc5_.members.append(_loc4_)
-    #     #         _loc3_ += 1
-    #     #     return decoder.get_package()
+    def playerClan(self, decoder) -> DotMap:
+        _loc5_ = DotMap()
+        _loc5_.hz = decoder.read_int()
+        _loc5_.id = decoder.read_int()
+        _loc5_.leaderID = decoder.read_int()
+        _loc5_.leaderName = decoder.read_utf()
+        _loc5_.logoFileName = decoder.read_utf()
+        _loc5_.name = decoder.read_utf()
+        _loc5_.shortName = decoder.read_utf()
+        _loc5_.aliace = decoder.read_unsigned_byte()
+        _loc5_.description = decoder.read_utf()
+        _loc5_.joinRequestsCount = decoder.read_short()
+        _loc5_.points = decoder.read_int()
+        _loc5_.cash = decoder.read_int()
+        _loc5_.level = decoder.read_unsigned_byte()
+        _loc5_.maxMembers = decoder.read_unsigned_byte()
+        _loc5_.maxFriends = decoder.read_unsigned_byte()
+        _loc5_.friendRequests = decoder.read_short()
+        _loc5_.currentLevelPoints = decoder.read_int()
+        _loc5_.nextLevelPoints = decoder.read_int()
+        _loc5_.nextLevelCash = decoder.read_int()
+        _loc5_.bonuses = decoder.read_int()
+        _loc2_ = decoder.read_int()
+        _loc3_ = 0
+        _loc5_.enemyClans = []
+        while _loc3_ < _loc2_:
+            _loc5_.enemyClans.append(decoder.read_int())
+            _loc3_ += 1
+
+        _loc2_ = decoder.read_int()
+        _loc3_ = 0
+        _loc5_.friendClans = []
+        while _loc3_ < _loc2_:
+            _loc5_.friendClans.append(decoder.read_int())
+            _loc3_ += 1
+        _loc2_ = decoder.read_int()
+        _loc3_ = 0
+        _loc5_.member = []
+        while _loc3_ < _loc2_:
+            _loc4_ = DotMap()
+            _loc4_.id = decoder.read_int()
+            _loc4_.role = decoder.read_int()
+            _loc4_.name = decoder.read_utf()
+            _loc5_.member.append(_loc4_)
+            _loc3_ += 1
+        return _loc5_
     #     #
     #     # def teamList(self) -> list:
     #     #     
@@ -1978,16 +1969,16 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_.role)
     #     #     return decoder.get_package()
     #     #
-    #     # def playerLoggedOn(self) -> list:
-    #     #     
-    #     #     _loc2_: PlayerInfoData = None
-    #     #     _loc2_ = PlayerInfoData()
-    #     #     decoder.read_int(_loc2_.id)
-    #     #     decoder.read_utf(_loc2_.name)
-    #     #     decoder.read_int(_loc2_.clanId)
-    #     #     decoder.read_int(_loc2_.level)
-    #     #     return decoder.get_package()
-    #     #
+    def playerLoggedOn(self, decoder) -> dict:
+        _loc2_ = {}
+        _loc2_['hz'] = decoder.read_int()
+        _loc2_['id'] = decoder.read_int()
+        _loc2_['name'] = decoder.read_utf()
+        _loc2_['clanId'] = decoder.read_int()
+        _loc2_['level'] = decoder.read_int()
+        _loc2_['bool'] = decoder.read_bool()
+        return _loc2_
+        #
     #     # def playerLoggedOff(self) -> list:
     #     #     
     #     #     _loc2_: PlayerInfoData = None

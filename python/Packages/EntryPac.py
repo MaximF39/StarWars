@@ -210,8 +210,8 @@ class EntryPac:
             cnt_dev_eff = _loc4_.effects['Length']
             creator.write_unsigned_byte(cnt_dev_eff)
             data_dev_eff = _loc4_.effects['data']
-            for i in data_dev_eff:
-                _loc3_ = DotMap(i)  # DeviceEffect()
+            for effect in data_dev_eff:
+                _loc3_ = DotMap(effect)  # DeviceEffect()
                 creator.write_unsigned_byte(_loc3_.targetType)
                 creator.write_int(_loc3_.value)
                 creator.write_int(_loc3_.effectTime)
@@ -220,8 +220,8 @@ class EntryPac:
             cnt_dev_restr = _loc4_.restrictions['Length']
             creator.write_unsigned_byte(cnt_dev_restr)
             data_dev_restr = _loc4_.restrictions["data"]
-            for i in data_dev_restr:
-                _loc8_ = DotMap(i)  # Restriction()
+            for rest in data_dev_restr:
+                _loc8_ = DotMap(rest)  # Restriction()
                 creator.write_unsigned_byte(_loc8_.type)
                 creator.write_unsigned_byte(_loc8_.valueType)
                 creator.write_int(_loc8_.Value)

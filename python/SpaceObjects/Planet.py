@@ -2,17 +2,17 @@ from ..Packages.PackagesManager import PackagesManager
 from .Item import item
 import math
 # from . import parse_galaxy_map
-from . import ThreadBase, cfg_update
+from . import ThreadBase
 from ..BaseClass.SpaceObject import SpaceObject
 from ..BaseClass.FakeShip import FakeShip
+from python.BaseClass.Shop import Shop
 
-class Planet(SpaceObject, ThreadBase):
+class Planet(SpaceObject, ThreadBase, Shop):
     name: str  # my
     class_number: int  #be bytes
     radius: int
     landable: bool
     is_sun: bool
-    # clan_id: int # Зачем планете клан ид?
     speed: int = 3  #
     _i = 1  # Уголобразующий
 
@@ -31,14 +31,8 @@ class Planet(SpaceObject, ThreadBase):
         self.players = []
         self.clanId = 0 # Только чей клан захвачен, могут садиться на планету
         self.QCount = 0 # Количество квестов
-        self.ships = []
-        for ship in data['ships']:
-            self.ships.append(FakeShip(self.Game, ship))
-        self.inventory = []
-        for item_ in data['inventory']:
-            self.inventory.append(item(self.Game, item_['classNumber'], self, item_))
-        self.shops = data['shops']
-        self.LocationClass = LocationClass
+        self.Location = LocationClass
+        Shop.__init__(self, Game)
 
         if self.angle != float('inf'):
             self._i += self.speed
@@ -54,31 +48,37 @@ class Planet(SpaceObject, ThreadBase):
     def __name__(self):
         return self.__class__.__name__
 
+    def add_item(self, Item_):
+        if Item_.classNumber in self.default_shop:
+            pass
+        else:
+            self.inventory.append(Item_)
+
     def SetPlayer(self, PlayerClass):
         self.players.append(PlayerClass)
         PlayerClass.SpaceObject = self
         PacMan = PackagesManager(PlayerClass.id, self.Game)
         PacMan.locationPlanet()
 
-    def ShowForPlayer(self, PlayerClass):
+    def inventory_shop(self, Player):
+        PacMan = PackagesManager(Player.id, self.Game)
+        PacMan.tradingItems()
+
+    def fake_items(self, Player):
         ItemsForPlayer = []
         for Item_ in self.inventory:
-            ItemsForPlayer.append(Item_.ItemForPlayer(PlayerClass))
+            ItemsForPlayer.append(Item_.ItemForPlayer(Player))
         return ItemsForPlayer
 
-    def ShowShopItems(self, PlayerClass):
-        ItemsForPlayer = []
-        for Item_ in self.inventory:
-            ItemsForPlayer.append(Item_.ItemForPlayer(PlayerClass))
 
-        PacMan = PackagesManager(PlayerClass.id, self.Game)
-        PacMan.tradingItems()
+    def ship_factory(self, Player):
+        pass
 
     def leaveLocation(self, playerClass):
         self.players.remove(playerClass)
 
     def send_info_location(self):
-        self.LocationClass.set_planet(self)
+        self.Location.set_planet(self)
 
     def update(self):  # ready
         self.start_timer_update(self.move, 1) # cfg_update['SpaceObject']

@@ -1,3 +1,4 @@
+from python.Utils.Vector2D import Vector2D
 import math
 # from ..Packages.
 import ast
@@ -9,12 +10,14 @@ from ..Utils.ThreadBase import ThreadBase
 from ..Packages.PackagesManager import PackagesManager
 from ..Utils.MyTime import MyTime
 
+
 class BasePlayer(Ship, ThreadBase, MyTime):
     # ObjectToReach:  = {}
     # attack_now: dict = {}
 
     def __init__(self, Game, dict_: dict):
         super().__init__(Game, dict_)
+        MyTime.__init__(self)
         self.ship['id'] = dict_['id']
         self.ship['setPosition'] = [dict_['x'], dict_['y']]
         self.ship['team'] = -1
@@ -29,25 +32,26 @@ class BasePlayer(Ship, ThreadBase, MyTime):
         self.maxSpeed = self.ship['maxSpeed']
         self.race: int = dict_["race"]
         # self.state: float = dict_["state"]
-        self.health = self.ship['health']
+        self.health = self.ship['maxHealth']
         self.SpaceObject = None
         self.ObjectToReach = None
-        self.energy = self.ship['energy']
-        self.speed = self.ship['speed']
+        self.energy = self.ship['maxEnergy']
+        self.speed = self.ship['maxSpeed']
         self.target_x = self.x
         self.target_y = self.y
         self.object_to_reach_id: int = self.Location
-        self.object_to_reach_type: int = 7 # getattr(Game, f"Location_{self.object_to_reach_id}").type
+        self.object_to_reach_type: int = 7  # getattr(Game, f"Location_{self.object_to_reach_id}").type
         self.PlayerRelation: int = dict_["PlayerRelation"]
         self.skills = ast.literal_eval(dict_['skills'])
         self.level: int = dict_["level"]
         self.status = dict_['status']
         self.experience = dict_['experience']
-        self.inventory:list = dict_['inventory']
+        self.inventory: list = dict_['inventory']
         self.active_weapons = dict_['active_weapons']
         self.active_devices = dict_['active_devices']
         self.ship["login"] = self.login
         self.ship['race'] = self.race
+        self.effects = []
         self.hold = 0
         self.OldTick = 0
         self.OldTarget = False
@@ -108,43 +112,61 @@ class BasePlayer(Ship, ThreadBase, MyTime):
             self.SpaceObject = self.ObjectToReach
             self.ObjectToReach = False
 
-
     def move(self, targetX, targetY, stop=False):
-        if stop:
+        player_vector = Vector2D(self.x, self.y, self.speed)
+        target_vector = Vector2D(self.target_x, self.target_y)
+        if stop: # just stop
             if self.OldTarget:
                 self.del_thread_timer(self.WaitForCord)
                 self.OldTick = self.tick()
-                self.x += math.cos(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # x
-                self.y += math.sin(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # y
+                Vector = player_vector.move(target_vector, self.OldTick)
+                self.x = Vector.x
+                self.y = Vector.y
                 self.target_x = self.x
                 self.target_y = self.y
                 self.OldTarget = False
-        elif self.OldTarget:
+        elif self.OldTarget: # move to move
             self.del_thread_timer(self.WaitForCord)
             self.OldTick = self.tick()
-            self.x += math.cos(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # x
-            self.y += math.sin(math.atan2(self.target_y - self.y, self.target_x - self.x)) * self.OldTick # y
+            Vector = player_vector.move(target_vector, self.OldTick)
+            self.x = Vector.x
+            self.y = Vector.y
             self.target_x = targetX
             self.target_y = targetY
-            distance = self.distance(self.x - self.target_x, self.y - self.target_y)
-            TimeSecWait = distance / self.speed
-            self.start_timer_update(self.WaitForCord, TimeSecWait)
-        else:
+            time_w = player_vector.time_wait(Vector2D(self.target_x, self.target_y))
+            self.start_timer_update(self.WaitForCord, time_w)
+        else: # stop to move
             self.OldTarget = True
             self.target_x = targetX
             self.target_y = targetY
-            distance = self.distance(self.x - self.target_x, self.y - self.target_y)
-            TimeSecWait = distance / self.speed
-            self.start_timer_update(self.WaitForCord, TimeSecWait)
+            time_w = player_vector.time_wait(Vector2D(self.target_x, self.target_y))
+            self.start_timer_update(self.WaitForCord, time_w)
             self.tick()
 
-
     def attack(self, data):
+        print(data)
+        match data['ObjectToReachType']:
+            case 1: #planet
+                pass
+            case 2: # Player
+                self.ObjectToAttack = getattr(self.Game, f'Player_{data["id"]}')
+            case 3: # battle
+                pass
+            case 4: # item
+                pass
+            case 5: # static space object
+                pass
+            case 6: # asteroid
+                for Asteroid in self.SpaceObject.asteroids:
+                    if Asteroid.id == data['id']:
+                        self.ObjectToAttack = Asteroid
+
         self.attack_now = True
-        self.ObjectToAttack = getattr(self.Game, f'Player_{data["id"]}')
-        print('active ', self.active_weapons)
+        Vector = Vector2D(self.x, self.y)
+        attack_Vector = Vector2D(self.ObjectToAttack.x, self.ObjectToAttack.y)
         for weapon in self.active_weapons:
-            weapon.attack()
+            if Vector.in_radius(attack_Vector, weapon.radius):
+                weapon.attack()
 
     def set_object_to_reach(self, data):
         match data['type']:
@@ -156,8 +178,7 @@ class BasePlayer(Ship, ThreadBase, MyTime):
                 # self.ObjectToReach = self.
                 # self.move(self.ObjectToReach.x, self.ObjectToReach.y)
             case 5:
-                data['id'] = -1 * data['id']
-                match data['id']:
+                match int(str(data['id'])[0]):
                     case 1:
                         self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
                         self.move(self.ObjectToReach.x, self.ObjectToReach.y)
@@ -172,7 +193,7 @@ class BasePlayer(Ship, ThreadBase, MyTime):
                         self.move(self.ObjectToReach.x, self.ObjectToReach.y)
 
     def dead(self):
-        self.get_drop() # send req
+        self.get_drop()  # send req
 
     # @ThreadBase.end_thread
     def _level_experience(self):
@@ -221,19 +242,30 @@ class BasePlayer(Ship, ThreadBase, MyTime):
     def __get_parameter_recovery_energy(self):
         self.recovery_energy = int(self.max_energy / 50 + self.skills['recovery_energy'] * 4)
 
-    # @ThreadBase.end_thread
-    def _recovery_energy(self):
-        if self.energy + self.recovery_energy > self.max_energy:
+    def get_energy(self, energy):
+        if self.energy + energy > self.max_energy:
             self.energy = self.max_energy
         else:
-            self.energy += self.repair_health
+            self.energy += energy
 
-    # @ThreadBase.end_thread
-    def _repair_health(self):
-        if self.health + self.repair_health > self.max_health:
-            self.health = self.max_health
+    def get_health(self, health):
+        if self.health + health > self.ship['max_health']:
+            self.health = self.ship['max_health']
         else:
-            self.health += self.repair_health
+            self.health += health
+
+    def get_effect(self, effect_type, active_time):
+        if effect_type in self.effects:
+            for k, v in self.effects:
+                if effect_type == k:
+                    self.effects[k] += active_time
+                    # self.del_thread_timer()
+                    self.start_timer_update(self.remove_effect, active_time, 'id')
+
+        pass
+
+    def remove_effect(self, effect_type):
+        self.effects.remove(effect_type)
 
     def get_damage_weapon(self, damage):
         self.__get_damage(damage)
@@ -259,4 +291,3 @@ class BasePlayer(Ship, ThreadBase, MyTime):
         if 0 > self.energy - reduction_energy:
             self.energy = 0
         self.energy -= reduction_energy
-

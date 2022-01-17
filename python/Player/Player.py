@@ -5,11 +5,12 @@ from ..SpaceObjects.Item import item
 from ..Packages.PackagesManager import PackagesManager
 from . import BasePlayer
 from ..Utils.ThreadBase import ThreadBase
-from ..cfg.cfg_level import cfg_level
-from ..cfg.cfg_status import cfg_status
+from ..cfg.cfg_player import cfg_level
+from ..cfg.cfg_player import cfg_status
 import json
 import ast
 from ..cfg.cfg_const import cfg_const
+from ..cfg.cfg_trading import cfg_trading
 
 
 class Player(BasePlayer, ThreadBase):
@@ -42,10 +43,6 @@ class Player(BasePlayer, ThreadBase):
         self.expForFirstSkillLevel = self._get_exp_for_next_status()
         self.engine = None
         self.droid = []
-        print('sspeed', self.speed)
-        print('sspeed2', self.ship['speed'])
-        print('classNumber', self.classNumber)
-        print('classNumber2', self.ship['classNumber'])
 
     def commitSkills(self, dict_: dict):  # name : append count
         for k, v in dict_.items():
@@ -57,28 +54,46 @@ class Player(BasePlayer, ThreadBase):
         for item_ in self.inventory:
             if item_.guid == data['guid']:
                 if item_.wear >= data['count']:
-                    item_.sell(self.SpaceObject, data['count'])
+                    if item_.count == 1:
+                        self.cash += int(item_.cost * 1 * cfg_trading(self.skills['Trading']).coef_sell)
+                    else:
+                        self.cash += int(item_.cost * data['count'] * cfg_trading(self.skills['Trading']).coef_sell)
+                    item_.sell(self.SpaceObject, data['count'], self.Game)
                 break
+
+    def add_item(self, item_):
+        self.inventory.append(item_)
 
     def buyItem(self, data):
         for item_ in self.SpaceObject.inventory:
             if item_.guid == data['guid']:
                 if self.cash >= item_.get_cost(data['count']) and item_.wear >= data['count']:
-                    item_.buy(self, data['count'])
+                    if item_.count == 1:
+                        self.cash -= int(item_.cost * 1 * cfg_trading(self.skills['Trading']).coef_buy)
+                    else:
+                        self.cash -= int(item_.cost * data['count'] * cfg_trading(self.skills['Trading']).coef_buy)
+
+                    item_.buy(self, data['count'], self.Game)
                 break
 
     def OpenShop(self, data):
-        match data['type']:  # 1001 + race = shipShops
-            case 10004:
+        match data['type']:
+            case 1:
+                self.SpaceObject.inventory_shop(self)
+            case 2:
+                self.SpaceObject.ship_factory(self)
+            case 3:
+                self.SpaceObject.ginetic_lab(self)
+            case 4:
                 self.SpaceObject.repository(self)
-            case 10005:
-                self.SpaceObject.playerAngar(self)
-            case 10009:
-                self.SpaceObject.clanrepository(self)
-            case 10002:
-                self.SpaceObject.ShowShopShip(self)
-            case _:
-                self.SpaceObject.ShowShopItems(self)
+            case 5:
+                self.SpaceObject.angar(self)
+            case 6:
+                self.SpaceObject.update_ships(self)
+            case 8:
+                self.SpaceObject.update_resources(self)
+            case 9:
+                self.SpaceObject.clan_repository(self)
 
     def buyItemByBonuses(self, dict_):
         raise 'Надо сделать'
@@ -96,7 +111,7 @@ class Player(BasePlayer, ThreadBase):
             self.x = self.SpaceObject.x
             self.y = self.SpaceObject.y
 
-    def hyperJump(self, id_location):
+    def hyperJump(self, id_location, cost_jump=0):
         radius = 400 * len(self.Location.planets)
         NextLocation = getattr(self.Game, f'Location_{id_location}')
         self.ObjectToReach = NextLocation
