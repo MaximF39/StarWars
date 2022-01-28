@@ -1,17 +1,20 @@
+import uuid
+
 from ..Static.ParseXml import parse_xml
 
 class FakeShip:
     weapon_slots:list = []
     device_slots:list = []
     level:int
-    in_using:bool = False
+    in_using:bool = True
     ship: dict = {}
 
 
-    def __init__(self, Game, data):
+    def __init__(self, Game, ship_class):
         self.Game = Game
-        self.classNumber = data["ship_class"]
+        self.classNumber = ship_class
         self.maxDroids = 2
+        self.ship['guid'] = uuid.uuid4().bytes
         self.get_ship()
 
     def get_ship(self):
@@ -29,10 +32,9 @@ class FakeShip:
                 self.ship['cpu'] = i["cpu"]
                 self.ship['radar'] = i["radar"]
                 self.ship['maxSpeed'] = i["maxSpeed"]
-                self.ship['restrictions'] = i["restrictions"]
-                self.ship['features'] = i["features"]
+                self.ship['restrictions'] = i["restrictions"]['data']
+                self.ship['features'] = i["features"]['data']
 
-                self.ship['guid'] = i["guid"]
                 self.ship['wear'] = i["wear"]
                 self.ship['level'] = i["level"]
                 self.ship['inUsing'] = i["inUsing"]

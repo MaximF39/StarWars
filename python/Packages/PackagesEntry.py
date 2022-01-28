@@ -5,7 +5,6 @@ from python.DataBase.SQL_Table import PlayerDB, ClanDB
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from python.cfg.cfg_postgres import *
-from python.cfg.cfg_const import cfg_const
 from sqlalchemy import func
 
 engine = create_engine(f"postgresql+psycopg2://{db_name_user}:{db_passwd_user}@{host}:{port}/{db_name}")
@@ -105,6 +104,7 @@ class PackagesEntry:
             "active_weapons": eval(Player.active_weapons)['data'],
             "rating": Player.rating,
             "inventory": eval(Player.inventory),
+            "angar": eval(Player.angar),
             }
 
     def get_clans(self):

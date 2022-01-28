@@ -19,7 +19,10 @@ class Clan(ThreadBase):
         self.maxMembers: int = cfg_clan.members[self.level]
         self.maxFriends: int = cfg_clan.friends[self.level]
         self.rating: int = self.rating()
-        self.nextLevelPointsValue: int = 0 # next level points
+        if self.level + 1 in cfg_clan.points:
+            self.nextLevelPointsValue: int = cfg_clan.points[self.level + 1] # next level points
+        else:
+            self.nextLevelPointsValue: int = cfg_clan.points[self.level]
         self.friendRequestList = []
         self.newPlayerRequestList = {}  # key = player and valuer = message
         self.members = []

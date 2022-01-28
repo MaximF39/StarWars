@@ -1,7 +1,8 @@
+from ..cfg.cfg_main import cfg_const
 from .PackagesEntry import PackagesEntry
 from ..Utils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
-from ..Packages.PackageCreator import PackageCreator
+from python.Packages.PackageCreator import PackageCreator
 from python.Static.ParseXml import parse_xml
 
 class EntryPac:
@@ -338,7 +339,6 @@ class EntryPac:
         return creator.get_package()
 
     def logged(self):
-        from ..cfg.cfg_const import cfg_const
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.LOGGED
         logged = DotMap({

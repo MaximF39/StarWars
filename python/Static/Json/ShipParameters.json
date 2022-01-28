@@ -4801,7 +4801,7 @@
   {
     "weaponSlots": 5,
     "deviceSlots": 5,
-    "armor": 180,
+    "armor": 120,
     "shields": 95,
     "maxEnergy": 10000,
     "maxHealth": 32000,

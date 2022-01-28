@@ -68,21 +68,83 @@ class test(ThreadBase):
             self.add_time_timer(func, sec, id_)
 
 
-    def pr(self):
-        print('i"m print', e.tick())
+    # def pr(self):
+    #     print('i"m print', e.tick())
 
 
 
-t = test()
-func = t.pr
-id_ = 1
-
-
-e = MyTime()
-t.start(func, 1.01, id_)
-t.add_time(func, 1, id_)
+# t = test()
+# func = t.pr
+# id_ = 1
+#
+#
+# e = MyTime()
+# t.start(func, 1.01, id_)
+# t.add_time(func, 1, id_)
 # time.sleep(2)
 # for i in t.__dir__():
 #     print(i)
+import random
+
+# def get_random(cnt_number):
+#     for i in range(cnt_number):
+#         yield i
+
+
+# for rand in get_random(5):
+#     print(rand)
+# g = get_random(5)
+# print(next(g))
+# print(next(g))
+# print(next(g))
+
+# gen = get_random(5)
+# print(list(gen))
+
+# i = iter([1, 2, 3])
+
+# print(list(i))
+# print(list(i))
+# l = [1, 2, 3, 4, 5]
+#
+# def m(x):
+#     return x**2
+#
+# print(list(map(lambda x: x**2, l)))
+# print(list(map(m, l)))
+# dict_a = [{'name': 'python', 'points': 10}, {'name': 'java', 'points': 8}]
+# print(list(filter(lambda x : x['name'] == 'python', dict_a)))
+#
+
+# def t():
+#     return iter([1, 2, 3, 4, 4, 'hello'])
+#
+# for i in t():
+#     print(i)
+
+# d = {'main':22}
+# if not 'main2' in d:
+#     raise NotImplementedError('Ты забыл переменную лох хаха тупой прогер')
+
+# def avg(ranks):
+#     assert len(ranks) == 0
+#     # assert isinstance(ranks, list)
+#     print('hello')
+#     return round(sum(ranks)/len(ranks), 2)
+#
+# print('Debug var', __debug__)
+# # python -O test2.py
+# ranks = [62, 65, 75]
+# print("Среднее значение:", avg(ranks))
+
+# d = {'hello':22}
+# d2 = {'hello':22}
+# d3 = d
+# d3['main'] = 33
+# print(d2 == d) # True
+# print(d3 is d) # False
+# print(d)
+# print(d3)
+
 
 

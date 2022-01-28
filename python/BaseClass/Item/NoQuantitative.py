@@ -1,7 +1,6 @@
 import copy
 
 from python.Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
-from python.cfg.cfg_trading import cfg_trading
 from python.Packages.PackagesManager import PackagesManager
 from python.BaseClass.Item.BaseItem import BaseItem
 

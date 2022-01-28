@@ -1,6 +1,6 @@
 from python.BaseClass.SpaceObject import SpaceObject
 from random import randint
-from python.cfg.cfg_shop_type import repository
+from python.cfg.shops.cfg_shop_type import repository
 
 class StaticSpaceObject(SpaceObject):
     class_number: int

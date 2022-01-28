@@ -1,6 +1,6 @@
 import copy
 
-from python.cfg.cfg_trading import cfg_trading
+
 from python.Packages.PackagesManager import PackagesManager
 from python.BaseClass.Item.BaseItem import BaseItem
 

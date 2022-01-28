@@ -4,7 +4,6 @@ import math
 # from . import parse_galaxy_map
 from . import ThreadBase
 from ..BaseClass.SpaceObject import SpaceObject
-from ..BaseClass.FakeShip import FakeShip
 from python.BaseClass.Shop import Shop
 
 class Planet(SpaceObject, ThreadBase, Shop):
@@ -32,7 +31,7 @@ class Planet(SpaceObject, ThreadBase, Shop):
         self.clanId = 0 # Только чей клан захвачен, могут садиться на планету
         self.QCount = 0 # Количество квестов
         self.Location = LocationClass
-        Shop.__init__(self, Game)
+        Shop.__init__(self)
 
         if self.angle != float('inf'):
             self._i += self.speed
@@ -47,6 +46,9 @@ class Planet(SpaceObject, ThreadBase, Shop):
     @property
     def __name__(self):
         return self.__class__.__name__
+
+    def update_ships(self, Player):
+        PackagesManager(Player.id, self.Game).shipUpdateInfo()
 
     def add_item(self, Item_):
         if Item_.classNumber in self.default_shop:
@@ -72,7 +74,8 @@ class Planet(SpaceObject, ThreadBase, Shop):
 
 
     def ship_factory(self, Player):
-        pass
+        PacMan = PackagesManager(Player.id, self.Game)
+        PacMan.tradingShips()
 
     def leaveLocation(self, playerClass):
         self.players.remove(playerClass)

@@ -24,8 +24,3 @@ class ThreadBase:
         else:
             raise NotImplemented(" Перепутал переменную? ")
 
-    # def del_all_update(self):
-    #     for func in self.all_func:
-    #         getattr(self, f'{func.__name__}_thread')
-    #         delattr(self, f'{func.__name__}_thread')
-    #         self.all_func.remove(func)

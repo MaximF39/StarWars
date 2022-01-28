@@ -13,5 +13,12 @@ class RepositoryStation(StaticSpaceObject):
         PacMan.locationPlanet()
 
     def repository(self, Player):
+        PackagesManager(Player.id, self.Game).repository()
+
+
+    def angar(self, Player):
         PacMan = PackagesManager(Player.id, self.Game)
-        PacMan.repository()
+        PacMan.playerAngar()
+
+    def clan_repository(self, Player):
+        PackagesManager(Player.id, self.Game).clan_repository()

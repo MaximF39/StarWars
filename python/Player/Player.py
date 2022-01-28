@@ -1,6 +1,6 @@
 import math
 from typing import Match
-
+from python.BaseClass.FakeShip import FakeShip
 from ..SpaceObjects.Item import item
 from ..Packages.PackagesManager import PackagesManager
 from . import BasePlayer
@@ -9,8 +9,8 @@ from ..cfg.cfg_player import cfg_level
 from ..cfg.cfg_player import cfg_status
 import json
 import ast
-from ..cfg.cfg_const import cfg_const
-from ..cfg.cfg_trading import cfg_trading
+from ..cfg.cfg_main import cfg_const
+from python.cfg.shops.cfg_trading import cfg_trading
 
 
 class Player(BasePlayer, ThreadBase):
@@ -22,6 +22,8 @@ class Player(BasePlayer, ThreadBase):
         self.canDelete = dict_['canDelete']
         self.logged = dict_['logged']
         self.clanId = dict_["clan_id"]
+        # if
+        # self.Clan =
         self.points = dict_['points']
         self.PlayerRelation = dict_['PlayerRelation']
         self.rating = dict_['rating']
@@ -29,6 +31,9 @@ class Player(BasePlayer, ThreadBase):
         self.bonus = dict_['bonus']
         self.repository = dict_['repository']
         self.role = dict_['role']
+        self.angar = []
+        for ship_class in dict_['angar']:
+            self.angar.append(FakeShip(self.Game, ship_class))
         self.ControlUsed = 0
         self.ControlLeft = self.skills['Control']
         self.expSkillGrowCoef = dict_["expSkillGrowCoef"]

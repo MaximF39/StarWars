@@ -133,8 +133,8 @@ class ReadPackagesClient:
                 return self.playerShip(decoder)
             #     case ServerRequest.DROID_BUILDING_DIALOG:
             #         return self.droidBuildingDialog()
-            #     case ServerRequest.TRADING_SHIPS:
-            #         return self.tradingShips()
+            case ServerRequest.TRADING_SHIPS:
+                return self.tradingShips(decoder)
             case ServerRequest.WEAPONS_PARAMETERS:
                 return self.weaponsParameters(decoder)
             case ServerRequest.ENGINES_PARAMETERS:
@@ -548,65 +548,59 @@ class ReadPackagesClient:
     #     #     decoder.read_unsigned_byte(_loc2_.controlUsed)
     #     #     return decoder.get_package()
     #     #
-    #     # def tradingShips(self) -> list:
-    #     #     
-    #     #     _loc2_: int = 0
-    #     #     _loc3_: int = 0
-    #     #     _loc4_: Restriction = None
-    #     #     _loc5_: ShipFeature = None
-    #     #     _loc6_: ShipForSale = None
-    #     #     _loc7_: int = 0
-    #     #     _loc8_: int = 0
-    #     #     _loc9_: int = 0
-    #     #     decoder.read_int(_loc9_)
-    #     #     _loc10_: int = 0
-    #     #     decoder.read_int(_loc10_)
-    #     #     _loc11_: float = 0
-    #     #     decoder.read_float(_loc11_)
-    #     #     _loc12_: float = 0
-    #     #     decoder.read_float(_loc12_)
-    #     #     _loc13_: int = 0
-    #     #     decoder.read_int(_loc13_)
-    #     #     _loc14_: list = list()
-    #     #     _loc15_: int = 0
-    #     #     while _loc15_ < _loc13:
-    #     #         _loc6_ = ShipForSale()
-    #     #         read_guid(decoder_loc6_.id)
-    #     #         decoder.read_short(_loc6_.classfloat)
-    #     #         decoder.read_int(_loc6_.cost)
-    #     #         decoder.read_short(_loc6_.size)
-    #     #         decoder.read_unsigned_byte(_loc6_.weaponSlots)
-    #     #         decoder.read_unsigned_byte(_loc6_.deviceSlots)
-    #     #         decoder.read_unsigned_byte(_loc6_.armor)
-    #     #         decoder.read_unsigned_byte(_loc6_.shields)
-    #     #         decoder.read_short(_loc6_.maxEnergy)
-    #     #         decoder.read_short(_loc6_.maxHealth)
-    #     #         decoder.read_short(_loc6_.cpu)
-    #     #         decoder.read_short(_loc6_.radar)
-    #     #         decoder.read_unsigned_byte(_loc6_.maxSpeed)
-    #     #         _loc2_ = 0
-    #     #         decoder.read_unsigned_byte(_loc2_)
-    #     #         _loc7_ = 0
-    #     #     while _loc7_ < _loc2:
-    #     #         _loc4_ = Restriction()
-    #     #         decoder.read_unsigned_byte(_loc4_.type)
-    #     #         decoder.read_unsigned_byte(_loc4_.valueType)
-    #     #         decoder.read_int(_loc4_.value)
-    #     #         _loc7_ += 1
-    #     #
-    #     #         _loc3_ = 0
-    #     #         decoder.read_unsigned_byte(_loc3_)
-    #     #         _loc8_ = 0
-    #     #     while _loc8_ < _loc3:
-    #     #         _loc5_ = ShipFeature()
-    #     #         decoder.read_unsigned_byte(_loc5_.type)
-    #     #         decoder.read_int(_loc5_.value)
-    #     #         _loc8_ += 1
-    #     #
-    #     #         decoder.read_bool(_loc6_.satisfying)
-    #     #         _loc14_.append(_loc6_)
-    #     #         _loc15_ += 1
-    #     #         return decoder.get_package()
+    def tradingShips(self, decoder) -> DotMap:
+        w = decoder.read_int()
+        _loc9_ = decoder.read_int()
+        _loc10_ = decoder.read_int()
+        _loc11_ = decoder.read_float()
+        _loc12_ = decoder.read_float()
+        _loc13_ = decoder.read_int()
+        _loc15_ = 0
+        _loc0_ = DotMap()
+        _loc0_.value = []
+        _loc0_.one = _loc9_
+        _loc0_.two = _loc10_
+        _loc0_.free = _loc11_
+        _loc0_.foo = _loc12_
+        _loc0_.five = _loc13_
+        while _loc15_ < _loc13_:
+            _loc6_ = DotMap()
+            _loc6_.guid = self.read_guid(decoder)
+            _loc6_.classfloat = decoder.read_short()
+            _loc6_.cost = decoder.read_int()
+            _loc6_.size = decoder.read_short()
+            _loc6_.weaponSlots = decoder.read_unsigned_byte()
+            _loc6_.deviceSlots = decoder.read_unsigned_byte()
+            _loc6_.armor = decoder.read_unsigned_byte()
+            _loc6_.shields = decoder.read_unsigned_byte()
+            _loc6_.maxEnergy = decoder.read_short()
+            _loc6_.maxHealth = decoder.read_short()
+            _loc6_.cpu = decoder.read_short()
+            _loc6_.radar = decoder.read_short()
+            _loc6_.maxSpeed = decoder.read_unsigned_byte()
+            _loc2_ = decoder.read_unsigned_byte()
+            _loc7_ = 0
+            _loc6_.rest = []
+            while _loc7_ < _loc2_:
+                _loc4_ = DotMap()
+                _loc4_.type = decoder.read_unsigned_byte()
+                _loc4_.valueType = decoder.read_unsigned_byte()
+                _loc4_.value = decoder.read_int()
+                _loc7_ += 1
+                _loc6_.rest.append(_loc4_)
+            _loc3_ = decoder.read_unsigned_byte()
+            _loc8_ = 0
+            _loc6_.feat = []
+            while _loc8_ < _loc3_:
+                _loc5_ = DotMap()
+                _loc5_.type = decoder.read_unsigned_byte()
+                _loc5_.value = decoder.read_int()
+                _loc8_ += 1
+                _loc6_.feat.append(_loc5_)
+            _loc6_.satisfying = decoder.read_bool()
+            _loc15_ += 1
+            _loc0_.value.append(_loc6_)
+        return _loc0_
     #     #
     def tradingItems(self, decoder) -> list:
         _loc2_: int = decoder.read_int()

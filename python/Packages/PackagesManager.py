@@ -1,11 +1,14 @@
-from python.cfg.cfg_trading import cfg_trading
 from python.Static.TypeStr.ServerRequestStr import ServerRequestStr
 from python.Packages.PackagesEntry import *
 from python.Static.ParseXml import parse_xml
 from python.Utils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
 from python.Packages.PackageCreator import PackageCreator
-from ..cfg.cfg_trading import cfg_trading
+from ..BaseClass.FakeShip import FakeShip
+from python.cfg.shops.cfg_trading import cfg_trading
+from ..cfg.cfg_upgrade_ship import cfg_upgrade
+from ..cfg.cfg_main import cfg_const
+
 
 class PackagesManager:
     stateLoop: int
@@ -216,12 +219,12 @@ class PackagesManager:
         creator.write_int(5)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
-    def tradeAccept(self):
+    def tradeAccept(self, accept:bool):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.TRADE_ACCEPTED
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.TRADE_ACCEPTED))
-        creator.write_bool(bool())
+        creator.write_bool(accept)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def shipUpdateInfo(self):
@@ -229,7 +232,8 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.SHIP_UPDATE_INFO
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.SHIP_UPDATE_INFO))
-        _loc6_ = DotMap()
+
+        _loc6_ = DotMap(FakeShip(self.Game, self.Player.ship['classNumber']).ship)
         creator.write_short(_loc6_.classNumber)
         creator.write_short(_loc6_.size)
         creator.write_unsigned_byte(_loc6_.weaponSlots)
@@ -241,23 +245,23 @@ class PackagesManager:
         creator.write_short(_loc6_.cpu)
         creator.write_short(_loc6_.radar)
         creator.write_unsigned_byte(_loc6_.maxSpeed)
-        data = []
-        creator.write_unsigned_byte(len(data))
-        for i in data:
-            _loc2_ = DotMap(i)
+        rest = _loc6_.restrictions
+        creator.write_unsigned_byte(len(rest))
+        for r in rest:
+            _loc2_ = DotMap(r)
             creator.write_unsigned_byte(_loc2_.type)
             creator.write_unsigned_byte(_loc2_.valueType)
-            creator.write_int(_loc2_.value)
+            creator.write_int(_loc2_.Value)
 
-        data_ship_feature = []
-        creator.write_unsigned_byte(len(data_ship_feature))
-        _loc4_ = 0
-        for i in data_ship_feature:
-            _loc3_ = DotMap(i)
+        feat = _loc6_.features
+        creator.write_unsigned_byte(len(feat))
+        for f in feat:
+            _loc3_ = DotMap(f)
             creator.write_unsigned_byte(_loc3_.type)
-            creator.write_int(_loc3_.value)
-            _loc4_ += 1
-        _loc9_ = DotMap()
+            creator.write_int(_loc3_.Value)
+
+        _loc9_ = DotMap(FakeShip(self.Game, cfg_upgrade[self.Player.ship['classNumber']]).ship)
+
         creator.write_short(_loc9_.classNumber)
         creator.write_short(_loc9_.size)
         creator.write_unsigned_byte(_loc9_.weaponSlots)
@@ -269,9 +273,9 @@ class PackagesManager:
         creator.write_short(_loc9_.cpu)
         creator.write_short(_loc9_.radar)
         creator.write_unsigned_byte(_loc9_.maxSpeed)
-        data = []
-        creator.write_unsigned_byte(len(data))
-        for i in data:
+        rest = _loc9_.restrictions
+        creator.write_unsigned_byte(len(rest))
+        for i in rest:
             _loc2_ = DotMap(i)
             creator.write_unsigned_byte(_loc2_.type)
             creator.write_unsigned_byte(_loc2_.valueType)
@@ -281,9 +285,9 @@ class PackagesManager:
         for i in data:
             _loc3_ = DotMap(i)
             creator.write_unsigned_byte(_loc3_.type)
-            creator.write_int(_loc3_.value)
-            _loc4_ += 1
+            creator.write_int(_loc3_.Value)
         creator.write_bool(_loc9_.satisfying)
+
         UpdateCost = []
         _loc10_ = DotMap()
         creator.write_int(_loc10_.cash)
@@ -328,36 +332,36 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.PLAYER_ANGAR
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.PLAYER_ANGAR))
-        data = self.Player.Angar
-        creator.write_unsigned_byte(len(data))
-        for ship in data:
-            _loc6_ = DotMap(ship)
-            creator.write_short(_loc6_.classNumber)
-            creator.write_int(_loc6_.cost)
-            creator.write_short(_loc6_.size)
-            creator.write_bytes(_loc6_.weaponSlots)
-            creator.write_bytes(_loc6_.deviceSlots)
-            creator.write_bytes(_loc6_.armor)
-            creator.write_bytes(_loc6_.shields)
-            creator.write_short(_loc6_.maxEnergy)
-            creator.write_short(_loc6_.maxHealth)
-            creator.write_short(_loc6_.cpu)
-            creator.write_short(_loc6_.radar)
-            creator.write_unsigned_byte(_loc6_.maxSpeed)
+        angar = self.Player.angar
+        creator.write_unsigned_byte(len(angar))
+        for FakeShip in angar:
+            ship = DotMap(FakeShip.ship)
+            creator.write_short(ship.classNumber)
+            creator.write_int(ship.cost)
+            creator.write_short(ship.size)
+            creator.write_unsigned_byte(ship.weaponSlots)
+            creator.write_unsigned_byte(ship.deviceSlots)
+            creator.write_unsigned_byte(ship.armor) # до 127 броня. 128 == - 128. if armor > 127: armor = 256 - armor
+            creator.write_unsigned_byte(ship.shields)
+            creator.write_short(ship.maxEnergy)
+            creator.write_short(ship.maxHealth)
+            creator.write_short(ship.cpu)
+            creator.write_short(ship.radar)
+            creator.write_unsigned_byte(ship.maxSpeed)
             data_restr = ship.restrictions
             creator.write_unsigned_byte(len(data_restr))
-            for rest in data:
+            for rest in data_restr:
                 _loc4_ = DotMap(rest)
                 creator.write_unsigned_byte(_loc4_.type)
                 creator.write_unsigned_byte(_loc4_.valueType)
-                creator.write_int(_loc4_.value)
-                data_loc3_ = []
-                creator.write_unsigned_byte(len(data_loc3_))
-                for i in data_loc3_:
-                    _loc5_ = DotMap(i)
-                    creator.write_unsigned_byte(_loc5_.type)
-                    creator.write_int(_loc5_.value)
-                    creator.write_bool(_loc6_.satisfying)
+                creator.write_int(_loc4_.Value)
+            data_feat = ship.features
+            creator.write_unsigned_byte(len(data_feat))
+            for feat in data_feat:
+                _loc5_ = DotMap(feat)
+                creator.write_unsigned_byte(_loc5_.type)
+                creator.write_int(_loc5_.Value)
+            creator.write_bool(ship.satisfying)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     #
@@ -513,15 +517,16 @@ class PackagesManager:
 
         data = self.Player.SpaceObject.ships
 
-        creator.write_int(5999)#ship.id)  # id
-        creator.write_int(100000)#ship.cost)  # ship cost
+        creator.write_int(self.Player.ship['classNumber'])#ship.id)  # id
+        creator.write_int(self.Player.ship['cost'])#ship.cost)  # ship cost
+
         creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_buy) #ship.buy_coef)  # buyCoeficient
         creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_sell) #ship.sell_coef)  # sellCoeficient
 
         creator.write_int(len(data))
-        print(len(data))
+
         for _loc6_ in data:
-            creator.write_bytes(_loc6_['guid']) #5999) #_loc6_.ship["guid"]
+            creator.write_bytes(_loc6_.ship['guid'])
             creator.write_short(_loc6_.ship["classNumber"])
             creator.write_int(_loc6_.ship["cost"])
             creator.write_short(_loc6_.ship["size"])
@@ -534,22 +539,22 @@ class PackagesManager:
             creator.write_short(_loc6_.ship["cpu"])
             creator.write_short(_loc6_.ship["radar"])
             creator.write_unsigned_byte(_loc6_.ship["maxSpeed"])
-            data_restr = _loc6_.ship["restrictions"]['data']
+            data_restr = _loc6_.ship["restrictions"]
             creator.write_unsigned_byte(len(data_restr))
             for restr in data_restr:
-                _loc4_ = DotMap(restr)
-                creator.write_unsigned_byte(_loc4_.type)
-                creator.write_unsigned_byte(_loc4_.valueType)
-                creator.write_int(_loc4_.value)
-            data_ship_feature = _loc6_.ship["features"]['data']
+                creator.write_unsigned_byte(restr['type'])
+                creator.write_unsigned_byte(restr['valueType'])
+                creator.write_int(restr['Value'])
+            data_ship_feature = _loc6_.ship["features"]
             creator.write_unsigned_byte(len(data_ship_feature))
             for feat in data_ship_feature:
                 _loc5_ = DotMap(feat)
                 creator.write_unsigned_byte(_loc5_.type)
-                creator.write_int(_loc5_.value)
+                creator.write_int(_loc5_.Value)
 
             creator.write_bool(_loc6_.ship["satisfying"])
-            self.Game.id_to_conn[self.id].send(creator.get_package())
+        print(creator.get_package())
+        self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def tradingItems(self):
         creator = PackageCreator()
@@ -657,8 +662,7 @@ class PackagesManager:
         data = self.Player.inventory
         print('data', data)
         creator.write_int(len(data))
-        for rep in data:
-            _loc2_ = DotMap(rep)
+        for _loc2_ in data:
             creator.write_int(_loc2_.classNumber)
             creator.write_bytes(_loc2_.guid)
             creator.write_int(_loc2_.wear)
@@ -671,12 +675,11 @@ class PackagesManager:
         creator.PackageNumber = ServerRequest.CLAN_REPOSITORY
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.CLAN_REPOSITORY))
-        data = []
-        self._write_items(creator, False, False)
-        _loc4_ = DotMap({"costCoef": 255.0})
-        creator.write_float(_loc4_.costCoef)
-        creator.write_int(len(data))
-        for i in data:
+        items = self.Player.Сlan.repository
+        self._write_items(creator, items, False, False)
+        creator.write_float(1) #_loc4_.costCoef)
+        creator.write_int(len(items))
+        for i in items:
             _loc2_ = DotMap(i)
             creator.write_int(_loc2_.classNumber)
             creator.write_bytes(_loc2_.guid)
@@ -1792,7 +1795,6 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def logged(self):
-        from ..cfg.cfg_const import cfg_const
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.LOGGED
 

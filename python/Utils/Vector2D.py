@@ -33,11 +33,7 @@ class Vector2D:
         else:
             y = vector2.y
 
-        return Vector2D(
-            x,
-            y,
-            self.speed
-        )
+        return Vector2D(x, y, self.speed)
 
     def time_wait(self, vector2):
         """ return second """
