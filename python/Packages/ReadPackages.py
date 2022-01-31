@@ -114,9 +114,9 @@ class ReadPackages:
             case ClientRequest.CREATE_ARENA_REQUEST:
                 self.createArenaRequest(data)
             case ClientRequest.BUY_ITEM:
-                self.buyItem(data)
+                self.buy_item(data)
             case ClientRequest.SELL_ITEM:
-                self.sellItem(data)
+                self.sell_item(data)
             case ClientRequest.DROP_ITEM:
                 self.dropItem(data)
             case ClientRequest.OBJECT_TO_ATTACK:
@@ -370,24 +370,23 @@ class ReadPackages:
         self.Player.unuse_item(data)
         logger.info(f'unuseItem {data}')
 
-    def buyItem(self, data) -> None:
+    def buy_item(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = {
         'guid':_loc2_.read_bytes(16),
         'count':_loc2_.read_int(),}
-        self.Player.buyItem(data)
-        logger.info(f'buyItem {data}')
+        logger.info(f'buy_item {data}')
+        self.Player.buy_item(data)
 
-    def sellItem(self, data) -> None:
+    def sell_item(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
         _loc2_.data = data
         data = {
         'guid':_loc2_.read_bytes(16),
         'count':_loc2_.read_int(),}
-        logger.info(f'sellItem {data}')
-        Player = getattr(self.Game, f'Player_{self.id}')
-        Player.sellItem(data)
+        logger.info(f'sell_item {data}')
+        self.Player.sell_item(data)
 
     def updateresource(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
@@ -451,10 +450,11 @@ class ReadPackages:
         _loc4_.data = data
         data = {
         "id":_loc4_.read_int()}  # id Location
+        logger.info(f'jumpTo {data}')
         _loc4_.read_int()  # clicked count
         _loc4_.read_utf()  # domain
         self.Player.hyperJump(data["id"])
-        logger.info(f'jumpTo {data}')
+
 
     def sendMessage(self, data) -> None:
         _loc4_: PackageDecoder
@@ -509,10 +509,11 @@ class ReadPackages:
         _loc5_.data = data
         data = {
         'guid':_loc5_.read_bytes(),
-        'ship_id':_loc5_.read_int(),  # id цели если 0 то исползуется сам на себя
+        'targetId':_loc5_.read_int(),  # id цели если 0 то исползуется сам на себя
         'id_droid':_loc5_.read_unsigned_byte(),  # id использовавшего
         'effectType':_loc5_.read_unsigned_byte(), }
         logger.info(f'deviceClicked {data}')
+        self.Player.device_clicked(data)
 
     def droidClicked(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -595,7 +596,7 @@ class ReadPackages:
 
     def crearTargets(self, data) -> None:  # убрать дройдов всех
         logger.info(f'crearTargets {data}')
-        self.Player.move(0, 0, True)
+        self.Player.move(stop=True)
 
     def syncronizeHealth(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
@@ -820,15 +821,15 @@ class ReadPackages:
         _loc5_.data = data
         data = {
         'classNumber': _loc5_.read_short(),
-        'endurance': _loc5_.read_short(), #1000 количество
-        'count3': _loc5_.read_int(), # 255
-        'count4': _loc5_.read_short(),} # 0
+        'count': _loc5_.read_short(), #1000 количество
+        'id': _loc5_.read_int(), # 255
+        'hz': _loc5_.read_short(),} # 0
+        logger.info(f'buyItemByBonuses {data}')
 
         self.Player.buyItemByBonuses(data)
         PacMan = PackagesManager(self.id, self.Game)
         PacMan.inventory()
         PacMan.updateValue(13)
-        logger.info(f'buyItemByBonuses {data}')
 
     def buyShipByBonuses(self, data) -> None:
         _loc4_ = PackageDecoder()

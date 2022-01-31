@@ -18,52 +18,26 @@ class BasePlayer(Ship, ThreadBase, MyTime):
     def __init__(self, Game, dict_: dict):
         super().__init__(Game, dict_)
         MyTime.__init__(self)
-        self.ship['id'] = dict_['id']
-        self.ship['setPosition'] = [dict_['x'], dict_['y']]
-        self.ship['team'] = -1
-        self.team = -1
-        self.type = 2
-        self.Location = getattr(self.Game, f'Location_{dict_["Location"]}')
-        self.avatar = dict_['avatar']
-        self.login: str = dict_["login"]
-        self.aliance: int = dict_["aliance"]
-        self.maxHealth = self.ship['maxHealth']
-        self.maxEnergy = self.ship['maxEnergy']
-        self.maxSpeed = self.ship['maxSpeed']
-        self.race: int = dict_["race"]
-        # self.state: float = dict_["state"]
+        self.speed = self.ship['maxSpeed']
         self.health = self.ship['maxHealth']
+        self.energy = self.ship['maxEnergy']
+
+        self.Location = getattr(self.Game, f'Location_{dict_["Location"]}')
         self.SpaceObject = None
         self.ObjectToReach = None
-        self.energy = self.ship['maxEnergy']
-        self.speed = self.ship['maxSpeed']
-        self.target_x = self.x
-        self.target_y = self.y
+
+        self.targetX = self.x
+        self.targetY = self.y
+
         self.object_to_reach_id: int = self.Location
-        self.object_to_reach_type: int = 7  # getattr(Game, f"Location_{self.object_to_reach_id}").type
-        self.PlayerRelation: int = dict_["PlayerRelation"]
-        self.skills = ast.literal_eval(dict_['skills'])
-        self.level: int = dict_["level"]
-        self.status = dict_['status']
-        self.experience = dict_['experience']
-        self.inventory: list = dict_['inventory']
-        self.active_weapons = dict_['active_weapons']
-        self.active_devices = dict_['active_devices']
-        self.ship["login"] = self.login
-        self.ship['race'] = self.race
+        # self.object_to_reach_type: int = 7  # getattr(Game, f"Location_{self.object_to_reach_id}").type
+
         self.effects = []
         self.hold = 0
-        self.OldTick = 0
+        self.OldTick = self.tick()
         self.OldTarget = False
-        # self.PacMan = PackagesManager(self.id, self.Game)
         self.sendInfoLocation()
         self.upgrade()
-        # self.attacking = self.skills['attacking']
-        # self.tactics = self.skills['tactics']
-        # self.targeting = self.skills['targeting']
-        # self.trading = self.skills['trading']
-        # self.repairing = self.skills['repairing']
-        # self.defending = self.skills['defending'] # ?
 
     def sendInfoLocation(self):
         self.Location.EntryPlayer(self)
@@ -85,11 +59,16 @@ class BasePlayer(Ship, ThreadBase, MyTime):
         # a = threading.Thread(target=self.move)
         # a.start()
 
+    def not_target(self):
+        self.targetX = self.x
+        self.targetY = self.y
+
     def leaveLocation(self):
         print(self.SpaceObject)
         self.SpaceObject.leaveLocation(self)
         self.x = self.SpaceObject.x
         self.y = self.SpaceObject.y
+        self.not_target()
         self.SpaceObject = None
         self.ObjectToReach = None
         PacMan = PackagesManager(self.id, self.Game)
@@ -100,63 +79,95 @@ class BasePlayer(Ship, ThreadBase, MyTime):
         PacMan.locationSystem()
 
     def target(self, x, y):
-        self.target_x = x
-        self.target_y = y
+        self.targetX = x
+        self.targetY = y
 
     def WaitForCord(self):
-        self.x = self.target_x
-        self.y = self.target_y
         self.OldTarget = False
+        print(self.ObjectToReach)
         if self.ObjectToReach:
             self.ObjectToReach.SetPlayer(self)
-            self.SpaceObject = self.ObjectToReach
             self.ObjectToReach = False
+        else:
+            self._set_x_y(self.targetX, self.targetY)
 
-    def move(self, targetX, targetY, stop=False):
-        player_vector = Vector2D(self.x, self.y, self.speed)
-        target_vector = Vector2D(self.target_x, self.target_y)
-        if stop: # just stop
-            if self.OldTarget:
-                self.del_thread_timer(self.WaitForCord)
-                self.OldTick = self.tick()
-                Vector = player_vector.move(target_vector, self.OldTick)
-                self.x = Vector.x
-                self.y = Vector.y
-                self.target_x = self.x
-                self.target_y = self.y
-                self.OldTarget = False
-        elif self.OldTarget: # move to move
+
+    def _set_x_y(self, x=None, y=None, Vector2d=None):
+        if not ((x and y) or Vector2d):
+            raise NotImplementedError('Not x, y OR Vector2d')
+        if x and y:
+            self.x = x
+            self.y = y
+        else:
+            self.x = Vector2d.x
+            self.y = Vector2d.y
+
+    def _set_target_x_y(self, targetX=None, targetY=None, Vector2d=None):
+        if not ((targetX and targetY) or Vector2d):
+            raise NotImplementedError('Not targetX, targetY OR Vector2d')
+        if targetX and targetY:
+            self.targettargetX = targetX
+            self.targettargetY = targetY
+        else:
+            self.x = Vector2d.x
+            self.y = Vector2d.y
+
+    def _default_move(self, mod, player_vector, target_vector):
+        if (mod == 'move_to_move' or mod == 'stop') and self.OldTarget:
             self.del_thread_timer(self.WaitForCord)
             self.OldTick = self.tick()
             Vector = player_vector.move(target_vector, self.OldTick)
             self.x = Vector.x
             self.y = Vector.y
-            self.target_x = targetX
-            self.target_y = targetY
-            time_w = player_vector.time_wait(Vector2D(self.target_x, self.target_y))
-            self.start_timer_update(self.WaitForCord, time_w)
-        else: # stop to move
-            self.OldTarget = True
-            self.target_x = targetX
-            self.target_y = targetY
-            time_w = player_vector.time_wait(Vector2D(self.target_x, self.target_y))
-            self.start_timer_update(self.WaitForCord, time_w)
+        else:
             self.tick()
+        if mod == 'stop':
+            self.not_target()
+        else:
+            self.targetX = target_vector.x
+            self.targetY = target_vector.y
+            time_w = player_vector.time_wait(Vector2D(self.targetX, self.targetY))
+            self.start_timer_update(self.WaitForCord, time_w)
+            print(f'{time_w=}, {self.targetX=}, {self.targetY=}')
+
+
+    def move(self, targetX=None, targetY=None, *, stop=False, SpaceObject=None):
+        if not ((targetX and targetY) or SpaceObject or stop):
+            raise NotImplementedError('Не указано что-то из этого \n (targetX and targetY) or SpaceObject:')
+        if SpaceObject:
+            self.ObjectToReach = SpaceObject
+            self.targetX = SpaceObject.x
+            self.targetY = SpaceObject.y
+        else:
+            if targetX and targetY:
+                self.targetX = targetX
+                self.targetY = targetY
+        player_vector = Vector2D(self.x, self.y, self.speed)
+        target_vector = Vector2D(self.targetX, self.targetY)
+        if stop:  # just stop
+            if self.OldTarget:
+                self._default_move('stop', player_vector, target_vector)
+                self.OldTarget = False
+        elif self.OldTarget:  # move to move
+            self._default_move('move_to_move', player_vector, target_vector)
+            self.OldTarget = True
+        else:  # stop to move
+            self._default_move('stop_to_move', player_vector, target_vector)
+            self.OldTarget = True
 
     def attack(self, data):
-        print(data)
         match data['ObjectToReachType']:
-            case 1: #planet
+            case 1:  # planet
                 pass
-            case 2: # Player
+            case 2:  # Owner
                 self.ObjectToAttack = getattr(self.Game, f'Player_{data["id"]}')
-            case 3: # battle
+            case 3:  # battle
                 pass
-            case 4: # item
+            case 4:  # item
                 pass
-            case 5: # static space object
+            case 5:  # static space object
                 pass
-            case 6: # asteroid
+            case 6:  # asteroid
                 for Asteroid in self.SpaceObject.asteroids:
                     if Asteroid.id == data['id']:
                         self.ObjectToAttack = Asteroid
@@ -164,15 +175,14 @@ class BasePlayer(Ship, ThreadBase, MyTime):
         self.attack_now = True
         Vector = Vector2D(self.x, self.y)
         attack_Vector = Vector2D(self.ObjectToAttack.x, self.ObjectToAttack.y)
-        for weapon in self.active_weapons:
+        for weapon in self.activeWeapons:
             if Vector.in_radius(attack_Vector, weapon.radius):
                 weapon.attack()
 
     def set_object_to_reach(self, data):
         match data['type']:
             case 1:
-                self.ObjectToReach = getattr(self.Location, f'Planet_{data["id"]}')
-                self.move(self.ObjectToReach.x, self.ObjectToReach.y)
+                self.move(SpaceObject=getattr(self.Location, f'Planet_{data["id"]}'))
             case 4:
                 print('data items', data)
                 # self.ObjectToReach = self.
@@ -180,17 +190,13 @@ class BasePlayer(Ship, ThreadBase, MyTime):
             case 5:
                 match int(str(data['id'])[0]):
                     case 1:
-                        self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
-                        self.move(self.ObjectToReach.x, self.ObjectToReach.y)
+                        self.move(SpaceObject=getattr(self.Location, f'StaticSpaceObject_{data["id"]}'))
                     case 2:
-                        self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
-                        self.move(self.ObjectToReach.x, self.ObjectToReach.y)
+                        self.move(SpaceObject=getattr(self.Location, f'StaticSpaceObject_{data["id"]}'))
                     case 4:
-                        self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
-                        self.move(self.ObjectToReach.x, self.ObjectToReach.y)
+                        self.move(SpaceObject=getattr(self.Location, f'StaticSpaceObject_{data["id"]}'))
                     case 5:
-                        self.ObjectToReach = getattr(self.Location, f'StaticSpaceObject_{data["id"]}')
-                        self.move(self.ObjectToReach.x, self.ObjectToReach.y)
+                        self.move(SpaceObject=getattr(self.Location, f'StaticSpaceObject_{data["id"]}'))
 
     def dead(self):
         self.get_drop()  # send req
@@ -260,7 +266,7 @@ class BasePlayer(Ship, ThreadBase, MyTime):
                 if effect_type == k:
                     self.effects[k] += active_time
                     # self.del_thread_timer()
-                    self.start_timer_update(self.remove_effect, active_time, 'id')
+                    self.start_timer_update(self.remove_effect, active_time)
 
         pass
 

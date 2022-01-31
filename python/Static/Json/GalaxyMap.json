@@ -3,7 +3,7 @@
     "classNumber": 2,
     "aliance": 1,
     "Name": "\u041D\u0435\u0443",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -59,7 +59,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u041A\u0440\u043E\u043A",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 32,
     "Priority": 0,
     "Planets": {
@@ -115,7 +115,7 @@
     "classNumber": 3,
     "aliance": 0,
     "Name": "\u0410\u043F\u0435\u0440\u0438",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 8,
     "Priority": 0,
     "Planets": {
@@ -157,7 +157,7 @@
     "classNumber": 4,
     "aliance": 1,
     "Name": "\u0414\u043B\u0438\u043D",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 5,
     "Priority": 0,
     "Planets": {
@@ -213,7 +213,7 @@
     "classNumber": 2,
     "aliance": 1,
     "Name": "\u041A\u043E\u0438\u043B",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 47,
     "Priority": 0,
     "Planets": {
@@ -269,7 +269,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u0411\u0438\u0442\u0443",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 8,
     "Priority": 0,
     "Planets": {
@@ -325,7 +325,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u041F\u0440\u0438\u043A\u043E\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 9,
     "Priority": 0,
     "Planets": {
@@ -381,7 +381,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u041A\u0430\u043D\u0438\u0439",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -437,7 +437,7 @@
     "classNumber": 1,
     "aliance": 2,
     "Name": "\u0410\u043B\u0435\u043F\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 2,
     "Priority": 0,
     "Planets": {
@@ -493,7 +493,7 @@
     "classNumber": 1,
     "aliance": 0,
     "Name": "\u041A\u043E\u043D\u0442\u0440",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 31,
     "Priority": 0,
     "Planets": {
@@ -552,7 +552,7 @@
     "classNumber": 3,
     "aliance": 0,
     "Name": "\u0410\u043A\u0443\u0442\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 14,
     "Priority": 0,
     "Planets": {
@@ -595,7 +595,7 @@
     "classNumber": 5,
     "aliance": 0,
     "Name": "\u041A\u043E\u043E\u043D",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -638,7 +638,7 @@
     "classNumber": 2,
     "aliance": 6,
     "Name": "\u041A\u0430\u043D\u043B\u0442",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -688,7 +688,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u0410\u0431\u0430\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 12,
     "Priority": 0,
     "Planets": {
@@ -731,7 +731,7 @@
     "classNumber": 3,
     "aliance": 6,
     "Name": "\u041D\u0435\u0443\u0435",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -781,7 +781,7 @@
     "classNumber": 3,
     "aliance": 4,
     "Name": "\u041A\u0430\u0440\u0442",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -831,7 +831,7 @@
     "classNumber": 5,
     "aliance": 6,
     "Name": "\u0421\u043A\u043E\u0438\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -880,7 +880,7 @@
     "classNumber": 2,
     "aliance": 4,
     "Name": "\u041A\u0438\u043A\u0443",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -930,7 +930,7 @@
     "classNumber": 4,
     "aliance": 6,
     "Name": "\u0425\u0430\u0433\u043B\u0434",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 17,
     "Priority": 0,
     "Planets": {
@@ -984,7 +984,7 @@
     "classNumber": 1,
     "aliance": 2,
     "Name": "\u041A\u0438\u0442\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 11,
     "Priority": 0,
     "Planets": {
@@ -1027,7 +1027,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u041A\u0435\u0443\u043D\u0443",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 22,
     "Priority": 0,
     "Planets": {
@@ -1070,7 +1070,7 @@
     "classNumber": 3,
     "aliance": 4,
     "Name": "\u041B\u044F\u043C\u0431\u0434\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 21,
     "Priority": 0,
     "Planets": {
@@ -1120,7 +1120,7 @@
     "classNumber": 5,
     "aliance": 2,
     "Name": "\u0417\u0443-\u0430\u043B\u044C\u043C\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -1163,7 +1163,7 @@
     "classNumber": 3,
     "aliance": 0,
     "Name": "\u041A\u0438\u0440\u0440",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 23,
     "Priority": 0,
     "Planets": {
@@ -1206,7 +1206,7 @@
     "classNumber": 3,
     "aliance": 0,
     "Name": "\u042D\u043F\u0441\u0438\u043B\u043E\u043D",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 23,
     "Priority": 0,
     "Planets": {
@@ -1249,7 +1249,7 @@
     "classNumber": 5,
     "aliance": 3,
     "Name": "\u041A\u0440\u0438\u043A\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 21,
     "Priority": 0,
     "Planets": {
@@ -1298,7 +1298,7 @@
     "classNumber": 2,
     "aliance": 3,
     "Name": "\u041B\u0443\u043A\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 23,
     "Priority": 0,
     "Planets": {
@@ -1341,7 +1341,7 @@
     "classNumber": 3,
     "aliance": 4,
     "Name": "\u041A\u0440\u0438\u043A\u043E\u043B",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 26,
     "Priority": 0,
     "Planets": {
@@ -1391,7 +1391,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u041C\u0438\u043B\u0434\u0438\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -1434,7 +1434,7 @@
     "classNumber": 3,
     "aliance": 1,
     "Name": "\u0421\u0442\u0430\u0442\u0443",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 1,
     "Priority": 0,
     "Planets": {
@@ -1483,7 +1483,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u041A\u0440\u0430\u0441\u0438",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 35,
     "Priority": 0,
     "Planets": {
@@ -1526,7 +1526,7 @@
     "classNumber": 1,
     "aliance": 0,
     "Name": "\u041A\u0432\u0430\u0437\u0430\u0440-9",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 34,
     "Priority": 0,
     "Planets": {
@@ -1568,7 +1568,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u041B\u0438\u0432\u0430\u0442",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 29,
     "Priority": 0,
     "Planets": {
@@ -1624,7 +1624,7 @@
     "classNumber": 5,
     "aliance": 0,
     "Name": "\u0428\u0443-\u041A\u043E\u0440\u0438",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -1667,7 +1667,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u0410\u043A\u0430\u043B\u0438",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -1710,7 +1710,7 @@
     "classNumber": 1,
     "aliance": 5,
     "Name": "\u041A\u0440\u0438\u043D\u0443\u043B",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 37,
     "Priority": 0,
     "Planets": {
@@ -1776,7 +1776,7 @@
     "classNumber": 2,
     "aliance": 3,
     "Name": "\u0413\u0430\u043B\u0434\u0443",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 33,
     "Priority": 0,
     "Planets": {
@@ -1826,7 +1826,7 @@
     "classNumber": 5,
     "aliance": 2,
     "Name": "\u041D\u0438\u0440\u0432\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 8,
     "Priority": 0,
     "Planets": {
@@ -1882,7 +1882,7 @@
     "classNumber": 5,
     "aliance": 0,
     "Name": "\u0424\u0438\u043D\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -1924,7 +1924,7 @@
     "classNumber": 3,
     "aliance": 0,
     "Name": "\u0410\u043B\u0438\u0441\u0442\u0430\u0440",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 39,
     "Priority": 0,
     "Planets": {
@@ -1960,7 +1960,7 @@
     "classNumber": 5,
     "aliance": 3,
     "Name": "\u0410\u0027\u0414\u0443\u043D\u0443\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 10,
     "Priority": 0,
     "Planets": {
@@ -2010,7 +2010,7 @@
     "classNumber": 5,
     "aliance": 0,
     "Name": "\u0423\u0027\u041D\u0438\u0440\u0430\u043A",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 40,
     "Priority": 0,
     "Planets": {
@@ -2053,7 +2053,7 @@
     "classNumber": 2,
     "aliance": 1,
     "Name": "\u0418\u0027\u0420\u043E\u043A\u0443",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 4,
     "Priority": 0,
     "Planets": {
@@ -2109,7 +2109,7 @@
     "classNumber": 4,
     "aliance": 0,
     "Name": "\u041F\u043E\u043B\u0027\u0414\u0430\u0440\u0430\u043C",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 40,
     "Priority": 0,
     "Planets": {
@@ -2151,7 +2151,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u0422\u0430\u0440\u0443\u043C \u0410\u0434\u0443\u043D",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 10,
     "Priority": 0,
     "Planets": {
@@ -2200,7 +2200,7 @@
     "classNumber": 1,
     "aliance": 1,
     "Name": "\u041E\u0027\u0412\u0434\u0438\u043D",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 30,
     "Priority": 0,
     "Planets": {
@@ -2256,7 +2256,7 @@
     "classNumber": 3,
     "aliance": 0,
     "Name": "\u0413\u0430\u043C\u043C\u0430 \u0426\u0435\u043D\u0442\u0430\u0432\u0440\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2298,7 +2298,7 @@
     "classNumber": 3,
     "aliance": 5,
     "Name": "\u0418\u043D\u0027\u041D\u0435\u0444\u0438\u043B\u044C",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2352,7 +2352,7 @@
     "classNumber": 3,
     "aliance": 0,
     "Name": "\u041B\u0435\u0431\u0435\u0434\u044C \u0425-1",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2395,7 +2395,7 @@
     "classNumber": 5,
     "aliance": 5,
     "Name": "\u0410\u0027\u041A\u0438\u0440\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2444,7 +2444,7 @@
     "classNumber": 4,
     "aliance": 5,
     "Name": "\u0410\u0027\u041C\u0430\u043B\u043A\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2487,7 +2487,7 @@
     "classNumber": 2,
     "aliance": 0,
     "Name": "\u041E\u043D\u0027\u041A\u0438\u0440\u0442",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2536,7 +2536,7 @@
     "classNumber": 4,
     "aliance": 1,
     "Name": "\u0421\u0435\u0027\u0420\u0430\u043C\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2579,7 +2579,7 @@
     "classNumber": 5,
     "aliance": 6,
     "Name": "\u0425\u0430\u043D\u0443\u043C",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2622,7 +2622,7 @@
     "classNumber": 5,
     "aliance": 4,
     "Name": "\u041E\u043C\u0435\u0433\u0430 16",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2665,7 +2665,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u041F\u043E\u043B\u0027\u041A\u0438\u043D\u0442\u0443",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2708,7 +2708,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u0412\u0435\u0433\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2751,7 +2751,7 @@
     "classNumber": 5,
     "aliance": 2,
     "Name": "\u0410\u0440\u0433\u0443\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2794,7 +2794,7 @@
     "classNumber": 5,
     "aliance": 3,
     "Name": "\u0421\u0435\u0027\u0414\u0430\u043C",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2837,7 +2837,7 @@
     "classNumber": 3,
     "aliance": 6,
     "Name": "\u0410\u0432\u0435\u043B\u0442\u0443\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2880,7 +2880,7 @@
     "classNumber": 3,
     "aliance": 3,
     "Name": "\u0418\u0440\u0437\u0438\u043C\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2916,7 +2916,7 @@
     "classNumber": 1,
     "aliance": 2,
     "Name": "\u041A\u0438\u043B\u0430\u043C\u0430\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -2959,7 +2959,7 @@
     "classNumber": 1,
     "aliance": 4,
     "Name": "\u041C\u0430\u0433\u0435\u043B\u043B\u0430\u043D\u043E\u0432\u043E \u041E\u0431\u043B\u0430\u043A\u043E",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3008,7 +3008,7 @@
     "classNumber": 4,
     "aliance": 6,
     "Name": "\u0414\u0438\u043C\u0430\u0442\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3051,7 +3051,7 @@
     "classNumber": 2,
     "aliance": 3,
     "Name": "\u0424\u0430\u043A\u0443\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3094,7 +3094,7 @@
     "classNumber": 3,
     "aliance": 2,
     "Name": "\u041A\u0438\u0440\u043A\u0430\u0442\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3137,7 +3137,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u041A\u0443\u043C\u0443\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3180,7 +3180,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u0422\u0430\u043D\u0442\u0443\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3222,7 +3222,7 @@
     "classNumber": 1,
     "aliance": 1,
     "Name": "\u0426\u0443\u043A\u0438\u0442\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3264,7 +3264,7 @@
     "classNumber": 2,
     "aliance": 1,
     "Name": "\u0421\u0430\u043C\u0435\u043D\u0442",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3306,7 +3306,7 @@
     "classNumber": 3,
     "aliance": 2,
     "Name": "\u0411\u0430\u043D\u0435\u0442\u0443",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3348,7 +3348,7 @@
     "classNumber": 2,
     "aliance": 3,
     "Name": "\u0411\u043E\u0434\u0435",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3398,7 +3398,7 @@
     "classNumber": 2,
     "aliance": 3,
     "Name": "\u0428\u043E\u043C\u043E\u043D\u043E",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3448,7 +3448,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u041A\u0430\u0027\u0420\u0435\u0442\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3498,7 +3498,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u0410\u0440\u0442\u0027\u041D\u0443\u043B",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3548,7 +3548,7 @@
     "classNumber": 3,
     "aliance": 3,
     "Name": "\u041D\u0438\u0431\u0438\u043B\u0438\u043A",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3584,7 +3584,7 @@
     "classNumber": 3,
     "aliance": 3,
     "Name": "\u0421\u0438\u043C\u043E\u043A\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3620,7 +3620,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u041A\u0438\u0440\u0430\u043D\u0443\u043B",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3656,7 +3656,7 @@
     "classNumber": 4,
     "aliance": 2,
     "Name": "\u0413\u0430\u043C\u0438\u0442\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3692,7 +3692,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u0410\u0442\u043E\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3728,7 +3728,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u0424\u0440\u043E\u043A\u0442\u043E\u0440\u0430\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3764,7 +3764,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u041A\u0432\u0430\u0437\u0430\u0440",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3800,7 +3800,7 @@
     "classNumber": 2,
     "aliance": 3,
     "Name": "\u0421\u043C\u043E\u0441\u043A\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3836,7 +3836,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u0411\u0435\u0442\u0430-\u041A\u0430\u0441\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3872,7 +3872,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u0410\u0432\u0430\u043D\u0434\u043E\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3908,7 +3908,7 @@
     "classNumber": 1,
     "aliance": 2,
     "Name": "\u0412\u0438\u0442\u043E\u0431\u0440\u0430\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3944,7 +3944,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u041A\u0438\u0442",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -3980,7 +3980,7 @@
     "classNumber": 5,
     "aliance": 2,
     "Name": "\u0425\u043D\u0443",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4016,7 +4016,7 @@
     "classNumber": 4,
     "aliance": 2,
     "Name": "\u0413\u0438\u0434\u0440\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4052,7 +4052,7 @@
     "classNumber": 5,
     "aliance": 2,
     "Name": "\u0422\u0443\u043A\u0430\u043D",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4088,7 +4088,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u041E\u043C\u0435\u0433\u0430-\u0421\u0438\u0440\u0438\u0443\u0441",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4124,7 +4124,7 @@
     "classNumber": 2,
     "aliance": 6,
     "Name": "\u0414\u0435\u043B\u044C\u0442\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4167,7 +4167,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u041F\u0438\u0440\u0430\u0442\u0441\u043A\u0430\u044F \u0411\u0443\u0445\u0442\u0430",
-    "Sector": 2,
+    "sector": 2,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4223,7 +4223,7 @@
     "classNumber": 2,
     "aliance": 5,
     "Name": "\u041E\u0432\u0434\u0430\u0440",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4265,7 +4265,7 @@
     "classNumber": 3,
     "aliance": 4,
     "Name": "\u0418\u043D\u0432\u0438\u0434\u0430",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4308,7 +4308,7 @@
     "classNumber": 1,
     "aliance": 4,
     "Name": "\u0410\u0440\u0440\u0438\u0434",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4351,7 +4351,7 @@
     "classNumber": 4,
     "aliance": 4,
     "Name": "\u041C\u0438\u0432\u0430\u043D",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4394,7 +4394,7 @@
     "classNumber": 5,
     "aliance": 4,
     "Name": "\u0414\u0443\u043C\u0438\u0441",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4437,7 +4437,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u0413\u0443\u0443\u0440\u0430\u043D",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4486,7 +4486,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u0413\u0443\u0438\u0434\u0430",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4529,7 +4529,7 @@
     "classNumber": 3,
     "aliance": 3,
     "Name": "\u0413\u0443\u043D\u0430\u043A\u0430\u0439",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4578,7 +4578,7 @@
     "classNumber": 2,
     "aliance": 3,
     "Name": "\u0413\u0430\u043C\u043E\u0440\u0442\u0430",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4621,7 +4621,7 @@
     "classNumber": 3,
     "aliance": 2,
     "Name": "\u041C\u0430\u0445\u043C\u0430\u0440\u0430",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4671,7 +4671,7 @@
     "classNumber": 1,
     "aliance": 2,
     "Name": "\u0428\u0430\u0442\u0440\u0430\u0442",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4727,7 +4727,7 @@
     "classNumber": 4,
     "aliance": 2,
     "Name": "\u0410\u043D\u0434\u0440\u043E\u043C\u0435\u0434\u0430",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4783,7 +4783,7 @@
     "classNumber": 5,
     "aliance": 2,
     "Name": "\u041A\u0430\u0440\u0442\u0430\u0441",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4833,7 +4833,7 @@
     "classNumber": 4,
     "aliance": 2,
     "Name": "\u0410\u043A\u0441\u0438\u0441",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4889,7 +4889,7 @@
     "classNumber": 1,
     "aliance": 0,
     "Name": "\u0428\u043E\u0443\u043C\u043C\u0443",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4931,7 +4931,7 @@
     "classNumber": 3,
     "aliance": 1,
     "Name": "\u041C\u0443\u043D\u0433\u043E",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -4981,7 +4981,7 @@
     "classNumber": 2,
     "aliance": 1,
     "Name": "\u0414\u0438\u0432\u0435\u0440\u0441\u0438",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5037,7 +5037,7 @@
     "classNumber": 3,
     "aliance": 1,
     "Name": "\u041B\u0435\u0440\u043D\u043E",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5093,7 +5093,7 @@
     "classNumber": 1,
     "aliance": 1,
     "Name": "\u0414\u0430\u043D\u0027\u041C\u043E\u0440",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5149,7 +5149,7 @@
     "classNumber": 4,
     "aliance": 1,
     "Name": "\u042D\u0440\u0438\u0434\u0430\u043D",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5205,7 +5205,7 @@
     "classNumber": 5,
     "aliance": 0,
     "Name": "\u0413\u0430\u0440\u0441\u043E\u0442\u0443",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5241,7 +5241,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u041C\u0430\u0440\u0448\u0443\u0440",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5277,7 +5277,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u0420\u0430\u043A\u0430\u0448",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5320,7 +5320,7 @@
     "classNumber": 3,
     "aliance": 3,
     "Name": "\u041B\u0430\u043F\u0433\u043E\u0448",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5356,7 +5356,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u0410\u043B\u044C\u0442\u0430\u0440\u043E\u043D",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5412,7 +5412,7 @@
     "classNumber": 3,
     "aliance": 4,
     "Name": "\u0420\u0438\u0441\u0441\u0430",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5455,7 +5455,7 @@
     "classNumber": 1,
     "aliance": 3,
     "Name": "\u041F\u0435\u0433\u0430\u0441",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5491,7 +5491,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u0417\u0443\u043B\u0430\u043C\u0430\u0440",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5534,7 +5534,7 @@
     "classNumber": 5,
     "aliance": 3,
     "Name": "\u042F\u0441\u0441\u043E\u0440",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5576,7 +5576,7 @@
     "classNumber": 4,
     "aliance": 1,
     "Name": "\u0418\u0432\u043E\u0027\u0420\u0430\u0434\u0436",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5626,7 +5626,7 @@
     "classNumber": 1,
     "aliance": 4,
     "Name": "\u041A\u0438\u043D\u0430\u0440",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5669,7 +5669,7 @@
     "classNumber": 0,
     "aliance": 0,
     "Name": "\u041F\u0443\u0441\u0442\u043E\u0442\u0430",
-    "Sector": 3,
+    "sector": 3,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5690,7 +5690,7 @@
     "classNumber": 5,
     "aliance": 5,
     "Name": "\u0422\u043E\u043B\u0438\u043C\u0430\u043D",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5733,7 +5733,7 @@
     "classNumber": 5,
     "aliance": 1,
     "Name": "\u0421\u043F\u0438\u043A\u0430",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5769,7 +5769,7 @@
     "classNumber": 2,
     "aliance": 1,
     "Name": "\u0411\u0435\u043A\u0440\u0443\u043A\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5812,7 +5812,7 @@
     "classNumber": 4,
     "aliance": 1,
     "Name": "\u041F\u043E\u043B\u043B\u0443\u043A\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5855,7 +5855,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u0410\u0445\u0435\u0440\u043D\u0430\u0440",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5898,7 +5898,7 @@
     "classNumber": 2,
     "aliance": 2,
     "Name": "\u041A\u0430\u043D\u043E\u043F\u0443\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5941,7 +5941,7 @@
     "classNumber": 1,
     "aliance": 4,
     "Name": "\u041F\u0440\u043E\u0446\u0438\u043E\u043D",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -5984,7 +5984,7 @@
     "classNumber": 5,
     "aliance": 3,
     "Name": "\u041B\u043E\u0440\u0438\u0430\u043D",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -6027,7 +6027,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u041F\u043E\u0440\u0441\u043E",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -6063,7 +6063,7 @@
     "classNumber": 5,
     "aliance": 2,
     "Name": "\u0420\u0435\u0433\u0443\u043B",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -6106,7 +6106,7 @@
     "classNumber": 4,
     "aliance": 3,
     "Name": "\u041F\u0430\u0440\u043E\u0442\u0438\u0441",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -6149,7 +6149,7 @@
     "classNumber": 5,
     "aliance": 3,
     "Name": "\u0413\u0435\u043D\u043E\u0434",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -6192,7 +6192,7 @@
     "classNumber": 3,
     "aliance": 3,
     "Name": "\u0412\u0430\u043B\u0438\u0439",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -6235,7 +6235,7 @@
     "classNumber": 1,
     "aliance": 0,
     "Name": "\u0421\u043E\u043A\u043E\u0440",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {
@@ -6264,7 +6264,7 @@
     "classNumber": 4,
     "aliance": 0,
     "Name": "\u041C\u0443\u0433\u043B\u0438",
-    "Sector": 1,
+    "sector": 1,
     "lineTo": 0,
     "Priority": 0,
     "Planets": {

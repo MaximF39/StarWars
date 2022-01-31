@@ -1,53 +1,46 @@
 import math
-from typing import Match
 from python.BaseClass.FakeShip import FakeShip
+from ..BaseClass.Trade.TradeBase import TradeBase
 from ..SpaceObjects.Item import item
-from ..Packages.PackagesManager import PackagesManager
-from . import BasePlayer
+from python.BaseClass.BasePlayer import BasePlayer
 from ..Utils.ThreadBase import ThreadBase
-from ..cfg.cfg_player import cfg_level
-from ..cfg.cfg_player import cfg_status
-import json
-import ast
-from ..cfg.cfg_main import cfg_const
-from python.cfg.shops.cfg_trading import cfg_trading
+from python.Static.cfg.cfg_player import cfg_level
+from python.Static.cfg.cfg_player import cfg_status
+from python.Static.cfg.shops.cfg_trading import cfg_trading
+from python.Static.cfg.cfg_main import radius
+from python.Packages.PackagesManager import PackagesManager
+from python.Static.Type.UpdateValueType import UpdateValueType
 
+class Player(BasePlayer, ThreadBase, TradeBase):
+    points: int
+    freeSkills: int
+    cash: int
+    bonus: int
+    engine: "Item"
+    cnt_active_device: int
+    skills: dict
+    inventory: list["Item"]
+    activeWeapons: list["Item"]
+    activeDevices: list["Item"]
+    status: int
 
-class Player(BasePlayer, ThreadBase):
     def __init__(self, Game, dict_):
         super().__init__(Game, dict_)
-        self.maxSkill = cfg_const['maxSkill']
-        self.freeSkills = dict_['free_skills']
-        self.deleteEnqueued = dict_['deleteEnqueued']
-        self.canDelete = dict_['canDelete']
-        self.logged = dict_['logged']
-        self.clanId = dict_["clan_id"]
-        # if
-        # self.Clan =
-        self.points = dict_['points']
-        self.PlayerRelation = dict_['PlayerRelation']
-        self.rating = dict_['rating']
-        self.cash = dict_['credit']
-        self.bonus = dict_['bonus']
-        self.repository = dict_['repository']
-        self.role = dict_['role']
+        self.team = -1
         self.angar = []
-        for ship_class in dict_['angar']:
-            self.angar.append(FakeShip(self.Game, ship_class))
+        for shipClass in dict_['angar']:
+            self.angar.append(FakeShip(self.Game, shipClass))
+        self.cnt_active_device = 0
         self.ControlUsed = 0
-        self.ControlLeft = self.skills['Control']
-        self.expSkillGrowCoef = dict_["expSkillGrowCoef"]
-        self.expSkillReduserCoef = dict_["expSkillReduserCoef"]
-        self.clanRequestStatus = dict_["clanRequestStatus"]
-        self.clanJoinRequestStatus = dict_['clanJoinRequestStatus']
-        self.mov_x = self.target_x
-        self.mov_y = self.target_y
+        self.ControlLeft = self.skills['Control'] - self.ControlUsed
         self.pirateStatus = 0 if self.points > 0 else self.points
         self.policeStatus = 0 if 0 > self.points else self.points
         self.forNextLevel = int(cfg_level[self.level + 1])
         self.expForFirstSkillLevel = self._get_exp_for_next_status()
-        self.engine = None
         self.droid = []
+
+    def init(self):
+        self.PacMan = PackagesManager(self.id, self.Game)
 
     def commitSkills(self, dict_: dict):  # name : append count
         for k, v in dict_.items():
@@ -55,31 +48,16 @@ class Player(BasePlayer, ThreadBase):
                 self.freeSkills -= v
                 self.skills[k] += v
 
-    def sellItem(self, data):
-        for item_ in self.inventory:
-            if item_.guid == data['guid']:
-                if item_.wear >= data['count']:
-                    if item_.count == 1:
-                        self.cash += int(item_.cost * 1 * cfg_trading(self.skills['Trading']).coef_sell)
-                    else:
-                        self.cash += int(item_.cost * data['count'] * cfg_trading(self.skills['Trading']).coef_sell)
-                    item_.sell(self.SpaceObject, data['count'], self.Game)
-                break
-
     def add_item(self, item_):
+        for inventory_item in self.inventory:
+            if inventory_item.classNumber == item_.classNumber:
+                if inventory_item.mod == 'q':
+                    inventory_item + item_
+                    return
         self.inventory.append(item_)
 
-    def buyItem(self, data):
-        for item_ in self.SpaceObject.inventory:
-            if item_.guid == data['guid']:
-                if self.cash >= item_.get_cost(data['count']) and item_.wear >= data['count']:
-                    if item_.count == 1:
-                        self.cash -= int(item_.cost * 1 * cfg_trading(self.skills['Trading']).coef_buy)
-                    else:
-                        self.cash -= int(item_.cost * data['count'] * cfg_trading(self.skills['Trading']).coef_buy)
-
-                    item_.buy(self, data['count'], self.Game)
-                break
+    def remove_item(self, item_):
+        self.inventory.remove(item_)
 
     def OpenShop(self, data):
         match data['type']:
@@ -101,10 +79,9 @@ class Player(BasePlayer, ThreadBase):
                 self.SpaceObject.clan_repository(self)
 
     def buyItemByBonuses(self, dict_):
-        raise 'Надо сделать'
-        Item_ = item(self.Game, dict_["classNumber"], self, )
+        Item_ = item(Game=self.Game, classNumber=dict_["classNumber"], OwnerClass=self, count=dict_['count'])
         bonus = Item_.cost // 1000
-        if self.bonus - bonus > 0:
+        if self.bonus - bonus >= 0:
             self.bonus -= bonus
             self.add_item_inventory(Item_)
 
@@ -117,22 +94,22 @@ class Player(BasePlayer, ThreadBase):
             self.y = self.SpaceObject.y
 
     def hyperJump(self, id_location, cost_jump=0):
-        radius = 400 * len(self.Location.planets)
+        radius_ = radius * len(self.Location.planets)
         NextLocation = getattr(self.Game, f'Location_{id_location}')
         self.ObjectToReach = NextLocation
         tan = math.atan2(NextLocation.y - self.Location.y, NextLocation.x - self.Location.x)
-        x = radius * math.cos(tan)
-        y = radius * math.sin(tan)
-        self.move(x, y)
+        x = radius_ * math.cos(tan)
+        y = radius_ * math.sin(tan)
+        self.move(targetX=x, targetY=y)
 
     def get_credits(self, count):
         self.cash += count
-        # self.PacMan.
+        self.PacMan.updateValue(UpdateValueType.PlayerCash)
 
     def send_credits(self, count):
         if self.cash >= count:
             self.cash -= count
-            # self.PacMan.tradingCash()
+            self.PacMan.updateValue(UpdateValueType.PlayerCash)
 
     def restoreEnergy(self):
         self.energy = self.ship['maxEnergy']
@@ -141,6 +118,7 @@ class Player(BasePlayer, ThreadBase):
         for item_ in self.inventory:
             if item_.guid == data['guid']:
                 item_.use()
+                break
 
     def unuse_item(self, data):
         for item_ in self.inventory:
@@ -148,19 +126,19 @@ class Player(BasePlayer, ThreadBase):
                 item_.unuse()
 
     def use_weapon(self, ItemClass):
-        self.active_weapons.append(ItemClass)
+        self.activeWeapons.append(ItemClass)
         self.ship['cpuUsed'] += ItemClass.cpu
 
     def unuse_weapon(self, ItemClass):
-        self.active_weapons.remove(ItemClass)
+        self.activeWeapons.remove(ItemClass)
         self.ship['cpuUsed'] -= ItemClass.cpu
 
     def use_device(self, ItemClass):
-        self.active_devices.append(ItemClass)
+        self.activeDevices.append(ItemClass)
         # self.inventory.remove(ItemClass)
 
     def unuse_device(self, ItemClass):
-        self.active_devices.remove(ItemClass)
+        self.activeDevices.remove(ItemClass)
 
     def replace_engine(self, ItemClass):
         if self.engine:
@@ -190,15 +168,25 @@ class Player(BasePlayer, ThreadBase):
         return cfg_status[self.status + 1]
 
     def device_clicked(self, data):
-        if self.cnt_active_device > self.ship["deviceSlots"]:
-            for item in self.active_devices:
-                if data["guid"] == item.guid:
-                    item.clicked()
+        if self.ship["deviceSlots"] > self.cnt_active_device:
+            for item_ in self.activeDevices:
+                if data["guid"] == item_.guid:
+                    item_.clicked(data)
                     break
 
     @property
     def __name__(self):
         return self.__class__.__name__
 
-    def add_effect(self, effect):
-        pass
+    def add_effect(self, EffectClass):
+        self.effects.append(EffectClass)
+        self.PacMan.effectCreated(EffectClass.effect['effectType'])
+        self.start_timer_update(self.remove_effect, EffectClass.effect["effectTime"], args=(EffectClass.effect["effectType"],))
+
+    def remove_effect(self, effect_type):
+        print('i send remove eff')
+        for effect in self.effects:
+            if effect.effectType == effect_type:
+                self.effects.remove(effect)
+        self.PacMan.effectRemoved(effect_type)
+

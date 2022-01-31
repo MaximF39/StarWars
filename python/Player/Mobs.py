@@ -2,16 +2,14 @@ from . import ThreadBase, BasePlayer
 
 from time import sleep
 from random import randint
-
+from python.Static.cfg.cfg_mobs import mobs_data
 
 class Mobs(BasePlayer, ThreadBase):
     _variable: list = ["player", "mob", "object", ""]
-    x_max = 2000  # and minimum -
-    y_max = 2000  # and minimum -
-    x_move = 300
-    y_move = 300
 
     def __init__(self, dict_: dict):
+        for k, v in mobs_data:
+            dict_[k] = v
         super().__init__(dict_)
         self.update()
 
@@ -19,7 +17,7 @@ class Mobs(BasePlayer, ThreadBase):
         self.start_timer_update(self.trigger, 1)
         self.start_timer_update(self.move, 1)
 
-    def trigger(self): # TODO
+    def trigger(self):
         objects = self.request_location()  # packages_entrance locations
         if self.pick_up_item or self.attack:
             if self.object_to_reach_id not in objects:
@@ -30,11 +28,11 @@ class Mobs(BasePlayer, ThreadBase):
         x, y = self.move_random()
         x_move = self.x + x
         y_move = self.y + y
-        if abs(x_move) > self.x_max:
+        if abs(x_move) > self.max_x:
             x = -1 * x
         else:
             x = x
-        if abs(y_move) > self.y_max:
+        if abs(y_move) > self.max_y:
             y = -1 * y
         else:
             y = y
@@ -80,8 +78,8 @@ class Mobs(BasePlayer, ThreadBase):
         return dict()
 
     def new_cords(self):
-        self.x = randint(-1 * self.x_max, self.x_max)
-        self.y = randint(-1 * self.y_max, self.y_max)
+        self.x = randint(-1 * self.max_x, self.max_x)
+        self.y = randint(-1 * self.max_y, self.max_y)
 
     def _examination(self, object) -> str:
         if object.id > 0:

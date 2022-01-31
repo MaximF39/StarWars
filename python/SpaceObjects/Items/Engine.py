@@ -1,4 +1,4 @@
-from python.BaseClass.Item.NoQuantitative import NoQuantitative
+from python.BaseClass.BaseItem.NoQuantitative import NoQuantitative
 from python.Packages.PackagesManager import PackagesManager
 
 class Engine(NoQuantitative):
@@ -7,9 +7,9 @@ class Engine(NoQuantitative):
         super().__init__(Game, classNumber, OwnerClass, data)
 
     def use(self):
-        self.Player.replace_engine(self)
+        self.Owner.replace_engine(self)
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.inventory()
 
     def unuse(self):

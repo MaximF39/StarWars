@@ -12,3 +12,7 @@ cfg_const = {
     "bonuses": 0,
     "maxSkill": 12,
 }
+
+cfg_fixed = 4 # 1.0001
+
+radius = 400 # between planets

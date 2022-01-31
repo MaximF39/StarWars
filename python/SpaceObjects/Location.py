@@ -1,33 +1,25 @@
 import math
 
 from ..Packages.PackagesManager import PackagesManager
-from . import Planet, ThreadBase
-from python.BaseClass.StaticSpaceObject import StaticSpaceObject
+from python.Utils.ThreadBase import ThreadBase
+from python.SpaceObjects.Planet import Planet
 from .StaticSpaceObjects.Hive import Hive
 from .StaticSpaceObjects.Portal import Portal
 from .StaticSpaceObjects.RepositoryStation import RepositoryStation
 from .StaticSpaceObjects.AsteroidsBelt import AsteroidsBelt
-from python.cfg.StaticSpaceObject.get_ore import get_ore
-from python.cfg.StaticSpaceObject.portal import *
+from python.Static.cfg.StaticSpaceObject.get_ore import get_ore
+from ..Static.cfg.StaticSpaceObject.portal import get_hive
+from ..Static.cfg.cfg_main import radius
+from ..Utils.JSONClass import JSONClass
 
 
-class Location(ThreadBase):
+class Location(JSONClass, ThreadBase):
     id: int
 
     def __init__(self, StarWars, data: dict):
+        super().__init__(data)
         self.Game = StarWars
-        self.id = data['classNumber']
-        self.aliance = data['aliance']
-        self.Name = data['Name']
-        self.sector = data['Sector']
-        self.lineTo = data['lineTo']
-        self.Priority = data['Priority']
-        self.json_data_planets = data['Planets']
-        self.SpaceObjects = data['SpaceObjects']
-        self.id = data['id']
-        self.Types = data['Types']
-        self.x = data['x']
-        self.y = data['y']
+
         self.players = []
         self.planets = []
         self.inventory = []
@@ -74,17 +66,17 @@ class Location(ThreadBase):
 
     def create_planets(self):
         count_planet = 0
-        for data_planet in self.json_data_planets['data']:
+        for data_planet in self.Planets['data']:
             count_planet += 1
             id_ = data_planet['id']
-            data_planet['radius'] = 400 * count_planet
+            data_planet['radius'] = radius * count_planet
             setattr(self, f'Planet_{id_}', Planet(self.Game, data_planet, self))
 
     def EntryPlayer(self, PlayerClass):
         self.players.append(PlayerClass)
 
     def SetPlayer(self, PlayerClass, x_y:tuple = None):
-        radius = 400 * len(self.planets)
+        radius_ = radius * len(self.planets)
         OldLocation = PlayerClass.Location
 
         tan = math.atan2(OldLocation.y - self.y, OldLocation.x - self.x)
@@ -92,10 +84,10 @@ class Location(ThreadBase):
             PlayerClass.x = x_y[0]
             PlayerClass.y = x_y[1]
         else:
-            PlayerClass.x = radius * math.cos(tan)
-            PlayerClass.y = radius * math.sin(tan)
-        PlayerClass.target_x = PlayerClass.x
-        PlayerClass.target_y = PlayerClass.y
+            PlayerClass.x = radius_ * math.cos(tan)
+            PlayerClass.y = radius_ * math.sin(tan)
+        PlayerClass.targetX = PlayerClass.x
+        PlayerClass.targetY = PlayerClass.y
 
         PlayerClass.Location.remove_player(PlayerClass)
         self.players.append(PlayerClass)

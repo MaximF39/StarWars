@@ -1,6 +1,6 @@
-from python.BaseClass.Item.Quantitative import Quantitative
+from python.BaseClass.BaseItem.Quantitative import Quantitative
 from python.Packages.PackagesManager import PackagesManager
-from ...Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
+from python.Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
 
 
 class Droid(Quantitative):
@@ -12,25 +12,25 @@ class Droid(Quantitative):
 
     @property
     def get_satisfying(self):
-        if self.restrictions is None or self.Player is None or self.Player.__name__ == 'Planet':
+        if self.restrictions is None or self.Owner is None or self.Owner.__name__ == 'Planet':
             return True
-        skills = self.Player.skills
+        skills = self.Owner.skills
         if self.Control > skills["Control"]:
             return False
         return True
 
     def use(self):
-        self.Player.use_droid(self)
+        self.Owner.use_droid(self)
         self.inUsing = True
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.inventory()
         PacMan.droidBuildingDialog(self)
 
     def unuse(self):
-        self.Player.unuse_droid(self)
+        self.Owner.unuse_droid(self)
         self.inUsing = False
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.inventory()
 

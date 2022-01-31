@@ -1,6 +1,6 @@
 import uuid
 
-from ..Static.ParseXml import parse_xml
+from ..Static.ParseJson import parse_xml
 
 class FakeShip:
     weapon_slots:list = []
@@ -10,9 +10,9 @@ class FakeShip:
     ship: dict = {}
 
 
-    def __init__(self, Game, ship_class):
+    def __init__(self, Game, shipClass):
         self.Game = Game
-        self.classNumber = ship_class
+        self.classNumber = shipClass
         self.maxDroids = 2
         self.ship['guid'] = uuid.uuid4().bytes
         self.get_ship()

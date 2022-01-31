@@ -1,47 +1,50 @@
-from python.BaseClass.Item.NoQuantitative import NoQuantitative
+from python.BaseClass.BaseItem.NoQuantitative import NoQuantitative
 from python.Packages.PackagesManager import PackagesManager
 from python.Utils.ThreadBase import ThreadBase
 from python.Utils.MyTime import MyTime
+from python.BaseClass.Effect import Effect
 
 
 class Device(NoQuantitative, ThreadBase, MyTime):
-
+    reloadTime: int
     def __init__(self, Game, classNumber, OwnerClass, data):
         super().__init__(Game, classNumber, OwnerClass, data)
-        self.effects = self.data["effects"]["data"]
         self.reloadedTime = 0
+        self.is_active = False
 
     def use(self):
-        self.Player.use_device(self)
+        self.Owner.use_device(self)
         self.inUsing = True
-
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.activeDevices()
 
     def unuse(self):
-        self.Player.unuse_device(self)
+        self.Owner.unuse_device(self)
         self.inUsing = False
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.activeDevices()
 
-    def clicked(self):
-        self.Player.add_effect(self.effects["effectType"])
-        self.reloadedTime = self.data["reloadTime"]
-        self.speed = 1
-        self.tick()
-        self.time = self.tick()
-        self.start_timer_update(self.update_reload, self.reloadedTime)
+    @property
+    def get_reloadedTime(self):
+        pass
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
-        PacMan.effectCreated(self)
+    def clicked(self, data):
+        if not self.is_active:
+            self.Owner.cnt_active_device += 1
+            self.Owner.add_effect(Effect(
+                self.Owner,
+                self.effects,
+                data
+                )
+            )
+            self.reloadedTime = self.reloadTime
+            self.start_timer_update(self.reload, self.reloadTime)
+            self.is_active = True
+            self.Owner.PacMan.activeDevices()
 
-    def update_reload(self):
+
+    def reload(self):
+        self.is_active = False
         self.reloadedTime = 0
-
-    def get_reload_time(self):
-        self.time += self.tick()
-        return self.time
-
-    def remove_effect(self):
-        self.Player.remove_effect(self)
+        self.Owner.cnt_active_device -= 1

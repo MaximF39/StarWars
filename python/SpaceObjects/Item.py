@@ -5,26 +5,24 @@ from .Items.Device import Device
 from .Items.Engine import Engine
 from .Items.Droid import Droid
 from .Items.Ship import Ship
-from python.Static.ParseXml import item_id
-from python.Static.ParseXml import ship_id
+from python.Static.ParseJson import item_id
+from python.Static.ParseJson import ship_id
 
 
-def item(classNumber, Game=None, OwnerClass=None, data=None):
-    if data is None:
-        data = {'count': 1}
+def item(classNumber, count, Game=None, OwnerClass=None):
     match get_type(classNumber):
         case 1:
-            return Resource(Game, classNumber, OwnerClass, data)
+            return Resource(Game, classNumber, OwnerClass, count)
         case 2:
-            return Ammo(Game, classNumber, OwnerClass, data)
+            return Ammo(Game, classNumber, OwnerClass, count)
         case 3:
-            return Engine(Game, classNumber, OwnerClass, data)
+            return Engine(Game, classNumber, OwnerClass, count)
         case 4:
-            return Weapon(Game, classNumber, OwnerClass, data)
+            return Weapon(Game, classNumber, OwnerClass, count)
         case 5:
-            return Device(Game, classNumber, OwnerClass, data)
+            return Device(Game, classNumber, OwnerClass, count)
         case 6:
-            return Droid(Game, classNumber, OwnerClass, data)
+            return Droid(Game, classNumber, OwnerClass, count)
 
 
 def ship(Game, classNumber, OwnerClass, data):

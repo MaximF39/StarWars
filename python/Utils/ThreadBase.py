@@ -4,7 +4,9 @@ import threading
 class ThreadBase:
     all_func = []
 
-    def start_timer_update(self, func, sec, *args):
+    def start_timer_update(self, func, sec, args=None):
+        if not isinstance(args, tuple | None):
+            raise NotImplementedError('args is not tuple')
         f_name_thread = f"{func.__name__}_thread"
         self.all_func.append(func)
         setattr(self, f_name_thread, threading.Timer(interval=sec, function=func, args=args))

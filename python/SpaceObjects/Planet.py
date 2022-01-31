@@ -1,10 +1,13 @@
+from python.Static.cfg.shops.cfg import default_value
 from ..Packages.PackagesManager import PackagesManager
 from .Item import item
 import math
 # from . import parse_galaxy_map
-from . import ThreadBase
+from python.Utils.ThreadBase import ThreadBase
 from ..BaseClass.SpaceObject import SpaceObject
 from python.BaseClass.Shop import Shop
+from ..Static.Type.ShopType import ShopType
+
 
 class Planet(SpaceObject, ThreadBase, Shop):
     name: str  # my
@@ -16,14 +19,8 @@ class Planet(SpaceObject, ThreadBase, Shop):
     _i = 1  # Уголобразующий
 
     def __init__(self, Game, data:dict, LocationClass):
-        data['Types'] = 1
         super().__init__(Game, data)
-        self.id = data['id']
-        self.name = data['Name']
-        self.race = data['race']
-        self.classNumber = data['classNumber']
-        self.aliance = data["aliance"]
-        self.radius = data['radius']
+        self.name = self.Name
         self.is_sun = bool(6 > self.classNumber)
         self.angle = float("inf") if 6 > self.classNumber else self._i * 3.14 / 180
         self.landable = False if self.is_sun else True
@@ -50,11 +47,24 @@ class Planet(SpaceObject, ThreadBase, Shop):
     def update_ships(self, Player):
         PackagesManager(Player.id, self.Game).shipUpdateInfo()
 
-    def add_item(self, Item_):
-        if Item_.classNumber in self.default_shop:
-            pass
-        else:
-            self.inventory.append(Item_)
+    def add_item(self, Item):
+        if Item.classNumber in self.default_shop:
+            Item.guid = Item.get_guid
+            return
+        for inventory_item in self.inventory:
+            if inventory_item.classNumber == Item.classNumber:
+                if inventory_item.mod == 'q':
+                    inventory_item + Item
+                    return
+        self.inventory.append(Item)
+
+    def remove_item(self, Item):
+        if Item.classNumber in self.default_shop:
+            if Item.count != default_value:
+                Item.count = default_value
+            Item.guid = Item.get_guid
+            return
+        self.inventory.remove(Item)
 
     def SetPlayer(self, PlayerClass):
         self.players.append(PlayerClass)
@@ -64,7 +74,7 @@ class Planet(SpaceObject, ThreadBase, Shop):
 
     def inventory_shop(self, Player):
         PacMan = PackagesManager(Player.id, self.Game)
-        PacMan.tradingItems()
+        PacMan.tradingItems(ShopType.InventoryShop)
 
     def fake_items(self, Player):
         ItemsForPlayer = []

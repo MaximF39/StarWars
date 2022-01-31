@@ -1,4 +1,4 @@
-from python.BaseClass.Item.Quantitative import Quantitative
+from python.BaseClass.BaseItem.Quantitative import Quantitative
 from python.Packages.PackagesManager import PackagesManager
 
 

@@ -17,7 +17,6 @@ def _get_path_json(text: str) -> pathlib.Path:
         return bs.joinpath(text + '.json')
 
 
-
 def new_items():
     guid_parse2 = {'AmmoParameters':2, "DeviceParameters":5, "DroidParameters": 6,
               "EngineParameters":3, "ShipParameters":7, "WeaponParameters":4, "ResourseParameters":1}

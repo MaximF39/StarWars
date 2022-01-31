@@ -1,21 +1,23 @@
-from python.cfg import cfg_clan
+from python.Static.cfg import cfg_clan
+from python.Utils.JSONClass import JSONClass
 from python.Utils.ThreadBase import ThreadBase
 
 
-class Clan(ThreadBase):
+class Clan(JSONClass, ThreadBase):
+    name: str
+    shortName: str
+    description: str
+    cash: int
+    bonus: int
+    repository: list
+    level: int
+    enemies: list
+    friends: list
 
     def __init__(self, Game, dict_):
+        super().__init__(dict_)
         self.Game = Game
-        self.name = dict_['name']
-        self.shortName = dict_['short_name']
-        self.description = dict_['description']
-        self.Leader = getattr(self.Game, f'Player_{dict_["owner_id"]}')
-        self.cash = dict_['cash']
-        self.bonus = dict_['bonus']
-        self.repository: list = dict_['repository']
-        self.level = dict_["level"]  # need get lever clan
-        self.enemies: list = dict_["enemies"]  # get list enemy, if there are no enemies get empty list[]
-        self.friends: list = dict_["friends"]  # as well as at the top
+        self.Leader = getattr(self.Game, f'Player_{dict_["ownerId"]}')
         self.maxMembers: int = cfg_clan.members[self.level]
         self.maxFriends: int = cfg_clan.friends[self.level]
         self.rating: int = self.rating()

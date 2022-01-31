@@ -1,5 +1,5 @@
 from python.Static.Type.ShopType import ShopType
-from python.cfg.shops.ships import *
+from python.Static.cfg.shops.ships import *
 
 default_shop = [*weak_system, *medium_system, *strong_system] # system
 

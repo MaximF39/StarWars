@@ -201,7 +201,7 @@ class ReadPackagesClient:
             #         return self.checkValueResult()
             #     case ServerRequest.ACCEPTED_CLAN_INFO:
             #         return self.acceptedClanInfo()
-            #     case ServerRequest.CLAN_ID:
+            #     case ServerRequest.clanId:
             #         return self.clanId()
             #     case ServerRequest.CLANS_LETTERS:
             #         return self.clansLetters()
@@ -603,13 +603,13 @@ class ReadPackagesClient:
         return _loc0_
     #     #
     def tradingItems(self, decoder) -> list:
+        decoder.read_int()
         _loc2_: int = decoder.read_int()
         _loc3_: float = decoder.read_float()
         _loc4_: float = decoder.read_float()
-        # print(_loc2_, _loc3_, _loc4_)
+        print(_loc2_, _loc3_, _loc4_)
         _loc5_ = self.read_items(decoder, True, True, True, True)
         _loc6_ = self.read_items(decoder, True, True, True, True)
-        # print(_loc2_, _loc3_, _loc4_, _loc5_, _loc6_, sep='\n')
         return _loc2_, _loc3_, _loc4_, _loc5_, _loc6_
 
     #     # def resourceUpdate(self) -> list:
@@ -627,11 +627,13 @@ class ReadPackagesClient:
         _loc8_ = decoder.read_int()
         _loc9_: int = 0
         e = []
+        print(_loc8_)
         while _loc9_ < _loc8_:
             i = DotMap()
             i.classfloat = decoder.read_int()
             i.guid = self.read_guid(decoder)
             i.wear = decoder.read_int()
+            print(f'{i.wear=}, {i.classfloat=}, {i.guid=}')
             if param4:
                 # print(i)
                 i.level = decoder.read_int()
@@ -776,7 +778,7 @@ class ReadPackagesClient:
     #     # def ship(self) -> list:
     #     #     
     #     #     _loc2_: DroidData = None
-    #     #     # _loc3_: Player = ShipsManager.createInstance(decoder.read_short())
+    #     #     # _loc3_: Owner = ShipsManager.createInstance(decoder.read_short())
     #     #     decoder.read_int(_loc3_.id)
     #     #     decoder.read_utf(_loc3_.Name)
     #     #     decoder.read_short(_loc3_.size)
@@ -1476,8 +1478,8 @@ class ReadPackagesClient:
             _loc2_.player = DotMap()
             _loc2_.race = decoder.read_short()
             _loc2_.id = decoder.read_int()
-            # if _loc2_.id == Player.ship.id:
-            #     _loc2_ = Player.ship
+            # if _loc2_.id == Owner.ship.id:
+            #     _loc2_ = Owner.ship
             _loc2_.Name = decoder.read_utf()
             _loc2_.size = decoder.read_short()
             _loc2_.set_x = decoder.read_float()  # setPosition
@@ -1546,7 +1548,7 @@ class ReadPackagesClient:
 
     #     # def locationBattle(self) -> list:
     #     #     
-    #     #     _loc2_: Player = None
+    #     #     _loc2_: Owner = None
     #     #     _loc3_: int = 0
     #     #     _loc4_: DroidData = None
     #     #     _loc5_: int = 0
@@ -1561,8 +1563,8 @@ class ReadPackagesClient:
     #     #     while _loc8_ < _loc7_:
     #     #         decoder.read_short(_loc2_)
     #     #         decoder.read_int(_loc2_.id)
-    #     #         if _loc2_.id == Player.ship.id:
-    #     #             _loc2_ = Player.ship
+    #     #         if _loc2_.id == Owner.ship.id:
+    #     #             _loc2_ = Owner.ship
     #     #         decoder.read_utf(_loc2_.Name)
     #     #         decoder.read_short(_loc2_.size)
     #     #         # _loc2_.setPosition = eator.read_float(), decoder.read_float())
@@ -1823,9 +1825,9 @@ class ReadPackagesClient:
     #     #     cnt_player_team = 0
     #     #     decoder.read_int(cnt_player_team)
     #     #     if cnt_player_team > 0:
-    #     #         Player.team = TeamList()
-    #     #         decoder.read_int(Player.team.leaderID)
-    #     #         decoder.read_int(Player.team.maxMembers)
+    #     #         Owner.team = TeamList()
+    #     #         decoder.read_int(Owner.team.leaderID)
+    #     #         decoder.read_int(Owner.team.maxMembers)
     #     #         _loc2_ = 0
     #     #         while _loc2_ < cnt_player_team:
     #     #             _loc4_ = PlayerInfoData()
@@ -1871,7 +1873,7 @@ class ReadPackagesClient:
     #     #
     #     # def clanId(self) -> list:
     #     #     
-    #     #     decoder.read_int(Player.clanId)
+    #     #     decoder.read_int(Owner.clanId)
     #     #     return decoder.get_package()
     #     #
     #     # def clansLetters(self) -> list:

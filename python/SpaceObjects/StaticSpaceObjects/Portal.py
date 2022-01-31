@@ -1,5 +1,5 @@
 from ...BaseClass.StaticSpaceObject import StaticSpaceObject
-from python.cfg.StaticSpaceObject.portal import get_to_id
+from python.Static.cfg.StaticSpaceObject.portal import get_to_id
 
 class Portal(StaticSpaceObject):
 

@@ -1,4 +1,4 @@
-from python.BaseClass.Item.NoQuantitative import NoQuantitative
+from python.BaseClass.BaseItem.NoQuantitative import NoQuantitative
 from ...Packages.PackagesManager import PackagesManager
 from python.Utils.ThreadBase import ThreadBase
 from random import randint
@@ -7,45 +7,45 @@ from time import sleep
 from python.BaseClass.Effect import Effect
 
 
-class Weapon(NoQuantitative, ThreadBase, MyTime, Effect):
+class Weapon(NoQuantitative, ThreadBase, MyTime):
 
     def __init__(self, Game, classNumber, OwnerClass, data):
         super().__init__(Game, classNumber, OwnerClass, data)
         # Effect.__init__(self, Game, data["effect"])
         self.reloadTimeNow = 0
-        self.autoShots = self.data["autoShots"]
-        self.radius = self.data["radius"]
-        self.energyCost = self.data["energyCost"]
-        self.needAmmo = self.data["needAmmo"]
-        self.ammoClass = self.data["ammoClass"]
-        self.minDamage = self.data["minDamage"]
-        self.maxDamage = self.data["maxDamage"]
-        self.reloadTime = self.data["reloadTime"] / 1000
-        for type_ in self.data["restrictions"]["data"]:
+        self.autoShots = self.autoShots
+        self.radius = self.radius
+        self.energyCost = self.energyCost
+        self.needAmmo = self.needAmmo
+        self.ammoClass = self.ammoClass
+        self.minDamage = self.minDamage
+        self.maxDamage = self.maxDamage
+        self.reloadTime = self.reloadTime / 1000
+        for type_ in self.restrictions:
             if type_["type"] == 4:
                 self.cpu = type_["Value"]
 
 
     def use(self):
-        self.Player.use_weapon(self)
+        self.Owner.use_weapon(self)
         self.inUsing = True
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.activeWeapons()
 
     def unuse(self):
-        self.Player.unuse_weapon(self)
+        self.Owner.unuse_weapon(self)
         self.inUsing = False
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.activeWeapons()
 
     def attack(self):
         self.bool_attack = True
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         while self.bool_attack:
             damage = self.autoShots * randint(self.minDamage, self.maxDamage)
-            self.Player.ObjectToAttack.get_damage(damage)
+            self.Owner.ObjectToAttack.get_damage(damage)
             self.get_effect(damage)
             PacMan.locationSystem()
             sleep(self.reloadTime)

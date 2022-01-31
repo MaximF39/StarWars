@@ -12,9 +12,9 @@ class Vector2D:
     def distance(self, vector2):
         return ((self.x - vector2.x) ** 2 + (self.y - vector2.y) ** 2) ** 0.5
 
-    def move(self, vector2, time):  # speed = time * speed
-        """ vector1 откуда vector2 куда speed: время * скорость """
-        if self.speed == 0:
+    def move(self, vector2, time):  # time
+        """ vector2 - куда. time - время[c] """
+        if self.speed == 0 or time == 0:
             return self
         atan = math.atan2(self.y - vector2.y, self.x - vector2.x)
         x = math.cos(atan) * self.speed * time

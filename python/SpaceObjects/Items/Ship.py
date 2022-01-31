@@ -1,4 +1,4 @@
-from python.BaseClass.Item.NoQuantitative import NoQuantitative
+from python.BaseClass.BaseItem.NoQuantitative import NoQuantitative
 from python.Packages.PackagesManager import PackagesManager
 
 class Ship(NoQuantitative):

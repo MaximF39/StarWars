@@ -1,14 +1,29 @@
 from python.Static.Type.EffectType import EffectType
+from python.Utils.JSONClass import JSONClass
 
-class Effect:
 
-    def __init__(self, Owner, effect):
-        self.effect = effect
+class Effect(JSONClass):
+    targetId: int
+    effectType: int
+    effect: dict
+
+    def __init__(self, Owner, effects, data):
+        super().__init__(data)
+        self.Owner = Owner
+        self.effects = effects
+        # if self.targetId == 0:
+        #     se
+        for effect in self.effects:
+            if effect['effectType'] == self.effectType:
+                self.effect = effect
+        if self.targetId == 0:
+            self.targetId = self.Owner.id
+
 
     def get_effect(self, **kwargs):
         match self.effect:
             case EffectType.Damage:
-                self.Player.get_effect(**kwargs)
+               self.Player.get_effect(**kwargs) # Даёт 50% дамага
             case EffectType.Shield:
                 pass
             case EffectType.Speed:
@@ -99,3 +114,4 @@ class Effect:
                 pass
             case EffectType.DamageDef:
                 pass
+

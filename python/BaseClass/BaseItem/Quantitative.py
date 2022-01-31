@@ -2,14 +2,16 @@ import copy
 
 
 from python.Packages.PackagesManager import PackagesManager
-from python.BaseClass.Item.BaseItem import BaseItem
+from python.BaseClass.BaseItem.BaseItem import BaseItem
+from python.Static.Type.ShopType import ShopType
+
 
 class Quantitative(BaseItem):
+    count: int
 
     def __init__(self, Game, classNumber, Owner, data):
-        self.wear = data['count']
-        self.count = data['count']
         super().__init__(Game, classNumber, Owner, data)
+        self.mod = 'q'
 
     def add_inventory(self):
         pass
@@ -22,7 +24,8 @@ class Quantitative(BaseItem):
 
     def create_class(self, Player, count):
         class_ = copy.copy(self)
-        class_.get_owner(Player, count)
+        class_.new_owner(Player)
+        class_.count = count
         return class_
 
     def buy(self, Player, count, Game):
@@ -30,15 +33,21 @@ class Quantitative(BaseItem):
         self.Game = Game
 
         PacMan = PackagesManager(Player.id, self.Game)
-        PacMan.tradingItems()
+        PacMan.tradingItems(ShopType.InventoryShop)
         PacMan.updateValue(9)
 
+    @property
+    def get_wear(self):
+        return self.count
+
+
     def sell(self, Planet, count, Game):
+        raise NotImplementedError('eeror')
         self.Game = Game
         self.separation(Planet, count)
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
-        PacMan.tradingItems()
+        PacMan = PackagesManager(self.Owner.id, self.Game)
+        PacMan.tradingItems(ShopType.InventoryShop)
         PacMan.updateValue(9)
 
     @property
@@ -48,20 +57,18 @@ class Quantitative(BaseItem):
     def separation(self, Whom, count): # Кому, сколько(количество)
         Whom.add_item(self.create_class(Whom, count))
 
-        if self.Player:
-            self.wear -= count
-            if self.wear == 0:
-                self.Player.inventory.remove(self)
-        else:
-            self.guid = self.get_guid
+        self.count -= count
+        if self.count == 0:
+            self.Owner.remove_item(self)
+        self.guid = self.get_guid
 
 
     def drop(self, count):
-        if self.wear >= count:
-            self.x = self.Player.x
-            self.y = self.Player.y
-            self.separation(self.Player.Location, count)
+        if self.count >= count:
+            self.x = self.Owner.x
+            self.y = self.Owner.y
+            self.separation(self.Owner.Location, count)
 
 
-        PacMan = PackagesManager(self.Player.id, self.Game)
+        PacMan = PackagesManager(self.Owner.id, self.Game)
         PacMan.items()

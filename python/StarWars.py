@@ -1,8 +1,8 @@
-from python.Static.ParseXml import parse_xml
+from python.Static.ParseJson import parse_xml
+from .DataBase.get import info_player
 from .SpaceObjects.Location import Location
 from time import time
 from .Player.Player import Player
-from python.Packages.PackagesEntry import *
 
 class StarWars:
     id_to_conn = {}
@@ -24,8 +24,10 @@ class StarWars:
         self.id_to_conn[id_] = conn
 
     def create_player(self, id_):
-        player_ = PackagesEntry(self, id_).create_pilot
+        player_ = info_player(id_)
         setattr(self, f"Player_{id_}", Player(self, player_))
+        getattr(self, f"Player_{id_}").init()
+
 
     def __create_locations(self):
         for location in parse_xml('GalaxyMap'):

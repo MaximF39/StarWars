@@ -55,18 +55,17 @@ def create_player():
     player = PlayerDB(
         id=255,
         login="Admin",
-        auth_key="my_authkey",
-        passwd='passwd',
-        clan_id=1,
-        credit=5000000,
+        authKey="authKey",
+        clanId=1,
+        cash=5000000,
         bonus=5000,
         # SpaceObject=
         Location=7,
         level=50,
         experience=468770,
         status=1,
-        angar="[]",
-        repository="[]",
+        angar=str([]),
+        repository=str([]),
         # clanRequestStatus=
         # clanJoinRequestStatus=
         # PlayerRelation=
@@ -75,9 +74,9 @@ def create_player():
         aliance=3,
         rating=50000,
         role=1,
-        ship_class=5999,
+        shipClass=5999,
         skills=str({'Control': 0, 'Defending': 0, 'EnergyWeapons': 0, 'KineticWeapons': 0, 'Mining': 0, 'Piloting': 0, 'Repairing': 0, 'RocketWeapons': 0, 'Trading': 0, 'Attacking': 0, 'Tactics': 0, 'Targeting': 0, 'Electronics': 0, 'Biocemistry': 0, 'Mechanics': 0, 'Cybernetics': 0}),
-        free_skills=600,
+        freeSkills=600,
         # expSkillGrowCoef=
         # expSkillReduserCoef=
         points=6000,
@@ -86,8 +85,8 @@ def create_player():
         # deleteEnqueued=
         # canDelete=
         # logged=
-        active_weapons=str({'data': []}),
-        active_devices=str({'data': []}),
+        activeWeapons=str([]),
+        activeDevices=str([]),
     )
     s.add(player)
     s.commit()
@@ -103,10 +102,10 @@ def create_clan():
     clan = ClanDB(
         key=1,
         id=1,
-        creator_id=255,
-        owner_id=255,
-        members='[{id:255, role:1}]',
+        leaderId=255,
+        members='[{"id":255, "role":1}]',
         name='AdminClan',
+        leaderName='Admin',
         shortName='CLAN',
         description='description',
         level=1,
@@ -114,42 +113,18 @@ def create_clan():
         cash=0,
         bonus=0,
         type=1,
-        repository='[]',
+        repository=str([]),
         aliance=2,
         race=2,
-        enemies='[]',
-        friends="[]",
+        enemies=str([]),
+        friends=str([]),
         logoFileName='',
     )
 
     s.add(clan)
     s.commit()
 
-    clan = ClanDB(
-        key=2,
-        id=2,
-        creator_id=2,
-        owner_id=2,
-        members='[{id:2, role:1}]',
-        name='Admin2',
-        shortName='CL_2',
-        description='description',
-        level=1,
-        rating=9000,
-        cash=0,
-        bonus=0,
-        type=1,
-        repository='[]',
-        aliance=2,
-        race=2,
-        enemies='[]',
-        friends="[]",
-        logoFileName='',
-    )
-
-    s.add(clan)
-    s.commit()
-# create_player()
+create_player()
 create_clan()
 # for top_player in res2[:-10:-1] if len(list(res2)) > 10 else res2[::-1]:
 # for top_player, i in res2:

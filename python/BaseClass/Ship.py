@@ -1,5 +1,5 @@
 from . import MovableSpaceObject
-from ..Static.ParseXml import parse_xml
+from ..Static.ParseJson import parse_xml
 
 
 class Ship(MovableSpaceObject):
@@ -12,7 +12,7 @@ class Ship(MovableSpaceObject):
 
     def __init__(self, Game, data):
         super().__init__(Game, data)
-        self.classNumber = data["ship_class"]
+        self.classNumber = data["shipClass"]
         self.maxDroids = 2
         self.get_ship()
 

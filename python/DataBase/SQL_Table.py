@@ -1,16 +1,11 @@
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
-# from .cfg_postgres import *
-
-host = "127.0.0.1"
-db_name_user = "postgres"
-db_passwd_user = "123"
-db_name = "test_main"
-port = 5432
+from python.Static.cfg.cfg_postgres import *
 
 engine = create_engine(f"postgresql+psycopg2://{db_name_user}:{db_passwd_user}@{host}:{port}/{db_name}")
+
+name_len = 10
 
 Base = declarative_base()
 
@@ -20,11 +15,10 @@ class PlayerDB(Base):
 
     key = Column(Integer, primary_key=True)
     id = Column(Integer, nullable=False)
-    login = Column(String(10), nullable=False)
-    auth_key = Column(String(32), nullable=False)
-    passwd = Column(String(32), nullable=False) # Убрать будет вход по ауткею
-    clan_id = Column(SmallInteger, default=0)
-    credit = Column(BigInteger, nullable=False)
+    login = Column(String(name_len), nullable=False)
+    authKey = Column(String(32), nullable=False)
+    clanId = Column(SmallInteger, default=0)
+    cash = Column(BigInteger, nullable=False)
     bonus = Column(SmallInteger, nullable=False)
     SpaceObject = Column(SmallInteger,  default=0)
     Location = Column(SmallInteger, nullable=False)
@@ -39,9 +33,9 @@ class PlayerDB(Base):
     avatar = Column(SmallInteger, nullable=False)
     aliance = Column(SmallInteger, nullable=False)
     role = Column(SmallInteger, default=0)
-    ship_class = Column(SmallInteger, nullable=False)
+    shipClass = Column(SmallInteger, nullable=False)
     skills = Column(Text, nullable=False)
-    free_skills = Column(SmallInteger, default=0)
+    freeSkills = Column(SmallInteger, default=0)
     expSkillGrowCoef = Column(SmallInteger, default=2)
     expSkillReduserCoef = Column(SmallInteger, default=10)
     points = Column(BigInteger, default=0)
@@ -50,8 +44,8 @@ class PlayerDB(Base):
     deleteEnqueued = Column(Boolean, default=False)
     canDelete = Column(Boolean, default=False)
     logged = Column(Boolean, default=False)
-    active_devices = Column(Text, default='[]')
-    active_weapons = Column(Text, default='[]')
+    activeDevices = Column(Text, default='[]')
+    activeWeapons = Column(Text, default='[]')
     rating = Column(Integer, nullable=False)
     inventory = Column(Text, default='[]')
     angar = Column(Text, default='[]')
@@ -64,8 +58,8 @@ class ClanDB(Base):
 
     key = Column(Integer, primary_key=True)
     id = Column(Integer, nullable=False)
-    creator_id = Column(Integer, primary_key=False)
-    owner_id = Column(Integer, primary_key=False)
+    leaderId = Column(Integer, primary_key=False)
+    leaderName = Column(String(name_len), primary_key=False)
     members = Column(Text, default='[]') # id, role
     name = Column(String(12), nullable=False)
     shortName = Column(String(4), nullable=False)
@@ -83,6 +77,18 @@ class ClanDB(Base):
     logoFileName = Column(Text, default='')
 
     # book = relationship("Book")  # 1 ко многим
+
+# class PlanetDB(Base):
+#     __tablename__ = 'PlanetDB'
+#
+#     key = Column(Integer, primary_key=True)
+#     id = Column(Integer, nullable=False)
+#     members = Column(Text, default='[]') # id, role
+#     name = Column(String(12), nullable=False)
+#     type = Column(SmallInteger, nullable=False)
+#     shop = Column(Text, default='[]')
+#     aliance = Column(SmallInteger, nullable=False)
+#     race = Column(SmallInteger, nullable=False)
 
 
 Base.metadata.create_all(engine)

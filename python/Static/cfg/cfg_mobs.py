@@ -1,9 +1,16 @@
-from python.Static.Type.Race import Race
 from python.Static.Type.ShipType import ShipType
 from python.Static.Type.ItemClass import ItemClass
-from python.cfg.cfg_main import cfg_const
 from python.Static.Type.PlayerSkillType import PlayerSkillType
 from python.Static.Type.NameSystems import SystemName
+
+r = 1500
+
+mobs_data = {
+"max_x": r,
+"max_y": r,
+"min_x": -r,
+"min_y": -r,
+}
 
 name = 'strong mob for Astra'
 # 1 - weak, 2 - middle, 3 -strong
