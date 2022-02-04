@@ -1,6 +1,5 @@
 import math
 
-from ..Packages.PackagesManager import PackagesManager
 from python.Utils.ThreadBase import ThreadBase
 from python.SpaceObjects.Planet import Planet
 from .StaticSpaceObjects.Hive import Hive
@@ -9,26 +8,25 @@ from .StaticSpaceObjects.RepositoryStation import RepositoryStation
 from .StaticSpaceObjects.AsteroidsBelt import AsteroidsBelt
 from python.Static.cfg.StaticSpaceObject.get_ore import get_ore
 from ..Static.cfg.StaticSpaceObject.portal import get_hive
-from ..Static.cfg.cfg_main import radius
+from ..Static.cfg.cfg_main import RADIUS
 from ..Utils.JSONClass import JSONClass
+from python.Base.SpaceObject.SetPlayer import SetPlayer
+from python.Base.Inventory.Inventory import Inventory
+if False:
+    from python.Player.Player import Player
 
-
-class Location(JSONClass, ThreadBase):
+class Location(JSONClass, ThreadBase, SetPlayer, Inventory):
     id: int
 
     def __init__(self, StarWars, data: dict):
         super().__init__(data)
         self.Game = StarWars
 
-        self.players = []
+        self.players:list["Player"] = []
         self.planets = []
         self.inventory = []
-        self.asteroids = []
         self.StaticSpaceObjects = []
         self.create_space_object()
-
-    def remove_player(self, PlayerClass):
-        self.players.remove(PlayerClass)
 
     def create_space_object(self):
         self.create_planets()
@@ -69,45 +67,31 @@ class Location(JSONClass, ThreadBase):
         for data_planet in self.Planets['data']:
             count_planet += 1
             id_ = data_planet['id']
-            data_planet['radius'] = radius * count_planet
+            data_planet['RADIUS'] = RADIUS * count_planet
             setattr(self, f'Planet_{id_}', Planet(self.Game, data_planet, self))
 
-    def EntryPlayer(self, PlayerClass):
-        self.players.append(PlayerClass)
+    def sendInfo(self, Player, x_y:tuple=None):
+        Player.x = x_y[0]
+        Player.y = x_y[1]
+        self.players.append(Player)
+        Player.Location = self
 
-    def SetPlayer(self, PlayerClass, x_y:tuple = None):
-        radius_ = radius * len(self.planets)
-        OldLocation = PlayerClass.Location
+    def hyper_jump_player(self, Player):
+        radius_ = RADIUS * len(self.planets)
+        OldLocation = Player.Location
 
         tan = math.atan2(OldLocation.y - self.y, OldLocation.x - self.x)
-        if x_y:
-            PlayerClass.x = x_y[0]
-            PlayerClass.y = x_y[1]
-        else:
-            PlayerClass.x = radius_ * math.cos(tan)
-            PlayerClass.y = radius_ * math.sin(tan)
-        PlayerClass.targetX = PlayerClass.x
-        PlayerClass.targetY = PlayerClass.y
+        
+        Player.x = radius_ * math.cos(tan)
+        Player.y = radius_ * math.sin(tan)
+        Player.not_target()
 
-        PlayerClass.Location.remove_player(PlayerClass)
-        self.players.append(PlayerClass)
-        PlayerClass.Location = self
-
-        PacMan = PackagesManager(PlayerClass.id, self.Game)
-        PacMan.locationSystem()
+        Player.Location.remove_player(Player)
+        SetPlayer.set_player(self, Player)
+        Player.Location = self
 
     def set_planet(self, classPlanet):
         self.planets.append(classPlanet)
 
     def set_static_space_object(self, StaticSpaceObject_class):
         self.StaticSpaceObjects.append(StaticSpaceObject_class)
-
-    def update(self):
-        self.start_update("update_info", 1)
-
-    # @ThreadBase.end_thread
-    # def update_info(self):
-    #     PacMan = PackagesManager(self.Game, self.id)
-
-    def get_info_ship(self):
-        return

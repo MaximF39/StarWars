@@ -1,7 +1,7 @@
-from ...BaseClass.StaticSpaceObject import StaticSpaceObject
-import random
-from ...Packages.PackagesManager import PackagesManager
+from python.Base.SpaceObject.StaticSpaceObject import StaticSpaceObject
 from .Asteroid import Asteroid
+if False:
+    from python.Player.Player import Player
 
 class AsteroidsBelt(StaticSpaceObject):
     id: int
@@ -9,41 +9,30 @@ class AsteroidsBelt(StaticSpaceObject):
     asteroids = []
     entry_count_asteroid = 60
     # cnt_asteroid: int
+    players:list["Player"] = []
 
     def __init__(self, Game, data: dict, LocationClass):
         super().__init__(Game, data, LocationClass)
-        self.id = data['id']
         self.type_ore = int(str(self.id)[1:])
         self.sector = 1
-        self.players = []
         self.create_asteroid()
-
-    # def get_type(self):
-    #     self.
 
     def create_asteroid(self):
         for i in range(60):
             self.max_asteroid_id += 1
             self.asteroids.append(Asteroid(self.max_asteroid_id, self.Game, self))
 
-    def SetPlayer(self, PlayerClass):
+    def set_player(self, PlayerClass):
         self.players.append(PlayerClass)
         PlayerClass.SpaceObject = self
-
-        PacMan = PackagesManager(PlayerClass.id, self.Game)
-        PacMan.locationBattle()
-        PacMan.asteroids()
+        PlayerClass.PacMan.locationBattle()
+        PlayerClass.PacMan.asteroids()
 
     def remove_asteroid(self, AsteroidClass):
         for Aster in self.asteroids:
             if Aster == AsteroidClass:
                 self.asteroids.remove(Aster)
-                for player in self.players:
-                    PacMan = PackagesManager(player.id, self.Game)
-                    PacMan.asteroids()
+                for Player in self.players:
+                    Player.PacMan.asteroids()
 
-
-    # def update(self):
-    #     for id_asteroid in range(self.cnt_asteroid):
-    #         setattr(self, f"asteroid_{id_asteroid}", Asteroid(id_asteroid))
 

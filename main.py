@@ -5,7 +5,5 @@ from python import Vacuum_Server
 
 def main():
     Vacuum_Server.main()
-# StartServer()
-# StartServer()
 
 main()

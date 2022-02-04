@@ -13,28 +13,25 @@ class Clan(JSONClass, ThreadBase):
     level: int
     enemies: list
     friends: list
-
+    members: list
     def __init__(self, Game, dict_):
         super().__init__(dict_)
         self.Game = Game
-        self.Leader = getattr(self.Game, f'Player_{dict_["ownerId"]}')
         self.maxMembers: int = cfg_clan.members[self.level]
         self.maxFriends: int = cfg_clan.friends[self.level]
-        self.rating: int = self.rating()
         if self.level + 1 in cfg_clan.points:
             self.nextLevelPointsValue: int = cfg_clan.points[self.level + 1] # next level points
         else:
             self.nextLevelPointsValue: int = cfg_clan.points[self.level]
         self.friendRequestList = []
         self.newPlayerRequestList = {}  # key = player and valuer = message
-        self.members = []
-        self.update()
 
-    def update(self):
-        self.start_timer_update(self.playerPoints, 600)
-
-    def playerPoints(self):
-        self.rating = sum(member.points for member in self.members)
+    @property
+    def get_rating(self):
+        rating = 0
+        for member in self.members:
+            rating += member.rating
+        return rating
 
     def sendCash(self, cash, Whom):
         if self.cash >= cash:

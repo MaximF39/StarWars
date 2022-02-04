@@ -47,5 +47,3 @@ class Vector2D:
 
 # player_vector = Vector2D(48, -397, 2)
 # target_vector = Vector2D(-15.625654425557464, 2669.0, 0)
-# print(player_vector.move(target_vector, 0.01).x)
-# print(player_vector.move(target_vector, 0.01).y)

@@ -15,4 +15,5 @@ cfg_const = {
 
 cfg_fixed = 4 # 1.0001
 
-radius = 400 # between planets
+RADIUS = 400 # between planets
+

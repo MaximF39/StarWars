@@ -20,8 +20,6 @@ class Vector2D(object):
         return Vector2D(1, 1)
 
     def __add__(self, other):
-        newX = 0
-        newY = 0
         if isinstance(other, Vector2D):
             newX = self.x + other.x
             newY = self.y + other.y

@@ -4,9 +4,9 @@ from python.Static.Type.Race import Race
 
 
 def get_default_items(race, OwnerClass, Game):
-    return (item(classNumber=item_classNumber, Game=Game, count=count, OwnerClass=OwnerClass) for item_classNumber in get_shop_by_race[race])
+    return (item(classNumber=item_classNumber, Game=Game, wear=wear, OwnerClass=OwnerClass) for item_classNumber in get_shop_by_race[race])
 
-count = 1000
+wear = 1000
 
 green_shop_items = (
         ItemClass.AnidRezak,

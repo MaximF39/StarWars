@@ -32,5 +32,3 @@ def new_items():
             json.dump(res, f)
 
 new_items()
-
-# print(new_galaxy("GalaxyMap"))

@@ -7,6 +7,6 @@ default_type = [ShopType.InventoryShop, ShopType.ShipFactory]
 
 repository = [ShopType.Repository, ShopType.Angar, ShopType.ClanRepository]
 
-update_resources_shop = [17]
-update_resources_type = [8]
-
+improve_resources = [118]
+improve_ship = [93]
+ginetic_lab_planet_id = [92]

@@ -1,8 +1,7 @@
-from python.BaseClass.BaseItem.NoQuantitative import NoQuantitative
-from python.Packages.PackagesManager import PackagesManager
+from python.Base.BaseItem.NoQuantitative import NoQuantitative
 from python.Utils.ThreadBase import ThreadBase
 from python.Utils.MyTime import MyTime
-from python.BaseClass.Effect import Effect
+from python.Class.Effect import Effect
 
 
 class Device(NoQuantitative, ThreadBase, MyTime):
@@ -15,15 +14,12 @@ class Device(NoQuantitative, ThreadBase, MyTime):
     def use(self):
         self.Owner.use_device(self)
         self.inUsing = True
-        PacMan = PackagesManager(self.Owner.id, self.Game)
-        PacMan.activeDevices()
+        self.Owner.PacMan.activeDevices()
 
     def unuse(self):
         self.Owner.unuse_device(self)
         self.inUsing = False
-
-        PacMan = PackagesManager(self.Owner.id, self.Game)
-        PacMan.activeDevices()
+        self.Owner.PacMan.activeDevices()
 
     @property
     def get_reloadedTime(self):
@@ -39,7 +35,7 @@ class Device(NoQuantitative, ThreadBase, MyTime):
                 )
             )
             self.reloadedTime = self.reloadTime
-            self.start_timer_update(self.reload, self.reloadTime)
+            self.start_timer_update(self.reload, self.reloadTime / 1000)
             self.is_active = True
             self.Owner.PacMan.activeDevices()
 

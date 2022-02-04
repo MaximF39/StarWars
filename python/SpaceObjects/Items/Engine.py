@@ -1,5 +1,4 @@
-from python.BaseClass.BaseItem.NoQuantitative import NoQuantitative
-from python.Packages.PackagesManager import PackagesManager
+from python.Base.BaseItem.NoQuantitative import NoQuantitative
 
 class Engine(NoQuantitative):
 
@@ -9,8 +8,7 @@ class Engine(NoQuantitative):
     def use(self):
         self.Owner.replace_engine(self)
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
-        PacMan.inventory()
+        self.Owner.PacMan.inventory()
 
     def unuse(self):
         print('Нельзя снять двигатель')

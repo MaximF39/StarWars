@@ -1,5 +1,4 @@
-from python.BaseClass.BaseItem.Quantitative import Quantitative
-from python.Packages.PackagesManager import PackagesManager
+from python.Base.BaseItem.Quantitative import Quantitative
 
 
 class Resource(Quantitative):

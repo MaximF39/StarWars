@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy import func as sql_max
 from sqlalchemy.orm import sessionmaker
-from SQL_Table import PlayerDB, ClanDB
+from SQLTable import PlayerDB, ClanDB
 # from .cfg_postgres import *
 
 host = "127.0.0.1"
@@ -34,8 +34,6 @@ player_skills = {
     'Attacking': 0, 'Tactics': 0, 'Targeting': 0, 'Electronics': 0,
     'Biocemistry': 0, 'Mechanics': 8, 'Cybernetics': 8}
 
-player_skills_str = str(player_skills)
-
 res = s.query(PlayerDB).filter_by(id=6)
 for i in res:
     dict_ = i.__dict__
@@ -60,10 +58,8 @@ def create_player():
         cash=5000000,
         bonus=5000,
         # SpaceObject=
-        Location=7,
-        level=50,
+        locationId=7,
         experience=468770,
-        status=1,
         angar=str([]),
         repository=str([]),
         # clanRequestStatus=
@@ -74,9 +70,8 @@ def create_player():
         aliance=3,
         rating=50000,
         role=1,
-        shipClass=5999,
-        skills=str({'Control': 0, 'Defending': 0, 'EnergyWeapons': 0, 'KineticWeapons': 0, 'Mining': 0, 'Piloting': 0, 'Repairing': 0, 'RocketWeapons': 0, 'Trading': 0, 'Attacking': 0, 'Tactics': 0, 'Targeting': 0, 'Electronics': 0, 'Biocemistry': 0, 'Mechanics': 0, 'Cybernetics': 0}),
-        freeSkills=600,
+        classNumber=5999,
+        skills=str(player_skills),
         # expSkillGrowCoef=
         # expSkillReduserCoef=
         points=6000,

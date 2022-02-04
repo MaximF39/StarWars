@@ -1,10 +1,8 @@
-from python.BaseClass.BaseItem.NoQuantitative import NoQuantitative
-from ...Packages.PackagesManager import PackagesManager
+from python.Base.BaseItem.NoQuantitative import NoQuantitative
 from python.Utils.ThreadBase import ThreadBase
 from random import randint
 from python.Utils.MyTime import MyTime
 from time import sleep
-from python.BaseClass.Effect import Effect
 
 
 class Weapon(NoQuantitative, ThreadBase, MyTime):
@@ -30,24 +28,20 @@ class Weapon(NoQuantitative, ThreadBase, MyTime):
         self.Owner.use_weapon(self)
         self.inUsing = True
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
-        PacMan.activeWeapons()
+        self.Owner.PacMan.activeWeapons()
 
     def unuse(self):
         self.Owner.unuse_weapon(self)
         self.inUsing = False
 
-        PacMan = PackagesManager(self.Owner.id, self.Game)
-        PacMan.activeWeapons()
+        self.Owner.PacMan.activeWeapons()
 
     def attack(self):
         self.bool_attack = True
-        PacMan = PackagesManager(self.Owner.id, self.Game)
         while self.bool_attack:
             damage = self.autoShots * randint(self.minDamage, self.maxDamage)
-            self.Owner.ObjectToAttack.get_damage(damage)
-            self.get_effect(damage)
-            PacMan.locationSystem()
+            self.Owner.ObjectToAttack.get_damage_weapon(damage)
+            # self.get_effect(damage)
             sleep(self.reloadTime)
 
     def get_reload_time(self):

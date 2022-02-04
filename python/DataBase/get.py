@@ -1,8 +1,9 @@
-from python.DataBase.SQL_Table import PlayerDB, ClanDB
+from python.DataBase.SQLTable import PlayerDB, ClanDB
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import func
 from python.Static.cfg.cfg_postgres import *
+from python.Utils.DotMap import DotMap
 
 engine = create_engine(f"postgresql+psycopg2://{db_name_user}:{db_passwd_user}@{host}:{port}/{db_name}")
 session = sessionmaker(bind=engine)
@@ -31,13 +32,29 @@ def top_rating_list():
     return data
 
 
-def info_player(id_):
+def player_info(id_):
     for Player in s.query(PlayerDB).filter_by(id=id_):
         return _get_data_dict(Player)
+
+def __get_level(exp):
+    from python.Static.cfg.cfg_player import cfg_level
+    for lvl, exp_lvl in cfg_level.items():
+        if exp_lvl > exp:
+            return lvl - 1
+
+def __get_status(status):
+    from python.Static.cfg.cfg_player import cfg_status
+    for status_lvl, stat_lvl in cfg_status.items():
+        if stat_lvl > status:
+            return status_lvl - 1
 
 def _get_data_dict(data):
     info = {}
     for key, value in data.__dict__.items():
+        if key == 'experience':
+            info['level'] = __get_level(value)
+        if key == 'points':
+            info['status'] = __get_status(value)
         if key == "_sa_instance_state":
             continue
         if key in ['repository', 'enemies', 'friends', 'inventory', 'angar', 'skills', 'activeDevices', 'activeWeapons', 'members']:
@@ -52,6 +69,9 @@ def get_clans():
         clans.append(_get_data_dict(Clan))
     return clans
 
-if __name__ == '__main__':
-    print(get_clans())
+def init_clan(clanId):
+    return _get_data_dict(s.query(ClanDB).get(clanId))
 
+if __name__ == '__main__':
+    print(player_info(255))
+    print(player_info(255))

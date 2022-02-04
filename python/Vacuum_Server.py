@@ -1,17 +1,17 @@
 from .Packages.PackagesManager import PackagesManager
-# from python.Packages.PackagesEntry import PackagesEntry
 import time
 import threading
 from socket import socket
 from loguru import logger
-from . import ThreadBase
-from . import StarWars
+from python.StarWars import StarWars
 from python.Packages.ReadPackages import ReadPackages
 from .Packages.PackageDecoder import PackageDecoder
 from python.Static.Type.ServerRequest import ServerRequest
+from python.Class.Chat import Chat
+if False:
+    from python.Player.Player import Player
 
-
-class Server(ThreadBase):
+class Server:
     time: int
     host: str = 'localhost'
     port: int = 10010
@@ -19,12 +19,12 @@ class Server(ThreadBase):
     server: socket
     Game: StarWars
     id_to_conn = {}
-    cnt_listen = 1
+    cnt_listen = 100
+    players:list["Player"] = []
+    online = 0
 
     def __init__(self):
-        self.Game = StarWars()
-        self.online = 0
-
+        self.Game = StarWars(Chat(self))
 
     def main(self) -> None:
         server = socket()
@@ -33,8 +33,7 @@ class Server(ThreadBase):
         self.conn, addr = server.accept()
         self.online += 1
         self.Game.update_online(self.online)
-        my_thread = threading.Thread(target=self.get)
-        my_thread.start()
+        self.get()
 
     def entry(self):
         print('entry')
@@ -46,23 +45,24 @@ class Server(ThreadBase):
         lenBytes = decoder.read_int()
         decoder.data = self.conn.recv(lenBytes)
         time.sleep(0.5)
-        self.get_id(decoder.data)
+        return self.get_id(decoder.data)
 
     def get_id(self, data):
         d = PackageDecoder()
         d.data = data
-        self.id = int(d.read_utf()) # id
-        self.Game.connect_user(self.id, self.conn)
-        print('Вошёл', self.id)
+        id_ = int(d.read_utf()) # id
+        self.Game.connect_user(id_, self.conn)
+        print('Вошёл', id_)
         print('AuthKey', d.read_utf()) # AuthKey
-        self.create_player(self.id)
-        self.get_entry_pack()
+        self.create_player(id_)
+        return getattr(self.Game, f"Player_{id_}")
 
     def create_player(self, id_):
-        self.Game.create_player(self.id)
+        self.Game.create_player(id_)
 
     def get(self):
-        self.entry()
+        Player = self.entry()
+        self.players.append(Player)
         while True:
             try:
                 decoder = PackageDecoder()
@@ -72,63 +72,15 @@ class Server(ThreadBase):
                 decoder.read_int() # Не известная хрень
                 lenBytes = decoder.read_int()
                 decoder.data = self.conn.recv(lenBytes)
-                my_thread = threading.Thread(target=self.get_package, args=(PackageNumberGet, decoder.data))
+                my_thread = threading.Thread(target=self.get_package, args=(PackageNumberGet, decoder.data, Player))
                 my_thread.start()
             except:
                 import main
                 main.main()
                 exit()
 
-    def get_package(self, pack_number, data):
-        ReadPackages(self.Game, self.id, pack_number, data)
-
-    def get_entry_pack(self):
-        PacMan = PackagesManager(self.id, self.Game)
-        barray = bytearray()
-        entry_packs = [
-            ServerRequest.VERSION,
-            ServerRequest.ONLINE,
-            ServerRequest.TOP_LIST,
-            ServerRequest.TOP_CLANS_LIST,
-            ServerRequest.TOP_RATING_LIST,
-            ServerRequest.WEAPONS_PARAMETERS,
-            ServerRequest.AMMOS_PARAMETERS,
-            ServerRequest.RESOURCE_PARAMETERS,
-            ServerRequest.ENGINES_PARAMETERS,
-            ServerRequest.DEVICE_PARAMETERS,
-            ServerRequest.DROID_PARAMETERS,
-            ServerRequest.MAP,
-            ServerRequest.SHIP_PARAMETERS,
-            ServerRequest.LOGGED,
-            ServerRequest.PLAYER,
-            ServerRequest.PLAYER_SHIP,
-            ServerRequest.TO_GAME,
-            ServerRequest.LOCATION_SYSTEM,
-            ServerRequest.ACTIVE_WEPONS,
-            ServerRequest.ACTIVE_DEVICES,
-            ServerRequest.CLAN,
-            ServerRequest.SHIPS_POSITION,
-            ServerRequest.SHIPS_STASE,
-            ServerRequest.HIDE_SHIP,
-            ]
-        update_value = [
-    (ServerRequest.UPDATE_VALUE, 3),
-    (ServerRequest.UPDATE_VALUE, 13),
-    (ServerRequest.UPDATE_VALUE, 9),
-    (ServerRequest.UPDATE_VALUE, 10),
-    (ServerRequest.UPDATE_VALUE, 11),
-    (ServerRequest.UPDATE_VALUE, 14),
-    (ServerRequest.UPDATE_VALUE, 15),
-            ]
-
-        for pack in entry_packs:
-            for bytes_pack in PacMan.processPackages(pack):
-                barray.append(bytes_pack)
-        for pack in update_value:
-            for bytes_pack in PacMan.processPackages(*pack):
-                barray.append(bytes_pack)
-
-        self.Game.id_to_conn[self.id].send(barray)
+    def get_package(self, pack_number, data, Player):
+        ReadPackages(self.Game, Player, pack_number, data)
 
     @staticmethod
     def write_to_log(p1: str, to_log: bool) -> None:

@@ -1,0 +1,2 @@
+class UpdateResources:
+    pass

@@ -46,7 +46,6 @@ class Asteroid(ThreadBase):
         self.size = random.randint(600, 3000)
         self.speed = 60 - self.size // 100
 
-        # self.start_timer_update(self.end_target, Vector2D.Distance(Vector2D(self.x, self.y), Vector2D(self.targetX, self.targetY)) / self.speed)
         self.start_timer_update(self.end_target, Vector2D(self.x, self.y, self.speed).time_wait(Vector2D(self.targetX, self.targetY)))
         # self.type_ore = dict_["type_ore"] # number
 
