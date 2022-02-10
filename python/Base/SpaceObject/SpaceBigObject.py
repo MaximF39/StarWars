@@ -17,8 +17,8 @@ class SpaceBigObject(MovableSpaceObject, GetShopType, SetPlayer):
     def send_info_location(self):
         raise NotImplementedError(" don't send info location ")
 
-    def leaveLocation(self, playerClass):
-        self.players.remove(playerClass)
+    def leave(self, Player):
+        self.remove_player(Player)
 
     @property
     def __name__(self):

@@ -311,8 +311,8 @@ class ReadPackages:
         logger.info(f'move {x}, {y}')
         self.Player.move(x, y)
 
-    def leaveLocation(self, data):
-        logger.info(f'leaveLocation')
+    def leave(self, data):
+        logger.info(f'leave')
         self.Player.leaveLocation()
 
     def evil(self, data) -> None:
@@ -436,7 +436,7 @@ class ReadPackages:
         data = {
             "type": _loc2_.read_int()}
         logger.info(f'openShop {data}')
-        self.Player.OpenShop(data)
+        self.Player.open_shop(data)
 
     def inventory(self, data) -> None:
         _loc1_ = PackageDecoder()

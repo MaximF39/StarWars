@@ -6,17 +6,16 @@ from python.Base.Player.Packages import Packages
 from python.Base.Player.Status import Status
 from ..Base.BasePlayer.Rating import Rating
 from ..Base.Event.DroidEvent import DroidEvent
+from ..Base.Event.PlanetEvent.PlanetEvent import PlanetEvent
 
 from ..Base.Player.Skills import Skills
 from python.Base.BasePlayer.Ship import Ship
 from ..SpaceObjects.Item import item
 from python.Base.BasePlayer.BasePlayer import BasePlayer
 from python.SpaceObjects.Location import Location
-from python.SpaceObjects.Items.Droid import Droid
 
 
-class Player(BasePlayer, TradeBase, Skills, Packages, Status, Experience, Rating, DroidEvent):
-    engine: BaseItem
+class Player(BasePlayer, TradeBase, Skills, Status, Experience, Rating, DroidEvent, PlanetEvent):
     cnt_active_device: int
     activeWeapons: list[BaseItem]
     activeDevices: list[BaseItem]
@@ -26,7 +25,6 @@ class Player(BasePlayer, TradeBase, Skills, Packages, Status, Experience, Rating
     count_reset_skills: int
     login: str
     engineId: int
-    droids: list[Droid] = []
 
     def __init__(self, Game, dict_):
         BasePlayer.__init__(self, Game, dict_)
@@ -43,17 +41,27 @@ class Player(BasePlayer, TradeBase, Skills, Packages, Status, Experience, Rating
                 self.Game.create_clan(self.clanId)
             self.Clan = getattr(self.Game, f"Clan_{self.clanId}")
 
+    def init(self):
+        self.Packages = Packages(self)
+        # self.Packages.init()
+        self.Packages.send_entry_packages()
+
     def change_ship(self, ship_id):
         for ship in self.angar:
             if ship.classNumber == ship_id:
                 Ship.__init__(self, self.Game, {'shipClass': ship_id})
-                self.PacMan.playerShip()
+                self.Packages.change_ship()
 
     def hyper_jump(self, locationId):
         BasePlayer.hyper_jump(self, locationId)
-        Packages.hyper_jump(self)
+        self.Packages.hyper_jump()
 
     @property
     def __name__(self):
         return self.__class__.__name__
+
+    def set_space_object(self, SpaceObject):
+        self.SpaceObject = SpaceObject
+        self.Packages.set_space_object()
+
 

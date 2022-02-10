@@ -50,14 +50,23 @@ def __get_status(status):
 
 def _get_data_dict(data):
     info = {}
+    if hasattr(data, 'skills'):
+        data.skills.__dict__.items() # It's just work &!&!&!&!?!?!?!?!
     for key, value in data.__dict__.items():
-        if key == 'experience':
+        if key == 'skills':
+            info[key] = {}
+            for i in value:
+                for skill_name, skill_value in  i.__dict__.items():
+                    if skill_name in ['_sa_instance_state', 'player_id']:
+                        continue
+                    info[key][skill_name] = skill_value
+        elif key == 'experience':
             info['level'] = __get_level(value)
-        if key == 'points':
+        elif key == 'points':
             info['status'] = __get_status(value)
-        if key == "_sa_instance_state":
+        elif key == "_sa_instance_state":
             continue
-        if key in ['repository', 'enemies', 'friends', 'inventory', 'angar', 'skills', 'activeDevices', 'activeWeapons', 'members']:
+        elif key in ['repository', 'enemies', 'friends', 'inventory', 'angar', 'activeDevices', 'activeWeapons', 'members']:
             info[key] = eval(value)
         else:
             info[key] = value
@@ -73,5 +82,4 @@ def init_clan(clanId):
     return _get_data_dict(s.query(ClanDB).get(clanId))
 
 if __name__ == '__main__':
-    print(player_info(255))
     print(player_info(255))

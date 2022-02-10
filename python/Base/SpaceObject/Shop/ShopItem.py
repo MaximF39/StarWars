@@ -7,7 +7,7 @@ class ShopItem(BaseInventory):
     def get_shop(self):
         return self.inventory
 
-    def get_items(self):
+    def init_items(self):
         for Item in get_default_items(race=self.race, OwnerClass=self, Game=self.Game):
             BaseInventory.add_item(self, Item)
             self.default_shop.append(Item.classNumber)

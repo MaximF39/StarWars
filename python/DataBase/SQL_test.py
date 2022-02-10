@@ -1,7 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy import func as sql_max
 from sqlalchemy.orm import sessionmaker
-from SQLTable import PlayerDB, ClanDB
+from .DB.Player.PlayerDB import PlayerDB
+from .DB.Player.SkillsDB import SkillsDB
+from .DB.Clan.ClanDB import ClanDB
 # from .cfg_postgres import *
 
 host = "127.0.0.1"
@@ -17,37 +19,6 @@ engine = create_engine(f"postgresql+psycopg2://{db_name_user}:{db_passwd_user}@{
 # Когда он включен, мы увидим все созданные нами SQL-запросы.
 session = sessionmaker(bind=engine)
 s = session()
-
-# u = s.get(PlayerDB, 1)
-# s.delete(u)
-# s.commit()
-#
-# exit()
-
-# print(s.query(PlayerDB).filter(PlayerDB.name == 'PlayerDB').one().name)
-
-import json
-
-player_skills = {
-    'Control': 0, 'Defending': 0, 'EnergyWeapons': 0, 'KineticWeapons': 0,
-    'Mining': 0, 'Piloting': 3, 'Repairing': 6, 'RocketWeapons': 0, 'Trading': 0,
-    'Attacking': 0, 'Tactics': 0, 'Targeting': 0, 'Electronics': 0,
-    'Biocemistry': 0, 'Mechanics': 8, 'Cybernetics': 8}
-
-res = s.query(PlayerDB).filter_by(id=6)
-for i in res:
-    dict_ = i.__dict__
-    del dict_['_sa_instance_state']
-
-
-def listToString(list_):
-    str1 = ''
-    count = len(list_)
-    for i in range(count):
-        str1 += str(list_[i])
-        if i == count - 1:
-            return str1
-        str1 += ', '
 
 def create_player():
     player = PlayerDB(
@@ -71,7 +42,6 @@ def create_player():
         rating=50000,
         role=1,
         classNumber=5999,
-        skills=str(player_skills),
         # expSkillGrowCoef=
         # expSkillReduserCoef=
         points=6000,
@@ -85,18 +55,32 @@ def create_player():
     )
     s.add(player)
     s.commit()
-    res2 = s.query(PlayerDB, sql_max.max(PlayerDB.id).over(order_by=PlayerDB.rating))
 
-# create_player()
+    skills = SkillsDB(
+        player_id=255,
+        KineticWeapons = 1,
+        EnergyWeapons = 1,
+        RocketWeapons = 1,
+        Mining = 1,
+        Repairing = 1,
+        Trading = 1,
+        Control = 1,
+        Defending = 1,
+        Attacking = 1,
+        Tactics = 1,
+        Piloting = 1,
+        Targeting = 1,
+        Electronics = 1,
+        Cybernetics = 1,
+        Mechanics = 1,
+        Biocemistry = 1,
+    )
+    s.add(skills)
+    s.commit()
 
-# res2 = s.query(func.max(PlayerDB.rating))
-# res2 = s.query(PlayerDB, sql_max.max(PlayerDB.rating).over(order_by=PlayerDB.id))
 
 def create_clan():
-
     clan = ClanDB(
-        key=1,
-        id=1,
         leaderId=255,
         members='[{"id":255, "role":1}]',
         name='AdminClan',
@@ -121,27 +105,3 @@ def create_clan():
 
 create_player()
 create_clan()
-# for top_player in res2[:-10:-1] if len(list(res2)) > 10 else res2[::-1]:
-# for top_player, i in res2:
-#     print(top_player.id)
-
-# s.add_all([ClanDB(id=1, create_id=1),
-#            ClanDB(id=2, create_id=2),
-#            ClanDB(id=3, create_id=3)
-#            ])
-# s.commit()
-
-# print(s.query(ClanDB).first().title)
-# s.query(ClanDB)
-# exit()
-# for title, price in s.query(ClanDB.title, ClanDB.price).order_by(ClanDB.title).limit(2):
-#     print(title, price)
-#
-#
-# for row in s.query(ClanDB, PlayerDB).filter(ClanDB.author_id == PlayerDB.id_author).filter(ClanDB.price > 1000).group_by(
-#         PlayerDB.name):
-#     print(row.ClanDB.title, ' ', row.PlayerDB.name)
-
-# print('\n\n\n')
-
-# print([(row.ClanDB.create_id, row.PlayerDB.id) for row in s.query(ClanDB, PlayerDB).join(PlayerDB).all()])

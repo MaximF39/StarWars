@@ -23,7 +23,9 @@ class GetShopType:
             return [ShopType.GineticLab]
         return []
 
-    # def get_items(self):
+
+
+    # def init_items(self):
     #     if not self.shops:
     #         return
     #     for shop_type in self.shops:

@@ -10,4 +10,5 @@ class SetPlayer:
 
     def remove_player(self, Player):
         if Player in self.players:
+            Player.not_target()
             self.players.remove(Player)

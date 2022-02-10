@@ -549,14 +549,14 @@ class PackagesManager:
         print(creator.get_package())
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
-    def tradingItems(self, shop_type=1):
+    def tradingItems(self):
         creator = PackageCreator()
         creator.PackageNumber = ServerRequest.TRADING_ITEMS
         PacStr = ServerRequestStr()
         print('Пакет отправлен', PacStr.get_str(ServerRequest.TRADING_ITEMS))
         Planet = self.Player.SpaceObject
-        print('shop type', shop_type)
-        creator.write_int(shop_type)  # type shop
+
+        creator.write_int(1)  # type shop
 
         creator.write_float(toFixed(cfg_trading(self.Player.skills['Trading']).coef_sell))  # sellCoeficient
         creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_buy)  # buyCoeficient

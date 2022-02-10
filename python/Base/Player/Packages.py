@@ -4,10 +4,16 @@ from python.Static.Type.ObjectToReachType import ObjectToReachType
 
 class Packages:
     PacMan: PackagesManager
-    def init_packages_manager(self):
-        self.PacMan: PackagesManager = PackagesManager(self)
+
+    def __init__(self, Player):
+        self.Player = Player
+        self.PacMan: PackagesManager = PackagesManager(Player)
+
+    def init(self):
+        self.PacMan = self.Packages.PacMan
 
     def send_entry_packages(self):
+        # if not self.SpaceObject:
         entry_packs = (
             ServerRequest.VERSION,
             ServerRequest.ONLINE,
@@ -58,9 +64,8 @@ class Packages:
         self.PacMan.activeDevices()
         self.PacMan.activeWeapons()
 
-    def set_space_object(self, SpaceObject):
-        self.SpaceObject = SpaceObject
-        match self.SpaceObject.__name__:
+    def set_space_object(self):
+        match self.Player.SpaceObject.__name__:
             case "Planet" | "Hive" | "Repository":
                 self.PacMan.locationPlanet()
             case "AsteroidBelt":
@@ -68,6 +73,10 @@ class Packages:
             case "Portal":
                 pass
 
+    def trading_items(self):
+        self.PacMan.tradingItems()
 
+    def change_ship(self):
+        self.PacMan.playerShip()
 
 

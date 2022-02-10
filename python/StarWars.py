@@ -31,8 +31,7 @@ class StarWars:
 
     def create_player(self, id_):
         setattr(self, f"Player_{id_}", Player(self, player_info(id_)))
-        getattr(self, f"Player_{id_}").init_packages_manager()
-        getattr(self, f"Player_{id_}").send_entry_packages()
+        getattr(self, f"Player_{id_}").init()
 
     def create_clan(self, clanId):
         setattr(self, f"Clan_{clanId}", Clan(self, init_clan(clanId)))

@@ -3,8 +3,6 @@ import math
 from python.Base.BasePlayer.Ship import Ship
 from python.Static.cfg.cfg_main import RADIUS
 from python.Utils.MyTime import MyTime
-from python.Base.Event.MoveEvent import Move
-from python.Base.Player.Packages import Packages
 from python.Base.BasePlayer.Pvp import Pvp
 from python.Base.Event.EffectEvent import EffectEvent
 from python.Base.Inventory.Inventory import Inventory
@@ -21,8 +19,6 @@ class BasePlayer(Ship, Pvp, EffectEvent, Inventory, MyTime):
         self.Location = getattr(self.Game, f'Location_{self.locationId}')
         self.ObjectToReach = None
 
-        self.object_to_reach_id: int = self.Location
-
         self.effects = []
         self.OldTick = self.tick()
         self.OldTarget = False
@@ -32,10 +28,8 @@ class BasePlayer(Ship, Pvp, EffectEvent, Inventory, MyTime):
         self.Location.sendInfo(self, (self.x, self.y))
 
     def leaveLocation(self):
-        self.SpaceObject.leaveLocation(self)
-        self.x = self.SpaceObject.x
-        self.y = self.SpaceObject.y
-        self.not_target()
+        self._set_x_y(self.SpaceObject.x, self.SpaceObject.y)
+        self.SpaceObject.leave(self)
         self.SpaceObject = None
         self.ObjectToReach = None
 
