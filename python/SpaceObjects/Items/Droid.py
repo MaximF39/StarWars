@@ -1,18 +1,17 @@
 from python.Static.Type.DroidEventType import DroidEventType
 from python.Base.BaseItem.Quantitative import Quantitative
-from python.Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
 
 class Droid(Quantitative):
 
-    def __init__(self, Game, classNumber, OwnerClass, count):
-        Quantitative.__init__(self, Game, classNumber, OwnerClass, count)
+    def __init__(self, Game, data, OwnerClass):
+        Quantitative.__init__(self, Game, data, OwnerClass)
         self.inUsing = True
         self.Control = self.restrictions[0]['Value']
 
     @property
     def get_satisfying(self):
         return True
-        if self.restrictions is None or self.Owner is None or self.Owner.__name__ == 'Planet':
+        if self.restrictions is None or self.Owner is None or self.Owner.__name__ == 'DB_Planet':
             return True
         skills = self.Owner.skills
         if self.Control > skills["Control"]:

@@ -1,21 +1,29 @@
-from python.Base.Event.PlanetEvent.TradeEvent import TradeBase
+import random
+from typing import final
+
+from python.Base.Event.PlanetEvent.TradeEvent import Trading
 from python.Base.Inventory.Inventory import Inventory
 from ..Base.BaseItem.BaseItem import BaseItem
 from python.Base.Player.Experience import Experience
 from python.Base.Player.Packages import Packages
 from python.Base.Player.Status import Status
 from ..Base.BasePlayer.Rating import Rating
-from ..Base.Event.DroidEvent import DroidEvent
+from python.Base.BasePlayer.ShipEvent.DroidEvent import DroidEvent
+from ..Base.Event.CashEvent import CashEvent
 from ..Base.Event.PlanetEvent.PlanetEvent import PlanetEvent
 
-from ..Base.Player.Skills import Skills
+from ..Base.Player.SkillsEvent import SkillsEvent
 from python.Base.BasePlayer.Ship import Ship
+from ..DataBase.Database import DataBase
 from ..SpaceObjects.Item import item
 from python.Base.BasePlayer.BasePlayer import BasePlayer
 from python.SpaceObjects.Location import Location
+from ..Static.cfg.cfg_player import get_cost_reset_skills
+from ..Static.cfg.cfg_main import update_player_db
+from ..Utils.ThreadBase import ThreadBase
 
-
-class Player(BasePlayer, TradeBase, Skills, Status, Experience, Rating, DroidEvent, PlanetEvent):
+@final
+class Player(BasePlayer, Trading, SkillsEvent, Status, Experience, Rating, PlanetEvent, CashEvent):
     cnt_active_device: int
     activeWeapons: list[BaseItem]
     activeDevices: list[BaseItem]
@@ -25,26 +33,27 @@ class Player(BasePlayer, TradeBase, Skills, Status, Experience, Rating, DroidEve
     count_reset_skills: int
     login: str
     engineId: int
-
+    Packages = None
     def __init__(self, Game, dict_):
         BasePlayer.__init__(self, Game, dict_)
         Inventory.__init__(self)
         DroidEvent.__init__(self)
-        Skills.__init__(self)
+        SkillsEvent.__init__(self)
         self.team = -1
         self.cnt_active_device = 0
         self.expForFirstSkillLevel = 100
-        # self.angar.append(FakeShip(self.Game, self.ship['classNumber']))
         self.engine = item(self.engineId, 1000, self.Game, self)
         if self.clanId:
             if not hasattr(self.Game, f"Clan_{self.clanId}"):
                 self.Game.create_clan(self.clanId)
             self.Clan = getattr(self.Game, f"Clan_{self.clanId}")
 
+    def update(self):
+        ThreadBase.start_update(self, self.__to_save_db, update_player_db)
+
     def init(self):
         self.Packages = Packages(self)
-        # self.Packages.init()
-        self.Packages.send_entry_packages()
+        self.Packages.init()
 
     def change_ship(self, ship_id):
         for ship in self.angar:
@@ -64,4 +73,42 @@ class Player(BasePlayer, TradeBase, Skills, Status, Experience, Rating, DroidEve
         self.SpaceObject = SpaceObject
         self.Packages.set_space_object()
 
+    def reset_skills(self):
+        self.remove_cash(get_cost_reset_skills(self.count_reset_skills))
+        SkillsEvent.reset_skills(self)
+        self.Packages.reset_skills()
 
+    def kill_weapon(self, Whom):
+        self.get_value_for_kill(Whom, 1)
+        self.Packages.kill_weapon()
+
+    def kill_device(self, Whom):
+        self.get_value_for_kill(Whom, 0.1)
+        self.Packages.kill_device()
+
+    def get_value_for_kill(self, Whom, coef):
+        if hasattr(Whom, "level"):
+            level = 1
+        else:
+            level = Whom.level
+        exp = int((Whom.health + 30 * level) * coef)
+        self.get_experience(random.randint(exp, int(1.1 * exp)))
+        if hasattr(Whom, "rating"):
+            rating = int(Whom.rating * 0.01 * coef)
+            self.get_rating(random.randint(rating, int(1.1 * rating)))
+        if hasattr(Whom, "status"):
+            status = int(self.status * coef)
+            self.get_status(random.randint(status, int(1.1 * status)))
+
+    def dead(self, Whom):
+        Rating.sub_rating(self, Whom.rating * 0.01)
+        BasePlayer.dead(self)
+
+    def update_ship(self):
+        self.PacMan.shipUpdateInfo()
+
+    def __to_save_db(self):
+        DataBase().save_player(self.__dict__)
+
+    def __del__(self):
+        self.__to_save_db()

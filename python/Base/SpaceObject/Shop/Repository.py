@@ -1,5 +1,6 @@
+from .BaseShop import BaseShop
 
-class Repository:
+class Repository(BaseShop):
 
-    def repository(self, Player:"Player"):
+    def open(self, Player:"DB_Player"):
         Player.PacMan.repository()

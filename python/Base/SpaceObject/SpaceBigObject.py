@@ -19,6 +19,8 @@ class SpaceBigObject(MovableSpaceObject, GetShopType, SetPlayer):
 
     def leave(self, Player):
         self.remove_player(Player)
+        for player in self.players:
+            player.Packages.locationPlanet()
 
     @property
     def __name__(self):

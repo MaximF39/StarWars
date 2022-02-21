@@ -1,8 +1,10 @@
-from . import ThreadBase, BasePlayer
-
 from time import sleep
 from random import randint
+
+from python.Base.BasePlayer.BasePlayer import BasePlayer
 from python.Static.cfg.cfg_mobs import mobs_data
+from python.Utils.ThreadBase import ThreadBase
+
 
 class Mobs(BasePlayer, ThreadBase):
     _variable: list = ["player", "mob", "object", ""]
@@ -57,7 +59,7 @@ class Mobs(BasePlayer, ThreadBase):
         return objects
 
     def dead(self):
-        self.get_drop() # send request
+        self.__get_drop() # send request
         # send("i'm dead")
         # self.del_all_update()
         sleep(60)
@@ -65,8 +67,8 @@ class Mobs(BasePlayer, ThreadBase):
         self.new_cords()
         # send('I live')
 
-    def get_drop(self): # TODO return experiences (maybe credits) and return items
-        drop = super(Mobs, self).get_drop()
+    def __get_drop(self): # TODO return experiences (maybe credits) and return items
+        drop = None
         for key, value in self.__add_drop().items():
             if not drop[key]:
                 drop[key] = value

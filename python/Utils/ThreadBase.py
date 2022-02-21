@@ -2,19 +2,30 @@ import threading
 
 
 class ThreadBase:
-    all_func = []
+
+    def __init__(self):
+        self.all_func = []
 
     def start_timer_update(self, func, sec, args=None):
         if not isinstance(args, tuple | None):
             raise NotImplementedError('args is not tuple')
-        f_name_thread = f"{func.__name__}_thread"
+        f_name_thread = self.__get_name(func)
         self.all_func.append(func)
         setattr(self, f_name_thread, threading.Timer(interval=sec, function=func, args=args))
         getattr(self, f_name_thread).start()
 
+    def start_const_update(self, func, time, args:tuple=None):
+        args = tuple((func, time, *args))
+        threading.Thread(target=self.__thread_update, args=args).start()
+
+    @staticmethod
+    def __thread_update(func, time, args:tuple=None):
+        while True:
+            threading.Thread(target=func, args=args).start()
+            time.sleep(time)
+
     def start_update(self, func, *args):
-        f_name_thread = f"{func.__name__}_thread"
-        self.all_func.append(func)
+        f_name_thread = self.__get_name(func)
         setattr(self, f_name_thread, threading.Thread(target=func, args=args))
         getattr(self, f_name_thread).start()
 
@@ -25,4 +36,11 @@ class ThreadBase:
             self.all_func.remove(func)
         else:
             raise NotImplemented(" Перепутал переменную? ")
+
+    def alive_thread_timer(self, func):
+        return func in self.all_func
+
+    @staticmethod
+    def __get_name(func):
+        return f"{func.__name__}_thread"
 

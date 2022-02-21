@@ -6,13 +6,13 @@ if False:
 class AsteroidsBelt(StaticSpaceObject):
     id: int
     max_asteroid_id = 0
-    asteroids = []
     entry_count_asteroid = 60
-    # cnt_asteroid: int
-    players:list["Player"] = []
+    cnt_asteroid: int
 
     def __init__(self, Game, data: dict, LocationClass):
-        super().__init__(Game, data, LocationClass)
+        self.asteroids = []
+        self.players: list["Player"] = []
+        StaticSpaceObject.__init__(self, Game, data, LocationClass)
         self.type_ore = int(str(self.id)[1:])
         self.sector = 1
         self.create_asteroid()

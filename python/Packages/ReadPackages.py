@@ -281,15 +281,17 @@ class ReadPackages:
         if data['type_command'] == 4:
             self.Player.unuse_droid_all()
 
-    def login(self, data):
+    @staticmethod
+    def login(data):
         _loc5_ = PackageDecoder()
         _loc5_.data = data
         data = {
-            'id': _loc5_.read_utf(),  # Vk_user_id
-            "_": _loc5_.read_utf(),  # don't use
+            'login': _loc5_.read_utf(),  # Vk_user_id
+            "password": _loc5_.read_utf(),  # don't use
             'AuthKey': _loc5_.read_utf(),  # Vk_auth_key
             'Domain': _loc5_.read_utf()}  # domain
         logger.critical(f'login {data}')
+        return data['login'], data['password']
 
     def registration(self, data) -> None:
         _loc5_ = PackageDecoder()
@@ -473,7 +475,6 @@ class ReadPackages:
         logger.info(f'sendMessage {data}')
         self.Game.Chat.send_message(self.Player, data)
 
-
     def sendBan(self, data) -> None:
         _loc4_: PackageDecoder
         _loc4_ = PackageDecoder()
@@ -634,10 +635,9 @@ class ReadPackages:
         logger.info(f'commitSkills {data}')
 
     def read_skill(self, data, decoder):
-        from ..Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
         type_ = decoder.read_unsigned_byte()
         count = decoder.read_unsigned_byte()
-        data[PlayerSkillTypeStr().get_str(type_)] = count  # player skill type
+        data[type_] = count  # player skill type
 
     def applyGineticLabOption(self, data) -> None:
         _loc2_: PackageDecoder = PackageDecoder()
@@ -778,35 +778,35 @@ class ReadPackages:
             case ClientRequest.PLAYER_INFO:
                 self.Player.PacMan.playerInfo(data['id'])
             # case ClientRequest.REMOVE_CLAN_RELATION:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.ADD_CLAN_TO_ENEMIES:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.ADD_CLAN_FRIEND_REQUEST:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.REMOVE_PLAYER_FROM_CLAN:
-            #     self.Player.
+            #     self.PlayerItems.
             case ClientRequest.TO_GAME:
                 self.Player.PacMan.toGame()
             # case ClientRequest.EXCHANGE_VOTES:
-            #     self.Player.
+            #     self.PlayerItems.
             case ClientRequest.CHANGE_SHIP:
                 self.Player.change_ship(data['id'])
             # case ClientRequest.DELETE_PILOT:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.CANCEL_DELETE_PILOT:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.EXCHANGE_VOTES_TO_BONUSES:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.TRADE_INVITATION:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.TRADE_CASH:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.CHANGE_LEADER:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.GET_UPDATE_VALUE:
-            #     self.Player.
+            #     self.PlayerItems.
             # case ClientRequest.REMOVE_PLAYER_FROM_TEAM:
-            #     self.Player.
+            #     self.PlayerItems.
 
     def floatValueCommand(self, data) -> None:
         _loc3_: PackageDecoder = PackageDecoder()
@@ -875,7 +875,7 @@ class ReadPackages:
         _loc4_.data = data
         data = {
             'id_ship': _loc4_.read_short(),
-            'player_id': _loc4_.read_int(),
+            'playerId': _loc4_.read_int(),
             'hz3': _loc4_.read_short(), }  # 0
         logger.info(f'buyShipByBonuses {data}')
         self.Player.buyShip(data)

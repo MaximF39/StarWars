@@ -1,36 +1,52 @@
-from python.Static.cfg.cfg_player import recovery_health
-class Health:
+import time
 
-    def __init__(self):
-        self.health = self.ship['maxHealth']
+from python.Static.cfg.cfg_player import recovery_health, update_health
+from python.Utils.ThreadBase import ThreadBase
 
-    def __get_parameter_repair(self):
-        self.__change_health(recovery_health(self.ship['maxHealth'],
-                                             self.skills['Repairing']))
+
+class Health(ThreadBase):
+    ship: "dict"
+
+    def __init__(self, maxHealth, shields, repairSkills):
+        self.maxHealth = maxHealth
+        self.shields = shields
+        self.__check_update_regen_health()
+
+    def update_recovery_energy(self):
+        while self.health != self.maxHealth:
+            self.__get_heath_regen()
+            time.sleep(update_health)
 
     def get_damage_weapon(self, damage):
-        self.__change_health(-damage * (self.ship["shields"] / 100))
+        self.__change_health(-damage * (1 - 0.01 * self.shields))
 
     def get_damage_device(self, damage):
         self.__change_health(-damage)
 
+    def __dead(self):
+        self.__get_drop()  # send req
+
+    def __get_drop(self):
+        drop:["DB_Items"] = []
+        self.Location.__get_drop(drop)
+
+    def __check_update_regen_health(self):
+        if not ThreadBase.alive_thread_timer(self, self.update_recovery_energy) \
+                and self.repairSkills:
+            self.__get_heath_regen()
+
+    def __get_heath_regen(self):
+        self.__change_health(recovery_health(self.health,
+                                             self.repairSkills))
+
     def __change_health(self, health):
-        sum_health = self.health + health
-        if self.ship['maxHealth'] > sum_health > 0:
+        sum_health = self.maxHealth + health
+        if sum_health > self.maxHealth:
+            self.health = self.maxHealth
+        elif self.maxHealth > sum_health > 0:
             self.health += health
-        elif sum_health > self.ship['maxHealth']:
-            self.health = self.ship['maxHealth']
-        elif 0 > sum_health:
+        elif 0 >= sum_health:
             self.health = 0
-            self.dead()
-            self.PacMan.shipDestroyed()
-            return
-        else:
-            raise NotImplementedError("error")
-        self.PacMan.shipHealth()
+            self.__dead()
 
-    # def dead(self):
-    #     raise NotImplementedError("This function dead need to redefine")
 
-    def dead(self):
-        self.get_drop()  # send req

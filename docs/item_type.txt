@@ -1,0 +1,7 @@
+1 = Resources
+2 = Ammo
+3 = Engines
+4 = Weapons
+5 = Devices
+6 = Droids
+7 = Ships

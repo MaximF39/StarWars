@@ -1,24 +1,19 @@
-import copy
-from python.Static.Type.ShopType import ShopType
-from python.Static.TypeStr.PlayerSkillTypeStr import PlayerSkillTypeStr
 from python.Base.BaseItem.BaseItem import BaseItem
 
-class NoQuantitative(BaseItem):
-    fullRepair = 1000
 
-    def __init__(self, Game, classNumber, Owner, data):
-        super().__init__(Game, classNumber, Owner, data)
+class NoQuantitative(BaseItem):
+    FULL_REPAIR = 1000
+    mod = 'noq'
+    count = 1
+    drop = False
+
+    def __init__(self, Game, data, Owner):
+        BaseItem.__init__(self, Game, data, Owner)
         self.stability = self.wear
         self.repair_cost = self.cost / 500
-        self.count = 1
-        self.mod = 'noq'
 
     def get_cost(self, wear):
         return self.cost
-
-    @property
-    def get_wear(self):
-        return self.stability
 
     @property
     def get_size(self):
@@ -28,9 +23,9 @@ class NoQuantitative(BaseItem):
         return self.cost
 
     def repair(self):
-        if self.Owner.cash > (self.fullRepair - self.stability) * self.repair_cost:
-            self.stability = self.fullRepair
-            self.Owner.cash -= (self.fullRepair - self.stability) * self.repair_cost
+        if self.Owner.cash > (self.FULL_REPAIR - self.stability) * self.repair_cost:
+            self.stability = self.FULL_REPAIR
+            self.Owner.cash -= (self.FULL_REPAIR - self.stability) * self.repair_cost
         else:
             repair_count = self.Owner.cash // self.repair_cost
             self.stability += repair_count
@@ -57,6 +52,3 @@ class NoQuantitative(BaseItem):
 
     def separation(self, Whom, count):
         raise NotImplementedError("No quantitative hasn't attr separation")
-
-
-

@@ -2,9 +2,10 @@ import struct
 
 
 class PackageDecoder:
-    data = bytearray()
-
     Position = 0
+
+    def __init__(self):
+        self.data = bytearray()
 
     def decoder(self, type, buffer):
         return struct.unpack(type, buffer)[0]

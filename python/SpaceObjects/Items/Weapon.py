@@ -1,52 +1,68 @@
 from python.Base.BaseItem.NoQuantitative import NoQuantitative
+from python.Base.Event.EventItem.EventWeapon import EventWeapon
 from python.Utils.ThreadBase import ThreadBase
 from random import randint
 from python.Utils.MyTime import MyTime
-from time import sleep
+import time
+
+from python.Utils.Vector2D import Vector2D
 
 
 class Weapon(NoQuantitative, ThreadBase, MyTime):
+    ObjectToAttack: object
+    autoShots: int
+    radius: int
+    energyCost: int
+    needAmmo: int
+    ammoClass: int
+    minDamage: int
+    maxDamage: int
+    reloadTime: int
+    attack_now = False
 
-    def __init__(self, Game, classNumber, OwnerClass, data):
-        super().__init__(Game, classNumber, OwnerClass, data)
+    def __init__(self, Game, data, OwnerClass):
+        NoQuantitative.__init__(self, Game, data, OwnerClass)
         # Effect.__init__(self, Game, data["effect"])
-        self.reloadTimeNow = 0
-        self.autoShots = self.autoShots
-        self.radius = self.radius
-        self.energyCost = self.energyCost
-        self.needAmmo = self.needAmmo
-        self.ammoClass = self.ammoClass
-        self.minDamage = self.minDamage
-        self.maxDamage = self.maxDamage
-        self.reloadTime = self.reloadTime / 1000
+        self.reloadTime /= 1000
         for type_ in self.restrictions:
             if type_["type"] == 4:
                 self.cpu = type_["Value"]
 
-
     def use(self):
+        # self = EventWeapon()
         self.Owner.use_weapon(self)
         self.inUsing = True
-
         self.Owner.PacMan.activeWeapons()
 
     def unuse(self):
         self.Owner.unuse_weapon(self)
         self.inUsing = False
-
         self.Owner.PacMan.activeWeapons()
 
     def attack(self):
-        self.bool_attack = True
-        while self.bool_attack:
+        self.attack_now = True
+        while self.attack_now:
+            self.Owner.reduce_energy_weapon(-self.energyCost)
+            self.check_effect()
             damage = self.autoShots * randint(self.minDamage, self.maxDamage)
             self.Owner.ObjectToAttack.get_damage_weapon(damage)
-            # self.get_effect(damage)
-            sleep(self.reloadTime)
+            if self.ObjectToAttack.health - damage <= 0:
+                self.Owner.kill_weapon(self.ObjectToAttack)
+                """ Может разнести по разным классам действия и предметы Base/Event/EventItem/EventWeapon"""
+                self.unattack()
+            self.__recharge()
 
-    def get_reload_time(self):
-        self.time += self.tick()
-        return self.time
+    def __recharge(self):
+        self.reloadedTime = self.reloadTime
+        self.tick()
+        time.sleep(self.reloadTime)
+
+    def check_effect(self):
+        pass
+
+    def get_reloaded_time(self):
+        self.reloadedTime -= self.tick()
+        return self.reloadedTime
 
     def unattack(self):
-        self.bool_attack = False
+        self.attack_now = False

@@ -37,6 +37,8 @@ class Vector2D:
 
     def time_wait(self, vector2):
         """ return second """
+        if not hasattr(self, "speed"):
+            raise NotImplementedError("Нет ")
         return self.distance(vector2) / self.speed
 
     def in_radius(self, vector2, radius):
@@ -45,5 +47,3 @@ class Vector2D:
             return False
         return True
 
-# player_vector = Vector2D(48, -397, 2)
-# target_vector = Vector2D(-15.625654425557464, 2669.0, 0)

@@ -1,4 +1,4 @@
-del_element = ['{', '}', 'private', 'public', 'var', ';', 'static', 'new', 'override', 'const', 'protected', 'def set', 'def get',
+del_element = ['{', '}', 'private', 'public', 'var', ';', 'static', 'new', 'override', 'const', 'protected', 'def set', 'def get_packages',
                '.instance']
 replace_element = [[': void', '-> None:'], [': Boolean', "-> bool:"], ['Boolean', "bool"], ['true', "True"], ['false', "False"],
                    [": Number", '-> float:'], ["Number", 'float'], ['function', 'def'], [": ByteArray", '-> bytearray:'],

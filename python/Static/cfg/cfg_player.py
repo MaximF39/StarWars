@@ -198,3 +198,6 @@ def recovery_energy(max_energy, repair_skills):
 
 def recovery_health(max_health, repair_skills):
     return int(max_health * 0.005 + repair_skills * 2)
+
+update_energy = 1
+update_health = 1

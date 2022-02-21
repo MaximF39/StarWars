@@ -8,6 +8,7 @@ class Inventory(BaseInventory):
     hold:int = 0
 
     def __init__(self):
+        BaseInventory.__init__(self)
         self.init_hold()
 
     def init_hold(self):
@@ -18,6 +19,9 @@ class Inventory(BaseInventory):
         if self.ship['size'] >= self.hold + Item.get_size:
             self.hold += Item.get_size
             BaseInventory.add_item(self, Item)
+
+    def change_hold(self, count):
+        self.hold -= count
 
     def remove_item(self, Item):
         self.hold -= Item.get_size
@@ -44,7 +48,6 @@ class Inventory(BaseInventory):
 
     def use_device(self, ItemClass):
         self.activeDevices.append(ItemClass)
-        # self.inventory.remove(ItemClass)
 
     def unuse_device(self, ItemClass):
         self.activeDevices.remove(ItemClass)

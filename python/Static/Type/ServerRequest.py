@@ -98,3 +98,15 @@ class ServerRequest:
     TEAM_LIST = -2000000098
     SHIP_PARAMETERS = -2000000099
     MAX = -2000000100
+
+    def __init__(self):
+        self.d = []
+        for el in self.__dir__():
+            if el[:2] == '__' and el[-2:] == '__':
+                continue
+            self.d.append(el)
+
+    def get(self, value):
+        for el in self.d:
+            if getattr(self, el) == value:
+                return el

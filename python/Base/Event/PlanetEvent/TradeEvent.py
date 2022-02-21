@@ -3,13 +3,13 @@ from python.SpaceObjects.Item import item
 from python.Static.cfg.shops.cfg_trading import cfg_trading
 
 
-class TradeBase:
+class Trading:
     inventory: list["item"]
     cash: int
     PacMan: "PackagesManager"
     bonus: int
     skills: dict
-    SpaceObject: "Planet | StaticSpaceObject"
+    SpaceObject: "DB_Planet | StaticSpaceObject"
     Game: "StarWars"
 
     def sell_item(self, data): # Продавать и покукпать может только игрок

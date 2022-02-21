@@ -9,20 +9,20 @@ from .StaticSpaceObjects.AsteroidsBelt import AsteroidsBelt
 from python.Static.cfg.StaticSpaceObject.get_ore import get_ore
 from ..Static.cfg.StaticSpaceObject.portal import get_hive
 from ..Static.cfg.cfg_main import RADIUS
-from ..Utils.JSONClass import JSONClass
 from python.Base.SpaceObject.SetPlayer import SetPlayer
 from python.Base.Inventory.Inventory import Inventory
 if False:
     from python.Player.Player import Player
 
-class Location(JSONClass, ThreadBase, SetPlayer, Inventory):
+class Location(ThreadBase, SetPlayer, Inventory):
     id: int
 
     def __init__(self, StarWars, data: dict):
-        super().__init__(data)
+        self.__dict__.update(data)
+        Inventory.__init__(self)
         self.Game = StarWars
 
-        self.players:list["Player"] = []
+        self.players:list["DB_Player"] = []
         self.planets = []
         self.inventory = []
         self.StaticSpaceObjects = []
@@ -54,7 +54,6 @@ class Location(JSONClass, ThreadBase, SetPlayer, Inventory):
                     count += 1
                     hive = get_hive(self.id, count)
                     id_ = int(f'4{hive}') # Куда ведёт
-
                     data_space_object['id'] = id_
                     setattr(self, f"StaticSpaceObject_{id_}", Portal(self.Game, data_space_object, self, count))
                 case 5:
@@ -70,12 +69,6 @@ class Location(JSONClass, ThreadBase, SetPlayer, Inventory):
             data_planet['RADIUS'] = RADIUS * count_planet
             setattr(self, f'Planet_{id_}', Planet(self.Game, data_planet, self))
 
-    def sendInfo(self, Player, x_y:tuple=None):
-        Player.x = x_y[0]
-        Player.y = x_y[1]
-        self.players.append(Player)
-        Player.Location = self
-
     def hyper_jump_player(self, Player):
         radius_ = RADIUS * len(self.planets)
         OldLocation = Player.Location
@@ -87,11 +80,19 @@ class Location(JSONClass, ThreadBase, SetPlayer, Inventory):
         Player.not_target()
 
         Player.Location.remove_player(Player)
-        SetPlayer.set_player(self, Player)
+        self.set_player(self, Player)
         Player.Location = self
+
+    def set_player(self, Player):
+        Player.Location.remove_player(Player)
+        Player.Location = self
+        self.players.append(Player)
 
     def set_planet(self, classPlanet):
         self.planets.append(classPlanet)
 
     def set_static_space_object(self, StaticSpaceObject_class):
         self.StaticSpaceObjects.append(StaticSpaceObject_class)
+
+    def get_drop(self, drop):
+        self.inventory.extend(drop)

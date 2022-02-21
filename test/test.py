@@ -1,18 +1,25 @@
 #from test3 import b #ERROR most likely due to a circular import
 
-if False:
-    from test3 import b
 
 class a:
 
-    def __init__(self):
+    def __init__(self, count):
+        self.s = count
+
+    def __pr(self):
+        print('hello', self.s)
+
+    def _a__pr(self):
         pass
 
-    def pr(self):
-        print("hello")
+    def two(self):
+        print(hasattr(self, '__pr'))
 
-    def pr2(self, b2:"b"):
-        print(b2.text)
+
+e = a(33)
+print(e.__reduce__())
+# e.__reduce_ex__()
+
 
 
 

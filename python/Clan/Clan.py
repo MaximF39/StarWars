@@ -1,9 +1,8 @@
 from python.Static.cfg import cfg_clan
-from python.Utils.JSONClass import JSONClass
 from python.Utils.ThreadBase import ThreadBase
 
 
-class Clan(JSONClass, ThreadBase):
+class Clan(ThreadBase):
     name: str
     shortName: str
     description: str
@@ -14,13 +13,14 @@ class Clan(JSONClass, ThreadBase):
     enemies: list
     friends: list
     members: list
-    def __init__(self, Game, dict_):
-        super().__init__(dict_)
+
+    def __init__(self, Game, data):
+        self.__dict__.update(data)
         self.Game = Game
         self.maxMembers: int = cfg_clan.members[self.level]
         self.maxFriends: int = cfg_clan.friends[self.level]
         if self.level + 1 in cfg_clan.points:
-            self.nextLevelPointsValue: int = cfg_clan.points[self.level + 1] # next level points
+            self.nextLevelPointsValue: int = cfg_clan.points[self.level + 1]  # next level points
         else:
             self.nextLevelPointsValue: int = cfg_clan.points[self.level]
         self.friendRequestList = []

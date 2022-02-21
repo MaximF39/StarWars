@@ -1,8 +1,11 @@
 
 class BaseInventory:
-    inventory: list = []
+
+    def __init__(self):
+        self.inventory: list = []
 
     def add_item(self, Item):
+
         for inventory_item in self.inventory:
             if inventory_item.classNumber == Item.classNumber:
                 if inventory_item.mod == 'q':

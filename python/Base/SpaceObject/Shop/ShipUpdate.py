@@ -1,3 +1,6 @@
+from .BaseShop import BaseShop
 
-class ShipUpdate:
-    pass
+class ShipUpdate(BaseShop):
+
+    def open(self, Player:"DB_Player"):
+        self.Player.Packages.update

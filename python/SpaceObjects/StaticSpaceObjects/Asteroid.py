@@ -1,5 +1,7 @@
 import random
 from random import randint
+
+from python.Class.Drop import Drop
 from python.Packages.PackagesManager import PackagesManager
 from python.SpaceObjects.Item import item
 from python.Utils.ThreadBase import ThreadBase
@@ -13,7 +15,7 @@ class Asteroid(ThreadBase):
     Minerals: int = 131
     Organic: int = 132
 
-    coef = {
+    __coef = {
         49: 1,
         51: 0.45,
         53: 0.2,
@@ -26,6 +28,7 @@ class Asteroid(ThreadBase):
         self.id = id_
         self.Game = Game
         self.AsteroidsBelt = AsteroidsBelt
+        self.ore = 49 #TODO
 
         type_ = random.choice([1, 2])
         mod_x = random.choice([-1, 1])
@@ -53,11 +56,12 @@ class Asteroid(ThreadBase):
         pass
 
     def drop(self, PlayerKill):
-        item_dict = {}
-        item_dict['count'] = int(self.size * self.coef[self.type_ore] * (random.randint(90, 110) / 100) * ((100 + PlayerKill.skills['Mining'] ** 1.2) / 100))
-        item_dict['x'] = self.x
-        item_dict['y'] = self.y
-        ore = item()
+        drop = Drop({
+        'wear': int(self.size * self.__coef[self.type_ore] * (random.randint(90, 110) / 100) * ((100 + PlayerKill.skills['Mining'] ** 1.2) / 100)),
+        'x': self.x,
+        'y': self.y,
+        'classNumber': self.ore,
+        })
 
         PacMan = PackagesManager(PlayerKill.id, self.Game)
         PacMan.locationBattle()

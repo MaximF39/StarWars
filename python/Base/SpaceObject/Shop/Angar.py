@@ -1,4 +1,6 @@
-class Angar:
+from .BaseShop import BaseShop
 
-    def angar(self, Player:"Player"):
+class Angar(BaseShop):
+
+    def open(self, Player:"DB_Player"):
         Player.PacMan.playerAngar()

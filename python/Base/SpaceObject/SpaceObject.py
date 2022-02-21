@@ -1,9 +1,4 @@
-import uuid
-
-from python.Utils.Vector2D import Vector2D
-from python.Utils.JSONClass import JSONClass
-
-class SpaceObject(JSONClass):
+class SpaceObject:
     id: int
     type: int
     size: int
@@ -11,7 +6,7 @@ class SpaceObject(JSONClass):
     aliance: int
 
     def __init__(self, StarWars, data):
-        super().__init__(data)
+        self.__dict__.update(data)
         self.Game = StarWars
         if not 'size' in data:
             self.size = 10000

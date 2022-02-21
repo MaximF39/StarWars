@@ -1,3 +1,6 @@
+from .BaseShop import BaseShop
 
 class GeneticLab:
-    pass
+
+    def open(self):
+        pass

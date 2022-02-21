@@ -2,11 +2,20 @@ from python.Static.cfg.cfg_player import cfg_level
 
 
 class Experience:
+    experience: int
+    level: int
+
+    def get_experience(self, experience):
+        self.__get_experience(experience)
 
     def __get_experience(self, experience):
         self.experience += experience
+        self.__check_level()
 
-    def _level_experience(self):
+    def __check_level(self):
+        pass
+
+    def __level_experience(self):
         if self.experience > 0:
             self.level += 1
 

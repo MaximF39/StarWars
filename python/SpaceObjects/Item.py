@@ -10,25 +10,23 @@ from python.Static.ParseJson import ship_id
 
 
 def item(classNumber, wear, Game=None, OwnerClass=None):
-    match get_type(classNumber):
+    data = get_item_data(classNumber, wear)
+    match data['Types']:
         case 1:
-            return Resource(Game, classNumber, OwnerClass, wear)
+            return Resource(Game, data, OwnerClass)
         case 2:
-            return Ammo(Game, classNumber, OwnerClass, wear)
+            return Ammo(Game, data, OwnerClass)
         case 3:
-            return Engine(Game, classNumber, OwnerClass, wear)
+            return Engine(Game, data, OwnerClass)
         case 4:
-            return Weapon(Game, classNumber, OwnerClass, wear)
+            return Weapon(Game, data, OwnerClass)
         case 5:
-            return Device(Game, classNumber, OwnerClass, wear)
+            return Device(Game, data, OwnerClass)
         case 6:
-            return Droid(Game, classNumber, OwnerClass, wear)
+            return Droid(Game, data, OwnerClass)
 
+def get_item_data(classNumber, wear):
+    return item_id(classNumber, wear)
 
-def ship(Game, classNumber, OwnerClass, data):
-    return FakeShip(Game, classNumber, OwnerClass, data)
-
-def get_type(classNumber):
-    return item_id(classNumber)['Types']
-
-
+def get_ship_data(classNumber):
+    return ship_id(classNumber)

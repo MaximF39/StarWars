@@ -1,14 +1,12 @@
 from python.Class.Chat import Chat
 from python.Static.ParseJson import parse_xml
 from .Clan.Clan import Clan
-from .DataBase.get import player_info
+from .DataBase.Database import DataBase
 from .SpaceObjects.Location import Location
 from time import time
 from .Player.Player import Player
-from python.DataBase.get import init_clan
 
 class StarWars:
-    id_to_conn = {}
     Chat: "Chat"
 
     def __init__(self, Chat: "Chat"):
@@ -23,18 +21,12 @@ class StarWars:
     def __create_game(self):
         self.__create_locations()
 
-    def update_online(self, online):
-        self.online = online
-
-    def connect_user(self, id_, conn):
-        self.id_to_conn[id_] = conn
-
     def create_player(self, id_):
-        setattr(self, f"Player_{id_}", Player(self, player_info(id_)))
+        setattr(self, f"Player_{id_}", Player(self, DataBase().player_info(id_)))
         getattr(self, f"Player_{id_}").init()
 
     def create_clan(self, clanId):
-        setattr(self, f"Clan_{clanId}", Clan(self, init_clan(clanId)))
+        setattr(self, f"Clan_{clanId}", Clan(self, DataBase().init_clan(clanId)))
 
     def __create_locations(self):
         for location in parse_xml('GalaxyMap'):

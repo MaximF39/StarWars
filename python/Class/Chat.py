@@ -7,7 +7,7 @@ if False:
 
 
 class Chat: # Наследуется от Game
-    players: list["Player"]
+    players: list["DB_Player"]
     Server: "Server"
 
     def __init__(self, Server: "Server"):
@@ -23,14 +23,14 @@ class Chat: # Наследуется от Game
             case Message.LOCAL:
                 return getattr(self.Game, f"Player_{id_}").Location.players
             case Message.CLAN:
-                if hasattr(getattr(self.Game, f"Player_{id_}"), 'Clan'):
-                    return getattr(getattr(self.Game, f"Player_{id_}"), 'Clan').players_online
+                if hasattr(getattr(self.Game, f"Player_{id_}"), 'DB_Clan'):
+                    return getattr(getattr(self.Game, f"Player_{id_}"), 'DB_Clan').players_online
             case Message.CLIENTCHAT:
                 pass
             case Message.TRADE:
                 pass
 
-    def send_message(self, Player:"Player", data):
+    def send_message(self, Player:"PlayerItems", data):
         players = self.get_players(data['type_chat'], Player.id)
         for Player in players:
             Player.PacMan.message(Player, data)

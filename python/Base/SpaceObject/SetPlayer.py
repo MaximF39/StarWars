@@ -2,7 +2,9 @@ if False:
     from python.Player.Player import Player
 
 class SetPlayer:
-    players:list["Player"] = []
+
+    def __init__(self):
+        self.players:list["DB_Player"] = []
 
     def set_player(self, Player):
         self.players.append(Player)

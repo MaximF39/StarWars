@@ -5,7 +5,7 @@ from Type.ItemClass import ItemClass as Items
 # from python.Utils.DotMap import DotMap
 
 bs = pathlib.Path(__file__).parent.joinpath('Json')
-id_parse = ['Clan', "GalaxyMap"]
+id_parse = ['DB_Clan', "GalaxyMap"]
 guid_parse = ['AmmoParameters', "DeviceParameters", "DroidParameters",
               "EngineParameters", "ShipParameters", "WeaponParameters", "ResourseParameters"]
 

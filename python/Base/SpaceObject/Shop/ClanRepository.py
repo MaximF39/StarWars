@@ -1,5 +1,6 @@
+from .BaseShop import BaseShop
 
-class ClanRepository:
+class ClanRepository(BaseShop):
 
-    def clan_repository(self, Player:"Player"):
+    def open(self, Player:"DB_Player"):
         Player.PacMan.clan_repository()

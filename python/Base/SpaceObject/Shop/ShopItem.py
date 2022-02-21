@@ -2,7 +2,11 @@ from python.Static.cfg.shops.inventory import get_default_items
 from python.Base.Inventory.BaseInventory import BaseInventory
 
 class ShopItem(BaseInventory):
-    default_shop = []
+    race:int
+    Game:"Game"
+
+    def __init__(self):
+        self.default_shop = []
 
     def get_shop(self):
         return self.inventory

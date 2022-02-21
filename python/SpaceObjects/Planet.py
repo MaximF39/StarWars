@@ -7,12 +7,8 @@ from python.Base.SpaceObject.Shop.ShopItem import ShopItem
 from ..Static.Type.ShopType import ShopType
 from ..Static.cfg.cfg_main import RADIUS
 
-if False:
-    from python.Player.Player import Player
-
 class Planet(SpaceBigObject, ThreadBase):
-    name: str  # my
-    class_number: int  #be bytes
+    classNumber: int  #be bytes
     radius: int = RADIUS
     landable: bool
     is_sun: bool
@@ -33,17 +29,17 @@ class Planet(SpaceBigObject, ThreadBase):
             self.y = int(self.radius * math.cos(self.angle))
             self.update()
 
-    def fake_items(self, Player):
-        ItemsForPlayer = []
-        for Item_ in self.inventory:
-            ItemsForPlayer.append(Item_.ItemForPlayer(Player))
-        return ItemsForPlayer
+    # def fake_items(self, PlayerItems):
+    #     ItemsForPlayer = []
+    #     for Item_ in self.inventory:
+    #         ItemsForPlayer.append(Item_.ItemForPlayer(PlayerItems))
+    #     return ItemsForPlayer
 
     def send_info_location(self):
         self.Location.set_planet(self)
 
     def update(self):  # ready
-        self.start_timer_update(self.move, 1) # cfg_update['SpaceObject']
+        self.start_timer_update(self.move, 1) # cfg_update['SpaceObjectItems']
 
     def move(self):
         self._i += self.speed

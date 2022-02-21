@@ -3,7 +3,8 @@ import struct
 class PackageCreator:
     PackageNumber = 0
 
-    data = bytearray()
+    def __init__(self):
+        self.data = bytearray()
 
     def get_package(self) -> bytearray:
         pack = self.converter(self.PackageNumber, "i")

@@ -2,24 +2,23 @@ from python.Base.Event.PlanetEvent.ShopEvent import ShopEvent
 from python.Base.SpaceObject.Shop.ShopItem import ShopItem
 from python.Base.SpaceObject.Shop.ShipUpdate import ShipUpdate
 from python.Base.SpaceObject.Shop.GeneticLab import GeneticLab
-from python.Base.SpaceObject.Shop.ShipFactory import ShipFactory
 from python.Base.SpaceObject.Shop.UpdateResources import UpdateResources
 
-class PlanetEvent(ShopEvent, ShopItem, ShipUpdate, GeneticLab, ShipFactory, UpdateResources):
+class PlanetEvent(ShopEvent, ShopItem, ShipUpdate, GeneticLab, UpdateResources):
 
     def open_shop(self, data):
         match data['type']:
             case 1:
                 ShopItem.get_shop(self)
                 self.Packages.trading_items()
-            case 2:
-                ShipFactory.get_shop(self)
+            # case 2:
+            #     ShipFactory.get_shop(self)
             case 3:
-                GeneticLab.get_shop(self)
+                GeneticLab.open(self)
             case 6:
-                ShipUpdate.get_shop(self)
+                ShipUpdate.open(self)
             case 8:
-                UpdateResources.get_shop(self)
+                UpdateResources.open(self)
 
 
     def repair(self):
