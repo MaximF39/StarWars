@@ -1,7 +1,3 @@
-from python.Base.Event.CashEvent import CashEvent
-from python.Static.cfg.cfg_player import get_cost_reset_skills
-
-
 class SkillsEvent:
     freeSkills: int
     skills: dict

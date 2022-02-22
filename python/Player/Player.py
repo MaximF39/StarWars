@@ -18,9 +18,10 @@ from ..DataBase.Database import DataBase
 from ..SpaceObjects.Item import item
 from python.Base.BasePlayer.BasePlayer import BasePlayer
 from python.SpaceObjects.Location import Location
-from ..Static.cfg.cfg_player import get_cost_reset_skills
+from python.Static.cfg.Player.cfg_cost_reset_skills import get_cost_reset_skills
 from ..Static.cfg.cfg_main import update_player_db
 from ..Utils.ThreadBase import ThreadBase
+
 
 @final
 class Player(BasePlayer, Trading, SkillsEvent, Status, Experience, Rating, PlanetEvent, CashEvent):
@@ -34,6 +35,7 @@ class Player(BasePlayer, Trading, SkillsEvent, Status, Experience, Rating, Plane
     login: str
     engineId: int
     Packages = None
+
     def __init__(self, Game, dict_):
         BasePlayer.__init__(self, Game, dict_)
         Inventory.__init__(self)

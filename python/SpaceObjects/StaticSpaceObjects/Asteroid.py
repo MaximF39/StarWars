@@ -25,6 +25,7 @@ class Asteroid(ThreadBase):
     }
 
     def __init__(self, id_, Game, AsteroidsBelt):
+        ThreadBase.__init__(self)
         self.id = id_
         self.Game = Game
         self.AsteroidsBelt = AsteroidsBelt
@@ -55,23 +56,22 @@ class Asteroid(ThreadBase):
     def get_coords(self):
         pass
 
-    def drop(self, PlayerKill):
+    def drop(self):
         drop = Drop({
         'wear': int(self.size * self.__coef[self.type_ore] * (random.randint(90, 110) / 100) * ((100 + PlayerKill.skills['Mining'] ** 1.2) / 100)),
         'x': self.x,
         'y': self.y,
         'classNumber': self.ore,
         })
-
-        PacMan = PackagesManager(PlayerKill.id, self.Game)
-        PacMan.locationBattle()
-        PacMan.items()
+        self.AsteroidsBelt.destroyed_asteroid(self, drop)
 
     def end_target(self):
         self.AsteroidsBelt.remove_asteroid(self)
 
-    def get_damage(self, damage):
+    def get_damage(self, damage, Who:"Player"):
         self.size -= damage
         if 0 >= self.size:
-            # self.drop()
+            Who.kill_weapon(self)
+            self.drop()
+
             print('kill asteroid')

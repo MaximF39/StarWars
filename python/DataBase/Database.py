@@ -1,12 +1,11 @@
 from python.DataBase.DB_Table.DB_Player.DB_BasePlayer import DB_BasePlayer
 from python.DataBase.DB_Table.DB_Clan.DB_Clan import DB_Clan
-from sqlalchemy import create_engine, literal
+from sqlalchemy import literal
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import func
 
 from python.DataBase.DB_Table.DB_Player.DB_Player import DB_Player
 from python.DataBase.DB_Table.DB_Player.DB_Skills import DB_Skills
-from python.Static.cfg.cfg_postgres import *
 from .DB_Table.engine import engine
 
 
@@ -77,13 +76,13 @@ class DataBase:
         return True
 
     def __get_level(self, exp):
-        from python.Static.cfg.cfg_player import cfg_level
+        from python.Static.cfg.Player.cfg_level import cfg_level
         for lvl, exp_lvl in cfg_level.items():
             if exp_lvl > exp:
                 return lvl - 1
 
     def __get_status(self, status):
-        from python.Static.cfg.cfg_player import cfg_status
+        from python.Static.cfg.Player.cfg_status import cfg_status
         for status_lvl, stat_lvl in cfg_status.items():
             if stat_lvl > status:
                 return status_lvl - 1

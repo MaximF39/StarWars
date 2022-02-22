@@ -13,8 +13,6 @@ cfg_const = {
     "maxSkill": 12,
 }
 
-cfg_fixed = 4 # 1.0001
-
 max_len_name = 10
 max_len_passwd = 20
 max_len_description_clan = 1000

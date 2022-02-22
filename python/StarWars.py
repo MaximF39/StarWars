@@ -20,6 +20,7 @@ class StarWars:
 
     def __create_game(self):
         self.__create_locations()
+        self.__create_mobs()
 
     def create_player(self, id_):
         setattr(self, f"Player_{id_}", Player(self, DataBase().player_info(id_)))

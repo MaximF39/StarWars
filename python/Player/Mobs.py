@@ -17,7 +17,7 @@ class Mobs(BasePlayer, ThreadBase):
 
     def update(self):
         self.start_timer_update(self.trigger, 1)
-        self.start_timer_update(self.move, 1)
+        self.start_timer_update(self.move, 5)
 
     def trigger(self):
         objects = self.request_location()  # packages_entrance locations

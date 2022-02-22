@@ -1,12 +1,13 @@
 import time
 
-from python.Static.cfg.cfg_player import recovery_energy, update_energy
+from python.Static.cfg.Player.cfg_recovery import recovery_energy, update_energy
 from python.Utils.ThreadBase import ThreadBase
 
 class Energy(ThreadBase):
     ship:"dict"
 
     def __init__(self, maxEnergy, repairSkills):
+        ThreadBase.__init__(self)
         self.maxEnergy = maxEnergy
         self.repairSkills = repairSkills
         self.__check_update_regen_energy()

@@ -6,12 +6,12 @@ from python.Static.Type.ShopType import ShopType
 
 class Quantitative(BaseItem):
     count: int
+    mod = 'q'
+    drop = True
 
     def __init__(self, Game, data, Owner):
         BaseItem.__init__(self, Game, data, Owner)
         self.count = self.wear
-        self.mod = 'q'
-        self.drop = True
 
     @property
     def get_size(self):

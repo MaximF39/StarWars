@@ -1,5 +1,7 @@
 
+
 class EffectEvent:
+    effects: list
 
     def get_effect(self, effect_type, active_time):
         if effect_type in self.effects:

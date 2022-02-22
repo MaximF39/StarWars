@@ -1,4 +1,4 @@
-from python.Static.cfg.cfg_player import cfg_level
+from python.Static.cfg.Player.cfg_level import cfg_level
 
 
 class Experience:

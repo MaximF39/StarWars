@@ -70,9 +70,10 @@ class Server(ThreadBase):
         id_ = self.DB.get_user_id(login, password)
         if id_:
             self.connect_user(id_, conn)
+            print('His ID', id_)
             print('Логин', login)
             print('Пароль', password)
-            self.create_player(id_)
+            self.__create_player(id_)
             return getattr(self.Game, f"Player_{id_}")
 
     def connect_user(self, id_, conn):
@@ -95,7 +96,7 @@ class Server(ThreadBase):
                 data = conn.recv(16)
                 PackageNumberGet, lenBytes = self.__default_get_pakage(data)
                 data = conn.recv(lenBytes)
-                threading.Thread(target=self.get_package, args=(PackageNumberGet, data, Player)).start()
+                threading.Thread(target=self.read_package, args=(PackageNumberGet, data, Player)).start()
             except Exception as e:
                 print("ERROR", e)
                 self.exit_user(conn)
@@ -107,7 +108,7 @@ class Server(ThreadBase):
         delattr(self.Game, f"Player_{id_}")
         conn.close()
 
-    def get_package(self, pack_number, data, Player):
+    def read_package(self, pack_number, data, Player):
         ReadPackages(self.Game, Player, pack_number, data)
 
     @staticmethod
@@ -118,7 +119,7 @@ class Server(ThreadBase):
                        compression='zip', encoding='cp1251')
             logger.debug(p1)
 
-    def create_player(self, id_):
+    def __create_player(self, id_):
         self.Game.create_player(id_)
 
 def main() -> None:

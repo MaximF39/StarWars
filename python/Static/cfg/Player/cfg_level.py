@@ -176,28 +176,3 @@ cfg_level = {
     174: 91800000,
     175: 94000000,
 }
-
-cfg_status = {
-    0: 0,
-    1: 5000,
-    2: 12000,
-    3: 22000,
-    4: 35000,
-    5: 50000,
-    6: 70000,
-    7: 100000,
-    8: 140000,
-    9: 200000
-}
-
-def get_cost_reset_skills(count):
-    return count ** 3 * 1500
-
-def recovery_energy(max_energy, repair_skills):
-    return int(max_energy * 0.01 + repair_skills * 2)
-
-def recovery_health(max_health, repair_skills):
-    return int(max_health * 0.005 + repair_skills * 2)
-
-update_energy = 1
-update_health = 1

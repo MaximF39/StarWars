@@ -6,7 +6,7 @@ from python.Base.BasePlayer.ShipEvent.MoveEvent import MoveEvent
 
 
 class Pvp(Health, Energy):
-    activeWeapons: list
+    activeWeapons: list["Weapon"]
     ObjectToAttack: "SpaceObject"
     x: int
     y: int
@@ -15,11 +15,11 @@ class Pvp(Health, Energy):
         Health.__init__(self, maxHealth, shields, self.Repairing)
         Energy.__init__(self, maxEnergy, self.Repairing)
 
-    def init_pvp_skills(self, data):
-        self.Repairing = data['Repairing']
-        self.Defending = data['Defending']
-        self.Attacking = data['Attacking']
-        self.Tactics = data['Targeting']
+    def init_pvp_skills(self, data_skills):
+        self.Repairing = data_skills['Repairing']
+        self.Defending = data_skills['Defending']
+        self.Attacking = data_skills['Attacking']
+        self.Tactics = data_skills['Targeting']
 
     def attack(self, data):
         match data['type']:

@@ -267,7 +267,7 @@ class ReadPackagesClient:
     #             return f.read()
     #
     #     # return PackageDecoder().converter(read_f())
-    #     return decoder.get_package()
+    #     return decoder.read_package()
     #
     # def shipUpdateInfo(self) -> list:
     #     
@@ -345,7 +345,7 @@ class ReadPackagesClient:
     #         decoder.read_short(_loc5_.classfloat)
     #         decoder.read_int(_loc5_.count)
     #         decoder.read_bool(_loc5_.enough)
-    #     return decoder.get_package()
+    #     return decoder.read_package()
     #
     # def finishTrading(self) -> list:
     #     
@@ -355,17 +355,17 @@ class ReadPackagesClient:
     #     _loc4_: int = 0
     #     decoder.read_int(_loc4_)
     #     _loc5_: list = read_items(decoder, True, False, False)
-    #     return decoder.get_package()
+    #     return decoder.read_package()
     #
     # def tradeSellItems(self) -> list:
     #     
     #     _loc2_: list = self.read_items(decoder, True, True)
-    #     return decoder.get_package()
+    #     return decoder.read_package()
     #
     # def tradeBuyItems(self) -> list:
     #     
     #     _loc2_: list = self.read_items(decoder, True, True)
-    #     return decoder.get_package()
+    #     return decoder.read_package()
 
     def playerAngar(self) -> list:
         
@@ -410,7 +410,7 @@ class ReadPackagesClient:
                     _loc8_ += 1
                     decoder.read_bool(_loc6_.satisfying)
                     _loc11_ += 1
-        return decoder.get_package()
+        return decoder.read_package()
 
     #
     #     # def updateHold(self) -> list:
@@ -420,7 +420,7 @@ class ReadPackagesClient:
     #     #     _loc3_: list = self.read_items(decoder, True, True, True, _loc2_)
     #     #     _loc4_: list
     #     #     _loc4_ = self.read_items(decoder, True, True, True, len(_loc2_))
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def gineticLabOptions(self) -> list:
     #     #     
@@ -434,7 +434,7 @@ class ReadPackagesClient:
     #     #         decoder.read_unsigned_byte(_loc2_.option)
     #     #         decoder.read_int(_loc2_.cost)
     #     #         _loc5_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def npcMessage(self) -> list:
     #     #     
@@ -442,7 +442,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_)
     #     #     _loc3_: int = 0
     #     #     decoder.read_int(_loc3_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def additionalQuestMessage(self) -> list:
     #     #     
@@ -450,7 +450,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_)
     #     #     _loc3_: int = 0
     #     #     decoder.read_int(_loc3_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def arenaRequests(self) -> list:
     #     #     
@@ -468,7 +468,7 @@ class ReadPackagesClient:
     #     #         decoder.read_int(_loc2_.minShipType)
     #     #         decoder.read_unsigned_byte(_loc2_.type)
     #     #         _loc5_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def battleRequestChanged(self) -> list:
     #     #     
@@ -493,7 +493,7 @@ class ReadPackagesClient:
     #     #         decoder.read_int(_loc2_.race)
     #     #         _loc3_.players.append(_loc2_)
     #     #         _loc4_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def questsJournal(self) -> list:
     #     #     
@@ -509,7 +509,7 @@ class ReadPackagesClient:
     #     #         decoder.read_utf(_loc2_.Name)
     #     #         _loc3_.append(_loc2_)
     #     #         _loc5_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def activeDevices(self, decoder):
         data = []
@@ -546,7 +546,7 @@ class ReadPackagesClient:
     #     #     decoder.read_short(_loc2_.health)
     #     #     decoder.read_unsigned_byte(_loc2_.controlLeft)
     #     #     decoder.read_unsigned_byte(_loc2_.controlUsed)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def tradingShips(self, decoder) -> DotMap:
         w = decoder.read_int()
@@ -620,7 +620,7 @@ class ReadPackagesClient:
     #     #     _loc4_: float = 1
     #     #     _loc5_: list = self.read_items(decoder, True, True)
     #     #     _loc6_: list = self.read_items(decoder, True, True)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def read_items(self, decoder, param2: bool, param3: bool, param4: bool = True, param5: bool = False):
 
@@ -699,7 +699,7 @@ class ReadPackagesClient:
     #     #         decoder.read_unsigned_byte(_loc2_.trouble)
     #     #         decoder.read_unsigned_byte(_loc2_.index)
     #     #         _loc5_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def repository(self) -> list:
     #     #     
@@ -717,7 +717,7 @@ class ReadPackagesClient:
     #     #         decoder.read_int(_loc2_.level)
     #     #         # decoder.read_int()
     #     #         _loc7_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def clanrepository(self) -> list:
     #     #     
@@ -736,7 +736,7 @@ class ReadPackagesClient:
     #     #         # decoder.read_int()
     #     #         _loc7_ += 1
     #     #
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def planetsState(self) -> list:
     #     #     
@@ -750,7 +750,7 @@ class ReadPackagesClient:
     #     #         decoder.read_int(_loc2_)
     #     #         _loc3_ = 0
     #     #         decoder.read_float(_loc3_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def planetsUpdate(self) -> list:
     #     #     
@@ -773,7 +773,7 @@ class ReadPackagesClient:
     #     #         decoder.read_bytes(_loc5_)
     #     #         _loc6_ = 0
     #     #         decoder.read_int(_loc6_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def ship(self) -> list:
     #     #     
@@ -802,7 +802,7 @@ class ReadPackagesClient:
     #     #         decoder.read_short(_loc2_.weaponClass)
     #     #         decoder.read_short(_loc2_.health)
     #     #         _loc5_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def SpaceObjectItems(self) -> list:
     #     #     
@@ -813,7 +813,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_.size)
     #     #     decoder.read_float(_loc2_.serverAngle)
     #     #     decoder.read_bool(_loc2_.landable)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def inventory(self) -> list:
     #     #     
@@ -845,7 +845,7 @@ class ReadPackagesClient:
     #     #     while decoder.bytesAvailable > 0:
     #     #         _loc2_ = ItemsManager.createInstance(decoder.read_short())
     #     #         decoder.read_bytes(_loc2_.id)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def player(self, decoder) -> list:
         data = []
@@ -911,7 +911,7 @@ class ReadPackagesClient:
     #     #         decoder.read_int(_loc4_.value)
     #     #         _loc5_.targets.append(_loc4_)
     #     #         _loc11_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def playerSkills(self) -> list:
     #     #     
@@ -931,7 +931,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc3_.pirateStatus)
     #     #     decoder.read_int(_loc3_.policeStatus)
     #     #     decoder.read_int(_loc3_.forNextLevel)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def read_skills(self, decoder) -> DotMap:
         param2 = DotMap()
@@ -1298,7 +1298,7 @@ class ReadPackagesClient:
         decoder.read_unsigned_byte(_loc6_)
         _loc7_: int = 0
         decoder.read_unsigned_byte(_loc7_)
-        return decoder.get_package()
+        return decoder.read_package()
     #     #
     def version(self, decoder):
         decoder.read_int()
@@ -1312,7 +1312,7 @@ class ReadPackagesClient:
     #     #     _loc3_ = 0
     #     #     decoder.read_int(_loc2_)
     #     #     decoder.read_int(_loc3_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def online(self, decoder):
         decoder.read_int()
@@ -1394,7 +1394,7 @@ class ReadPackagesClient:
     #     #         decoder.read_utf(_loc3_.ownerName)
     #     #         decoder.read_utf(_loc3_.lastPlayerName)
     #     #         _loc6_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def sList(self) -> list:
     #     #     
@@ -1405,13 +1405,13 @@ class ReadPackagesClient:
     #     #         _loc2_ = ''
     #     #         decoder.read_utf(_loc2_)
     #     #         _loc5_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def Evil(self) -> list:
     #     #     
     #     #     _loc2_ = ''
     #     #     decoder.read_utf(_loc2_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def locationPlanet(self) -> list:
     #     #     
@@ -1444,7 +1444,7 @@ class ReadPackagesClient:
     #     #         decoder.read_utf(_loc2_.name)
     #     #         decoder.read_int(_loc2_.clanId)
     #     #         decoder.read_int(_loc2_.level)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def planetQuests(self) -> list:
     #     #     
@@ -1459,7 +1459,7 @@ class ReadPackagesClient:
     #     #         decoder.read_utf(_loc2_.giverName)
     #     #         decoder.read_utf(_loc2_.Name)
     #     #         _loc5_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def locationSystem(self, decoder) -> list:
         data = []
@@ -1585,7 +1585,7 @@ class ReadPackagesClient:
     #     #             decoder.read_short(_loc4_.health)
     #     #             _loc5_ += 1
     #     #         _loc8_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def shoots(self) -> list:
     #     #     
@@ -1611,7 +1611,7 @@ class ReadPackagesClient:
     #     #             decoder.read_unsigned_byte(_loc5_.muzzleIndex)
     #     #             _loc4_ += 1
     #     #         _loc8_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def items(self) -> list:
     #     #     
@@ -1625,7 +1625,7 @@ class ReadPackagesClient:
     #     #             decoder.read_short(_loc2_.x)
     #     #             decoder.read_short(_loc2_.y)
     #     #             _loc3_.append(_loc2_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def message(self) -> list:
     #     #     
@@ -1636,7 +1636,7 @@ class ReadPackagesClient:
     #     #     decoder.read_unsigned_byte(_loc2_.type)
     #     #     decoder.read_bool(_loc2_.isPrivate)
     #     #     decoder.read_bool(_loc2_.isAdmin)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def asteroids(self) -> list:
     #     #     
@@ -1653,7 +1653,7 @@ class ReadPackagesClient:
     #     #             decoder.read_unsigned_byte(_loc2_.speed) / 1000
     #     #             decoder.read_int(_loc2_.size)
     #     #             _loc3_.append(_loc2_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def effectCreated(self) -> list:
     #     #     
@@ -1676,7 +1676,7 @@ class ReadPackagesClient:
     #     #     decoder.read_float(_loc8_)
     #     #     _loc9_: int = 0
     #     #     decoder.read_int(_loc9_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def effectRemoved(self) -> list:
     #     #     
@@ -1684,7 +1684,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_)
     #     #     _loc3_: int = 0
     #     #     decoder.read_unsigned_byte(_loc3_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def logMessage(self) -> list:
     #     #     
@@ -1692,13 +1692,13 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_)
     #     #     _loc3_: int = 0
     #     #     decoder.read_int(_loc3_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def logMessagestr(self) -> list:
     #     #     
     #     #     _loc2_: str = ''
     #     #     decoder.read_utf(_loc2_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def systemMessage(self) -> list:
     #     #     
@@ -1706,13 +1706,13 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_)
     #     #     _loc3_: int = 0
     #     #     decoder.read_int(_loc3_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def systemMessagestr(self) -> list:
     #     #     
     #     #     _loc2_: str = ''
     #     #     decoder.read_utf(_loc2_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def droidBuildingDialog(self) -> list:
     #     #     
@@ -1731,7 +1731,7 @@ class ReadPackagesClient:
     #     #         decoder.read_int(_loc2_.energyCost)
     #     #     _loc5_ += 1
     #     #
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def read_guid(self, decoder) -> list:
         guid = decoder.read_bytes(16)
@@ -1748,13 +1748,13 @@ class ReadPackagesClient:
     #     #     
     #     #     _loc2_: int = 0
     #     #     decoder.read_int(_loc2_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def shipJumped(self) -> list:
     #     #     
     #     #     _loc2_: int = 0
     #     #     decoder.read_int(_loc2_)  # findShip
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def clan(self, decoder) -> list:
         data = []
@@ -1847,7 +1847,7 @@ class ReadPackagesClient:
     #     #         decoder.read_int(_loc4_.id)
     #     #         decoder.read_utf(_loc4_.name)
     #     #         _loc2_ += 1
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def checkValueResult(self) -> list:
     #     #     
@@ -1855,7 +1855,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_)
     #     #     _loc3_: bool = False
     #     #     decoder.read_bool(_loc3_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def acceptedClanInfo(self) -> list:
     #     #     
@@ -1869,12 +1869,12 @@ class ReadPackagesClient:
     #     #     decoder.read_utf(_loc5_)
     #     #     _loc6_: int = 0
     #     #     decoder.read_int(_loc6_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def clanId(self) -> list:
     #     #     
     #     #     decoder.read_int(Owner.clanId)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def clansLetters(self) -> list:
     #     #     
@@ -1882,7 +1882,7 @@ class ReadPackagesClient:
     #     #     _loc2_ = list()
     #     #     while decoder.bytesAvailable > 0:
     #     #         _loc2_[len(_loc2_)] = decoder.read_utf()
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def clansList(self) -> list:
     #     #     
@@ -1892,7 +1892,7 @@ class ReadPackagesClient:
     #     #     _loc3_ = decoder.read_utf()
     #     #     while decoder.bytesAvailable > 0:
     #     #         _loc2_[len(_loc2_)] = decoder.read_int()
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def clanJoinRequests(self) -> list:
     #     #     
@@ -1905,7 +1905,7 @@ class ReadPackagesClient:
     #     #         decoder.read_int(_loc2_.playerID)
     #     #         decoder.read_utf(_loc2_.playerName)
     #     #         decoder.read_utf(_loc2_.message)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
 
     def logged(self, decoder):
@@ -1963,7 +1963,7 @@ class ReadPackagesClient:
     #     #     decoder.read_unsigned_byte(_loc2_.race)
     #     #     decoder.read_int(_loc2_.clanPoints)
     #     #     decoder.read_int(_loc2_.role)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def playerLoggedOn(self, decoder) -> dict:
         _loc2_ = {}
@@ -1980,7 +1980,7 @@ class ReadPackagesClient:
     #     #     _loc2_: PlayerInfoData = None
     #     #     _loc2_ = PlayerInfoData()
     #     #     decoder.read_int(_loc2_.id)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def friendClans(self) -> list:
     #     #     
@@ -1997,7 +1997,7 @@ class ReadPackagesClient:
     #     #         decoder.read_utf(_loc2_.name)
     #     #         decoder.read_utf(_loc2_.shortName)
     #     #         decoder.read_unsigned_byte(_loc2_.aliace)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def enemyClans(self) -> list:
     #     #     
@@ -2014,7 +2014,7 @@ class ReadPackagesClient:
     #     #         decoder.read_utf(_loc2_.name)
     #     #         decoder.read_utf(_loc2_.shortName)
     #     #         decoder.read_unsigned_byte(_loc2_.aliace)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def friendRequests(self) -> list:
     #     #     
@@ -2031,7 +2031,7 @@ class ReadPackagesClient:
     #     #         decoder.read_utf(_loc2_.name)
     #     #         decoder.read_utf(_loc2_.shortName)
     #     #         decoder.read_unsigned_byte(_loc2_.aliace)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def droidEvent(self) -> list:
     #     #     
@@ -2044,7 +2044,7 @@ class ReadPackagesClient:
     #     #     decoder.read_short(_loc2_.weaponClass)
     #     #     decoder.read_int(_loc3_)
     #     #     decoder.read_unsigned_byte(_loc4_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def updateValue(self, decoder) -> list:
         data = []
@@ -2087,7 +2087,7 @@ class ReadPackagesClient:
     #     #         decoder.read_unsigned_byte(_loc2_.aliance)
     #     #         decoder.read_unsigned_byte(_loc2_.race)
     #     #         decoder.read_int(_loc2_.starId)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def tradeInvitation(self) -> list:
     #     #     
@@ -2097,7 +2097,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc2_)
     #     #     decoder.read_int(_loc3_)
     #     #     decoder.read_utf(_loc4_)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     #     # def showTrading(self) -> list:
     #     #     
@@ -2109,7 +2109,7 @@ class ReadPackagesClient:
     #     #     decoder.read_int(_loc3_)
     #     #     decoder.read_utf(_loc4_)
     #     #     _loc5_ = self.read_items(decoder, True, True)
-    #     #     return decoder.get_package()
+    #     #     return decoder.read_package()
     #     #
     def toGame(self, decoder):
         data = []

@@ -48,6 +48,8 @@ class Packages:
         for pack in entry_packs:
             self.PacMan.processPackages(pack)
 
+    def asteroids(self):
+        self.PacMan.asteroids()
 
     def send_entry_packages(self):
         self.__base_send_entry_packages()

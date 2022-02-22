@@ -1,6 +1,6 @@
 import time
 
-from python.Static.cfg.cfg_player import recovery_health, update_health
+from python.Static.cfg.Player.cfg_recovery import recovery_health, update_health
 from python.Utils.ThreadBase import ThreadBase
 
 

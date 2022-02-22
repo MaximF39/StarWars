@@ -1,5 +1,5 @@
 from python.Static.cfg.cfg_main import cfg_main
-from python.Static.cfg.cfg_player import get_cost_reset_skills
+from python.Static.cfg.Player.cfg_cost_reset_skills import get_cost_reset_skills
 from python.Static.ParseJson import parse_xml
 from python.Utils.DotMap import DotMap
 from python.Static.Type.ServerRequest import ServerRequest
@@ -1255,7 +1255,7 @@ class PackagesManager:
         #         creator.write_int(_loc3_.lastPlayerID)
         #         creator.write_utf(_loc3_.ownerName)
         #         creator.write_utf(_loc3_.lastPlayerName)
-        #     self.Game.id_to_conn[self.id].send(creator.get_package())
+        #     self.Game.id_to_conn[self.id].send(creator.read_package())
 
     def newsList(self):
         creator = PackageCreator()
