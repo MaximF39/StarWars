@@ -1,4 +1,6 @@
-from python.Static.cfg.shops.cfg_shop_type import *
+from python.Config.CFG_Shop.cfg_shop_type import default_shop, default_type, improve_resources, improve_ship, \
+    ginetic_lab_planet_id
+from python.Static.Type.SpaceObject.T_Shop import T_Shop
 
 
 class GetShopType:
@@ -16,34 +18,34 @@ class GetShopType:
             if self.race != 0:
                 return default_type
         if self.id in improve_resources:
-            return [ShopType.UpdateResources]
+            return [T_Shop.UpdateResources]
         if self.id in improve_ship:
-            return [ShopType.UpdateShips]
+            return [T_Shop.UpdateShips]
         if self.id in ginetic_lab_planet_id:
-            return [ShopType.GineticLab]
+            return [T_Shop.GineticLab]
         return []
 
 
 
     # def init_items(self):
-    #     if not self.shops:
+    #     if not self.CFG_Shop:
     #         return
-    #     for shop_type in self.shops:
+    #     for shop_type in self.CFG_Shop:
     #         match shop_type:
-    #             case ShopType.ShipFactory:
+    #             case T_Shop.ShipFactory:
     #                 pass
     #                 # if self.Location.id in weak_system:
     #                 #     for shipClass in weak_ship(self.race):
-    #                 #         self.ships.append(FakeShip(self.Game, shipClass))
+    #                 #         self.ships.append(FakeShip(self.StarWars, shipClass))
     #                 # elif self.Location.id in medium_system:
     #                 #     for shipClass in medium_ship(self.race):
-    #                 #         self.ships.append(FakeShip(self.Game, shipClass))
+    #                 #         self.ships.append(FakeShip(self.StarWars, shipClass))
     #                 # elif self.Location.id in strong_system:
     #                 #     for shipClass in strong_ship(self.race):
-    #                 #         self.ships.append(FakeShip(self.Game, shipClass))
+    #                 #         self.ships.append(FakeShip(self.StarWars, shipClass))
     #                 # else:
     #                 #     raise NotImplementedError('Нет класса для кораблей?')
-    #             case ShopType.InventoryShop:
-    #                 for item in get_default_items(race=self.race, OwnerClass=self, Game=self.Game):
+    #             case T_Shop.InventoryShop:
+    #                 for item in get_default_items(race=self.race, OwnerClass=self, StarWars=self.StarWars):
     #                     self.inventory.append(item)
     #                     self.default_shop.append(item.classNumber)

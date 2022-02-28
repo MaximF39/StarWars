@@ -4,14 +4,11 @@ from sqlalchemy.orm import relationship
 from python.DataBase.DB_Table.engine import engine
 
 Base = declarative_base()
+from ..engine import Base
 
-
-class DB_Skills(Base):
-    __tablename__ = 'DB_Skills'
-
-    id = Column(BigInteger, primary_key=True, unique=True, autoincrement=True)
-
-    baseplayerdb = relationship('BasePlayerId', secondary="DB_Player", backref='DB_Skills')
+class db_skill(Base):
+    __tablename__ = 'db_skills'
+    ownerId = Column(BigInteger, ForeignKey('db_players.id'), primary_key=True)
 
     KineticWeapons = Column(SmallInteger, default=0)
     EnergyWeapons = Column(SmallInteger, default=0)
@@ -29,7 +26,3 @@ class DB_Skills(Base):
     Cybernetics = Column(SmallInteger, default=0)
     Mechanics = Column(SmallInteger, default=0)
     Biocemistry = Column(SmallInteger, default=0)
-
-
-def init():
-    Base.metadata.create_all(engine)

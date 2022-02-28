@@ -1,4 +1,5 @@
 import threading
+import time
 
 
 class ThreadBase:
@@ -15,14 +16,12 @@ class ThreadBase:
         getattr(self, f_name_thread).start()
 
     def start_const_update(self, func, time, args:tuple=None):
-        args = tuple((func, time, *args))
-        threading.Thread(target=self.__thread_update, args=args).start()
+        if args:
+            args = tuple((func, time, *args))
+            threading.Thread(target=self.__thread_update, args=args).start()
+        else:
+            threading.Thread(target=self.__thread_update, args=(func, time)).start()
 
-    @staticmethod
-    def __thread_update(func, time, args:tuple=None):
-        while True:
-            threading.Thread(target=func, args=args).start()
-            time.sleep(time)
 
     def start_update(self, func, *args):
         f_name_thread = self.__get_name(func)
@@ -39,6 +38,12 @@ class ThreadBase:
 
     def alive_thread_timer(self, func):
         return func in self.all_func
+
+    @staticmethod
+    def __thread_update(func, time_, args: tuple = None):
+        while True:
+            threading.Thread(target=func, args=args).start()
+            time.sleep(time_)
 
     @staticmethod
     def __get_name(func):

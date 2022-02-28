@@ -1,37 +1,41 @@
-from python.Class.Chat import Chat
+from python.Game.Chat import Chat
 from python.Static.ParseJson import parse_xml
-from .Clan.Clan import Clan
+from python.Game.Clan.Clan import Clan
 from .DataBase.Database import DataBase
-from .SpaceObjects.Location import Location
+from python.Game.Entity.Mob import Mob
+from python.Game.SpaceObjects.Location import Location
 from time import time
-from .Player.Player import Player
+from python.Game.Entity.Player import Player
+from python.Config.CFG_Mob.CFG_Create_Mob.cfg_create_mobs import get_data_mobs
+
 
 class StarWars:
-    Chat: "Chat"
-
-    def __init__(self, Chat: "Chat"):
-        start = time()
+    def __init__(self, Chat: "Chat", Server):
         self.Chat = Chat
         self.Chat.init_game(self)
         self.online = 0
         self.__create_game()
-        end = time()
-        print(end - start)
+        self.Server = Server
+        self.id_to_conn = self.Server.id_to_conn
 
     def __create_game(self):
         self.__create_locations()
         self.__create_mobs()
 
     def create_player(self, id_):
-        setattr(self, f"Player_{id_}", Player(self, DataBase().player_info(id_)))
+        player_data = DataBase().player_info(id_)
+        setattr(self, f"Player_{id_}", Player(self, player_data))
         getattr(self, f"Player_{id_}").init()
 
     def create_clan(self, clanId):
-        setattr(self, f"Clan_{clanId}", Clan(self, DataBase().init_clan(clanId)))
+        clan_data = DataBase().init_clan(clanId)
+        print("clan_data", clan_data)
+        setattr(self, f"Clan_{clanId}", Clan(self, clan_data))
 
     def __create_locations(self):
         for location in parse_xml('GalaxyMap'):
             setattr(self, f"Location_{location['id']}", Location(self, location))
 
     def __create_mobs(self):
-        pass
+        for data_mob in get_data_mobs():
+            setattr(self, f"Mob_{data_mob['id']}", Mob(self, data_mob))

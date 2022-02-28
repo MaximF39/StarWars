@@ -1,9 +1,14 @@
 import struct
 
+from python.Static.Type.Package.T_ServerRequest import T_ServerRequest
+
+
 class PackageCreator:
     PackageNumber = 0
 
-    def __init__(self):
+    def __init__(self, PackageNumber):
+        self.PackageNumber = PackageNumber
+        print('Пакет отправлен', T_ServerRequest().get(PackageNumber))
         self.data = bytearray()
 
     def get_package(self) -> bytearray:

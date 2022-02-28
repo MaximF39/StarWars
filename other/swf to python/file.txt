@@ -1,6 +1,6 @@
 package planets
 {
-   public class PlanetClass
+   public class T_Planet
    {
 
       public static var SUN:int = 1;
@@ -50,7 +50,7 @@ package planets
       public static var URANUS:int = 28;
 
 
-      public function PlanetClass()
+      public function T_Planet()
       {
          super();
       }

@@ -1,6 +1,6 @@
-from .BaseInventory import BaseInventory
+from .B_Inventory import B_Inventory
 
-class Inventory(BaseInventory):
+class Inventory(B_Inventory):
     ship: "Ship"
     droids: list["item"]
     ControlUsed: int  # used
@@ -8,7 +8,9 @@ class Inventory(BaseInventory):
     hold:int = 0
 
     def __init__(self):
-        BaseInventory.__init__(self)
+        B_Inventory.__init__(self)
+        self.activeWeapons = []
+        self.activeDevices = []
         self.init_hold()
 
     def init_hold(self):
@@ -18,14 +20,14 @@ class Inventory(BaseInventory):
     def add_item(self, Item):
         if self.ship['size'] >= self.hold + Item.get_size:
             self.hold += Item.get_size
-            BaseInventory.add_item(self, Item)
+            B_Inventory.add_item(self, Item)
 
     def change_hold(self, count):
         self.hold -= count
 
     def remove_item(self, Item):
         self.hold -= Item.get_size
-        BaseInventory.remove_item(self, Item)
+        B_Inventory.remove_item(self, Item)
 
     def use_item(self, data):
         for item_ in self.inventory:

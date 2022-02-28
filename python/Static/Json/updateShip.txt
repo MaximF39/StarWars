@@ -1,4 +1,4 @@
-class Resource:
+class T_Resource:
     Minerals: int = 131
     Organic: int = 132
     IronOre: int = 49
@@ -25,29 +25,29 @@ GULDUC_ID: int = 5  # brown
 """
 
 _def = [
-    {ShipType.OIntercepter: ShipType.OIntercepterHavy},
-    {ShipType.OTransport: ShipType.OLRTransport},
-    {ShipType.OFregat: ShipType.OFregatArmored}, # Фрегат -> броник
-    {ShipType.OIndustrial: ShipType.OScout}, # в будущем
-    {ShipType.OScout: ShipType.OSience},
-    {ShipType.OLinkor: ShipType.OSiegeLinkor},
-    {ShipType.OIntercepterHavy: ShipType.OIntercepterCorsar},
-    {ShipType.OIntercepterCorsar: ShipType.PIntercepterCorsar},
-    {ShipType.OFregatArmored: ShipType.OFregatAssault}, # броник -> Штурмовик
-    {ShipType.OFregatAssault: ShipType.OFregatAssaultM1}, # Штурмовик -> УШ
-    {ShipType.OCarrier: ShipType.OBrig}, # в будущем
-    {ShipType.OBrig: ShipType.OShockBrig},
-    {ShipType.OShockBrig: ShipType.OSiegeBrig},
-    {ShipType.OLRTransport: ShipType.OFTransport},
+    {T_Ship.OIntercepter: T_Ship.OIntercepterHavy},
+    {T_Ship.OTransport: T_Ship.OLRTransport},
+    {T_Ship.OFregat: T_Ship.OFregatArmored}, # Фрегат -> броник
+    {T_Ship.OIndustrial: T_Ship.OScout}, # в будущем
+    {T_Ship.OScout: T_Ship.OSience},
+    {T_Ship.OLinkor: T_Ship.OSiegeLinkor},
+    {T_Ship.OIntercepterHavy: T_Ship.OIntercepterCorsar},
+    {T_Ship.OIntercepterCorsar: T_Ship.PIntercepterCorsar},
+    {T_Ship.OFregatArmored: T_Ship.OFregatAssault}, # броник -> Штурмовик
+    {T_Ship.OFregatAssault: T_Ship.OFregatAssaultM1}, # Штурмовик -> УШ
+    {T_Ship.OCarrier: T_Ship.OBrig}, # в будущем
+    {T_Ship.OBrig: T_Ship.OShockBrig},
+    {T_Ship.OShockBrig: T_Ship.OSiegeBrig},
+    {T_Ship.OLRTransport: T_Ship.OFTransport},
 ]
 
 
-{ShipType.MFregatArmored: ShipType.MFregatAssault} ->
+{T_Ship.MFregatArmored: T_Ship.MFregatAssault} ->
 {
-Resource.Iron: 10000,
-Resource.Titan: 2000,
-Resource.Gold: 1000,
-Resource.Osmium: 4000,
-Resource.Minerals:1000,
+T_Resource.Iron: 10000,
+T_Resource.Titan: 2000,
+T_Resource.Gold: 1000,
+T_Resource.Osmium: 4000,
+T_Resource.Minerals:1000,
 }
 

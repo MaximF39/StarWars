@@ -1,4 +1,4 @@
-from .BaseShop import BaseShop
+from .B_Shop import B_Shop
 
 class GeneticLab:
 

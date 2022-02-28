@@ -1,8 +1,6 @@
 from python.Packages.PackagesManager import PackagesManager
-from python.Static.Type.ServerRequest import ServerRequest
-from python.Static.Type.ObjectToReachType import ObjectToReachType
-from python.Static.Type.UpdateValueType import UpdateValueType
-from python.Static.Type.UpdateValueType import UpdateValueType
+from python.Static.Type.Package.T_ServerRequest import T_ServerRequest
+from python.Static.Type.Package.T_UpdateValue import T_UpdateValue
 
 class Packages:
 
@@ -11,108 +9,91 @@ class Packages:
         self.PacMan: PackagesManager = PackagesManager(Player)
 
     def init(self):
-        self.PacMan = self.Packages.PacMan
         self.send_entry_packages()
 
-    def locationSystem(self):
-        self.PacMan.locationSystem()
+    def message(self, Player, data):
+        self.PacMan.message(Player, data)
 
-    def locationPlanet(self):
-        self.PacMan.locationPlanet()
+    def SendPacMan(self, *PackagesNumber):
+        for PackageNumber in PackagesNumber:
+            self.PacMan.processPackages(PackageNumber)
 
-    def kill_weapon(self):
-        self.PacMan.locationSystem()
-
-    def kill_device(self):
-        self.PacMan.locationSystem()
-
-    def reset_skills(self):
-        self.PacMan.playerSkills()
+    def updateValues(self, *updateNumbers):
+        for updateNumber in updateNumbers:
+            print(updateNumber)
+            self.PacMan.updateValue(updateNumber)
 
     def send_entry_location(self):
-        entry_packs = (
-            ServerRequest.LOCATION_SYSTEM,
-            ServerRequest.ACTIVE_WEPONS,
-            ServerRequest.ACTIVE_DEVICES,
-            ServerRequest.CLAN,
-            ServerRequest.SHIPS_POSITION,
-            ServerRequest.SHIPS_STASE,
-            ServerRequest.HIDE_SHIP,
+        self.SendPacMan(
+            T_ServerRequest.LOCATION_SYSTEM,
+            T_ServerRequest.ACTIVE_WEPONS,
+            T_ServerRequest.ACTIVE_DEVICES,
+            T_ServerRequest.CLAN,
+            T_ServerRequest.SHIPS_POSITION,
+            T_ServerRequest.SHIPS_STASE,
+            T_ServerRequest.HIDE_SHIP,
         )
-        for pack in entry_packs:
-            self.PacMan.processPackages(pack)
 
     def send_entry_space_object(self):
-        pass
         entry_packs = ()
         for pack in entry_packs:
             self.PacMan.processPackages(pack)
 
-    def asteroids(self):
-        self.PacMan.asteroids()
-
     def send_entry_packages(self):
         self.__base_send_entry_packages()
-        if not self.SpaceObject:
-            self.send_entry_location()
-        else:
+        if hasattr(self, "SpaceObject"):
             self.send_entry_space_object()
+        else:
+            self.send_entry_location()
 
     def hyper_jump(self):
-        self.PacMan.shipsPosition()
-        self.PacMan.shipsState()
-        self.PacMan.ship()
-        self.PacMan.playerShip()
-        self.PacMan.locationSystem()
-        self.PacMan.activeDevices()
-        self.PacMan.activeWeapons()
+        self.PacMan(
+            T_ServerRequest.SHIPS_POSITION,
+            T_ServerRequest.SHIPS_STASE,
+            T_ServerRequest.SHIP,
+            T_ServerRequest.PLAYER_SHIP,
+            T_ServerRequest.LOCATION_SYSTEM,
+            T_ServerRequest.ACTIVE_DEVICES,
+            T_ServerRequest.ACTIVE_WEPONS,)
 
     def set_space_object(self):
         match self.Player.SpaceObject.__name__:
             case "DB_Planet" | "Hive" | "Repository":
-                self.PacMan.locationPlanet()
+                self.SendPacMan(T_ServerRequest.LOCATION_PLANET)
             case "AsteroidBelt":
-                self.PacMan.locationBattle()
+                self.SendPacMan(T_ServerRequest.LOCATION_PLANET)
             case "Portal":
-                self.Player.SpaceObject.set_player(self.Player)
-
-    def trading_items(self):
-        self.PacMan.tradingItems()
-
-    def change_ship(self):
-        self.PacMan.playerShip()
+                self.Player.SpaceObject._set_player(self.Player)
 
     def __base_send_entry_packages(self):
         entry_packs = (
-            ServerRequest.VERSION,
-            ServerRequest.ONLINE,
-            ServerRequest.TOP_LIST,
-            ServerRequest.TOP_CLANS_LIST,
-            ServerRequest.TOP_RATING_LIST,
-            ServerRequest.WEAPONS_PARAMETERS,
-            ServerRequest.AMMOS_PARAMETERS,
-            ServerRequest.RESOURCE_PARAMETERS,
-            ServerRequest.ENGINES_PARAMETERS,
-            ServerRequest.DEVICE_PARAMETERS,
-            ServerRequest.DROID_PARAMETERS,
-            ServerRequest.MAP,
-            ServerRequest.SHIP_PARAMETERS,
-            ServerRequest.LOGGED,
-            ServerRequest.PLAYER,
-            ServerRequest.PLAYER_SHIP,
-            ServerRequest.TO_GAME,
+            T_ServerRequest.VERSION,
+            T_ServerRequest.ONLINE,
+            T_ServerRequest.TOP_LIST,
+            T_ServerRequest.TOP_CLANS_LIST,
+            T_ServerRequest.TOP_RATING_LIST,
+            T_ServerRequest.WEAPONS_PARAMETERS,
+            T_ServerRequest.AMMOS_PARAMETERS,
+            T_ServerRequest.RESOURCE_PARAMETERS,
+            T_ServerRequest.ENGINES_PARAMETERS,
+            T_ServerRequest.DEVICE_PARAMETERS,
+            T_ServerRequest.DROID_PARAMETERS,
+            T_ServerRequest.MAP,
+            T_ServerRequest.SHIP_PARAMETERS,
+            T_ServerRequest.LOGGED,
+            T_ServerRequest.PLAYER,
+            T_ServerRequest.PLAYER_SHIP,
+            T_ServerRequest.TO_GAME,
         )
-        for pack in entry_packs:
-            self.PacMan.processPackages(pack)
+        self.SendPacMan(entry_packs)
 
-        update_value = (
-            (ServerRequest.UPDATE_VALUE, UpdateValueType.PlayerClanPoints),
-            (ServerRequest.UPDATE_VALUE, UpdateValueType.Bonuses),
-            (ServerRequest.UPDATE_VALUE, UpdateValueType.PlayerCash),
-            (ServerRequest.UPDATE_VALUE, UpdateValueType.ControlUsed),
-            (ServerRequest.UPDATE_VALUE, UpdateValueType.ControlLeft),
-            (ServerRequest.UPDATE_VALUE, UpdateValueType.HyperRadius),
-            (ServerRequest.UPDATE_VALUE, UpdateValueType.HyperCost),
+        update_values = (
+            T_UpdateValue.PlayerClanPoints,
+            T_UpdateValue.Bonuses,
+            T_UpdateValue.PlayerCash,
+            T_UpdateValue.ControlUsed,
+            T_UpdateValue.ControlLeft,
+            T_UpdateValue.HyperRadius,
+            T_UpdateValue.HyperCost,
         )
-        for pack in update_value:
-            self.PacMan.processPackages(*pack)
+        self.updateValues(*update_values)

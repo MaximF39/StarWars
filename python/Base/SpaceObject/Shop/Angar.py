@@ -1,6 +1,6 @@
-from .BaseShop import BaseShop
+from .B_Shop import B_Shop
 
-class Angar(BaseShop):
+class Angar(B_Shop):
 
     def open(self, Player:"DB_Player"):
-        Player.PacMan.playerAngar()
+        Player.SendPacMan.playerAngar()

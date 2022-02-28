@@ -1,14 +1,15 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-from DB_Table.DB_Player import DB_BasePlayer
-from DB_Table.DB_Player import DB_Skills
+from python.DataBase.DB_Table.DB_Player.DB_Player import db_player
+from python.DataBase.DB_Table.DB_Player.DB_Skills import db_skill
+from python.DataBase.DB_Table.DB_Clan.DB_Clan import db_clan
+from python.DataBase.DB_Table.DB_Items.DB_Items import db_item
+from python.DataBase.DB_Table.DB_Items.DB_AngarItems import db_angar
+from python.DataBase.DB_Table.engine import *
+
 
 def create_player():
-
-    player = DB_BasePlayer.DB_BasePlayer(
+    player = db_player(
         login="login",
-        passwd="passwd",
-        # clan=1,
+        password="passwd",
         cash=5000000,
         bonus=5000,
         locationId=7,
@@ -30,14 +31,8 @@ def create_player():
         # deleteEnqueued=
         # canDelete=
     )
-    send_commit(player)
-
-def create_clan():
-    clan = ClanDB(
-        leaderId=255,
-        clanId=1,
+    clan = db_clan(
         name='AdminClan',
-        leaderName='Admin',
         shortName='CLAN',
         description='description',
         level=1,
@@ -51,33 +46,34 @@ def create_clan():
         friends=str([]),
         logoFileName='',
     )
+    items = db_item(guid="2498jd32nd2",
+                    classNumber=4,
+                    where=1,
+                    wear=100,
+                    inUsing=False)
+    angar = db_angar(classNumbers=12)
+    skills = db_skill()
 
-    send_commit(clan)
+    player.clan = [clan]
+    player.skills = [skills]
+    player.angar = [angar]
+    player.items = [items]
 
-def send_commit(data):
-    s.add(data)
+    s.add(player)
+    s.add(clan)
+    s.add(skills)
+    s.add(items)
     s.commit()
 
-def drop_all():
-    Base = declarative_base()
-    Base.metadata.drop_all(engine)
 
-def init():
-    DB_BasePlayer.init()
-    DB_Skills.init()
+def create_tables():
+    db_player.__table__.create(engine)
+    db_skill.__table__.create(engine)
+    db_clan.__table__.create(engine)
+    db_angar.__table__.create(engine)
+    db_item.__table__.create(engine)
 
-if __name__ == '__main__':
-    host = "127.0.0.1"
-    db_name_user = "postgres"
-    db_passwd_user = "123"
-    db_name = "test_main"
-    port = 5432
 
-    debug = False
-    engine = create_engine(f"postgresql+psycopg2://{db_name_user}:{db_passwd_user}@{host}:{port}/{db_name}", echo=debug)
-    # init()
-    session = sessionmaker(bind=engine)
-    s = session()
-
-    # create_clan()
+def main():
+    create_tables()
     create_player()

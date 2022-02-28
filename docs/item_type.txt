@@ -1,7 +1,7 @@
 1 = Resources
-2 = Ammo
-3 = Engines
+2 = T_Ammo
+3 = T_Engine
 4 = Weapons
-5 = Devices
+5 = T_Device
 6 = Droids
 7 = Ships

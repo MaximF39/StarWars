@@ -1,11 +1,12 @@
-from python.Static.cfg.shops.inventory import get_default_items
-from python.Base.Inventory.BaseInventory import BaseInventory
+from python.Config.CFG_Shop.inventory import get_default_items
+from python.Base.Inventory.B_Inventory import B_Inventory
 
-class ShopItem(BaseInventory):
+class ShopItem(B_Inventory):
     race:int
-    Game:"Game"
+    Game:"StarWars"
 
     def __init__(self):
+        B_Inventory.__init__(self)
         self.default_shop = []
 
     def get_shop(self):
@@ -13,5 +14,5 @@ class ShopItem(BaseInventory):
 
     def init_items(self):
         for Item in get_default_items(race=self.race, OwnerClass=self, Game=self.Game):
-            BaseInventory.add_item(self, Item)
+            B_Inventory.add_item(self, Item)
             self.default_shop.append(Item.classNumber)

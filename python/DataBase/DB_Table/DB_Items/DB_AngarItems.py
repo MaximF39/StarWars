@@ -1,13 +1,11 @@
-from sqlalchemy import *
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, BigInteger, ForeignKey, SmallInteger, String, Text
+from python.DataBase.DB_Table.engine import Base
 
-Base = declarative_base()
+class db_angar(Base):
+    __tablename__ = 'db_angars'
 
+    id = Column(BigInteger, primary_key=True)
 
-class DB_AngarItems(Base):
-    __tablename__ = 'DB_AngarItems'
+    ownerId = Column(BigInteger, ForeignKey('db_players.id'))
 
-    id = Column(Integer, primary_key=True)
-    ownerId = Column(BigInteger, ForeignKey('DB_BasePlayer.id'), unique=True)
-
-    classNumber = Column(SmallInteger, nullable=False)
+    classNumbers = Column(SmallInteger, nullable=False)

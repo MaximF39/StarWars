@@ -1,7 +1,8 @@
-from python import Vacuum_Server
+from time import time
 
-def main():
-    Vacuum_Server.main()
-
+from python import Server
+from python.DataBase import SQL_test
+from python.DataBase.Database import DataBase
 if __name__ == "__main__":
-    main()
+    Server.main()
+    # SQL_test.main()

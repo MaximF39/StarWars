@@ -1,22 +1,25 @@
-from sqlalchemy import *
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, BigInteger, ForeignKey, String, SmallInteger, Integer, Text
 from sqlalchemy.orm import relationship
-from python.DataBase.DB_Table.engine import engine
-from python.Static.cfg.cfg_main import max_len_description_clan
-Base = declarative_base()
 
-class DB_Clan(Base):
-    __tablename__ = 'DB_Clan'
+from python.Config.CFG_Clan.cfg_db_clan import max_len_name_clan, max_len_short_name_clan, max_len_description_clan
+from ..engine import Base
+
+class db_clan(Base):
+    __tablename__ = 'db_clans'
 
     id = Column(BigInteger, primary_key=True)
+    leaderId = Column(BigInteger, ForeignKey('db_players.id'))
+    leaderName = Column(BigInteger, ForeignKey('db_players.login'))
 
-    leaderId = Column(BigInteger, nullable=False)
-    # leaderName = Column(String(name_len), nullable=False) #
-    name = Column(String(12), nullable=False)
-    shortName = Column(String(4), nullable=False)
-    description = Column(String(max_len_description_clan),  default='') # use Text
+    # members = relationship("db_player")
 
-    members = relationship("DB_BasePlayer", backref='members')
+    # leader = relationship("db_player", back_populates="clan", uselist=False)
+
+    name = Column(String(max_len_name_clan), nullable=False)
+    shortName = Column(String(max_len_short_name_clan), nullable=False)
+    description = Column(String(max_len_description_clan), default='')  # use Text
+
+    # members = relationship("DB_BasePlayer", backref='members')
 
     level = Column(SmallInteger, nullable=False)
     rating = Column(BigInteger, nullable=False)
@@ -32,5 +35,3 @@ class DB_Clan(Base):
     friends = Column(Text, default='[]')
 
     logoFileName = Column(Text, default='')
-
-Base.metadata.create_all(engine)

@@ -1,18 +1,18 @@
-from python.Static.cfg.cfg_main import cfg_main
-from python.Static.cfg.Player.cfg_cost_reset_skills import get_cost_reset_skills
+from python.Config.cfg_main import cfg_main
+from python.Config.CFG_Player.cfg_cost_reset_skills import get_cost_reset_skills
 from python.Static.ParseJson import parse_xml
 from python.Utils.DotMap import DotMap
-from python.Static.Type.ServerRequest import ServerRequest
+from python.Static.Type.Package.T_ServerRequest import T_ServerRequest
 from python.Packages.PackageCreator import PackageCreator
-from python.Static.cfg.shops.cfg_trading import cfg_trading
+from python.Config.CFG_Shop.cfg_trading import cfg_trading
 from ..DataBase.Database import DataBase
-from python.Static.cfg.cfg_main import cfg_const
-from ..SpaceObjects.Items.FakeShip import FakeShip
-from ..Static.cfg.cfg_upgrade_ship import cfg_upgrade
+from python.Config.cfg_main import cfg_const
+from python.Game.SpaceObjects.Items import FakeShip
+from python.Config.CFG_Shop.cfg_upgrade_ship import cfg_upgrade
 
 
 class PackagesManager:
-    def __init__(self, Player: "Player"):
+    def __init__(self, Player: "CFG_Player"):
         self.id = Player.id
         self.Game = Player.Game
         self.Player = Player
@@ -22,215 +22,205 @@ class PackagesManager:
     def isValidPackageLength(creator: int) -> bool:
         return 0 <= creator < 60000
 
-    def processPackages(self, _loc1_: ServerRequest, *args):
-        _loc2_: list = list()
+    def processPackages(self, _loc1_: T_ServerRequest, *args):
         match _loc1_:
-            case ServerRequest.SHIPS_POSITION:
+            case T_ServerRequest.SHIPS_POSITION:
                 return self.shipsPosition()
-            case ServerRequest.SHIPS_STASE:
+            case T_ServerRequest.SHIPS_STASE:
                 return self.shipsState()
-            case ServerRequest.MESSAGE:
+            case T_ServerRequest.MESSAGE:
                 return self.message()
-            case ServerRequest.PLAYER_SHIP_UPDATE:
+            case T_ServerRequest.PLAYER_SHIP_UPDATE:
                 return self.playerShipUpdate()
-            case ServerRequest.PLANETS_STATE:
+            case T_ServerRequest.PLANETS_STATE:
                 return self.planetsState()
-            case ServerRequest.PLANETS_UPDATE:
+            case T_ServerRequest.PLANETS_UPDATE:
                 return self.planetsUpdate()
-            case ServerRequest.REPOSITORY:
+            case T_ServerRequest.REPOSITORY:
                 return self.repository()
-            case ServerRequest.CLAN_REPOSITORY:
+            case T_ServerRequest.CLAN_REPOSITORY:
                 return self.clan_repository()
-            case ServerRequest.WEAPON_TROUBLES:
+            case T_ServerRequest.WEAPON_TROUBLES:
                 return self.weaponTroubles()
-            case ServerRequest.SHIP:
+            case T_ServerRequest.SHIP:
                 return self.ship()
-            case ServerRequest.SHOOTS:
+            case T_ServerRequest.SHOOTS:
                 return self.shoots()
-            case ServerRequest.ITEMS:
+            case T_ServerRequest.ITEMS:
                 return self.items()
-            case ServerRequest.ACTIVE_DEVICES:
+            case T_ServerRequest.ACTIVE_DEVICES:
                 return self.activeDevices()
-            case ServerRequest.ACTIVE_WEPONS:
+            case T_ServerRequest.ACTIVE_WEPONS:
                 return self.activeWeapons()
-            case ServerRequest.HIDE_SHIP:
+            case T_ServerRequest.HIDE_SHIP:
                 return self.hideShip()
-            case ServerRequest.SHIP_DESTROYED:
+            case T_ServerRequest.SHIP_DESTROYED:
                 return self.shipDestroyed()
-            case ServerRequest.SHIP_JUMPED:
+            case T_ServerRequest.SHIP_JUMPED:
                 return self.shipJumped()
-            case ServerRequest.PLANET:
+            case T_ServerRequest.PLANET:
                 return self.planet()
-            case ServerRequest.INVENTORY:
+            case T_ServerRequest.INVENTORY:
                 return self.inventory()
-            case ServerRequest.TRADING_ITEMS:
+            case T_ServerRequest.TRADING_ITEMS:
                 return self.tradingItems()
-            case ServerRequest.RESOURCE_UPDATE_INFO:
+            case T_ServerRequest.RESOURCE_UPDATE_INFO:
                 return self.resourceUpdate()
-            case ServerRequest.ASTEROIDS:
+            case T_ServerRequest.ASTEROIDS:
                 return self.asteroids()
-            case ServerRequest.EFFECT_CREATED:
+            case T_ServerRequest.EFFECT_CREATED:
                 return self.effectCreated()
-            case ServerRequest.LOCATION_PLANET:
+            case T_ServerRequest.LOCATION_PLANET:
                 return self.locationPlanet()
-            case ServerRequest.LOCATION_SYSTEM:
+            case T_ServerRequest.LOCATION_SYSTEM:
                 return self.locationSystem()
-            case ServerRequest.LOCATION_BATTLE:
+            case T_ServerRequest.LOCATION_BATTLE:
                 return self.locationBattle()
-            case ServerRequest.PLAYER:
+            case T_ServerRequest.PLAYER:
                 return self.player()
-            case ServerRequest.QUEST_MESSAGE:
+            case T_ServerRequest.QUEST_MESSAGE:
                 return self.questMessage()
-            case ServerRequest.PLAYER_SKILLS:
+            case T_ServerRequest.PLAYER_SKILLS:
                 return self.playerSkills()
-            case ServerRequest.PLAYER_SKILLS_DATA:
+            case T_ServerRequest.PLAYER_SKILLS_DATA:
                 return self.playerSkillsData()
-            case ServerRequest.PLAYER_SHIP:
+            case T_ServerRequest.PLAYER_SHIP:
                 return self.playerShip()
-            case ServerRequest.DROID_BUILDING_DIALOG:
+            case T_ServerRequest.DROID_BUILDING_DIALOG:
                 return self.droidBuildingDialog()
-            case ServerRequest.TRADING_SHIPS:
+            case T_ServerRequest.TRADING_SHIPS:
                 return self.tradingShips()
-            case ServerRequest.WEAPONS_PARAMETERS:
+            case T_ServerRequest.WEAPONS_PARAMETERS:
                 return self.weaponsParameters()
-            case ServerRequest.ENGINES_PARAMETERS:
+            case T_ServerRequest.ENGINES_PARAMETERS:
                 return self.engineParameters()
-            case ServerRequest.AMMOS_PARAMETERS:
+            case T_ServerRequest.AMMOS_PARAMETERS:
                 return self.ammoParameters()
-            case ServerRequest.RESOURCE_PARAMETERS:
+            case T_ServerRequest.RESOURCE_PARAMETERS:
                 return self.resourceParameters()
-            case ServerRequest.DEVICE_PARAMETERS:
+            case T_ServerRequest.DEVICE_PARAMETERS:
                 return self.deviceParameters()
-            case ServerRequest.DROID_PARAMETERS:
+            case T_ServerRequest.DROID_PARAMETERS:
                 return self.droidParameters()
-            case ServerRequest.SHIP_PARAMETERS:
+            case T_ServerRequest.SHIP_PARAMETERS:
                 return self.shipParameters()
-            case ServerRequest.LOGGED:
+            case T_ServerRequest.LOGGED:
                 return self.logged()
-            case ServerRequest.REACHABLE_SYSTEMS:
+            case T_ServerRequest.REACHABLE_SYSTEMS:
                 return self.reachableSystems()
-            case ServerRequest.SYSTEM_MESSAGE:
+            case T_ServerRequest.SYSTEM_MESSAGE:
                 return self.systemMessage()
-            case ServerRequest.LOG_MESSAGE:
+            case T_ServerRequest.LOG_MESSAGE:
                 return self.logMessage()
-            case ServerRequest.LOG_MESSAGE_STRING:
+            case T_ServerRequest.LOG_MESSAGE_STRING:
                 return self.logMessagestr()
-            case ServerRequest.SYSTEM_MESSAGE_STRING:
+            case T_ServerRequest.SYSTEM_MESSAGE_STRING:
                 return self.systemMessagestr()
-            case ServerRequest.MAP:
+            case T_ServerRequest.MAP:
                 return self.map()
-            case ServerRequest.QUESTS_JOURNAL:
+            case T_ServerRequest.QUESTS_JOURNAL:
                 return self.questsJournal()
-            case ServerRequest.ARENA_REQUESTS:
+            case T_ServerRequest.ARENA_REQUESTS:
                 return self.arenaRequests()
-            case ServerRequest.PLANET_QUESTS:
+            case T_ServerRequest.PLANET_QUESTS:
                 return self.planetQuests()
-            case ServerRequest.ADDITIONAL_QUEST_MESSAGE:
+            case T_ServerRequest.ADDITIONAL_QUEST_MESSAGE:
                 return self.additionalQuestMessage()
-            case ServerRequest.BATTLE_REQUEST_CHANGED:
+            case T_ServerRequest.BATTLE_REQUEST_CHANGED:
                 return self.battleRequestChanged()
-            case ServerRequest.TOP_LIST:
+            case T_ServerRequest.TOP_LIST:
                 return self.topList()
-            case ServerRequest.TOP_RATING_LIST:
+            case T_ServerRequest.TOP_RATING_LIST:
                 return self.topRatingList()
-            case ServerRequest.TOP_CLANS_LIST:
+            case T_ServerRequest.TOP_CLANS_LIST:
                 return self.topClansList()
-            case ServerRequest.NEWS_LIST:
+            case T_ServerRequest.NEWS_LIST:
                 return self.newsList()
-            case ServerRequest.ONLINE:
+            case T_ServerRequest.ONLINE:
                 return self.online()
-            case ServerRequest.VERSION:
+            case T_ServerRequest.VERSION:
                 return self.version()
-            case ServerRequest.SHIP_HEALTH:
+            case T_ServerRequest.SHIP_HEALTH:
                 return self.shipHealth()
-            case ServerRequest.NPC_MESSAGE:
+            case T_ServerRequest.NPC_MESSAGE:
                 return self.npcMessage()
-            case ServerRequest.UPDATE_HOLD:
+            case T_ServerRequest.UPDATE_HOLD:
                 return self.updateHold()
-            case ServerRequest.GINETIC_LAB_OPTIONS:
+            case T_ServerRequest.GINETIC_LAB_OPTIONS:
                 return self.gineticLabOptions()
-            case ServerRequest.CLAN:
+            case T_ServerRequest.CLAN:
                 return self.clan()
-            case ServerRequest.CHECK_VALUE_RESULT:
+            case T_ServerRequest.CHECK_VALUE_RESULT:
                 return self.checkValueResult()
-            case ServerRequest.ACCEPTED_CLAN_INFO:
+            case T_ServerRequest.ACCEPTED_CLAN_INFO:
                 return self.acceptedClanInfo()
-            case ServerRequest.clanId:
+            case T_ServerRequest.clanId:
                 return self.clanId()
-            case ServerRequest.CLANS_LETTERS:
+            case T_ServerRequest.CLANS_LETTERS:
                 return self.clansLetters()
-            case ServerRequest.CLANS_LIST:
+            case T_ServerRequest.CLANS_LIST:
                 return self.clansList()
-            case ServerRequest.CLAN_JOIN_REQUESTS:
+            case T_ServerRequest.CLAN_JOIN_REQUESTS:
                 return self.clanJoinRequests()
-            case ServerRequest.PLAYER_INFO:
+            case T_ServerRequest.PLAYER_INFO:
                 return self.playerInfo()
-            case ServerRequest.PLAYER_LOGGED_ON:
+            case T_ServerRequest.PLAYER_LOGGED_ON:
                 return self.playerLoggedOn()
-            case ServerRequest.PLAYER_LOGGED_OFF:
+            case T_ServerRequest.PLAYER_LOGGED_OFF:
                 return self.playerLoggedOff()
-            case ServerRequest.PLAYER_CLAN:
+            case T_ServerRequest.PLAYER_CLAN:
                 return self.playerClan()
-            case ServerRequest.FRIEND_CLANS:
+            case T_ServerRequest.FRIEND_CLANS:
                 return self.friendClans()
-            case ServerRequest.ENEMY_CLANS:
+            case T_ServerRequest.ENEMY_CLANS:
                 return self.enemyClans()
-            case ServerRequest.UPDATE_VALUE:
+            case T_ServerRequest.UPDATE_VALUE:
                 return self.updateValue(*args)
-            case ServerRequest.FRIEND_REQUESTS:
+            case T_ServerRequest.FRIEND_REQUESTS:
                 return self.friendRequests()
-            case ServerRequest.DROID_EVENT:
+            case T_ServerRequest.DROID_EVENT:
                 return self.droidEvent()
-            case ServerRequest.EFFECT_REMOVED:
+            case T_ServerRequest.EFFECT_REMOVED:
                 return self.effectRemoved()
-            case ServerRequest.MISSIONS:
+            case T_ServerRequest.MISSIONS:
                 return self.missions()
-            case ServerRequest.TO_GAME:
+            case T_ServerRequest.TO_GAME:
                 return self.toGame()
-            case ServerRequest.PLAYER_ANGAR:
+            case T_ServerRequest.PLAYER_ANGAR:
                 return self.playerAngar()
-            case ServerRequest.TRADE_INVITATION:
+            case T_ServerRequest.TRADE_INVITATION:
                 return self.tradeInvitation()
-            case ServerRequest.SHOW_TRADING:
+            case T_ServerRequest.SHOW_TRADING:
                 return self.showTrading()
-            case ServerRequest.TRADING_CASH:
+            case T_ServerRequest.TRADING_CASH:
                 return self.tradingCash()
-            case ServerRequest.TRADE_SELL_ITEMS:
+            case T_ServerRequest.TRADE_SELL_ITEMS:
                 return self.tradeSellItems()
-            case ServerRequest.EVIL:
+            case T_ServerRequest.EVIL:
                 return self.Evil()
-            case ServerRequest.TRADE_ACCEPTED:
+            case T_ServerRequest.TRADE_ACCEPTED:
                 return self.tradeAccept()
-            case ServerRequest.TRADE_BUY_ITEMS:
+            case T_ServerRequest.TRADE_BUY_ITEMS:
                 return self.tradeBuyItems()
-            case ServerRequest.FINISH_TRADING:
+            case T_ServerRequest.FINISH_TRADING:
                 return self.finishTrading()
-            case ServerRequest.SHIP_UPDATE_INFO:
+            case T_ServerRequest.SHIP_UPDATE_INFO:
                 return self.shipUpdateInfo()
-            case ServerRequest.TEAM_LIST:
+            case T_ServerRequest.TEAM_LIST:
                 return self.teamList()
 
-    def tradingCash(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TRADING_CASH
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TRADING_CASH))
-        creator.write_int(5)
+    def tradingCash(self, cash):
+        creator = PackageCreator(T_ServerRequest.TRADING_CASH)
+        creator.write_int(cash)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def tradeAccept(self, accept: bool):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TRADE_ACCEPTED
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TRADE_ACCEPTED))
+        creator = PackageCreator(T_ServerRequest.TRADE_ACCEPTED)
         creator.write_bool(accept)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def shipUpdateInfo(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHIP_UPDATE_INFO
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHIP_UPDATE_INFO))
+        creator = PackageCreator(T_ServerRequest.SHIP_UPDATE_INFO)
         _loc6_ = DotMap(FakeShip(self.Game, self.Player.ship['classNumber']).ship)
         creator.write_short(_loc6_.classNumber)
         creator.write_short(_loc6_.size)
@@ -297,10 +287,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def finishTrading(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.FINISH_TRADING
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.FINISH_TRADING))
+        creator = PackageCreator(T_ServerRequest.FINISH_TRADING)
         _loc2_ = 0
         creator.write_int(_loc2_)
         self._write_items(creator, True, False, False)
@@ -310,26 +297,17 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def tradeSellItems(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TRADE_SELL_ITEMS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TRADE_SELL_ITEMS))
-        self._write_items(creator, True, True)
+        creator = PackageCreator(T_ServerRequest.TRADE_SELL_ITEMS)
+        self._write_items(creator, self.Player.inventory, True, True)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def tradeBuyItems(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TRADE_BUY_ITEMS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TRADE_BUY_ITEMS))
+        creator = PackageCreator(T_ServerRequest.TRADE_BUY_ITEMS)
         self._write_items(creator, True, True)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerAngar(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_ANGAR
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_ANGAR))
+        creator = PackageCreator(T_ServerRequest.PLAYER_ANGAR)
         angar = self.Player.angar
         creator.write_unsigned_byte(len(angar))
         for FakeShip in angar:
@@ -363,10 +341,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def updateHold(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.UPDATE_HOLD
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.UPDATE_HOLD))
+        creator = PackageCreator(T_ServerRequest.UPDATE_HOLD)
         update_hold = bool()
         creator.write_bool(update_hold)
         self._write_items(creator, True, True, True, update_hold)
@@ -374,10 +349,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def gineticLabOptions(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.GINETIC_LAB_OPTIONS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.GINETIC_LAB_OPTIONS))
+        creator = PackageCreator(T_ServerRequest.GINETIC_LAB_OPTIONS)
         count = 1
         creator.write_unsigned_byte(count)
         # for i in data:
@@ -386,19 +358,13 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def npcMessage(self, text=4, avatar=2001):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.NPC_MESSAGE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.NPC_MESSAGE))
+        creator = PackageCreator(T_ServerRequest.NPC_MESSAGE)
         creator.write_int(text)  # message SystemMessageType
         creator.write_int(avatar)  # avatar
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def additionalQuestMessage(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ADDITIONAL_QUEST_MESSAGE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ADDITIONAL_QUEST_MESSAGE))
+        creator = PackageCreator(T_ServerRequest.ADDITIONAL_QUEST_MESSAGE)
         _loc2_: int = 0
         _loc3_: int = 0
         creator.write_int(_loc2_)
@@ -406,10 +372,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def arenaRequests(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ARENA_REQUESTS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ARENA_REQUESTS))
+        creator = PackageCreator(T_ServerRequest.ARENA_REQUESTS)
         data = []
         creator.write_int(len(data))
         _loc5_: int = 0
@@ -424,10 +387,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def battleRequestChanged(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.BATTLE_REQUEST_CHANGED
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.BATTLE_REQUEST_CHANGED))
+        creator = PackageCreator(T_ServerRequest.BATTLE_REQUEST_CHANGED)
         _loc3_ = DotMap()
         creator.write_int(_loc3_.id)
         creator.write_int(_loc3_.playersCount)
@@ -448,10 +408,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def questsJournal(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.QUESTS_JOURNAL
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.QUESTS_JOURNAL))
+        creator = PackageCreator(T_ServerRequest.QUESTS_JOURNAL)
         data = []
         creator.write_int(len(data))
         _loc5_: int = 0
@@ -464,10 +421,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def activeDevices(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ACTIVE_DEVICES
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ACTIVE_DEVICES))
+        creator = PackageCreator(T_ServerRequest.ACTIVE_DEVICES)
         data_active_device = self.Player.activeDevices
         creator.write_unsigned_byte(len(data_active_device))
         for _loc3_ in data_active_device:
@@ -477,10 +431,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def activeWeapons(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ACTIVE_WEPONS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ACTIVE_WEPONS))
+        creator = PackageCreator(T_ServerRequest.ACTIVE_WEPONS)
         activeWeapons = self.Player.activeWeapons
         creator.write_unsigned_byte(len(activeWeapons))
         print('activeWeapons', activeWeapons)
@@ -490,10 +441,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerShipUpdate(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_SHIP_UPDATE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_SHIP_UPDATE))
+        creator = PackageCreator(T_ServerRequest.PLAYER_SHIP_UPDATE)
         creator.write_short(self.Player.energy)
         creator.write_short(self.Player.health)
         creator.write_unsigned_byte(self.Player.controlLeft)
@@ -501,18 +449,15 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def tradingShips(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TRADING_SHIPS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TRADING_SHIPS))
+        creator = PackageCreator(T_ServerRequest.TRADING_SHIPS)
 
         data = self.Player.SpaceObject.ships
 
         creator.write_int(self.Player.ship['classNumber'])  # ship.id)  # id
         creator.write_int(self.Player.ship['cost'])  # ship.cost)  # ship cost
 
-        creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_buy)  # ship.buy_coef)  # buyCoeficient
-        creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_sell)  # ship.sell_coef)  # sellCoeficient
+        creator.write_float(cfg_trading(self.Player.skills['E_Trade']).coef_buy)  # ship.buy_coef)  # buyCoeficient
+        creator.write_float(cfg_trading(self.Player.skills['E_Trade']).coef_sell)  # ship.sell_coef)  # sellCoeficient
 
         creator.write_int(len(data))
 
@@ -548,16 +493,13 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def tradingItems(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TRADING_ITEMS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TRADING_ITEMS))
+        creator = PackageCreator(T_ServerRequest.TRADING_ITEMS)
         Planet = self.Player.SpaceObject
 
         creator.write_int(1)  # type shop
 
-        creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_sell)  # sellCoeficient
-        creator.write_float(cfg_trading(self.Player.skills['Trading']).coef_buy)  # buyCoeficient
+        creator.write_float(cfg_trading(self.Player.skills['E_Trade']).coef_sell)  # sellCoeficient
+        creator.write_float(cfg_trading(self.Player.skills['E_Trade']).coef_buy)  # buyCoeficient
 
         self._write_items(creator, self.Player.inventory, True, True, True, True)
 
@@ -565,10 +507,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def resourceUpdate(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.RESOURCE_UPDATE_INFO
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.RESOURCE_UPDATE_INFO))
+        creator = PackageCreator(T_ServerRequest.RESOURCE_UPDATE_INFO)
         creator.write_int(1)  # self.PlayerItems.id)  # id
         self._write_items(creator, self.Player.inventory, True, True)
         self._write_items(creator, self.Player.inventory, True, True)
@@ -576,7 +515,6 @@ class PackagesManager:
 
     def _write_items(self, creator: PackageCreator, items, param2: bool, param3: bool, param4: bool = True,
                      param5: bool = False) -> None:
-
         creator.write_int(len(items))
         for item in items:
             creator.write_int(item.classNumber)
@@ -593,10 +531,7 @@ class PackagesManager:
 
     def shipsPosition(self):
         """ id, x, y, targetX, targetY """
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHIPS_POSITION
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHIPS_POSITION))
+        creator = PackageCreator(T_ServerRequest.SHIPS_POSITION)
         players = self.Location.players
         creator.write_int(len(players))
         for player in players:
@@ -608,10 +543,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def shipsState(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHIPS_STASE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHIPS_STASE))
+        creator = PackageCreator(T_ServerRequest.SHIPS_STASE)
         players = self.Location.players
         for _loc2_ in players:
             creator.write_int(_loc2_.id)
@@ -622,10 +554,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def weaponTroubles(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.WEAPON_TROUBLES
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.WEAPON_TROUBLES))
+        creator = PackageCreator(T_ServerRequest.WEAPON_TROUBLES)
         data = []
         creator.write_unsigned_byte(len(data))
         for trouble in data:
@@ -635,16 +564,12 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def repository(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.REPOSITORY
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.REPOSITORY))
+        creator = PackageCreator(T_ServerRequest.REPOSITORY)
 
         self._write_items(creator, self.Player.repository, False, False)
 
         creator.write_float(1.0)  # costCoef _loc4_.costCoef # проверить пакет хранилища
         data = self.Player.inventory
-        print('data', data)
         creator.write_int(len(data))
         for _loc2_ in data:
             creator.write_int(_loc2_.classNumber)
@@ -655,10 +580,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def clan_repository(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.CLAN_REPOSITORY
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.CLAN_REPOSITORY))
+        creator = PackageCreator(T_ServerRequest.CLAN_REPOSITORY)
         items = self.Player.Clan.repository
         self._write_items(creator, items, False, False)
         creator.write_float(1)  # _loc4_.costCoef)
@@ -674,10 +596,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def planetsState(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLANETS_STATE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLANETS_STATE))
+        creator = PackageCreator(T_ServerRequest.PLANETS_STATE)
         data = []
         creator.write_unsigned_byte(len(data))
         for i in data:
@@ -687,10 +606,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def planetsUpdate(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLANETS_UPDATE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLANETS_UPDATE))
+        creator = PackageCreator(T_ServerRequest.PLANETS_UPDATE)
         data = []
         creator.write_unsigned_byte(len(data))
         for i in data:
@@ -703,10 +619,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def ship(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHIP
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHIP))
+        creator = PackageCreator(T_ServerRequest.SHIP)
         _loc3_ = self.Player
         creator.write_short(_loc3_.race)
         creator.write_int(_loc3_.id)
@@ -735,10 +648,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def planet(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLANET
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLANET))
+        creator = PackageCreator(T_ServerRequest.PLANET)
         creator.write_bytes(self.Player.SpaceObject.classNumber)
         creator.write_int(self.Player.SpaceObject.id)
         creator.write_unsigned_byte(self.Player.SpaceObject.race)
@@ -749,10 +659,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def inventory(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.INVENTORY
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.INVENTORY))
+        creator = PackageCreator(T_ServerRequest.INVENTORY)
         inventory = self.Player.inventory
         _loc5_: int = creator.write_short(len(inventory))
         for ItemClass in inventory:
@@ -773,15 +680,12 @@ class PackagesManager:
 
         # for i in data: # Какие-то дополнительные предметы
         #     _loc2_ = DotMap(i)
-        #     creator.write_short(_loc2_.ItemClass)
+        #     creator.write_short(_loc2_.T_Item)
         #     creator.write_bytes(_loc2_.id)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def player(self, mode=False):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER))
+        creator = PackageCreator(T_ServerRequest.PLAYER)
 
         creator.write_int(self.Player.id)
         creator.write_utf(self.Player.login)
@@ -798,10 +702,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def questMessage(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.QUEST_MESSAGE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.QUEST_MESSAGE))
+        creator = PackageCreator(T_ServerRequest.QUEST_MESSAGE)
         quest = DotMap()
         creator.write_int(quest.questId)
         creator.write_int(quest.nextQuestId)
@@ -836,10 +737,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerSkills(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_SKILLS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_SKILLS))
+        creator = PackageCreator(T_ServerRequest.PLAYER_SKILLS)
         Player = getattr(self.Game, f"Player_{self.id}")
         creator.write_unsigned_byte(Player.level)
         creator.write_int(Player.experience)
@@ -873,7 +771,7 @@ class PackagesManager:
         creator.write_unsigned_byte(param2["Piloting"])
         creator.write_unsigned_byte(param2["Repairing"])
         creator.write_unsigned_byte(param2["RocketWeapons"])
-        creator.write_unsigned_byte(param2["Trading"])
+        creator.write_unsigned_byte(param2["E_Trade"])
         creator.write_unsigned_byte(param2["Attacking"])
         creator.write_unsigned_byte(param2["Tactics"])
         creator.write_unsigned_byte(param2["Targeting"])
@@ -883,10 +781,7 @@ class PackagesManager:
         creator.write_unsigned_byte(param2["Cybernetics"])
 
     def playerSkillsData(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_SKILLS_DATA
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_SKILLS_DATA))
+        creator = PackageCreator(T_ServerRequest.PLAYER_SKILLS_DATA)
         Player = getattr(self.Game, f"Player_{self.id}")
         creator.write_unsigned_byte(Player.level)
         creator.write_int(Player.experience)
@@ -904,10 +799,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerShip(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_SHIP
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_SHIP))
+        creator = PackageCreator(T_ServerRequest.PLAYER_SHIP)
 
         creator.write_int(self.Player.ship['classNumber'])  # raca
         creator.write_int(self.Player.id)
@@ -927,10 +819,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def weaponsParameters(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.WEAPONS_PARAMETERS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.WEAPONS_PARAMETERS))
+        creator = PackageCreator(T_ServerRequest.WEAPONS_PARAMETERS)
         data_weapons = parse_xml("WeaponParameters")
         creator.write_int(len(data_weapons))
         for weapon in data_weapons:
@@ -950,8 +839,8 @@ class PackagesManager:
             creator.write_unsigned_byte(_loc2_.effect)
             creator.write_int(_loc2_.maxWear)
             restr = _loc2_.restrictions
-            creator.write_unsigned_byte(restr['Length'])
-            for rest in restr['data']:
+            creator.write_unsigned_byte(len(restr))
+            for rest in restr:
                 _loc5_ = DotMap(rest)
                 creator.write_unsigned_byte(_loc5_.type)
                 creator.write_unsigned_byte(_loc5_.valueType)
@@ -959,10 +848,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def ammoParameters(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.AMMOS_PARAMETERS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.AMMOS_PARAMETERS))
+        creator = PackageCreator(T_ServerRequest.AMMOS_PARAMETERS)
         data_ammo = parse_xml("AmmoParameters")
         creator.write_int(len(data_ammo))
         for ammo in data_ammo:
@@ -974,10 +860,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def resourceParameters(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.RESOURCE_PARAMETERS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.RESOURCE_PARAMETERS))
+        creator = PackageCreator(T_ServerRequest.RESOURCE_PARAMETERS)
         data_resourse = parse_xml('ResourseParameters')
         creator.write_int(len(data_resourse))
         for resourse in data_resourse:
@@ -988,10 +871,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def deviceParameters(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.DEVICE_PARAMETERS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.DEVICE_PARAMETERS))
+        creator = PackageCreator(T_ServerRequest.DEVICE_PARAMETERS)
         data_device = parse_xml("DeviceParameters")
         creator.write_int(len(data_device))
         for device in data_device:
@@ -1003,9 +883,9 @@ class PackagesManager:
             creator.write_int(_loc4_.reloadTime)
             creator.write_int(_loc4_.maxWear)
 
-            cnt_dev_eff = _loc4_.effects['Length']
+            cnt_dev_eff = len(_loc4_.effects)
             creator.write_unsigned_byte(cnt_dev_eff)
-            data_dev_eff = _loc4_.effects['data']
+            data_dev_eff = _loc4_.effects
             for dev_eff in data_dev_eff:
                 _loc3_ = DotMap(dev_eff)  # DeviceEffect()
                 creator.write_unsigned_byte(_loc3_.targetType)
@@ -1015,7 +895,7 @@ class PackagesManager:
 
             cnt_dev_restr = _loc4_.restrictions['Length']
             creator.write_unsigned_byte(cnt_dev_restr)
-            data_dev_restr = _loc4_.restrictions["data"]
+            data_dev_restr = _loc4_.restrictions
             for restr in data_dev_restr:
                 _loc8_ = DotMap(restr)  # Restriction()
                 creator.write_unsigned_byte(_loc8_.type)
@@ -1024,10 +904,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def droidParameters(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.DROID_PARAMETERS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.DROID_PARAMETERS))
+        creator = PackageCreator(T_ServerRequest.DROID_PARAMETERS)
         data_droids = parse_xml("DroidParameters")
         creator.write_int(len(data_droids))
         for droid_param in data_droids:
@@ -1040,9 +917,9 @@ class PackagesManager:
             creator.write_short(_loc2_.droidType)
             creator.write_short(_loc2_.weaponClass)
             creator.write_short(_loc2_.health)
-            cnt_restr = _loc2_.restrictions['Length']
+            cnt_restr = len(_loc2_.restrictions)
             creator.write_unsigned_byte(cnt_restr)
-            data_restr = _loc2_.restrictions['data']
+            data_restr = _loc2_.restrictions
             for restr in data_restr:
                 _loc5_ = DotMap(restr)  # Restriction()
                 creator.write_unsigned_byte(_loc5_.type)
@@ -1051,10 +928,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def shipParameters(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHIP_PARAMETERS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHIP_PARAMETERS))
+        creator = PackageCreator(T_ServerRequest.SHIP_PARAMETERS)
         data_ship = parse_xml('ShipParameters')
         creator.write_int(len(data_ship))
         for ship in data_ship:
@@ -1071,17 +945,17 @@ class PackagesManager:
             creator.write_short(_loc2_.cpu)
             creator.write_short(_loc2_.radar)
             creator.write_unsigned_byte(_loc2_.maxSpeed)
-            cnt_restr = _loc2_.restrictions['Length']
+            cnt_restr = len(_loc2_.restrictions)
             creator.write_unsigned_byte(cnt_restr)
-            data_restr = _loc2_.restrictions['data']
+            data_restr = _loc2_.restrictions
             for restr in data_restr:
                 _loc7_ = DotMap(restr)
                 creator.write_unsigned_byte(_loc7_.type)
                 creator.write_unsigned_byte(_loc7_.valueType)
                 creator.write_int(_loc7_.Value)
-            cnt_ship_feat = _loc2_.features['Length']
+            cnt_ship_feat = len(_loc2_.features)
             creator.write_unsigned_byte(cnt_ship_feat)
-            data_ship_feat = _loc2_.features['data']
+            data_ship_feat = _loc2_.features
             for ship_feat in data_ship_feat:
                 _loc8_ = DotMap(ship_feat)
                 creator.write_unsigned_byte(_loc8_.type)
@@ -1089,10 +963,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def engineParameters(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ENGINES_PARAMETERS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ENGINES_PARAMETERS))
+        creator = PackageCreator(T_ServerRequest.ENGINES_PARAMETERS)
         data_engine = parse_xml("EngineParameters")
         creator.write_int(len(data_engine))
         for engine_ in data_engine:
@@ -1106,10 +977,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def map(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.MAP
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.MAP))
+        creator = PackageCreator(T_ServerRequest.MAP)
         data_system = parse_xml('GalaxyMap')
         creator.write_short(len(data_system))
         for system in data_system:
@@ -1120,18 +988,18 @@ class PackagesManager:
             creator.write_short(_loc2_.y)
             creator.write_unsigned_byte(_loc2_.sector)
             creator.write_unsigned_byte(_loc2_.lineTo)
-            cnt_planet = _loc2_.Planets['Length']
+            cnt_planet = len(_loc2_.Planets)
             creator.write_unsigned_byte(cnt_planet)
-            data_planet = _loc2_.Planets['data']
+            data_planet = _loc2_.Planets
             for planet in data_planet:
                 planet = DotMap(planet)  # PlanetData()
                 creator.write_short(planet.id)
                 creator.write_unsigned_byte(planet.race)
                 creator.write_unsigned_byte(planet.classNumber)
                 creator.write_unsigned_byte(planet.aliance)
-            cnt_space_objects = _loc2_.SpaceObjects['Length']
+            cnt_space_objects = len(_loc2_.SpaceObjects)
             creator.write_unsigned_byte(cnt_space_objects)
-            data_space_objects = _loc2_.SpaceObjects['data']
+            data_space_objects = _loc2_.SpaceObjects
             for static_space_object in data_space_objects:
                 static_space_object = DotMap(static_space_object)  # StaticObjectData()
                 creator.write_unsigned_byte(static_space_object.type)
@@ -1140,10 +1008,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def reachableSystems(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.REACHABLE_SYSTEMS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.REACHABLE_SYSTEMS))
+        creator = PackageCreator(T_ServerRequest.REACHABLE_SYSTEMS)
         data_system = []
         creator.write_unsigned_byte(len(data_system))
         for system in data_system:
@@ -1158,37 +1023,25 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def version(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.VERSION
+        creator = PackageCreator(T_ServerRequest.VERSION)
         version = cfg_main['version']
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.VERSION))
         creator.write_utf(version)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def shipHealth(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHIP_HEALTH
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHIP_HEALTH))
+        creator = PackageCreator(T_ServerRequest.SHIP_HEALTH)
         creator.write_int(self.Player.id)
         creator.write_int(self.Player.health)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def online(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ONLINE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ONLINE))
+        creator = PackageCreator(T_ServerRequest.ONLINE)
         creator.write_int(1)
         creator.write_int(self.Game.online)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def topList(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TOP_LIST
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TOP_LIST))
+        creator = PackageCreator(T_ServerRequest.TOP_LIST)
         all_player = DataBase().top_list()
 
         creator.write_int(len(all_player))
@@ -1202,10 +1055,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def topRatingList(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TOP_RATING_LIST
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TOP_RATING_LIST))
+        creator = PackageCreator(T_ServerRequest.TOP_RATING_LIST)
         top_players = DataBase().top_rating_list()
         creator.write_int(len(top_players))
         for player in top_players:
@@ -1218,10 +1068,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def topClansList(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TOP_CLANS_LIST
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TOP_CLANS_LIST))
+        creator = PackageCreator(T_ServerRequest.TOP_CLANS_LIST)
         clans = DataBase().top_clan_list()
         creator.write_int(len(clans))
         print('clan', clans)
@@ -1238,15 +1085,14 @@ class PackagesManager:
 
         #
         # def auctionList(self):
-        #     creator = PackageCreator()
-        #     creator.PackageNumber = ServerRequest.AUCTION_SHOP_PACKAGE
-        # Pac = ServerRequest()
-        # print('Пакет отправлен', Pac.get_packages(ber = ServerRequest))
+        #     creator = PackageCreator(T_ServerRequest.AUCTION_SHOP_PACKAGE )
+        # T_ServerRequest() = T_ServerRequest()
+
         #     data = []
         #     creator.write_int(len(data))
         #     for i in data:
         #         _loc3_ = DotMap(i)
-        #         creator.write_int(_loc2_.ItemClass)
+        #         creator.write_int(_loc2_.T_Item)
         #         creator.write_guid(_loc3_.guid)
         #         creator.write_int(_loc3_.wear)
         #         creator.write_int(_loc3_.ownerid)
@@ -1255,13 +1101,10 @@ class PackagesManager:
         #         creator.write_int(_loc3_.lastPlayerID)
         #         creator.write_utf(_loc3_.ownerName)
         #         creator.write_utf(_loc3_.lastPlayerName)
-        #     self.Game.id_to_conn[self.id].send(creator.read_package())
+        #     self.StarWars.id_to_conn[self.id].send(creator.read_package())
 
     def newsList(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.NEWS_LIST
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.NEWS_LIST))
+        creator = PackageCreator(T_ServerRequest.NEWS_LIST)
         data = []
         creator.write_int(len(data))
         for text in data:
@@ -1269,19 +1112,13 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def Evil(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.EVIL
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.EVIL))
+        creator = PackageCreator(T_ServerRequest.EVIL)
         _loc2_ = ''
         creator.write_utf(_loc2_)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def locationPlanet(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.LOCATION_PLANET
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.LOCATION_PLANET))
+        creator = PackageCreator(T_ServerRequest.LOCATION_PLANET)
 
         player = getattr(self.Game, f'Player_{self.id}')
         SpaceObject = player.SpaceObject
@@ -1289,7 +1126,7 @@ class PackagesManager:
         creator.write_unsigned_byte(SpaceObject.classNumber)
         creator.write_int(SpaceObject.id)
         creator.write_unsigned_byte(SpaceObject.race)
-        creator.write_int(9999)#SpaceObjectItems.RADIUS)
+        creator.write_int(9999)#SpaceObjectItems.RADIUS_BETWEEN_PLANET)
         creator.write_int(SpaceObject.size)
         creator.write_unsigned_byte(SpaceObject.aliance)
         creator.write_int(SpaceObject.clanId)
@@ -1313,10 +1150,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def planetQuests(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLANET_QUESTS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLANET_QUESTS))
+        creator = PackageCreator(T_ServerRequest.PLANET_QUESTS)
         data = []
         creator.write_short(len(data))
         for quest in data:
@@ -1328,14 +1162,11 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def locationSystem(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.LOCATION_SYSTEM
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.LOCATION_SYSTEM))
+        creator = PackageCreator(T_ServerRequest.LOCATION_SYSTEM)
         Location = self.Player.Location
         creator.write_int(Location.id)  # id
-        creator.write_float(Location.x)  # Location.x
-        creator.write_float(Location.y)  # Location.y
+        creator.write_float(Location.map_x)  # Location.x
+        creator.write_float(Location.map_y)  # Location.y
         creator.write_unsigned_byte(Location.sector)  # Location.sector
         creator.write_short(len(Location.players))
         for Player in Location.players:
@@ -1369,7 +1200,7 @@ class PackagesManager:
             creator.write_unsigned_byte(planet.classNumber)
             creator.write_int(planet.id)
             creator.write_unsigned_byte(planet.race)
-            creator.write_int(planet.RADIUS)
+            creator.write_int(planet.RADIUS_BETWEEN_PLANET)
             creator.write_int(planet.size)
             creator.write_float(planet.angle)
             creator.write_bool(planet.landable)
@@ -1386,10 +1217,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def locationBattle(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.LOCATION_BATTLE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.LOCATION_BATTLE))
+        creator = PackageCreator(T_ServerRequest.LOCATION_BATTLE)
 
         creator.write_int(self.Player.id)
         creator.write_float(self.Player.x)
@@ -1420,10 +1248,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def shoots(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHOOTS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHOOTS))
+        creator = PackageCreator(T_ServerRequest.SHOOTS)
         data = []
         creator.write_short(len(data))
         for i in data:
@@ -1442,10 +1267,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def items(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ITEMS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ITEMS))
+        creator = PackageCreator(T_ServerRequest.ITEMS)
         for item_ in self.Location.inventory:
             creator.write_int(self.Location.id)
             creator.write_short(item_.classNumber)
@@ -1454,10 +1276,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def message(self, Player, data: dict):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.MESSAGE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.MESSAGE))
+        creator = PackageCreator(T_ServerRequest.MESSAGE)
         _loc2_ = DotMap({
             "from_player": Player.login,
             "text": data["text"],
@@ -1473,10 +1292,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def asteroids(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ASTEROIDS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ASTEROIDS))
+        creator = PackageCreator(T_ServerRequest.ASTEROIDS)
         for asteroid in self.Player.SpaceObject.asteroids:
             creator.write_int(asteroid.id)
             creator.write_float(asteroid.x)
@@ -1488,10 +1304,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def effectCreated(self, effect_type):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.EFFECT_CREATED
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.EFFECT_CREATED))
+        creator = PackageCreator(T_ServerRequest.EFFECT_CREATED)
         creator.write_int(self.Player.id)
         effects = self.Player.effects
         creator.write_unsigned_byte(len(effects))
@@ -1508,39 +1321,26 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def effectRemoved(self, effect_type):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.EFFECT_REMOVED
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.EFFECT_REMOVED))
+        creator = PackageCreator(T_ServerRequest.EFFECT_REMOVED)
         creator.write_int(self.Player.id)
         creator.write_unsigned_byte(effect_type)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def logMessage(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.LOG_MESSAGE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.LOG_MESSAGE))
+        creator = PackageCreator(T_ServerRequest.LOG_MESSAGE)
         _loc2_: int = 0
         _loc3_: int = 0
         creator.write_int(_loc2_)
         creator.write_int(_loc3_)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
-    def logMessagestr(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.LOG_MESSAGE_STRING
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.LOG_MESSAGE_STRING))
-        _loc2_: str = ''
-        creator.write_utf(_loc2_)
+    def logMessagestr(self, str_:str):
+        creator = PackageCreator(T_ServerRequest.LOG_MESSAGE_STRING)
+        creator.write_utf(str_)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def systemMessage(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SYSTEM_MESSAGE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SYSTEM_MESSAGE))
+        creator = PackageCreator(T_ServerRequest.SYSTEM_MESSAGE)
         _loc2_ = 6
         _loc3_ = 5
         creator.write_int(_loc2_)  # SystemMessageType
@@ -1548,19 +1348,13 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def systemMessagestr(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SYSTEM_MESSAGE_STRING
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SYSTEM_MESSAGE_STRING))
+        creator = PackageCreator(T_ServerRequest.SYSTEM_MESSAGE_STRING)
         _loc2_: str = ''
         creator.write_utf(_loc2_)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def droidBuildingDialog(self, droid):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.DROID_BUILDING_DIALOG
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.DROID_BUILDING_DIALOG))
+        creator = PackageCreator(T_ServerRequest.DROID_BUILDING_DIALOG)
         creator.write_bytes(droid.guid)  # hz _loc3_.deviceGuid)
         creator.write_int(1)  # len(self.Owner.droids))#len(data))
         # for droids in self.Owner.droids:
@@ -1571,35 +1365,23 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def hideShip(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.HIDE_SHIP
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.HIDE_SHIP))
+        creator = PackageCreator(T_ServerRequest.HIDE_SHIP)
         creator.write_int(-13)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def shipDestroyed(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHIP_DESTROYED
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHIP_DESTROYED))
+        creator = PackageCreator(T_ServerRequest.SHIP_DESTROYED)
         creator.write_int(self.Player.id)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def shipJumped(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHIP_JUMPED
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHIP_JUMPED))
+        creator = PackageCreator(T_ServerRequest.SHIP_JUMPED)
         location = DotMap()
         creator.write_int(location.id)  # findShip
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def clan(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.CLAN
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.CLAN))
+        creator = PackageCreator(T_ServerRequest.CLAN)
         data = DataBase().top_clan_list()
         for clan in data:
             clan = DotMap(clan)
@@ -1613,10 +1395,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerClan(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_CLAN
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_CLAN))
+        creator = PackageCreator(T_ServerRequest.PLAYER_CLAN)
         _loc5_ = DotMap()
         creator.write_int(_loc5_.id)
         creator.write_int(_loc5_.leaderID)
@@ -1656,12 +1435,8 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def teamList(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TEAM_LIST
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TEAM_LIST))
-        _loc4_ = None  # : PlayerInfoData
-        data = []
+        creator = PackageCreator(T_ServerRequest.TEAM_LIST)
+        data = [] # : PlayerInfoData
         cnt_player_team = len(data)  #
         creator.write_int(cnt_player_team)
         if cnt_player_team > 0:
@@ -1684,10 +1459,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def checkValueResult(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.CHECK_VALUE_RESULT
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.CHECK_VALUE_RESULT))
+        creator = PackageCreator(T_ServerRequest.CHECK_VALUE_RESULT)
         _loc2_ = 5
         _loc3_ = True
         creator.write_int(_loc2_)
@@ -1695,10 +1467,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def acceptedClanInfo(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ACCEPTED_CLAN_INFO
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ACCEPTED_CLAN_INFO))
+        creator = PackageCreator(T_ServerRequest.ACCEPTED_CLAN_INFO)
         _loc2_: int = 0
         _loc3_: str = ''
         _loc4_: str = ''
@@ -1712,29 +1481,20 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def clanId(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.clanId
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.clanId))
+        creator = PackageCreator(T_ServerRequest.clanId)
         player = DotMap()
         creator.write_int(player.clanId)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def clansLetters(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.CLANS_LETTERS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.CLANS_LETTERS))
+        creator = PackageCreator(T_ServerRequest.CLANS_LETTERS)
         data = []
         for clan in data:
             creator.write_utf(clan)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def clansList(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.CLANS_LIST
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.CLANS_LIST))
+        creator = PackageCreator(T_ServerRequest.CLANS_LIST)
         data = []
         _loc3_ = self.Player.clan
         creator.write_utf(_loc3_)
@@ -1743,10 +1503,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def clanJoinRequests(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.CLAN_JOIN_REQUESTS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.CLAN_JOIN_REQUESTS))
+        creator = PackageCreator(T_ServerRequest.CLAN_JOIN_REQUESTS)
         data = []
         for jounRequest in data:
             player = DotMap(jounRequest)
@@ -1756,8 +1513,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def logged(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.LOGGED
+        creator = PackageCreator(T_ServerRequest.LOGGED)
 
         creator.write_int(cfg_const['stateLoop'])
         creator.write_unsigned_byte(cfg_const['bankSendOperationFee'])
@@ -1781,13 +1537,8 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerInfo(self, id_):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_INFO  # PlayerInfoData
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_INFO))
+        creator = PackageCreator(T_ServerRequest.PLAYER_INFO)  # PlayerInfoData)
         Player = DataBase().player_info(id_)
-        if not Player:
-            return
         creator.write_int(Player.id)
         creator.write_utf(Player.login)
         creator.write_unsigned_byte(Player.level)
@@ -1803,10 +1554,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerLoggedOn(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_LOGGED_ON
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_LOGGED_ON))
+        creator = PackageCreator(T_ServerRequest.PLAYER_LOGGED_ON)
         creator.write_int(self.Player.id)
         creator.write_utf(self.Player.name)
         creator.write_int(self.Player.clanId)
@@ -1814,18 +1562,12 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def playerLoggedOff(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.PLAYER_LOGGED_OFF
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.PLAYER_LOGGED_OFF))
+        creator = PackageCreator(T_ServerRequest.PLAYER_LOGGED_OFF)
         creator.write_int(self.Player.id)
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def friendClans(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.FRIEND_CLANS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.FRIEND_CLANS))
+        creator = PackageCreator(T_ServerRequest.FRIEND_CLANS)
         data = []
         for friend in data:
             ClanData = DotMap(friend)
@@ -1839,10 +1581,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def enemyClans(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.ENEMY_CLANS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.ENEMY_CLANS))
+        creator = PackageCreator(T_ServerRequest.ENEMY_CLANS)
         data = []
         for enemy in data:
             ClanData = DotMap(enemy)
@@ -1856,10 +1595,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def friendRequests(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.FRIEND_REQUESTS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.FRIEND_REQUESTS))
+        creator = PackageCreator(T_ServerRequest.FRIEND_REQUESTS)
         data = []
         for friend in data:  # clanId Data
             friendRequests = DotMap(friend)
@@ -1873,10 +1609,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def droidEvent(self, event_type, Droid):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.DROID_EVENT
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.DROID_EVENT))
+        creator = PackageCreator(T_ServerRequest.DROID_EVENT)
 
         creator.write_unsigned_byte(event_type)
         creator.write_short(Droid.classNumber)
@@ -1887,10 +1620,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def updateValue(self, num_pack):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.UPDATE_VALUE
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.UPDATE_VALUE))
+        creator = PackageCreator(T_ServerRequest.UPDATE_VALUE)
         creator.write_unsigned_byte(num_pack)
         match num_pack:
             case 1:
@@ -1914,7 +1644,7 @@ class PackagesManager:
             case 10:
                 value = self.Player.ControlUsed
             case 11:
-                value = self.Player.ControlLeft
+                value = 0#self.Player.ControlLeft
             case 12:
                 value = self.Player.clanId
             case 13:
@@ -1931,10 +1661,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def missions(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.MISSIONS
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.MISSIONS))
+        creator = PackageCreator(T_ServerRequest.MISSIONS)
         _loc5_ = DotMap()
         creator.write_int(_loc5_.id)
         _loc5_.current = True
@@ -1958,10 +1685,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def tradeInvitation(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TRADE_INVITATION
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TRADE_INVITATION))
+        creator = PackageCreator(T_ServerRequest.TRADE_INVITATION)
         _loc2_: int = 0
         _loc3_: int = 0
         _loc4_: str = ''
@@ -1971,10 +1695,7 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def showTrading(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.SHOW_TRADING
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.SHOW_TRADING))
+        creator = PackageCreator(T_ServerRequest.SHOW_TRADING)
         _loc2_: int = 0
         _loc3_: int = 0
         _loc4_: str = ''
@@ -1986,8 +1707,5 @@ class PackagesManager:
         self.Game.id_to_conn[self.id].send(creator.get_package())
 
     def toGame(self):
-        creator = PackageCreator()
-        creator.PackageNumber = ServerRequest.TO_GAME
-        Pac = ServerRequest()
-        print('Пакет отправлен', Pac.get(ServerRequest.TO_GAME))
+        creator = PackageCreator(T_ServerRequest.TO_GAME)
         self.Game.id_to_conn[self.id].send(creator.get_package())

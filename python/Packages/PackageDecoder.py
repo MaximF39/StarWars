@@ -4,8 +4,8 @@ import struct
 class PackageDecoder:
     Position = 0
 
-    def __init__(self):
-        self.data = bytearray()
+    def __init__(self, data:bytearray):
+        self.data:bytearray = data
 
     def decoder(self, type, buffer):
         return struct.unpack(type, buffer)[0]

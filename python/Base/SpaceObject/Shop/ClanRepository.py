@@ -1,6 +1,6 @@
-from .BaseShop import BaseShop
+from .B_Shop import B_Shop
 
-class ClanRepository(BaseShop):
+class ClanRepository(B_Shop):
 
     def open(self, Player:"DB_Player"):
-        Player.PacMan.clan_repository()
+        Player.SendPacMan.clan_repository()

@@ -1,17 +1,18 @@
-from sqlalchemy import *
-from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+from sqlalchemy import Column, BigInteger, ForeignKey, SmallInteger, String, Text, Integer, Boolean
+from python.DataBase.DB_Table.engine import Base
 
-class DB_Items(Base):
-    __tablename__ = 'DB_Items'
-    guid = Column(BigInteger, primary_key=True, unique=True)
+class db_item(Base):
+    __tablename__ = 'db_items'
 
-    ownerId = Column(BigInteger, ForeignKey('DB_BasePlayer.id'), unique=True)
+    guid = Column(Text, primary_key=True, unique=True)
+
+    ownerId = Column(BigInteger, ForeignKey('db_players.id'))
+
     where = Column(SmallInteger, nullable=False)
 
     classNumber = Column(SmallInteger, nullable=False)
-    wear = Column(Integer, nullable=False)
+    wear = Column(BigInteger, nullable=False)
 
-    type = Column(SmallInteger, nullable=False)
     inUsing = Column(Boolean, default=False)
+

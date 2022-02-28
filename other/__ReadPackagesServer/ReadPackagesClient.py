@@ -1,5 +1,5 @@
 from python.Utils.DotMap import DotMap
-from python.Static.Type.ServerRequest import ServerRequest
+from python.Static.Type.Package.T_ServerRequest import T_ServerRequest
 
 
 class ReadPackagesClient:
@@ -25,7 +25,7 @@ class ReadPackagesClient:
     #     _loc4_: BasePackage = None
     #
     #     if self._iLastPackageLength > 0 and self._aBuffer.bytesAvailable >= self._iLastPackageLength:
-    #         if ServerRequest.isValid(self._iLastServerRequest) and isValidPackageLength(self._iLastPackageLength):
+    #         if T_ServerRequest.isValid(self._iLastServerRequest) and isValidPackageLength(self._iLastPackageLength):
     #             _loc1_ = BasePackage()
     #             _loc1_.type = self._iLastServerRequest
     #             self._aBuffer.read_bytes(_loc1_, 0, self._iLastPackageLength)
@@ -37,9 +37,9 @@ class ReadPackagesClient:
     #     while self._aBuffer.bytesAvailable >= 8 and not _loc5_:
     #         _loc2_ = self._iLastServerRequest = self._aBuffer.read_int()
     #         _loc3_ = self._iLastPackageLength = self._aBuffer.read_int()
-    #         if self._iLastServerRequest == ServerRequest.ASTEROIDS:
+    #         if self._iLastServerRequest == T_ServerRequest.ASTEROIDS:
     #             self._iLastServerRequest.tostr()
-    #         if not ServerRequest.isValid(self._iLastServerRequest) or not self.isValidPackageLength(self._iLastPackageLength):
+    #         if not T_ServerRequest.isValid(self._iLastServerRequest) or not self.isValidPackageLength(self._iLastPackageLength):
     #             self.resetBuffer()
     #             _loc5_ = True
     #         else:
@@ -69,192 +69,192 @@ class ReadPackagesClient:
 
     def processPackages(self, _loc1_: int, decoder) -> list:
         match _loc1_:
-            case ServerRequest.SHIPS_POSITION:
+            case T_ServerRequest.SHIPS_POSITION:
                 return self.ships_position(decoder)
-            case ServerRequest.SHIPS_STASE:
+            case T_ServerRequest.SHIPS_STASE:
                 return self.shipsState(decoder)
-            #     case ServerRequest.MESSAGE:
+            #     case T_ServerRequest.MESSAGE:
             #         return self.message()
-            #     case ServerRequest.PLAYER_SHIP_UPDATE:
+            #     case T_ServerRequest.PLAYER_SHIP_UPDATE:
             #         return self.playerShipUpdate()
-            #     case ServerRequest.PLANETS_STATE:
+            #     case T_ServerRequest.PLANETS_STATE:
             #         return self.planetsState()
-            #     case ServerRequest.PLANETS_UPDATE:
+            #     case T_ServerRequest.PLANETS_UPDATE:
             #         return self.planetsUpdate()
-            #     case ServerRequest.REPOSITORY:
+            #     case T_ServerRequest.REPOSITORY:
             #         return self.repository()
-            #     case ServerRequest.CLAN_REPOSITORY:
+            #     case T_ServerRequest.CLAN_REPOSITORY:
             #         return self.clanrepository()
-            #     case ServerRequest.WEAPON_TROUBLES:
+            #     case T_ServerRequest.WEAPON_TROUBLES:
             #         return self.weaponTroubles()
-            #     case ServerRequest.SHIP:
+            #     case T_ServerRequest.SHIP:
             #         return self.ship()
-            #     case ServerRequest.SHOOTS:
+            #     case T_ServerRequest.SHOOTS:
             #         return self.shoots()
-            #     case ServerRequest.ITEMS:
+            #     case T_ServerRequest.ITEMS:
             #         return self.items()
-            case ServerRequest.ACTIVE_DEVICES:
+            case T_ServerRequest.ACTIVE_DEVICES:
                 return self.activeDevices(decoder)
-            case ServerRequest.ACTIVE_WEPONS:
+            case T_ServerRequest.ACTIVE_WEPONS:
                 return self.activeWeapons(decoder)
-            case ServerRequest.HIDE_SHIP:
+            case T_ServerRequest.HIDE_SHIP:
                 return self.hideShip(decoder)
-            #     case ServerRequest.SHIP_DESTROYED:
+            #     case T_ServerRequest.SHIP_DESTROYED:
             #         return self.shipDestroyed()
-            #     case ServerRequest.SHIP_JUMPED:
+            #     case T_ServerRequest.SHIP_JUMPED:
             #         return self.shipJumped()
-            #     case ServerRequest.PLANET:
+            #     case T_ServerRequest.PLANET:
             #         return self.SpaceObjectItems()
-            #     case ServerRequest.INVENTORY:
+            #     case T_ServerRequest.INVENTORY:
             #         return self.inventory()
-            case ServerRequest.TRADING_ITEMS:
+            case T_ServerRequest.TRADING_ITEMS:
                 return self.tradingItems(decoder)
-            #     case ServerRequest.RESOURCE_UPDATE_INFO:
+            #     case T_ServerRequest.RESOURCE_UPDATE_INFO:
             #         return self.resourceUpdate()
-            #     case ServerRequest.ASTEROIDS:
+            #     case T_ServerRequest.ASTEROIDS:
             #         return self.asteroids()
-            #     case ServerRequest.EFFECT_CREATED:
+            #     case T_ServerRequest.EFFECT_CREATED:
             #         return self.effectCreated()
-            #     case ServerRequest.LOCATION_PLANET:
+            #     case T_ServerRequest.LOCATION_PLANET:
             #         return self.locationPlanet()
-            case ServerRequest.LOCATION_SYSTEM:
+            case T_ServerRequest.LOCATION_SYSTEM:
                 return self.locationSystem(decoder)
-            #     case ServerRequest.LOCATION_BATTLE:
+            #     case T_ServerRequest.LOCATION_BATTLE:
             #         return self.locationBattle()
-            case ServerRequest.PLAYER:
+            case T_ServerRequest.PLAYER:
                 return self.player(decoder)
-            #     case ServerRequest.QUEST_MESSAGE:
+            #     case T_ServerRequest.QUEST_MESSAGE:
             #         return self.questMessage()
-            #     case ServerRequest.PLAYER_SKILLS:
+            #     case T_ServerRequest.PLAYER_SKILLS:
             #         return self.playerSkills()
-            case ServerRequest.PLAYER_SKILLS_DATA:
+            case T_ServerRequest.PLAYER_SKILLS_DATA:
                 return self.playerSkillsData(decoder)
-            case ServerRequest.PLAYER_SHIP:
+            case T_ServerRequest.PLAYER_SHIP:
                 return self.playerShip(decoder)
-            #     case ServerRequest.DROID_BUILDING_DIALOG:
+            #     case T_ServerRequest.DROID_BUILDING_DIALOG:
             #         return self.droidBuildingDialog()
-            case ServerRequest.TRADING_SHIPS:
+            case T_ServerRequest.TRADING_SHIPS:
                 return self.tradingShips(decoder)
-            case ServerRequest.WEAPONS_PARAMETERS:
+            case T_ServerRequest.WEAPONS_PARAMETERS:
                 return self.weaponsParameters(decoder)
-            case ServerRequest.ENGINES_PARAMETERS:
+            case T_ServerRequest.ENGINES_PARAMETERS:
                 return self.engineParameters(decoder)
-            case ServerRequest.AMMOS_PARAMETERS:
+            case T_ServerRequest.AMMOS_PARAMETERS:
                 return self.ammoParameters(decoder)
-            case ServerRequest.RESOURCE_PARAMETERS:
+            case T_ServerRequest.RESOURCE_PARAMETERS:
                 return self.resourceParameters(decoder)
-            case ServerRequest.DEVICE_PARAMETERS:
+            case T_ServerRequest.DEVICE_PARAMETERS:
                 return self.deviceParameters(decoder)
-            case ServerRequest.DROID_PARAMETERS:
+            case T_ServerRequest.DROID_PARAMETERS:
                 return self.droidParameters(decoder)
-            case ServerRequest.SHIP_PARAMETERS:
+            case T_ServerRequest.SHIP_PARAMETERS:
                 return self.shipParameters(decoder)
-            case ServerRequest.LOGGED:
+            case T_ServerRequest.LOGGED:
                 return self.logged(decoder)
-            case ServerRequest.REACHABLE_SYSTEMS:
+            case T_ServerRequest.REACHABLE_SYSTEMS:
                 return self.reachableSystems(decoder)
-            #     case ServerRequest.SYSTEM_MESSAGE:
+            #     case T_ServerRequest.SYSTEM_MESSAGE:
             #         return self.systemMessage()
-            #     case ServerRequest.LOG_MESSAGE:
+            #     case T_ServerRequest.LOG_MESSAGE:
             #         return self.logMessage()
-            #     case ServerRequest.LOG_MESSAGE_STRING:
+            #     case T_ServerRequest.LOG_MESSAGE_STRING:
             #         return self.logMessagestr()
-            #     case ServerRequest.SYSTEM_MESSAGE_STRING:
+            #     case T_ServerRequest.SYSTEM_MESSAGE_STRING:
             #         return self.systemMessagestr()
-            case ServerRequest.MAP:
+            case T_ServerRequest.MAP:
                 return self.map(decoder)
-            #     case ServerRequest.QUESTS_JOURNAL:
+            #     case T_ServerRequest.QUESTS_JOURNAL:
             #         return self.questsJournal()
-            #     case ServerRequest.ARENA_REQUESTS:
+            #     case T_ServerRequest.ARENA_REQUESTS:
             #         return self.arenaRequests()
-            #     case ServerRequest.PLANET_QUESTS:
+            #     case T_ServerRequest.PLANET_QUESTS:
             #         return self.planetQuests()
-            #     case ServerRequest.ADDITIONAL_QUEST_MESSAGE:
+            #     case T_ServerRequest.ADDITIONAL_QUEST_MESSAGE:
             #         return self.additionalQuestMessage()
-            #     case ServerRequest.BATTLE_REQUEST_CHANGED:
+            #     case T_ServerRequest.BATTLE_REQUEST_CHANGED:
             #         return self.battleRequestChanged()
-            case ServerRequest.TOP_LIST:
+            case T_ServerRequest.TOP_LIST:
                 return self.topList(decoder)
-            case ServerRequest.TOP_RATING_LIST:
+            case T_ServerRequest.TOP_RATING_LIST:
                 return self.topRatingList(decoder)
-            case ServerRequest.TOP_CLANS_LIST:
+            case T_ServerRequest.TOP_CLANS_LIST:
                 return self.topClansList(decoder)
-            #     case ServerRequest.NEWS_LIST:
+            #     case T_ServerRequest.NEWS_LIST:
             #         return self.sList()
-            # case ServerRequest.FLASH_CONNECT_REQUEST:
+            # case T_ServerRequest.FLASH_CONNECT_REQUEST:
             #     return self.flash_connect()
-            case ServerRequest.ONLINE:
+            case T_ServerRequest.ONLINE:
                 return self.online(decoder)
-            case ServerRequest.VERSION:
+            case T_ServerRequest.VERSION:
                 return self.version(decoder)
-            #     case ServerRequest.SHIP_HEALTH:
+            #     case T_ServerRequest.SHIP_HEALTH:
             #         return self.shipHealth()
-            #     case ServerRequest.NPC_MESSAGE:
+            #     case T_ServerRequest.NPC_MESSAGE:
             #         return self.npcMessage()
-            #     case ServerRequest.UPDATE_HOLD:
+            #     case T_ServerRequest.UPDATE_HOLD:
             #         return self.updateHold()
-            #     case ServerRequest.GINETIC_LAB_OPTIONS:
+            #     case T_ServerRequest.GINETIC_LAB_OPTIONS:
             #         return self.gineticLabOptions()
-            case ServerRequest.CLAN:
+            case T_ServerRequest.CLAN:
                 return self.clan(decoder)
-            #     case ServerRequest.CHECK_VALUE_RESULT:
+            #     case T_ServerRequest.CHECK_VALUE_RESULT:
             #         return self.checkValueResult()
-            #     case ServerRequest.ACCEPTED_CLAN_INFO:
+            #     case T_ServerRequest.ACCEPTED_CLAN_INFO:
             #         return self.acceptedClanInfo()
-            #     case ServerRequest.clanId:
+            #     case T_ServerRequest.clanId:
             #         return self.clanId()
-            #     case ServerRequest.CLANS_LETTERS:
+            #     case T_ServerRequest.CLANS_LETTERS:
             #         return self.clansLetters()
-            #     case ServerRequest.CLANS_LIST:
+            #     case T_ServerRequest.CLANS_LIST:
             #         return self.clansList()
-            #     case ServerRequest.CLAN_JOIN_REQUESTS:
+            #     case T_ServerRequest.CLAN_JOIN_REQUESTS:
             #         return self.clanJoinRequests()
-            # case ServerRequest.PLAYER_INFO:
+            # case T_ServerRequest.PLAYER_INFO:
             #     return self.playerInfo()
 
-            case ServerRequest.PLAYER_LOGGED_ON:
+            case T_ServerRequest.PLAYER_LOGGED_ON:
                 return self.playerLoggedOn(decoder)
-            #     case ServerRequest.PLAYER_LOGGED_OFF:
+            #     case T_ServerRequest.PLAYER_LOGGED_OFF:
             #         return self.playerLoggedOff()
-            case ServerRequest.PLAYER_CLAN:
+            case T_ServerRequest.PLAYER_CLAN:
                 return self.playerClan(decoder)
-            #     case ServerRequest.FRIEND_CLANS:
+            #     case T_ServerRequest.FRIEND_CLANS:
             #         return self.friendClans()
-            #     case ServerRequest.ENEMY_CLANS:
+            #     case T_ServerRequest.ENEMY_CLANS:
             #         return self.enemyClans()
-            case ServerRequest.UPDATE_VALUE:
+            case T_ServerRequest.UPDATE_VALUE:
                 return self.updateValue(decoder)
-            #     case ServerRequest.FRIEND_REQUESTS:
+            #     case T_ServerRequest.FRIEND_REQUESTS:
             #         return self.friendRequests()
-            #     case ServerRequest.DROID_EVENT:
+            #     case T_ServerRequest.DROID_EVENT:
             #         return self.droidEvent()
-            #     case ServerRequest.EFFECT_REMOVED:
+            #     case T_ServerRequest.EFFECT_REMOVED:
             #         return self.effectRemoved()
-            #     case ServerRequest.MISSIONS:
+            #     case T_ServerRequest.MISSIONS:
             #         return self.missions()
-            case ServerRequest.TO_GAME:
+            case T_ServerRequest.TO_GAME:
                 return self.toGame(decoder)
-        #     case ServerRequest.PLAYER_ANGAR:
+        #     case T_ServerRequest.PLAYER_ANGAR:
         #         return self.playerAngar()
-        #     case ServerRequest.TRADE_INVITATION:
+        #     case T_ServerRequest.TRADE_INVITATION:
         #         return self.tradeInvitation()
-        #     case ServerRequest.SHOW_TRADING:
+        #     case T_ServerRequest.SHOW_TRADING:
         #         return self.showTrading()
-        #     case ServerRequest.TRADING_CASH:
+        #     case T_ServerRequest.TRADING_CASH:
         #         return self.GameEngine.tradingCash(.read_int())
-        #     case ServerRequest.TRADE_SELL_ITEMS:
+        #     case T_ServerRequest.TRADE_SELL_ITEMS:
         #         return self.tradeSellItems()
-        #     case ServerRequest.EVIL:
+        #     case T_ServerRequest.EVIL:
         #         return self.Evil()
-        #     case ServerRequest.TRADE_ACCEPTED:
+        #     case T_ServerRequest.TRADE_ACCEPTED:
         #         return self.GameEngine.changeTradingAccepted(.read_bool())
-        #     case ServerRequest.TRADE_BUY_ITEMS:
+        #     case T_ServerRequest.TRADE_BUY_ITEMS:
         #         return self.tradeBuyItems()
-        #     case ServerRequest.FINISH_TRADING:
+        #     case T_ServerRequest.FINISH_TRADING:
         #         return self.finishTrading()
-        #     case ServerRequest.SHIP_UPDATE_INFO:
+        #     case T_ServerRequest.SHIP_UPDATE_INFO:
         #         return self.shipUpdateInfo()
-        #     case ServerRequest.TEAM_LIST:
+        #     case T_ServerRequest.TEAM_LIST:
         #         return self.teamList()
         #     case _:
                 # print('НЕИЗВЕСТНЫЙ ПАКЕТ')
@@ -808,8 +808,8 @@ class ReadPackagesClient:
     #     #     
     #     #     # _loc2_: DB_Planet = PlanetsManager.createInstance(decoder.read_bytes())
     #     #     decoder.read_int(_loc2_.id)
-    #     #     Race.defineById(self, decoder.read_unsigned_byte(_loc2_.race))
-    #     #     decoder.read_int(_loc2_.RADIUS)
+    #     #     T_Race.defineById(self, decoder.read_unsigned_byte(_loc2_.race))
+    #     #     decoder.read_int(_loc2_.RADIUS_BETWEEN_PLANET)
     #     #     decoder.read_int(_loc2_.size)
     #     #     decoder.read_float(_loc2_.serverAngle)
     #     #     decoder.read_bool(_loc2_.landable)
@@ -1421,9 +1421,9 @@ class ReadPackagesClient:
     #     #     _loc4_ = PlanetsManager.createInstance(decoder.read_bytes())
     #     #     _loc4_.id = decoder.read
     #     #     _int()
-    #     #     _loc4_.race = Race.defineById(self, decoder.read_unsigned_byte())
+    #     #     _loc4_.race = T_Race.defineById(self, decoder.read_unsigned_byte())
     #     #     
-    #     #     decoder.read_int(_loc4_.RADIUS)
+    #     #     decoder.read_int(_loc4_.RADIUS_BETWEEN_PLANET)
     #     #     decoder.read_int(_loc4_.size)
     #     #     decoder.read_unsigned_byte(_loc4_.aliance)
     #     #     decoder.read_int(_loc4_.clanId)
@@ -1629,7 +1629,7 @@ class ReadPackagesClient:
     #     #
     #     # def message(self) -> list:
     #     #     
-    #     #     _loc2_: Message = Message()
+    #     #     _loc2_: T_Message = T_Message()
     #     #     _loc2_ = ''
     #     #     decoder.read_utf(_loc2_)
     #     #     decoder.read_utf(_loc2_.text)

@@ -3,3 +3,9 @@
 функций называются 	вот_так
 константы называются 	ВОТ_ТАК
 
+B - Base
+E - Event
+DB - DataBase
+T - Type
+CFG - Config
+C - Create
