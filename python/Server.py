@@ -4,13 +4,15 @@ from socket import socket
 from loguru import logger
 from python.StarWars import StarWars
 from python.Packages.PackagesReader import PackagesReader
-from .DataBase.Database import DataBase
+from .AdminPanel.AdminPanel import AdminPanel
+from .Database.Database import DataBase
 from .Packages.PackageDecoder import PackageDecoder
-from python.Utils.ThreadBase import ThreadBase
-from python.Game.Chat import Chat
+from python.Game._Component.Utils.ThreadBase import ThreadBase
+from python.Game.Game.Chat import Chat
 from python.Config import cfg_server
+
 if False:
-    from python.Game.Entity.Player import Player
+    pass
 
 class Server(ThreadBase):
     host: str = cfg_server.host
@@ -24,7 +26,7 @@ class Server(ThreadBase):
         self.start = time.time()
         ThreadBase.__init__(self)
         self.users: list = []
-        self.players:list["CFG_Player"] = []
+        self.players:list = []
         self.id_to_conn = {}
         self.conn_to_id = {}
         self.DB = DataBase()
@@ -38,7 +40,9 @@ class Server(ThreadBase):
         end = time.time()
         print("Сервер запущен и готов слушать юзеров\nза", end - self.start)
 
-        self.wait_user()
+        threading.Thread(target=self.wait_user).start()
+
+        AdminPanel(self.Game).process()
 
     def wait_user(self):
         try:
@@ -54,7 +58,7 @@ class Server(ThreadBase):
         self.add_online()
         Player, id_ = self.authorisation_package(conn)
         self.players.append(Player)
-        self.get_packages(conn, id_)
+        self.get_packages(conn, Player)
 
     def add_online(self):
         self.__update_online(1)
@@ -73,7 +77,7 @@ class Server(ThreadBase):
         id_ = self.DB.get_user_id(login, password)
         if id_:
             self.connect_user(id_, conn)
-            print('His ID', id_)
+            print('His id', id_)
             print('Логин', login)
             print('Пароль', password)
             self.__create_player(id_)
@@ -93,21 +97,20 @@ class Server(ThreadBase):
         lenBytes = decoder.read_int()
         return PackageNumberGet, lenBytes
 
-    def get_packages(self, conn, id_):
+    def get_packages(self, conn, Player):
         while True:
             try:
-                data = conn.recv(16)
-                PackageNumberGet, lenBytes = self.__default_get_pakage(data)
+                PackageNumberGet, lenBytes = self.__default_get_pakage(conn)
                 data = conn.recv(lenBytes)
                 threading.Thread(target=self.read_package, args=(PackageNumberGet, data, Player)).start()
             except Exception as e:
-                print("ERROR", e)
-                self.exit_user(conn, id_)
+                self.exit_user(conn, Player.id)
                 print(f'Пользователь с {self.conn_to_id[conn]} id вышел')
                 exit()
 
     def exit_user(self, conn, id_):
-        delattr(self.Game, f"Player_{id_}")
+        print('i want delete', conn, id_)
+        getattr(self.Game, f"Player_{id_}").exit_player()
         conn.close()
 
     def read_package(self, pack_number, data, Player):

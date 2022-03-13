@@ -1,133 +1,133 @@
 ﻿[
   {
     "damage": 12,
-    "classNumber": 5,
+    "class_number": 5,
     "size": 0.00150000001,
     "cost": 2,
     "type": 1
   },
   {
     "damage": 12,
-    "classNumber": 3,
+    "class_number": 3,
     "size": 0.00200000009,
     "cost": 3,
     "type": 1
   },
   {
     "damage": 35,
-    "classNumber": 9,
+    "class_number": 9,
     "size": 0.0250000004,
     "cost": 7,
     "type": 1
   },
   {
     "damage": 8,
-    "classNumber": 7,
+    "class_number": 7,
     "size": 0.00100000005,
     "cost": 2,
     "type": 1
   },
   {
     "damage": 11,
-    "classNumber": 13,
+    "class_number": 13,
     "size": 0.00999999978,
     "cost": 3,
     "type": 1
   },
   {
     "damage": 40,
-    "classNumber": 11,
+    "class_number": 11,
     "size": 0.0299999993,
     "cost": 8,
     "type": 1
   },
   {
     "damage": 8,
-    "classNumber": 28,
+    "class_number": 28,
     "size": 0.00100000005,
     "cost": 4,
     "type": 1
   },
   {
     "damage": 22,
-    "classNumber": 30,
+    "class_number": 30,
     "size": 0.00999999978,
     "cost": 5,
     "type": 1
   },
   {
     "damage": 10,
-    "classNumber": 32,
+    "class_number": 32,
     "size": 0.00200000009,
     "cost": 2,
     "type": 1
   },
   {
     "damage": 25,
-    "classNumber": 34,
+    "class_number": 34,
     "size": 0.00999999978,
     "cost": 6,
     "type": 1
   },
   {
     "damage": 8,
-    "classNumber": 19,
+    "class_number": 19,
     "size": 0.00100000005,
     "cost": 2,
     "type": 1
   },
   {
     "damage": 30,
-    "classNumber": 21,
+    "class_number": 21,
     "size": 0.0199999996,
     "cost": 7,
     "type": 1
   },
   {
     "damage": 6,
-    "classNumber": 36,
+    "class_number": 36,
     "size": 0.00100000005,
     "cost": 2,
     "type": 1
   },
   {
     "damage": 25,
-    "classNumber": 17,
+    "class_number": 17,
     "size": 0.00200000009,
     "cost": 4,
     "type": 1
   },
   {
     "damage": 33,
-    "classNumber": 23,
+    "class_number": 23,
     "size": 0.0299999993,
     "cost": 10,
     "type": 1
   },
   {
     "damage": 14,
-    "classNumber": 26,
+    "class_number": 26,
     "size": 0.00200000009,
     "cost": 3,
     "type": 1
   },
   {
     "damage": 35,
-    "classNumber": 46,
+    "class_number": 46,
     "size": 0.0250000004,
     "cost": 10,
     "type": 1
   },
   {
     "damage": 8,
-    "classNumber": 83,
+    "class_number": 83,
     "size": 0.00100000005,
     "cost": 2,
     "type": 1
   },
   {
     "damage": 10,
-    "classNumber": 82,
+    "class_number": 82,
     "size": 0.00999999978,
     "cost": 3,
     "type": 1

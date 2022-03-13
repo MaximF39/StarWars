@@ -1,6 +1,7 @@
 repositoryClan = 1
 repository = 2
 planet = 3
-player = 4
+inventory = 4 # Player
+
 # удалить в инвентарях у мобов и на локациях
 # аукцион в отдельной таблице

@@ -1,11 +1,11 @@
 import json
 import pathlib
 
-from python.Utils.DotMap import DotMap
+from python.Static.Type.Keys import Keys
 
 bs = pathlib.Path(__file__).parent.joinpath('Json')
 __id_parse = ['DB_Clan', "GalaxyMap"]
-__guid_parse = ['AmmoParameters', "DeviceParameters", "DroidParameters",
+__items_parse = ['AmmoParameters', "DeviceParameters", "DroidParameters",
               "EngineParameters", "WeaponParameters", "ResourseParameters"]
 
 __ship = ["ShipParameters"]
@@ -22,12 +22,12 @@ def parse_xml(file_name) -> list:
         return res
 
 def item_id(id_, wear=None):
-    for file_name in __guid_parse:
+    for file_name in __items_parse:
         with open(_get_path_json(file_name), 'r', encoding='utf-8-sig') as f:
             res = json.loads(f.read())
             for item in res:
-                if item['classNumber'] == id_:
-                    item['wear'] = wear
+                if item[Keys.class_number] == id_:
+                    item[Keys.wear] = wear
                     return item
 
 def ship_id(id_):
@@ -35,5 +35,5 @@ def ship_id(id_):
         with open(_get_path_json(file_name), 'r', encoding='utf-8-sig') as f:
             res = json.loads(f.read())
             for item in res:
-                if item['classNumber'] == id_:
+                if item[Keys.class_number] == id_:
                     return item

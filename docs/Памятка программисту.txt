@@ -9,3 +9,6 @@ DB - DataBase
 T - Type
 CFG - Config
 C - Create
+SBO - SpaceBigObject
+SO - SpaceObject
+E - Entity

@@ -1,161 +1,161 @@
 ﻿[
   {
-    "classNumber": 50,
+    "class_number": 50,
     "size": 0.150000006,
     "cost": 3
   },
   {
-    "classNumber": 49,
+    "class_number": 49,
     "size": 0.180000007,
     "cost": 1
   },
   {
-    "classNumber": 54,
+    "class_number": 54,
     "size": 0.100000001,
     "cost": 10
   },
   {
-    "classNumber": 53,
+    "class_number": 53,
     "size": 0.170000002,
     "cost": 3
   },
   {
-    "classNumber": 52,
+    "class_number": 52,
     "size": 0.0500000007,
     "cost": 5
   },
   {
-    "classNumber": 51,
+    "class_number": 51,
     "size": 0.100000001,
     "cost": 2
   },
   {
-    "classNumber": 56,
+    "class_number": 56,
     "size": 0.100000001,
     "cost": 12
   },
   {
-    "classNumber": 55,
+    "class_number": 55,
     "size": 0.100000001,
     "cost": 5
   },
   {
-    "classNumber": 102,
+    "class_number": 102,
     "size": 0.150000006,
     "cost": 25
   },
   {
-    "classNumber": 115,
+    "class_number": 115,
     "size": 0.300000012,
     "cost": 1
   },
   {
-    "classNumber": 116,
+    "class_number": 116,
     "size": 0.270000011,
     "cost": 1
   },
   {
-    "classNumber": 117,
+    "class_number": 117,
     "size": 0.280000001,
     "cost": 1
   },
   {
-    "classNumber": 118,
+    "class_number": 118,
     "size": 0.300000012,
     "cost": 1
   },
   {
-    "classNumber": 119,
+    "class_number": 119,
     "size": 0.330000013,
     "cost": 1
   },
   {
-    "classNumber": 120,
+    "class_number": 120,
     "size": 0.170000002,
     "cost": 1
   },
   {
-    "classNumber": 121,
+    "class_number": 121,
     "size": 0.200000003,
     "cost": 1
   },
   {
-    "classNumber": 131,
+    "class_number": 131,
     "size": 0.0299999993,
     "cost": 5
   },
   {
-    "classNumber": 132,
+    "class_number": 132,
     "size": 0.0500000007,
     "cost": 6
   },
   {
-    "classNumber": 136,
+    "class_number": 136,
     "size": 0.0500000007,
     "cost": 3
   },
   {
-    "classNumber": 133,
+    "class_number": 133,
     "size": 0.0500000007,
     "cost": 40000
   },
   {
-    "classNumber": 135,
+    "class_number": 135,
     "size": 0.0500000007,
     "cost": 60000
   },
   {
-    "classNumber": 134,
+    "class_number": 134,
     "size": 0.0500000007,
     "cost": 60000
   },
   {
-    "classNumber": 162,
+    "class_number": 162,
     "size": 0.0500000007,
     "cost": 100000
   },
   {
-    "classNumber": 164,
+    "class_number": 164,
     "size": 0.0500000007,
     "cost": 120000
   },
   {
-    "classNumber": 163,
+    "class_number": 163,
     "size": 0.0500000007,
     "cost": 120000
   },
   {
-    "classNumber": 165,
+    "class_number": 165,
     "size": 0.0500000007,
     "cost": 140000
   },
   {
-    "classNumber": 167,
+    "class_number": 167,
     "size": 0.0500000007,
     "cost": 200000
   },
   {
-    "classNumber": 166,
+    "class_number": 166,
     "size": 0.0500000007,
     "cost": 200000
   },
   {
-    "classNumber": 137,
+    "class_number": 137,
     "size": 0.0500000007,
     "cost": 30
   },
   {
-    "classNumber": 138,
+    "class_number": 138,
     "size": 0.0500000007,
     "cost": 100
   },
   {
-    "classNumber": 143,
+    "class_number": 143,
     "size": 0.200000003,
     "cost": 38
   },
   {
-    "classNumber": 148,
+    "class_number": 148,
     "size": 5,
     "cost": 60000
   }

@@ -1,10 +1,10 @@
-from python.Game.SpaceObjects.Item import item
+from python.Game.Game.SpaceObjects import item
 from python.Static.Type.Item.T_Item import T_Item
 from python.Static.Type.T_Race import T_Race
 
 
 def get_default_items(race, OwnerClass, Game):
-    return (item(classNumber=item_classNumber, Game=Game, wear=wear, OwnerClass=OwnerClass) for item_classNumber in get_shop_by_race[race])
+    return (item(class_number=item_classNumber, Game=Game, wear=wear, OwnerClass=OwnerClass) for item_classNumber in get_shop_by_race[race])
 
 wear = 1000
 

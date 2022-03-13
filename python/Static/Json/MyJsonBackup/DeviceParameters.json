@@ -1,1066 +1,1066 @@
 ﻿[
   {
-    "energyCost": 0,
-    "reloadTime": 8000,
+    "energy_cost": 0,
+    "reload_time": 8000,
     "effects": [
       {
-        "targetType": 4,
+        "target_type": 4,
         "value": 0,
-        "effectTime": 0,
-        "effectType": 30
+        "effect_time": 0,
+        "effect_type": 30
       }
     ],
     "restrictions": [],
-    "classNumber": 65,
+    "class_number": 65,
     "size": 45,
     "cost": 3000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 8000,
+    "energy_cost": 0,
+    "reload_time": 8000,
     "effects": [
       {
-        "targetType": 4,
+        "target_type": 4,
         "value": 0,
-        "effectTime": 0,
-        "effectType": 30
+        "effect_time": 0,
+        "effect_type": 30
       }
     ],
     "restrictions": [],
-    "classNumber": 74,
+    "class_number": 74,
     "size": 35,
     "cost": 3000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 8000,
+    "energy_cost": 0,
+    "reload_time": 8000,
     "effects": [
       {
-        "targetType": 4,
+        "target_type": 4,
         "value": 0,
-        "effectTime": 0,
-        "effectType": 30
+        "effect_time": 0,
+        "effect_type": 30
       }
     ],
     "restrictions": [],
-    "classNumber": 75,
+    "class_number": 75,
     "size": 40,
     "cost": 3000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 8000,
+    "energy_cost": 0,
+    "reload_time": 8000,
     "effects": [
       {
-        "targetType": 4,
+        "target_type": 4,
         "value": 0,
-        "effectTime": 0,
-        "effectType": 30
+        "effect_time": 0,
+        "effect_type": 30
       }
     ],
     "restrictions": [],
-    "classNumber": 76,
+    "class_number": 76,
     "size": 55,
     "cost": 3000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 60000,
+    "energy_cost": 0,
+    "reload_time": 60000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 100,
-        "effectTime": 0,
-        "effectType": 28
+        "effect_time": 0,
+        "effect_type": 28
       }
     ],
     "restrictions": [],
-    "classNumber": 88,
+    "class_number": 88,
     "size": 35,
     "cost": 4500,
     "type": 2
   },
   {
-    "energyCost": 40,
-    "reloadTime": 70000,
+    "energy_cost": 40,
+    "reload_time": 70000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 50,
-        "effectTime": 33000,
-        "effectType": 1
+        "effect_time": 33000,
+        "effect_type": 1
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 2
+        "value_type": 22,
+        "value": 2
       }
     ],
-    "classNumber": 89,
+    "class_number": 89,
     "size": 65,
     "cost": 13000,
     "type": 2
   },
   {
-    "energyCost": 45,
-    "reloadTime": 63000,
+    "energy_cost": 45,
+    "reload_time": 63000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 300,
-        "effectTime": 0,
-        "effectType": 29
+        "effect_time": 0,
+        "effect_type": 29
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 2
+        "value_type": 23,
+        "value": 2
       }
     ],
-    "classNumber": 90,
+    "class_number": 90,
     "size": 70,
     "cost": 12000,
     "type": 2
   },
   {
-    "energyCost": 30,
-    "reloadTime": 50000,
+    "energy_cost": 30,
+    "reload_time": 50000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 30,
-        "effectTime": 20000,
-        "effectType": 2
+        "effect_time": 20000,
+        "effect_type": 2
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 2
+        "value_type": 20,
+        "value": 2
       }
     ],
-    "classNumber": 92,
+    "class_number": 92,
     "size": 60,
     "cost": 11000,
     "type": 2
   },
   {
-    "energyCost": 25,
-    "reloadTime": 65000,
+    "energy_cost": 25,
+    "reload_time": 65000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 30,
-        "effectTime": 25000,
-        "effectType": 3
+        "effect_time": 25000,
+        "effect_type": 3
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 2
+        "value_type": 21,
+        "value": 2
       }
     ],
-    "classNumber": 91,
+    "class_number": 91,
     "size": 40,
     "cost": 6000,
     "type": 2
   },
   {
-    "energyCost": 50,
-    "reloadTime": 50000,
+    "energy_cost": 50,
+    "reload_time": 50000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 50,
-        "effectTime": 35000,
-        "effectType": 1
+        "effect_time": 35000,
+        "effect_type": 1
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 120,
-        "effectTime": 20000,
-        "effectType": 10
+        "effect_time": 20000,
+        "effect_type": 10
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 30,
-        "effectTime": 30000,
-        "effectType": 8
+        "effect_time": 30000,
+        "effect_type": 8
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 2
+        "value_type": 20,
+        "value": 2
       },
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 2
+        "value_type": 21,
+        "value": 2
       },
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 2
+        "value_type": 22,
+        "value": 2
       },
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 2
+        "value_type": 23,
+        "value": 2
       }
     ],
-    "classNumber": 93,
+    "class_number": 93,
     "size": 50,
     "cost": 150000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 125,
-        "effectTime": 0,
-        "effectType": 34
+        "effect_time": 0,
+        "effect_type": 34
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 10,
-        "effectTime": 0,
-        "effectType": 8
+        "effect_time": 0,
+        "effect_type": 8
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 4
+        "value_type": 22,
+        "value": 4
       }
     ],
-    "classNumber": 103,
+    "class_number": 103,
     "size": 30,
     "cost": 24000,
     "type": 2
   },
   {
-    "energyCost": 100,
-    "reloadTime": 70000,
+    "energy_cost": 100,
+    "reload_time": 70000,
     "effects": [
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 0,
-        "effectTime": 12000,
-        "effectType": 12
+        "effect_time": 12000,
+        "effect_type": 12
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 4
+        "value_type": 23,
+        "value": 4
       }
     ],
-    "classNumber": 105,
+    "class_number": 105,
     "size": 75,
     "cost": 30000,
     "type": 2
   },
   {
-    "energyCost": 100,
-    "reloadTime": 50000,
+    "energy_cost": 100,
+    "reload_time": 50000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 70,
-        "effectTime": 20000,
-        "effectType": 14
+        "effect_time": 20000,
+        "effect_type": 14
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 2,
-        "Value": 4
+        "value_type": 2,
+        "value": 4
       }
     ],
-    "classNumber": 107,
+    "class_number": 107,
     "size": 25,
     "cost": 85000,
     "type": 2
   },
   {
-    "energyCost": 110,
-    "reloadTime": 55000,
+    "energy_cost": 110,
+    "reload_time": 55000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 65,
-        "effectTime": 25000,
-        "effectType": 15
+        "effect_time": 25000,
+        "effect_type": 15
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 14,
-        "Value": 5
+        "value_type": 14,
+        "value": 5
       },
       {
         "type": 2,
-        "valueType": 2,
-        "Value": 3
+        "value_type": 2,
+        "value": 3
       }
     ],
-    "classNumber": 108,
+    "class_number": 108,
     "size": 25,
     "cost": 70000,
     "type": 2
   },
   {
-    "energyCost": 70,
-    "reloadTime": 80000,
+    "energy_cost": 70,
+    "reload_time": 80000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 50,
-        "effectTime": 10000,
-        "effectType": 13
+        "effect_time": 10000,
+        "effect_type": 13
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 4
+        "value_type": 20,
+        "value": 4
       }
     ],
-    "classNumber": 106,
+    "class_number": 106,
     "size": 60,
     "cost": 18000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 150,
-        "effectTime": 0,
-        "effectType": 11
+        "effect_time": 0,
+        "effect_type": 11
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 4
+        "value_type": 21,
+        "value": 4
       }
     ],
-    "classNumber": 104,
+    "class_number": 104,
     "size": 20,
     "cost": 28000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 55000,
+    "energy_cost": 0,
+    "reload_time": 55000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 15,
-        "effectTime": 5000,
-        "effectType": 16
+        "effect_time": 5000,
+        "effect_type": 16
       }
     ],
     "restrictions": [],
-    "classNumber": 114,
+    "class_number": 114,
     "size": 35,
     "cost": 4500,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 40000,
+    "energy_cost": 0,
+    "reload_time": 40000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 500,
-        "effectTime": 0,
-        "effectType": 28
+        "effect_time": 0,
+        "effect_type": 28
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 1
+        "value_type": 20,
+        "value": 1
       },
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 1
+        "value_type": 21,
+        "value": 1
       },
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 1
+        "value_type": 22,
+        "value": 1
       },
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 1
+        "value_type": 23,
+        "value": 1
       }
     ],
-    "classNumber": 112,
+    "class_number": 112,
     "size": 35,
     "cost": 80000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 60000,
+    "energy_cost": 0,
+    "reload_time": 60000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 100,
-        "effectTime": 0,
-        "effectType": 0
+        "effect_time": 0,
+        "effect_type": 0
       }
     ],
     "restrictions": [],
-    "classNumber": 113,
+    "class_number": 113,
     "size": 35,
     "cost": 4500,
     "type": 2
   },
   {
-    "energyCost": 60,
-    "reloadTime": 55000,
+    "energy_cost": 60,
+    "reload_time": 55000,
     "effects": [
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 0,
-        "effectTime": 0,
-        "effectType": 25
+        "effect_time": 0,
+        "effect_type": 25
       },
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 0,
-        "effectTime": 0,
-        "effectType": 26
+        "effect_time": 0,
+        "effect_type": 26
       },
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 0,
-        "effectTime": 20000,
-        "effectType": 27
+        "effect_time": 20000,
+        "effect_type": 27
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 8
+        "value_type": 21,
+        "value": 8
       }
     ],
-    "classNumber": 122,
+    "class_number": 122,
     "size": 45,
     "cost": 51000,
     "type": 2
   },
   {
-    "energyCost": 55,
-    "reloadTime": 57000,
+    "energy_cost": 55,
+    "reload_time": 57000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 0,
-        "effectTime": 25000,
-        "effectType": 23
+        "effect_time": 25000,
+        "effect_type": 23
       },
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 5000,
-        "effectTime": 0,
-        "effectType": 6
+        "effect_time": 0,
+        "effect_type": 6
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 70,
-        "effectTime": 20000,
-        "effectType": 24
+        "effect_time": 20000,
+        "effect_type": 24
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 8
+        "value_type": 20,
+        "value": 8
       }
     ],
-    "classNumber": 123,
+    "class_number": 123,
     "size": 50,
     "cost": 53000,
     "type": 2
   },
   {
-    "energyCost": 120,
-    "reloadTime": 60000,
+    "energy_cost": 120,
+    "reload_time": 60000,
     "effects": [
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 0,
-        "effectTime": 0,
-        "effectType": 20
+        "effect_time": 0,
+        "effect_type": 20
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 400,
-        "effectTime": 300,
-        "effectType": 22
+        "effect_time": 300,
+        "effect_type": 22
       },
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 500,
-        "effectTime": 0,
-        "effectType": 21
+        "effect_time": 0,
+        "effect_type": 21
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 8
+        "value_type": 22,
+        "value": 8
       }
     ],
-    "classNumber": 124,
+    "class_number": 124,
     "size": 55,
     "cost": 53000,
     "type": 2
   },
   {
-    "energyCost": 5,
-    "reloadTime": 500,
+    "energy_cost": 5,
+    "reload_time": 500,
     "effects": [
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 100,
-        "effectTime": 24000,
-        "effectType": 41
+        "effect_time": 24000,
+        "effect_type": 41
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 5000,
-        "effectTime": 700,
-        "effectType": 22
+        "effect_time": 700,
+        "effect_type": 22
       },
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 25000,
-        "effectTime": 0,
-        "effectType": 21
+        "effect_time": 0,
+        "effect_type": 21
       }
     ],
     "restrictions": [],
-    "classNumber": 1000,
+    "class_number": 1000,
     "size": 5,
     "cost": 900000,
     "type": 2
   },
   {
-    "energyCost": 55,
-    "reloadTime": 55000,
+    "energy_cost": 55,
+    "reload_time": 55000,
     "effects": [
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 0,
-        "effectTime": 30000,
-        "effectType": 17
+        "effect_time": 30000,
+        "effect_type": 17
       },
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 0,
-        "effectTime": 8000,
-        "effectType": 18
+        "effect_time": 8000,
+        "effect_type": 18
       },
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 5,
-        "effectTime": 20000,
-        "effectType": 19
+        "effect_time": 20000,
+        "effect_type": 19
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 8
+        "value_type": 23,
+        "value": 8
       }
     ],
-    "classNumber": 125,
+    "class_number": 125,
     "size": 50,
     "cost": 50000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 18,
-        "effectTime": 0,
-        "effectType": 35
+        "effect_time": 0,
+        "effect_type": 35
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 14,
-        "Value": 7
+        "value_type": 14,
+        "value": 7
       },
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 5
+        "value_type": 20,
+        "value": 5
       }
     ],
-    "classNumber": 150,
+    "class_number": 150,
     "size": 7,
     "cost": 120000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 110,
-        "effectTime": 0,
-        "effectType": 34
+        "effect_time": 0,
+        "effect_type": 34
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 3,
-        "effectTime": 0,
-        "effectType": 13
+        "effect_time": 0,
+        "effect_type": 13
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 5
+        "value_type": 22,
+        "value": 5
       },
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 5
+        "value_type": 23,
+        "value": 5
       }
     ],
-    "classNumber": 151,
+    "class_number": 151,
     "size": 38,
     "cost": 100000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 100,
-        "effectTime": 0,
-        "effectType": 34
+        "effect_time": 0,
+        "effect_type": 34
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 200,
-        "effectTime": 0,
-        "effectType": 36
+        "effect_time": 0,
+        "effect_type": 36
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 3
+        "value_type": 21,
+        "value": 3
       },
       {
         "type": 2,
-        "valueType": 18,
-        "Value": 5
+        "value_type": 18,
+        "value": 5
       }
     ],
-    "classNumber": 152,
+    "class_number": 152,
     "size": 11,
     "cost": 50000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 250,
-        "effectTime": 0,
-        "effectType": 34
+        "effect_time": 0,
+        "effect_type": 34
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 40,
-        "effectTime": 0,
-        "effectType": 37
+        "effect_time": 0,
+        "effect_type": 37
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 6,
-        "Value": 5
+        "value_type": 6,
+        "value": 5
       },
       {
         "type": 2,
-        "valueType": 14,
-        "Value": 5
+        "value_type": 14,
+        "value": 5
       }
     ],
-    "classNumber": 153,
+    "class_number": 153,
     "size": 11,
     "cost": 110000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 100,
-        "effectTime": 0,
-        "effectType": 38
+        "effect_time": 0,
+        "effect_type": 38
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": -1,
-        "effectTime": 0,
-        "effectType": 16
+        "effect_time": 0,
+        "effect_type": 16
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 3
+        "value_type": 20,
+        "value": 3
       },
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 3
+        "value_type": 21,
+        "value": 3
       },
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 3
+        "value_type": 22,
+        "value": 3
       },
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 3
+        "value_type": 23,
+        "value": 3
       }
     ],
-    "classNumber": 154,
+    "class_number": 154,
     "size": 5,
     "cost": 300000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 8000,
+    "energy_cost": 0,
+    "reload_time": 8000,
     "effects": [
       {
-        "targetType": 4,
+        "target_type": 4,
         "value": 0,
-        "effectTime": 0,
-        "effectType": 30
+        "effect_time": 0,
+        "effect_type": 30
       }
     ],
     "restrictions": [],
-    "classNumber": 155,
+    "class_number": 155,
     "size": 14,
     "cost": 40000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 5,
-        "effectTime": 0,
-        "effectType": 5
+        "effect_time": 0,
+        "effect_type": 5
       },
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": -1,
-        "effectTime": 0,
-        "effectType": 16
+        "effect_time": 0,
+        "effect_type": 16
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 1,
-        "Value": 7
+        "value_type": 1,
+        "value": 7
       }
     ],
-    "classNumber": 156,
+    "class_number": 156,
     "size": 11,
     "cost": 85000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 8,
-        "effectTime": 0,
-        "effectType": 3
+        "effect_time": 0,
+        "effect_type": 3
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 1
+        "value_type": 20,
+        "value": 1
       },
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 1
+        "value_type": 21,
+        "value": 1
       },
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 1
+        "value_type": 22,
+        "value": 1
       },
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 1
+        "value_type": 23,
+        "value": 1
       }
     ],
-    "classNumber": 157,
+    "class_number": 157,
     "size": 9,
     "cost": 100000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 100,
-        "effectTime": 0,
-        "effectType": 42
+        "effect_time": 0,
+        "effect_type": 42
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 5
+        "value_type": 22,
+        "value": 5
       }
     ],
-    "classNumber": 185,
+    "class_number": 185,
     "size": 11,
     "cost": 500000,
     "type": 2
   },
   {
-    "energyCost": 0,
-    "reloadTime": 0,
+    "energy_cost": 0,
+    "reload_time": 0,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 1000,
-        "effectTime": 0,
-        "effectType": 46
+        "effect_time": 0,
+        "effect_type": 46
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 9
+        "value_type": 22,
+        "value": 9
       }
     ],
-    "classNumber": 186,
+    "class_number": 186,
     "size": 14,
     "cost": 60000,
     "type": 2
   },
   {
-    "energyCost": 90,
-    "reloadTime": 45000,
+    "energy_cost": 90,
+    "reload_time": 45000,
     "effects": [
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": -2,
-        "effectTime": 13000,
-        "effectType": 43
+        "effect_time": 13000,
+        "effect_type": 43
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 4
+        "value_type": 22,
+        "value": 4
       },
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 4
+        "value_type": 23,
+        "value": 4
       }
     ],
-    "classNumber": 187,
+    "class_number": 187,
     "size": 39,
     "cost": 210000,
     "type": 2
   },
   {
-    "energyCost": 80,
-    "reloadTime": 80000,
+    "energy_cost": 80,
+    "reload_time": 80000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 80,
-        "effectTime": 8000,
-        "effectType": 3
+        "effect_time": 8000,
+        "effect_type": 3
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 5
+        "value_type": 21,
+        "value": 5
       },
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 2
+        "value_type": 23,
+        "value": 2
       }
     ],
-    "classNumber": 188,
+    "class_number": 188,
     "size": 64,
     "cost": 120000,
     "type": 2
   },
   {
-    "energyCost": 90,
-    "reloadTime": 50000,
+    "energy_cost": 90,
+    "reload_time": 50000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 95,
-        "effectTime": 8000,
-        "effectType": 45
+        "effect_time": 8000,
+        "effect_type": 45
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 6,
-        "Value": 5
+        "value_type": 6,
+        "value": 5
       },
       {
         "type": 2,
-        "valueType": 14,
-        "Value": 5
+        "value_type": 14,
+        "value": 5
       }
     ],
-    "classNumber": 189,
+    "class_number": 189,
     "size": 90,
     "cost": 150000,
     "type": 2
   },
   {
-    "energyCost": 50,
-    "reloadTime": 50000,
+    "energy_cost": 50,
+    "reload_time": 50000,
     "effects": [
       {
-        "targetType": 2,
+        "target_type": 2,
         "value": 70,
-        "effectTime": 20000,
-        "effectType": 5
+        "effect_time": 20000,
+        "effect_type": 5
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 2
+        "value_type": 20,
+        "value": 2
       },
       {
         "type": 2,
-        "valueType": 21,
-        "Value": 2
+        "value_type": 21,
+        "value": 2
       },
       {
         "type": 2,
-        "valueType": 22,
-        "Value": 2
+        "value_type": 22,
+        "value": 2
       },
       {
         "type": 2,
-        "valueType": 23,
-        "Value": 4
+        "value_type": 23,
+        "value": 4
       }
     ],
-    "classNumber": 190,
+    "class_number": 190,
     "size": 70,
     "cost": 100000,
     "type": 2
   },
   {
-    "energyCost": 30,
-    "reloadTime": 51000,
+    "energy_cost": 30,
+    "reload_time": 51000,
     "effects": [
       {
-        "targetType": 5,
+        "target_type": 5,
         "value": 2,
-        "effectTime": 0,
-        "effectType": 44
+        "effect_time": 0,
+        "effect_type": 44
       }
     ],
     "restrictions": [
       {
         "type": 2,
-        "valueType": 20,
-        "Value": 5
+        "value_type": 20,
+        "value": 5
       }
     ],
-    "classNumber": 191,
+    "class_number": 191,
     "size": 30,
     "cost": 90000,
     "type": 2

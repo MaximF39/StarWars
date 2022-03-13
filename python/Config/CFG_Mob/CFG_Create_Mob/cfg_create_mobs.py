@@ -96,8 +96,8 @@ mob_weapons = {
 def race_to_ship(race):
     pass
 
-def ship_to_race(classNumber):
-    str_classNumber = str(classNumber)
+def ship_to_race(class_number):
+    str_classNumber = str(class_number)
     if len(str_classNumber) == 2:
         return T_Race.OMOLENIAN_ID
     match int(str_classNumber[0]):
@@ -140,7 +140,6 @@ def get_aliance_by_race(race) -> int:
         case 7:
             return T_Aliance.SupremeCouncil
         case _:
-            print(race)
             raise NotImplementedError("don\'t find this race")
 
 def get_data_mobs():
@@ -151,13 +150,13 @@ def get_data_mobs():
             race = ship_to_race(CN_ship_mob)
             mob_type = get_type_mob(CN_ship_mob)
             yield {
-                "id": index,
+                "id": -index,
                 "locationId": location_id,
                 "race": race,
                 "aliance": get_aliance_by_race(race),
                 "x": random.randint(-RADIUS_FROM_CENTER, RADIUS_FROM_CENTER),
                 "y": random.randint(-RADIUS_FROM_CENTER, RADIUS_FROM_CENTER),
-                "classNumber": CN_ship_mob,
+                "class_number": CN_ship_mob,
                 "level": mob_level[mob_type],
                 "status": 2,
                 "RADIUS": RADIUS_FROM_CENTER,

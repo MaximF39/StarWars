@@ -5,3 +5,6 @@
 5 = T_Device
 6 = Droids
 7 = Ships
+
+guid_parse2 = {'AmmoParameters':2, "DeviceParameters":5, "DroidParameters": 6,
+              "EngineParameters":3, "ShipParameters":7, "WeaponParameters":4, "ResourseParameters":1}

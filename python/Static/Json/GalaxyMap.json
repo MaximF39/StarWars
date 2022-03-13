@@ -1,39 +1,39 @@
 ﻿[
   {
-    "Name": "Неу",
+    "name": "Неу",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 1,
-        "Name": "Шрёдинге",
+        "name": "Шрёдинге",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 2,
-        "Name": "Фарадея",
+        "name": "Фарадея",
         "race": 0,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 0
       },
       {
         "id": 3,
-        "Name": "Овери",
+        "name": "Овери",
         "race": 1,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 1
       },
       {
         "id": 4,
-        "Name": "Леп",
+        "name": "Леп",
         "race": 1,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 1,
@@ -45,40 +45,40 @@
     "map_y": 9
   },
   {
-    "Name": "Крок",
+    "name": "Крок",
     "sector": 1,
     "lineTo": 32,
-    "Planets": [
+    "data_planets": [
       {
         "id": 22,
-        "Name": "Зоил",
+        "name": "Зоил",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 27,
-        "Name": "Ксенофонт",
+        "name": "Ксенофонт",
         "race": 4,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 2
       },
       {
         "id": 45,
-        "Name": "А 'Арув",
+        "name": "А 'Арув",
         "race": 0,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 0
       },
       {
         "id": 85,
-        "Name": "Этора",
+        "name": "Этора",
         "race": 4,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -90,26 +90,26 @@
     "map_y": 27
   },
   {
-    "Name": "Апери",
+    "name": "Апери",
     "sector": 1,
     "lineTo": 8,
-    "Planets": [
+    "data_planets": [
       {
         "id": 67,
-        "Name": "Скелиос",
+        "name": "Скелиос",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 68,
-        "Name": "Антотиа",
+        "name": "Антотиа",
         "race": 0,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -121,40 +121,40 @@
     "map_y": 24
   },
   {
-    "Name": "Длин",
+    "name": "Длин",
     "sector": 1,
     "lineTo": 5,
-    "Planets": [
+    "data_planets": [
       {
         "id": 38,
-        "Name": "Шакура",
+        "name": "Шакура",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 39,
-        "Name": "Мустель",
+        "name": "Мустель",
         "race": 0,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 0
       },
       {
         "id": 40,
-        "Name": "Каплан",
+        "name": "Каплан",
         "race": 2,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 1
       },
       {
         "id": 41,
-        "Name": "Гаген - Торн",
+        "name": "Гаген - Торн",
         "race": 2,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 1,
@@ -166,40 +166,40 @@
     "map_y": 6
   },
   {
-    "Name": "Коил",
+    "name": "Коил",
     "sector": 1,
     "lineTo": 47,
-    "Planets": [
+    "data_planets": [
       {
         "id": 6,
-        "Name": "Алеру",
+        "name": "Алеру",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 7,
-        "Name": "Блейр",
+        "name": "Блейр",
         "race": 0,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 0
       },
       {
         "id": 8,
-        "Name": "Магнус",
+        "name": "Магнус",
         "race": 2,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 1
       },
       {
         "id": 9,
-        "Name": "Эверта",
+        "name": "Эверта",
         "race": 2,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -211,40 +211,40 @@
     "map_y": 4
   },
   {
-    "Name": "Биту",
+    "name": "Биту",
     "sector": 1,
     "lineTo": 8,
-    "Planets": [
+    "data_planets": [
       {
         "id": 10,
-        "Name": "Динуф",
+        "name": "Динуф",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 11,
-        "Name": "Искела",
+        "name": "Искела",
         "race": 3,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 2
       },
       {
         "id": 12,
-        "Name": "Циолковски",
+        "name": "Циолковски",
         "race": 3,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 2
       },
       {
         "id": 13,
-        "Name": "Хинс",
+        "name": "Хинс",
         "race": 3,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -256,40 +256,40 @@
     "map_y": 19
   },
   {
-    "Name": "Прикос",
+    "name": "Прикос",
     "sector": 1,
     "lineTo": 9,
-    "Planets": [
+    "data_planets": [
       {
         "id": 14,
-        "Name": "Боэр",
+        "name": "Боэр",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 15,
-        "Name": "Зиалот",
+        "name": "Зиалот",
         "race": 4,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 2
       },
       {
         "id": 16,
-        "Name": "Ринс",
+        "name": "Ринс",
         "race": 4,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 2
       },
       {
         "id": 17,
-        "Name": "Дреус",
+        "name": "Дреус",
         "race": 4,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 2,
@@ -301,40 +301,40 @@
     "map_y": 27
   },
   {
-    "Name": "Каний",
+    "name": "Каний",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 18,
-        "Name": "Огони",
+        "name": "Огони",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 19,
-        "Name": "Хаг",
+        "name": "Хаг",
         "race": 3,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 2
       },
       {
         "id": 20,
-        "Name": "Зао - дун",
+        "name": "Зао - дун",
         "race": 0,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 0
       },
       {
         "id": 21,
-        "Name": "Хрисипп",
+        "name": "Хрисипп",
         "race": 3,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -346,40 +346,40 @@
     "map_y": 22
   },
   {
-    "Name": "Алепс",
+    "name": "Алепс",
     "sector": 1,
     "lineTo": 2,
-    "Planets": [
+    "data_planets": [
       {
         "id": 23,
-        "Name": "Зенон",
+        "name": "Зенон",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 24,
-        "Name": "Филон",
+        "name": "Филон",
         "race": 4,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 2
       },
       {
         "id": 25,
-        "Name": "Цельс",
+        "name": "Цельс",
         "race": 0,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 0
       },
       {
         "id": 26,
-        "Name": "Критон",
+        "name": "Критон",
         "race": 0,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -391,33 +391,33 @@
     "map_y": 29
   },
   {
-    "Name": "Контр",
+    "name": "Контр",
     "sector": 1,
     "lineTo": 31,
-    "Planets": [
+    "data_planets": [
       {
         "id": 50,
-        "Name": "Бойль",
+        "name": "Бойль",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 54,
-        "Name": "Бонч",
+        "name": "Бонч",
         "race": 0,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 0
       },
       {
         "id": 57,
-        "Name": "Аматуни",
+        "name": "Аматуни",
         "race": 0,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -439,246 +439,246 @@
     "map_y": 13
   },
   {
-    "Name": "Акута",
+    "name": "Акута",
     "sector": 1,
     "lineTo": 14,
-    "Planets": [
+    "data_planets": [
       {
         "id": 122,
-        "Name": "Тринити",
+        "name": "Тринити",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 128,
-        "Name": "Гамма Гидры",
+        "name": "Гамма Гидры",
         "race": 0,
-        "classNumber": 17,
+        "class_number": 17,
         "aliance": 0
       },
       {
         "id": 129,
-        "Name": "Длайк",
+        "name": "Длайк",
         "race": 0,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 11,
     "map_x": 21,
     "map_y": 9
   },
   {
-    "Name": "Коон",
+    "name": "Коон",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 120,
-        "Name": "Парсек",
+        "name": "Парсек",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 124,
-        "Name": "Пристл",
+        "name": "Пристл",
         "race": 0,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 0
       },
       {
         "id": 125,
-        "Name": "Бета Пегаса",
+        "name": "Бета Пегаса",
         "race": 0,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 12,
     "map_x": 25,
     "map_y": 9
   },
   {
-    "Name": "Канлт",
+    "name": "Канлт",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 153,
-        "Name": "Фактус",
+        "name": "Фактус",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 154,
-        "Name": "Кикмас",
+        "name": "Кикмас",
         "race": 7,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 6
       },
       {
         "id": 155,
-        "Name": "Нипан",
+        "name": "Нипан",
         "race": 7,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 6
       },
       {
         "id": 156,
-        "Name": "Квакос",
+        "name": "Квакос",
         "race": 0,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 13,
     "map_x": 25,
     "map_y": 24
   },
   {
-    "Name": "Абас",
+    "name": "Абас",
     "sector": 1,
     "lineTo": 12,
-    "Planets": [
+    "data_planets": [
       {
         "id": 121,
-        "Name": "Кварк",
+        "name": "Кварк",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 126,
-        "Name": "Зайн",
+        "name": "Зайн",
         "race": 6,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 4
       },
       {
         "id": 127,
-        "Name": "Дерек",
+        "name": "Дерек",
         "race": 6,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 14,
     "map_x": 23,
     "map_y": 11
   },
   {
-    "Name": "Неуе",
+    "name": "Неуе",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 58,
-        "Name": "Амано",
+        "name": "Амано",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 59,
-        "Name": "Бакстер",
+        "name": "Бакстер",
         "race": 7,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 6
       },
       {
         "id": 157,
-        "Name": "Крикус",
+        "name": "Крикус",
         "race": 7,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 6
       },
       {
         "id": 158,
-        "Name": "Калос",
+        "name": "Калос",
         "race": 0,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 15,
     "map_x": 27,
     "map_y": 26
   },
   {
-    "Name": "Карт",
+    "name": "Карт",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 149,
-        "Name": "Хало",
+        "name": "Хало",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 150,
-        "Name": "Митус",
+        "name": "Митус",
         "race": 6,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 4
       },
       {
         "id": 151,
-        "Name": "Кивал",
+        "name": "Кивал",
         "race": 6,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 4
       },
       {
         "id": 152,
-        "Name": "Милмал",
+        "name": "Милмал",
         "race": 0,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 16,
     "map_x": 11,
     "map_y": 9
   },
   {
-    "Name": "Скоис",
+    "name": "Скоис",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 117,
-        "Name": "Квок",
+        "name": "Квок",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 118,
-        "Name": "Страй",
+        "name": "Страй",
         "race": 7,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 6
       },
       {
         "id": 119,
-        "Name": "Вдал",
+        "name": "Вдал",
         "race": 0,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 5,
         "aliance": 0,
@@ -690,72 +690,72 @@
     "map_y": 21
   },
   {
-    "Name": "Кику",
+    "name": "Кику",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 145,
-        "Name": "Вилус",
+        "name": "Вилус",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 146,
-        "Name": "Коракос",
+        "name": "Коракос",
         "race": 6,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 4
       },
       {
         "id": 147,
-        "Name": "Осирис",
+        "name": "Осирис",
         "race": 0,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 0
       },
       {
         "id": 148,
-        "Name": "Саму",
+        "name": "Саму",
         "race": 6,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 18,
     "map_x": 20,
     "map_y": 14
   },
   {
-    "Name": "Хаглд",
+    "name": "Хаглд",
     "sector": 1,
     "lineTo": 17,
-    "Planets": [
+    "data_planets": [
       {
         "id": 114,
-        "Name": "Тау Кита",
+        "name": "Тау Кита",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 115,
-        "Name": "Карат",
+        "name": "Карат",
         "race": 7,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 6
       },
       {
         "id": 116,
-        "Name": "Цефея",
+        "name": "Цефея",
         "race": 7,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 6
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 5,
         "aliance": 0,
@@ -772,232 +772,232 @@
     "map_y": 23
   },
   {
-    "Name": "Кита",
+    "name": "Кита",
     "sector": 1,
     "lineTo": 11,
-    "Planets": [
+    "data_planets": [
       {
         "id": 123,
-        "Name": "Увайн",
+        "name": "Увайн",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 130,
-        "Name": "Злюкус",
+        "name": "Злюкус",
         "race": 6,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 4
       },
       {
         "id": 131,
-        "Name": "Кайтор",
+        "name": "Кайтор",
         "race": 6,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 20,
     "map_x": 18,
     "map_y": 9
   },
   {
-    "Name": "Кеуну",
+    "name": "Кеуну",
     "sector": 1,
     "lineTo": 22,
-    "Planets": [
+    "data_planets": [
       {
         "id": 107,
-        "Name": "Хаббл-1",
+        "name": "Хаббл-1",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 108,
-        "Name": "Цуклат",
+        "name": "Цуклат",
         "race": 6,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 4
       },
       {
         "id": 109,
-        "Name": "Андромеда",
+        "name": "Андромеда",
         "race": 6,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 21,
     "map_x": 19,
     "map_y": 22
   },
   {
-    "Name": "Лямбда",
+    "name": "Лямбда",
     "sector": 1,
     "lineTo": 21,
-    "Planets": [
+    "data_planets": [
       {
         "id": 110,
-        "Name": "Астрал",
+        "name": "Астрал",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 111,
-        "Name": "Хаос",
+        "name": "Хаос",
         "race": 0,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 0
       },
       {
         "id": 112,
-        "Name": "Курай",
+        "name": "Курай",
         "race": 6,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 4
       },
       {
         "id": 113,
-        "Name": "Антар",
+        "name": "Антар",
         "race": 6,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 22,
     "map_x": 21,
     "map_y": 20
   },
   {
-    "Name": "Зу-альма",
+    "name": "Зу-альма",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 134,
-        "Name": "Зок",
+        "name": "Зок",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 138,
-        "Name": "Мю-Зевса",
+        "name": "Мю-Зевса",
         "race": 6,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 4
       },
       {
         "id": 142,
-        "Name": "Майрон",
+        "name": "Майрон",
         "race": 6,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 23,
     "map_x": 10,
     "map_y": 20
   },
   {
-    "Name": "Кирр",
+    "name": "Кирр",
     "sector": 1,
     "lineTo": 23,
-    "Planets": [
+    "data_planets": [
       {
         "id": 133,
-        "Name": "Ирник",
+        "name": "Ирник",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 137,
-        "Name": "Гамма Цефея",
+        "name": "Гамма Цефея",
         "race": 0,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 0
       },
       {
         "id": 141,
-        "Name": "Хайван",
+        "name": "Хайван",
         "race": 0,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 24,
     "map_x": 7,
     "map_y": 19
   },
   {
-    "Name": "Эпсилон",
+    "name": "Эпсилон",
     "sector": 1,
     "lineTo": 23,
-    "Planets": [
+    "data_planets": [
       {
         "id": 135,
-        "Name": "Кулван",
+        "name": "Кулван",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 139,
-        "Name": "Вайра",
+        "name": "Вайра",
         "race": 0,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 0
       },
       {
         "id": 143,
-        "Name": "Гитус",
+        "name": "Гитус",
         "race": 0,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 25,
     "map_x": 8,
     "map_y": 23
   },
   {
-    "Name": "Крика",
+    "name": "Крика",
     "sector": 1,
     "lineTo": 21,
-    "Planets": [
+    "data_planets": [
       {
         "id": 99,
-        "Name": "Трипал",
+        "name": "Трипал",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 100,
-        "Name": "Кеплер-2",
+        "name": "Кеплер-2",
         "race": 6,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 4
       },
       {
         "id": 101,
-        "Name": "Китан",
+        "name": "Китан",
         "race": 6,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1009,136 +1009,136 @@
     "map_y": 21
   },
   {
-    "Name": "Лука",
+    "name": "Лука",
     "sector": 1,
     "lineTo": 23,
-    "Planets": [
+    "data_planets": [
       {
         "id": 132,
-        "Name": "Малмаш",
+        "name": "Малмаш",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 136,
-        "Name": "Малкуш",
+        "name": "Малкуш",
         "race": 5,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 3
       },
       {
         "id": 140,
-        "Name": "Ташлама",
+        "name": "Ташлама",
         "race": 3,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 27,
     "map_x": 9,
     "map_y": 16
   },
   {
-    "Name": "Крикол",
+    "name": "Крикол",
     "sector": 1,
     "lineTo": 26,
-    "Planets": [
+    "data_planets": [
       {
         "id": 95,
-        "Name": "Покатос",
+        "name": "Покатос",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 96,
-        "Name": "Ванаат",
+        "name": "Ванаат",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       },
       {
         "id": 97,
-        "Name": "Криклок",
+        "name": "Криклок",
         "race": 0,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 0
       },
       {
         "id": 98,
-        "Name": "Кламвак",
+        "name": "Кламвак",
         "race": 0,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 28,
     "map_x": 16,
     "map_y": 19
   },
   {
-    "Name": "Милдис",
+    "name": "Милдис",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 77,
-        "Name": "Суинос",
+        "name": "Суинос",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 78,
-        "Name": "Эмос",
+        "name": "Эмос",
         "race": 5,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 3
       },
       {
         "id": 79,
-        "Name": "Торетиа",
+        "name": "Торетиа",
         "race": 5,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 29,
     "map_x": 21,
     "map_y": 17
   },
   {
-    "Name": "Стату",
+    "name": "Стату",
     "sector": 1,
     "lineTo": 1,
-    "Planets": [
+    "data_planets": [
       {
         "id": 28,
-        "Name": "Кси - Альфа",
+        "name": "Кси - Альфа",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 29,
-        "Name": "Чиплан",
+        "name": "Чиплан",
         "race": 1,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 1
       },
       {
         "id": 30,
-        "Name": "Коворк",
+        "name": "Коворк",
         "race": 0,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1150,58 +1150,58 @@
     "map_y": 10
   },
   {
-    "Name": "Краси",
+    "name": "Краси",
     "sector": 1,
     "lineTo": 35,
-    "Planets": [
+    "data_planets": [
       {
         "id": 51,
-        "Name": "Ампер",
+        "name": "Ампер",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 56,
-        "Name": "Вайнштейн",
+        "name": "Вайнштейн",
         "race": 5,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 3
       },
       {
         "id": 106,
-        "Name": "Каро",
+        "name": "Каро",
         "race": 3,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 31,
     "map_x": 12,
     "map_y": 15
   },
   {
-    "Name": "Квазар-9",
+    "name": "Квазар-9",
     "sector": 1,
     "lineTo": 34,
-    "Planets": [
+    "data_planets": [
       {
         "id": 69,
-        "Name": "Нугадос",
+        "name": "Нугадос",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 86,
-        "Name": "Кракатао",
+        "name": "Кракатао",
         "race": 0,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1213,40 +1213,40 @@
     "map_y": 26
   },
   {
-    "Name": "Ливат",
+    "name": "Ливат",
     "sector": 1,
     "lineTo": 29,
-    "Planets": [
+    "data_planets": [
       {
         "id": 80,
-        "Name": "Кактус",
+        "name": "Кактус",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 81,
-        "Name": "Налис",
+        "name": "Налис",
         "race": 5,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 3
       },
       {
         "id": 82,
-        "Name": "Нундос",
+        "name": "Нундос",
         "race": 5,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 3
       },
       {
         "id": 83,
-        "Name": "Крук",
+        "name": "Крук",
         "race": 5,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 3,
@@ -1258,104 +1258,104 @@
     "map_y": 16
   },
   {
-    "Name": "Шу-Кори",
+    "name": "Шу-Кори",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 70,
-        "Name": "Наукас",
+        "name": "Наукас",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 71,
-        "Name": "Ньютона",
+        "name": "Ньютона",
         "race": 0,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 0
       },
       {
         "id": 102,
-        "Name": "Кишито",
+        "name": "Кишито",
         "race": 0,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 34,
     "map_x": 1,
     "map_y": 28
   },
   {
-    "Name": "Акали",
+    "name": "Акали",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 49,
-        "Name": "Нильбор",
+        "name": "Нильбор",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 55,
-        "Name": "Вильсон",
+        "name": "Вильсон",
         "race": 5,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 3
       },
       {
         "id": 105,
-        "Name": "Хаббл-2",
+        "name": "Хаббл-2",
         "race": 5,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 35,
     "map_x": 11,
     "map_y": 13
   },
   {
-    "Name": "Кринул",
+    "name": "Кринул",
     "sector": 1,
     "lineTo": 37,
-    "Planets": [
+    "data_planets": [
       {
         "id": 72,
-        "Name": "Элтиа",
+        "name": "Элтиа",
         "race": 7,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 5
       },
       {
         "id": 73,
-        "Name": "Кайрос",
+        "name": "Кайрос",
         "race": 1,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 1
       },
       {
         "id": 94,
-        "Name": "Эверест",
+        "name": "Эверест",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 562,
-        "Name": "Агурила",
+        "name": "Агурила",
         "race": 3,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 1,
@@ -1377,79 +1377,79 @@
     "map_y": 16
   },
   {
-    "Name": "Галду",
+    "name": "Галду",
     "sector": 1,
     "lineTo": 33,
-    "Planets": [
+    "data_planets": [
       {
         "id": 74,
-        "Name": "Кинетика",
+        "name": "Кинетика",
         "race": 5,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 3
       },
       {
         "id": 75,
-        "Name": "Ториос",
+        "name": "Ториос",
         "race": 5,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 3
       },
       {
         "id": 76,
-        "Name": "Ниаполис",
+        "name": "Ниаполис",
         "race": 5,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 3
       },
       {
         "id": 144,
-        "Name": "Вактус",
+        "name": "Вактус",
         "race": 5,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 37,
     "map_x": 17,
     "map_y": 17
   },
   {
-    "Name": "Нирва",
+    "name": "Нирва",
     "sector": 1,
     "lineTo": 8,
-    "Planets": [
+    "data_planets": [
       {
         "id": 5,
-        "Name": "Аунте",
+        "name": "Аунте",
         "race": 0,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 0
       },
       {
         "id": 35,
-        "Name": "Пикильнер",
+        "name": "Пикильнер",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 36,
-        "Name": "Ириис",
+        "name": "Ириис",
         "race": 0,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 0
       },
       {
         "id": 37,
-        "Name": "Штерн",
+        "name": "Штерн",
         "race": 3,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 2,
@@ -1461,26 +1461,26 @@
     "map_y": 22
   },
   {
-    "Name": "Фина",
+    "name": "Фина",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 60,
-        "Name": "Вавилов",
+        "name": "Вавилов",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 61,
-        "Name": "Гейзенберг",
+        "name": "Гейзенберг",
         "race": 0,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1492,136 +1492,136 @@
     "map_y": 6
   },
   {
-    "Name": "Алистар",
+    "name": "Алистар",
     "sector": 1,
     "lineTo": 39,
-    "Planets": [
+    "data_planets": [
       {
         "id": 62,
-        "Name": "Налаос",
+        "name": "Налаос",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 63,
-        "Name": "Стродаос",
+        "name": "Стродаос",
         "race": 0,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 40,
     "map_x": 30,
     "map_y": 3
   },
   {
-    "Name": "А'Дунус",
+    "name": "А'Дунус",
     "sector": 1,
     "lineTo": 10,
-    "Planets": [
+    "data_planets": [
       {
         "id": 52,
-        "Name": "Кюри",
+        "name": "Кюри",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 53,
-        "Name": "Бруевич",
+        "name": "Бруевич",
         "race": 5,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 3
       },
       {
         "id": 103,
-        "Name": "Кеплер-1",
+        "name": "Кеплер-1",
         "race": 3,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 2
       },
       {
         "id": 104,
-        "Name": "Этбор",
+        "name": "Этбор",
         "race": 0,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 41,
     "map_x": 14,
     "map_y": 10
   },
   {
-    "Name": "У'Нирак",
+    "name": "У'Нирак",
     "sector": 1,
     "lineTo": 40,
-    "Planets": [
+    "data_planets": [
       {
         "id": 65,
-        "Name": "Дракус",
+        "name": "Дракус",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 89,
-        "Name": "Гуна Экзо",
+        "name": "Гуна Экзо",
         "race": 0,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 0
       },
       {
         "id": 90,
-        "Name": "Ялути",
+        "name": "Ялути",
         "race": 0,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 42,
     "map_x": 27,
     "map_y": 1
   },
   {
-    "Name": "И'Року",
+    "name": "И'Року",
     "sector": 1,
     "lineTo": 4,
-    "Planets": [
+    "data_planets": [
       {
         "id": 42,
-        "Name": "У 'Каленс",
+        "name": "У 'Каленс",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 43,
-        "Name": "Айнштайн",
+        "name": "Айнштайн",
         "race": 2,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 1
       },
       {
         "id": 44,
-        "Name": "Пол 'Туру",
+        "name": "Пол 'Туру",
         "race": 0,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 0
       },
       {
         "id": 84,
-        "Name": "Таш",
+        "name": "Таш",
         "race": 2,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1633,26 +1633,26 @@
     "map_y": 3
   },
   {
-    "Name": "Пол'Дарам",
+    "name": "Пол'Дарам",
     "sector": 1,
     "lineTo": 40,
-    "Planets": [
+    "data_planets": [
       {
         "id": 64,
-        "Name": "Лериос",
+        "name": "Лериос",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 88,
-        "Name": "Кутабаш",
+        "name": "Кутабаш",
         "race": 0,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1664,33 +1664,33 @@
     "map_y": 4
   },
   {
-    "Name": "Тарум Адун",
+    "name": "Тарум Адун",
     "sector": 1,
     "lineTo": 10,
-    "Planets": [
+    "data_planets": [
       {
         "id": 46,
-        "Name": "Максвелл",
+        "name": "Максвелл",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 47,
-        "Name": "Ньютоун",
+        "name": "Ньютоун",
         "race": 5,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 3
       },
       {
         "id": 48,
-        "Name": "Галилео",
+        "name": "Галилео",
         "race": 3,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1702,40 +1702,40 @@
     "map_y": 12
   },
   {
-    "Name": "О'Вдин",
+    "name": "О'Вдин",
     "sector": 1,
     "lineTo": 30,
-    "Planets": [
+    "data_planets": [
       {
         "id": 31,
-        "Name": "Ксуви",
+        "name": "Ксуви",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 32,
-        "Name": "Киато",
+        "name": "Киато",
         "race": 1,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 1
       },
       {
         "id": 33,
-        "Name": "Фейнберг",
+        "name": "Фейнберг",
         "race": 1,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 1
       },
       {
         "id": 34,
-        "Name": "Ансельм",
+        "name": "Ансельм",
         "race": 0,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1747,26 +1747,26 @@
     "map_y": 8
   },
   {
-    "Name": "Гамма Центавра",
+    "name": "Гамма Центавра",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 66,
-        "Name": "Фезиос",
+        "name": "Фезиос",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 87,
-        "Name": "Кривкул",
+        "name": "Кривкул",
         "race": 0,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -1778,33 +1778,33 @@
     "map_y": 2
   },
   {
-    "Name": "Ин'Нефиль",
+    "name": "Ин'Нефиль",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 91,
-        "Name": "Вампа",
+        "name": "Вампа",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 92,
-        "Name": "Криклс",
+        "name": "Криклс",
         "race": 7,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 5
       },
       {
         "id": 93,
-        "Name": "Эс-Мис",
+        "name": "Эс-Мис",
         "race": 7,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 4,
         "aliance": 0,
@@ -1821,65 +1821,65 @@
     "map_y": 1
   },
   {
-    "Name": "Лебедь Х-1",
+    "name": "Лебедь Х-1",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 159,
-        "Name": "Малла",
+        "name": "Малла",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 160,
-        "Name": "Базис",
+        "name": "Базис",
         "race": 0,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 0
       },
       {
         "id": 161,
-        "Name": "Гаусс",
+        "name": "Гаусс",
         "race": 0,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 49,
     "map_x": 29,
     "map_y": 28
   },
   {
-    "Name": "А'Кирс",
+    "name": "А'Кирс",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 162,
-        "Name": "Коларис",
+        "name": "Коларис",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 166,
-        "Name": "Иванти",
+        "name": "Иванти",
         "race": 7,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 5
       },
       {
         "id": 167,
-        "Name": "Гайнур",
+        "name": "Гайнур",
         "race": 7,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 4,
         "aliance": 0,
@@ -1891,65 +1891,65 @@
     "map_y": 30
   },
   {
-    "Name": "А'Малка",
+    "name": "А'Малка",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 163,
-        "Name": "Маркк",
+        "name": "Маркк",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 164,
-        "Name": "Шокотан",
+        "name": "Шокотан",
         "race": 7,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 5
       },
       {
         "id": 165,
-        "Name": "Билома-ко",
+        "name": "Билома-ко",
         "race": 7,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 51,
     "map_x": 28,
     "map_y": 30
   },
   {
-    "Name": "Он'Кирт",
+    "name": "Он'Кирт",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 168,
-        "Name": "Гуна Экзо",
+        "name": "Гуна Экзо",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 169,
-        "Name": "Бета Руна",
+        "name": "Бета Руна",
         "race": 0,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 0
       },
       {
         "id": 170,
-        "Name": "Кион",
+        "name": "Кион",
         "race": 0,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 4,
         "aliance": 0,
@@ -1961,346 +1961,346 @@
     "map_y": 16
   },
   {
-    "Name": "Се'Рама",
+    "name": "Се'Рама",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 175,
-        "Name": "Изоль",
+        "name": "Изоль",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 191,
-        "Name": "Мапол",
+        "name": "Мапол",
         "race": 6,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 4
       },
       {
         "id": 206,
-        "Name": "Йорк",
+        "name": "Йорк",
         "race": 6,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 53,
     "map_x": 52,
     "map_y": 12
   },
   {
-    "Name": "Ханум",
+    "name": "Ханум",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 185,
-        "Name": "Миг",
+        "name": "Миг",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 199,
-        "Name": "Диорт",
+        "name": "Диорт",
         "race": 7,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 6
       },
       {
         "id": 205,
-        "Name": "Старк",
+        "name": "Старк",
         "race": 7,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 54,
     "map_x": 61,
     "map_y": 21
   },
   {
-    "Name": "Омега 16",
+    "name": "Омега 16",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 177,
-        "Name": "Ка-Нота",
+        "name": "Ка-Нота",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 201,
-        "Name": "Шомак",
+        "name": "Шомак",
         "race": 6,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 4
       },
       {
         "id": 213,
-        "Name": "Клим",
+        "name": "Клим",
         "race": 6,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 55,
     "map_x": 62,
     "map_y": 15
   },
   {
-    "Name": "Пол'Кинту",
+    "name": "Пол'Кинту",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 178,
-        "Name": "Айнор",
+        "name": "Айнор",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 197,
-        "Name": "Пирток",
+        "name": "Пирток",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       },
       {
         "id": 207,
-        "Name": "Мирлокк",
+        "name": "Мирлокк",
         "race": 6,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 56,
     "map_x": 57,
     "map_y": 15
   },
   {
-    "Name": "Вега",
+    "name": "Вега",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 182,
-        "Name": "Валк",
+        "name": "Валк",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 198,
-        "Name": "Ликен",
+        "name": "Ликен",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       },
       {
         "id": 204,
-        "Name": "Квайк",
+        "name": "Квайк",
         "race": 6,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 57,
     "map_x": 56,
     "map_y": 17
   },
   {
-    "Name": "Аргус",
+    "name": "Аргус",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 176,
-        "Name": "Вамкут",
+        "name": "Вамкут",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 195,
-        "Name": "Зарон",
+        "name": "Зарон",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       },
       {
         "id": 202,
-        "Name": "Жадор",
+        "name": "Жадор",
         "race": 6,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 58,
     "map_x": 62,
     "map_y": 8
   },
   {
-    "Name": "Се'Дам",
+    "name": "Се'Дам",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 187,
-        "Name": "Ситвок",
+        "name": "Ситвок",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 196,
-        "Name": "Пактус",
+        "name": "Пактус",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       },
       {
         "id": 208,
-        "Name": "Авансум",
+        "name": "Авансум",
         "race": 6,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 59,
     "map_x": 67,
     "map_y": 16
   },
   {
-    "Name": "Авелтус",
+    "name": "Авелтус",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 171,
-        "Name": "Мальт",
+        "name": "Мальт",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 172,
-        "Name": "Таурус",
+        "name": "Таурус",
         "race": 7,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 6
       },
       {
         "id": 173,
-        "Name": "Клойд",
+        "name": "Клойд",
         "race": 7,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 60,
     "map_x": 59,
     "map_y": 12
   },
   {
-    "Name": "Ирзима",
+    "name": "Ирзима",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 181,
-        "Name": "Винук",
+        "name": "Винук",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 190,
-        "Name": "Цукет",
+        "name": "Цукет",
         "race": 6,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 61,
     "map_x": 54,
     "map_y": 14
   },
   {
-    "Name": "Киламас",
+    "name": "Киламас",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 174,
-        "Name": "Трис",
+        "name": "Трис",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 188,
-        "Name": "Маса",
+        "name": "Маса",
         "race": 6,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 4
       },
       {
         "id": 214,
-        "Name": "Заратусс",
+        "name": "Заратусс",
         "race": 6,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 62,
     "map_x": 61,
     "map_y": 11
   },
   {
-    "Name": "Магелланово Облако",
+    "name": "Магелланово Облако",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 179,
-        "Name": "Чек",
+        "name": "Чек",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 192,
-        "Name": "Тигул",
+        "name": "Тигул",
         "race": 6,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 4
       },
       {
         "id": 203,
-        "Name": "Эдул",
+        "name": "Эдул",
         "race": 6,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 4,
@@ -2312,154 +2312,154 @@
     "map_y": 14
   },
   {
-    "Name": "Димата",
+    "name": "Димата",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 184,
-        "Name": "Пуанг",
+        "name": "Пуанг",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 200,
-        "Name": "Хотош",
+        "name": "Хотош",
         "race": 7,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 6
       },
       {
         "id": 209,
-        "Name": "Швайн",
+        "name": "Швайн",
         "race": 7,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 64,
     "map_x": 59,
     "map_y": 19
   },
   {
-    "Name": "Факус",
+    "name": "Факус",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 183,
-        "Name": "Лак",
+        "name": "Лак",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 193,
-        "Name": "Мистик",
+        "name": "Мистик",
         "race": 6,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 4
       },
       {
         "id": 210,
-        "Name": "Курцер",
+        "name": "Курцер",
         "race": 6,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 65,
     "map_x": 55,
     "map_y": 20
   },
   {
-    "Name": "Кирката",
+    "name": "Кирката",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 186,
-        "Name": "Крок",
+        "name": "Крок",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 194,
-        "Name": "Кудлав",
+        "name": "Кудлав",
         "race": 6,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 4
       },
       {
         "id": 212,
-        "Name": "Квазайк",
+        "name": "Квазайк",
         "race": 6,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 66,
     "map_x": 64,
     "map_y": 19
   },
   {
-    "Name": "Кумус",
+    "name": "Кумус",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 180,
-        "Name": "Дарос",
+        "name": "Дарос",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 189,
-        "Name": "Годул",
+        "name": "Годул",
         "race": 6,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 4
       },
       {
         "id": 211,
-        "Name": "Хукер",
+        "name": "Хукер",
         "race": 6,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 67,
     "map_x": 62,
     "map_y": 18
   },
   {
-    "Name": "Тантус",
+    "name": "Тантус",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 231,
-        "Name": "Ригель",
+        "name": "Ригель",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 237,
-        "Name": "Мирос",
+        "name": "Мирос",
         "race": 3,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 2,
@@ -2471,26 +2471,26 @@
     "map_y": 4
   },
   {
-    "Name": "Цукита",
+    "name": "Цукита",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 234,
-        "Name": "Рас Альгети",
+        "name": "Рас Альгети",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 235,
-        "Name": "Саргас",
+        "name": "Саргас",
         "race": 1,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 1,
@@ -2502,26 +2502,26 @@
     "map_y": 1
   },
   {
-    "Name": "Самент",
+    "name": "Самент",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 232,
-        "Name": "Кразер",
+        "name": "Кразер",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 236,
-        "Name": "Критай",
+        "name": "Критай",
         "race": 2,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 1,
@@ -2533,26 +2533,26 @@
     "map_y": 29
   },
   {
-    "Name": "Банету",
+    "name": "Банету",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 233,
-        "Name": "Мидолл",
+        "name": "Мидолл",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 238,
-        "Name": "Мойкус",
+        "name": "Мойкус",
         "race": 4,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 2,
@@ -2564,628 +2564,628 @@
     "map_y": 26
   },
   {
-    "Name": "Боде",
+    "name": "Боде",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 215,
-        "Name": "Антарес",
+        "name": "Антарес",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 222,
-        "Name": "Менкар",
+        "name": "Менкар",
         "race": 6,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 4
       },
       {
         "id": 223,
-        "Name": "Мира",
+        "name": "Мира",
         "race": 6,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 4
       },
       {
         "id": 228,
-        "Name": "Проксима Центавра",
+        "name": "Проксима Центавра",
         "race": 6,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 72,
     "map_x": 20,
     "map_y": 6
   },
   {
-    "Name": "Шомоно",
+    "name": "Шомоно",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 216,
-        "Name": "Клику-Тайма",
+        "name": "Клику-Тайма",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 220,
-        "Name": "Гнол",
+        "name": "Гнол",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       },
       {
         "id": 224,
-        "Name": "Нави",
+        "name": "Нави",
         "race": 6,
-        "classNumber": 17,
+        "class_number": 17,
         "aliance": 4
       },
       {
         "id": 229,
-        "Name": "Сабина",
+        "name": "Сабина",
         "race": 6,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 73,
     "map_x": 27,
     "map_y": 12
   },
   {
-    "Name": "Ка'Рета",
+    "name": "Ка'Рета",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 217,
-        "Name": "Гальма",
+        "name": "Гальма",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 221,
-        "Name": "Автикукл",
+        "name": "Автикукл",
         "race": 6,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 4
       },
       {
         "id": 225,
-        "Name": "Лямбда",
+        "name": "Лямбда",
         "race": 6,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 4
       },
       {
         "id": 230,
-        "Name": "Процион",
+        "name": "Процион",
         "race": 6,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 74,
     "map_x": 11,
     "map_y": 25
   },
   {
-    "Name": "Арт'Нул",
+    "name": "Арт'Нул",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 218,
-        "Name": "Блиц",
+        "name": "Блиц",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 219,
-        "Name": "Траст",
+        "name": "Траст",
         "race": 6,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 4
       },
       {
         "id": 226,
-        "Name": "Ксикс",
+        "name": "Ксикс",
         "race": 6,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 4
       },
       {
         "id": 227,
-        "Name": "Полярис",
+        "name": "Полярис",
         "race": 6,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 75,
     "map_x": 5,
     "map_y": 17
   },
   {
-    "Name": "Нибилик",
+    "name": "Нибилик",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 253,
-        "Name": "Изида",
+        "name": "Изида",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 257,
-        "Name": "Молдус",
+        "name": "Молдус",
         "race": 6,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 76,
     "map_x": 50,
     "map_y": 28
   },
   {
-    "Name": "Симока",
+    "name": "Симока",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 240,
-        "Name": "Сириус",
+        "name": "Сириус",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 260,
-        "Name": "Янчик",
+        "name": "Янчик",
         "race": 6,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 77,
     "map_x": 49,
     "map_y": 11
   },
   {
-    "Name": "Киранул",
+    "name": "Киранул",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 248,
-        "Name": "Мидол",
+        "name": "Мидол",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 271,
-        "Name": "Яклоп",
+        "name": "Яклоп",
         "race": 6,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 78,
     "map_x": 73,
     "map_y": 29
   },
   {
-    "Name": "Гамита",
+    "name": "Гамита",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 244,
-        "Name": "Чирук",
+        "name": "Чирук",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 264,
-        "Name": "Ульма",
+        "name": "Ульма",
         "race": 6,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 79,
     "map_x": 63,
     "map_y": 5
   },
   {
-    "Name": "Атоа",
+    "name": "Атоа",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 241,
-        "Name": "Кориоли",
+        "name": "Кориоли",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 261,
-        "Name": "Варот",
+        "name": "Варот",
         "race": 6,
-        "classNumber": 17,
+        "class_number": 17,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 80,
     "map_x": 46,
     "map_y": 9
   },
   {
-    "Name": "Фрокторас",
+    "name": "Фрокторас",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 242,
-        "Name": "Рамазо",
+        "name": "Рамазо",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 262,
-        "Name": "Хош",
+        "name": "Хош",
         "race": 6,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 81,
     "map_x": 44,
     "map_y": 6
   },
   {
-    "Name": "Квазар",
+    "name": "Квазар",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 243,
-        "Name": "Вега",
+        "name": "Вега",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 263,
-        "Name": "Жмит",
+        "name": "Жмит",
         "race": 6,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 82,
     "map_x": 42,
     "map_y": 1
   },
   {
-    "Name": "Смоска",
+    "name": "Смоска",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 252,
-        "Name": "Файзул",
+        "name": "Файзул",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 256,
-        "Name": "Фуст",
+        "name": "Фуст",
         "race": 6,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 83,
     "map_x": 43,
     "map_y": 29
   },
   {
-    "Name": "Бета-Каса",
+    "name": "Бета-Каса",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 254,
-        "Name": "Раптор",
+        "name": "Раптор",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 258,
-        "Name": "Дисс",
+        "name": "Дисс",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 84,
     "map_x": 53,
     "map_y": 26
   },
   {
-    "Name": "Авандос",
+    "name": "Авандос",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 255,
-        "Name": "Хатар",
+        "name": "Хатар",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 259,
-        "Name": "Кемет",
+        "name": "Кемет",
         "race": 6,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 85,
     "map_x": 55,
     "map_y": 23
   },
   {
-    "Name": "Витобрас",
+    "name": "Витобрас",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 247,
-        "Name": "Кразер",
+        "name": "Кразер",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 265,
-        "Name": "Лимот",
+        "name": "Лимот",
         "race": 6,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 86,
     "map_x": 65,
     "map_y": 3
   },
   {
-    "Name": "Кит",
+    "name": "Кит",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 246,
-        "Name": "Ум-Альфа",
+        "name": "Ум-Альфа",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 266,
-        "Name": "Пирой",
+        "name": "Пирой",
         "race": 6,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 87,
     "map_x": 68,
     "map_y": 2
   },
   {
-    "Name": "Хну",
+    "name": "Хну",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 245,
-        "Name": "Ван Тор",
+        "name": "Ван Тор",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 267,
-        "Name": "Дитокс",
+        "name": "Дитокс",
         "race": 6,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 88,
     "map_x": 73,
     "map_y": 1
   },
   {
-    "Name": "Гидра",
+    "name": "Гидра",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 249,
-        "Name": "Лейла",
+        "name": "Лейла",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 270,
-        "Name": "Госек",
+        "name": "Госек",
         "race": 6,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 89,
     "map_x": 71,
     "map_y": 23
   },
   {
-    "Name": "Тукан",
+    "name": "Тукан",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 250,
-        "Name": "Симад",
+        "name": "Симад",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 269,
-        "Name": "Залип",
+        "name": "Залип",
         "race": 6,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 90,
     "map_x": 70,
     "map_y": 20
   },
   {
-    "Name": "Омега-Сириус",
+    "name": "Омега-Сириус",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 251,
-        "Name": "Цинь",
+        "name": "Цинь",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 268,
-        "Name": "Читлан",
+        "name": "Читлан",
         "race": 6,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 91,
     "map_x": 68,
     "map_y": 18
   },
   {
-    "Name": "Дельта",
+    "name": "Дельта",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 239,
-        "Name": "Ру-но",
+        "name": "Ру-но",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 272,
-        "Name": "Швакрамба",
+        "name": "Швакрамба",
         "race": 7,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 6
       },
       {
         "id": 273,
-        "Name": "Гринго",
+        "name": "Гринго",
         "race": 7,
-        "classNumber": 17,
+        "class_number": 17,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 92,
     "map_x": 56,
     "map_y": 11
   },
   {
-    "Name": "Пиратская Бухта",
+    "name": "Пиратская Бухта",
     "sector": 2,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 274,
-        "Name": "Красная сила",
+        "name": "Красная сила",
         "race": 5,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 3
       },
       {
         "id": 275,
-        "Name": "Логово Дрейка",
+        "name": "Логово Дрейка",
         "race": 5,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 3
       },
       {
         "id": 276,
-        "Name": "Роджерс",
+        "name": "Роджерс",
         "race": 5,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 3
       },
       {
         "id": 277,
-        "Name": "Пиратская Бухта",
+        "name": "Пиратская Бухта",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 3,
@@ -3197,26 +3197,26 @@
     "map_y": 24
   },
   {
-    "Name": "Овдар",
+    "name": "Овдар",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 278,
-        "Name": "278",
+        "name": "278",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 279,
-        "Name": "Курам",
+        "name": "Курам",
         "race": 7,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 4,
         "aliance": 0,
@@ -3228,161 +3228,161 @@
     "map_y": 55
   },
   {
-    "Name": "Инвида",
+    "name": "Инвида",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 280,
-        "Name": "Инмора",
+        "name": "Инмора",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 281,
-        "Name": "Инсало",
+        "name": "Инсало",
         "race": 6,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 4
       },
       {
         "id": 282,
-        "Name": "Дарос",
+        "name": "Дарос",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 97,
     "map_x": 15,
     "map_y": 52
   },
   {
-    "Name": "Аррид",
+    "name": "Аррид",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 283,
-        "Name": "282",
+        "name": "282",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 284,
-        "Name": "Дошак",
+        "name": "Дошак",
         "race": 6,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 4
       },
       {
         "id": 285,
-        "Name": "Сантом",
+        "name": "Сантом",
         "race": 6,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 98,
     "map_x": 13,
     "map_y": 56
   },
   {
-    "Name": "Миван",
+    "name": "Миван",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 286,
-        "Name": "285",
+        "name": "285",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 287,
-        "Name": "Кадан",
+        "name": "Кадан",
         "race": 6,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 4
       },
       {
         "id": 288,
-        "Name": "Гуром",
+        "name": "Гуром",
         "race": 6,
-        "classNumber": 17,
+        "class_number": 17,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 99,
     "map_x": 17,
     "map_y": 58
   },
   {
-    "Name": "Думис",
+    "name": "Думис",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 289,
-        "Name": "288",
+        "name": "288",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 290,
-        "Name": "Кулос",
+        "name": "Кулос",
         "race": 6,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 4
       },
       {
         "id": 291,
-        "Name": "Кадок",
+        "name": "Кадок",
         "race": 6,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 100,
     "map_x": 19,
     "map_y": 54
   },
   {
-    "Name": "Гууран",
+    "name": "Гууран",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 292,
-        "Name": "291",
+        "name": "291",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 293,
-        "Name": "Тулас",
+        "name": "Тулас",
         "race": 5,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 3
       },
       {
         "id": 294,
-        "Name": "Тартура",
+        "name": "Тартура",
         "race": 5,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -3394,65 +3394,65 @@
     "map_y": 49
   },
   {
-    "Name": "Гуида",
+    "name": "Гуида",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 295,
-        "Name": "294",
+        "name": "294",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 296,
-        "Name": "Генсам",
+        "name": "Генсам",
         "race": 5,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 3
       },
       {
         "id": 297,
-        "Name": "Сэпон",
+        "name": "Сэпон",
         "race": 5,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 102,
     "map_x": 10,
     "map_y": 58
   },
   {
-    "Name": "Гунакай",
+    "name": "Гунакай",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 298,
-        "Name": "297",
+        "name": "297",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 299,
-        "Name": "Хирот",
+        "name": "Хирот",
         "race": 5,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 3
       },
       {
         "id": 300,
-        "Name": "Даралас",
+        "name": "Даралас",
         "race": 5,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -3464,111 +3464,111 @@
     "map_y": 61
   },
   {
-    "Name": "Гаморта",
+    "name": "Гаморта",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 301,
-        "Name": "300",
+        "name": "300",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 302,
-        "Name": "Масакуш",
+        "name": "Масакуш",
         "race": 5,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 3
       },
       {
         "id": 303,
-        "Name": "Итар",
+        "name": "Итар",
         "race": 5,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 104,
     "map_x": 22,
     "map_y": 52
   },
   {
-    "Name": "Махмара",
+    "name": "Махмара",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 304,
-        "Name": "303",
+        "name": "303",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 305,
-        "Name": "Ибрахи",
+        "name": "Ибрахи",
         "race": 3,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 2
       },
       {
         "id": 306,
-        "Name": "Дашур",
+        "name": "Дашур",
         "race": 3,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 2
       },
       {
         "id": 307,
-        "Name": "Бинтамо",
+        "name": "Бинтамо",
         "race": 3,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 105,
     "map_x": 9,
     "map_y": 48
   },
   {
-    "Name": "Шатрат",
+    "name": "Шатрат",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 308,
-        "Name": "307",
+        "name": "307",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 309,
-        "Name": "Хисрому",
+        "name": "Хисрому",
         "race": 3,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 2
       },
       {
         "id": 310,
-        "Name": "Салтун",
+        "name": "Салтун",
         "race": 3,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 2
       },
       {
         "id": 311,
-        "Name": "Кимора",
+        "name": "Кимора",
         "race": 3,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 2,
@@ -3580,40 +3580,40 @@
     "map_y": 47
   },
   {
-    "Name": "Андромеда",
+    "name": "Андромеда",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 312,
-        "Name": "311",
+        "name": "311",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 313,
-        "Name": "Бамзари",
+        "name": "Бамзари",
         "race": 3,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 2
       },
       {
         "id": 314,
-        "Name": "Юварса",
+        "name": "Юварса",
         "race": 3,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 2
       },
       {
         "id": 315,
-        "Name": "Растами",
+        "name": "Растами",
         "race": 3,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -3625,79 +3625,79 @@
     "map_y": 50
   },
   {
-    "Name": "Картас",
+    "name": "Картас",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 316,
-        "Name": "315",
+        "name": "315",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 317,
-        "Name": "Уджари",
+        "name": "Уджари",
         "race": 4,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 2
       },
       {
         "id": 318,
-        "Name": "Равван",
+        "name": "Равван",
         "race": 4,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 2
       },
       {
         "id": 319,
-        "Name": "Диори",
+        "name": "Диори",
         "race": 4,
-        "classNumber": 17,
+        "class_number": 17,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 108,
     "map_x": 9,
     "map_y": 62
   },
   {
-    "Name": "Аксис",
+    "name": "Аксис",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 320,
-        "Name": "319",
+        "name": "319",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 321,
-        "Name": "Уатара",
+        "name": "Уатара",
         "race": 4,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 2
       },
       {
         "id": 322,
-        "Name": "Мио-Крида",
+        "name": "Мио-Крида",
         "race": 4,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 2
       },
       {
         "id": 323,
-        "Name": "Каррад",
+        "name": "Каррад",
         "race": 4,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 2,
@@ -3709,26 +3709,26 @@
     "map_y": 64
   },
   {
-    "Name": "Шоумму",
+    "name": "Шоумму",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 324,
-        "Name": "323",
+        "name": "323",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 325,
-        "Name": "Утомка",
+        "name": "Утомка",
         "race": 0,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -3740,79 +3740,79 @@
     "map_y": 66
   },
   {
-    "Name": "Мунго",
+    "name": "Мунго",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 326,
-        "Name": "326",
+        "name": "326",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 327,
-        "Name": "Эльфота",
+        "name": "Эльфота",
         "race": 1,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 1
       },
       {
         "id": 328,
-        "Name": "Милькорд",
+        "name": "Милькорд",
         "race": 1,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 1
       },
       {
         "id": 329,
-        "Name": "Дарунт",
+        "name": "Дарунт",
         "race": 1,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 111,
     "map_x": 23,
     "map_y": 62
   },
   {
-    "Name": "Диверси",
+    "name": "Диверси",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 330,
-        "Name": "330",
+        "name": "330",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 331,
-        "Name": "Рестрок",
+        "name": "Рестрок",
         "race": 1,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 1
       },
       {
         "id": 332,
-        "Name": "Фордилд",
+        "name": "Фордилд",
         "race": 1,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 1
       },
       {
         "id": 333,
-        "Name": "Стормскай",
+        "name": "Стормскай",
         "race": 1,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -3824,40 +3824,40 @@
     "map_y": 63
   },
   {
-    "Name": "Лерно",
+    "name": "Лерно",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 334,
-        "Name": "334",
+        "name": "334",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 335,
-        "Name": "Блюзэй",
+        "name": "Блюзэй",
         "race": 1,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 1
       },
       {
         "id": 336,
-        "Name": "Клерар",
+        "name": "Клерар",
         "race": 1,
-        "classNumber": 17,
+        "class_number": 17,
         "aliance": 1
       },
       {
         "id": 337,
-        "Name": "Стоундарт",
+        "name": "Стоундарт",
         "race": 1,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 1,
@@ -3869,40 +3869,40 @@
     "map_y": 60
   },
   {
-    "Name": "Дан'Мор",
+    "name": "Дан'Мор",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 338,
-        "Name": "338",
+        "name": "338",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 339,
-        "Name": "Рентген",
+        "name": "Рентген",
         "race": 2,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 1
       },
       {
         "id": 340,
-        "Name": "Том'Сона",
+        "name": "Том'Сона",
         "race": 2,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 1
       },
       {
         "id": 341,
-        "Name": "Ферми",
+        "name": "Ферми",
         "race": 2,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 2,
         "aliance": 1,
@@ -3914,40 +3914,40 @@
     "map_y": 48
   },
   {
-    "Name": "Эридан",
+    "name": "Эридан",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 342,
-        "Name": "342",
+        "name": "342",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 343,
-        "Name": "Джоуль",
+        "name": "Джоуль",
         "race": 2,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 1
       },
       {
         "id": 344,
-        "Name": "Кур'Чатов",
+        "name": "Кур'Чатов",
         "race": 2,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 1
       },
       {
         "id": 345,
-        "Name": "Сто'Летов",
+        "name": "Сто'Летов",
         "race": 2,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -3959,147 +3959,147 @@
     "map_y": 46
   },
   {
-    "Name": "Гарсоту",
+    "name": "Гарсоту",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 346,
-        "Name": "346",
+        "name": "346",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 347,
-        "Name": "Планк",
+        "name": "Планк",
         "race": 0,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 116,
     "map_x": 21,
     "map_y": 44
   },
   {
-    "Name": "Маршур",
+    "name": "Маршур",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 348,
-        "Name": "348",
+        "name": "348",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 349,
-        "Name": "Токамак",
+        "name": "Токамак",
         "race": 5,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 117,
     "map_x": 3,
     "map_y": 53
   },
   {
-    "Name": "Ракаш",
+    "name": "Ракаш",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 350,
-        "Name": "350",
+        "name": "350",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 351,
-        "Name": "Сарат",
+        "name": "Сарат",
         "race": 5,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 3
       },
       {
         "id": 352,
-        "Name": "Урдак",
+        "name": "Урдак",
         "race": 5,
-        "classNumber": 28,
+        "class_number": 28,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 118,
     "map_x": 2,
     "map_y": 57
   },
   {
-    "Name": "Лапгош",
+    "name": "Лапгош",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 353,
-        "Name": "353",
+        "name": "353",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 354,
-        "Name": "Айому",
+        "name": "Айому",
         "race": 5,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 119,
     "map_x": 3,
     "map_y": 61
   },
   {
-    "Name": "Альтарон",
+    "name": "Альтарон",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 355,
-        "Name": "355",
+        "name": "355",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 356,
-        "Name": "Реум",
+        "name": "Реум",
         "race": 4,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 2
       },
       {
         "id": 357,
-        "Name": "Мортис",
+        "name": "Мортис",
         "race": 4,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 2
       },
       {
         "id": 358,
-        "Name": "Дивартос",
+        "name": "Дивартос",
         "race": 4,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -4111,115 +4111,115 @@
     "map_y": 63
   },
   {
-    "Name": "Рисса",
+    "name": "Рисса",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 359,
-        "Name": "359",
+        "name": "359",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 360,
-        "Name": "Лобат",
+        "name": "Лобат",
         "race": 6,
-        "classNumber": 23,
+        "class_number": 23,
         "aliance": 4
       },
       {
         "id": 361,
-        "Name": "Моском",
+        "name": "Моском",
         "race": 6,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 121,
     "map_x": 18,
     "map_y": 68
   },
   {
-    "Name": "Пегас",
+    "name": "Пегас",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 362,
-        "Name": "362",
+        "name": "362",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 363,
-        "Name": "Каоро",
+        "name": "Каоро",
         "race": 5,
-        "classNumber": 21,
+        "class_number": 21,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 122,
     "map_x": 29,
     "map_y": 57
   },
   {
-    "Name": "Зуламар",
+    "name": "Зуламар",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 364,
-        "Name": "364",
+        "name": "364",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 365,
-        "Name": "Дальфун",
+        "name": "Дальфун",
         "race": 5,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 3
       },
       {
         "id": 366,
-        "Name": "Ромейт",
+        "name": "Ромейт",
         "race": 5,
-        "classNumber": 19,
+        "class_number": 19,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 123,
     "map_x": 30,
     "map_y": 53
   },
   {
-    "Name": "Яссор",
+    "name": "Яссор",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 367,
-        "Name": "367",
+        "name": "367",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 368,
-        "Name": "Наррави",
+        "name": "Наррави",
         "race": 5,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [
+    "data_spaceObjects": [
       {
         "type": 1,
         "aliance": 0,
@@ -4231,520 +4231,520 @@
     "map_y": 49
   },
   {
-    "Name": "Иво'Радж",
+    "name": "Иво'Радж",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 369,
-        "Name": "369",
+        "name": "369",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 370,
-        "Name": "Иво'Кури",
+        "name": "Иво'Кури",
         "race": 2,
-        "classNumber": 17,
+        "class_number": 17,
         "aliance": 1
       },
       {
         "id": 371,
-        "Name": "Иво'Хунда",
+        "name": "Иво'Хунда",
         "race": 2,
-        "classNumber": 16,
+        "class_number": 16,
         "aliance": 1
       },
       {
         "id": 372,
-        "Name": "Иво'Френкель",
+        "name": "Иво'Френкель",
         "race": 2,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 125,
     "map_x": 27,
     "map_y": 47
   },
   {
-    "Name": "Кинар",
+    "name": "Кинар",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 373,
-        "Name": "373",
+        "name": "373",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 374,
-        "Name": "Сатоку",
+        "name": "Сатоку",
         "race": 6,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 4
       },
       {
         "id": 375,
-        "Name": "Юражим",
+        "name": "Юражим",
         "race": 6,
-        "classNumber": 13,
+        "class_number": 13,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 126,
     "map_x": 14,
     "map_y": 42
   },
   {
-    "Name": "Пустота",
+    "name": "Пустота",
     "sector": 3,
     "lineTo": 0,
-    "Planets": [],
-    "SpaceObjects": [],
+    "data_planets": [],
+    "data_spaceObjects": [],
     "id": 127,
     "map_x": 0,
     "map_y": 41
   },
   {
-    "Name": "Толиман",
+    "name": "Толиман",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 533,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 538,
-        "Name": "Иримати",
+        "name": "Иримати",
         "race": 7,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 5
       },
       {
         "id": 542,
-        "Name": "Экзопланета 27",
+        "name": "Экзопланета 27",
         "race": 7,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 5
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 184,
     "map_x": 23,
     "map_y": 30
   },
   {
-    "Name": "Спика",
+    "name": "Спика",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 532,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 537,
-        "Name": "Омирати",
+        "name": "Омирати",
         "race": 1,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 185,
     "map_x": 25,
     "map_y": 28
   },
   {
-    "Name": "Бекрукс",
+    "name": "Бекрукс",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 535,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 540,
-        "Name": "Мелиас",
+        "name": "Мелиас",
         "race": 2,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 1
       },
       {
         "id": 541,
-        "Name": "Резерфор",
+        "name": "Резерфор",
         "race": 2,
-        "classNumber": 26,
+        "class_number": 26,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 186,
     "map_x": 17,
     "map_y": 28
   },
   {
-    "Name": "Поллукс",
+    "name": "Поллукс",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 534,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 539,
-        "Name": "Анаве",
+        "name": "Анаве",
         "race": 1,
-        "classNumber": 12,
+        "class_number": 12,
         "aliance": 1
       },
       {
         "id": 543,
-        "Name": "Зета",
+        "name": "Зета",
         "race": 1,
-        "classNumber": 18,
+        "class_number": 18,
         "aliance": 1
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 187,
     "map_x": 20,
     "map_y": 29
   },
   {
-    "Name": "Ахернар",
+    "name": "Ахернар",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 536,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       },
       {
         "id": 544,
-        "Name": "Дельта",
+        "name": "Дельта",
         "race": 3,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 2
       },
       {
         "id": 545,
-        "Name": "Апус",
+        "name": "Апус",
         "race": 3,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 188,
     "map_x": 32,
     "map_y": 15
   },
   {
-    "Name": "Канопус",
+    "name": "Канопус",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 546,
-        "Name": "Тукана",
+        "name": "Тукана",
         "race": 4,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 2
       },
       {
         "id": 547,
-        "Name": "Таурус",
+        "name": "Таурус",
         "race": 4,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 2
       },
       {
         "id": 548,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 1,
+        "class_number": 1,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 189,
     "map_x": 31,
     "map_y": 18
   },
   {
-    "Name": "Процион",
+    "name": "Процион",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 549,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       },
       {
         "id": 550,
-        "Name": "Форнакс",
+        "name": "Форнакс",
         "race": 6,
-        "classNumber": 14,
+        "class_number": 14,
         "aliance": 4
       },
       {
         "id": 551,
-        "Name": "Антила",
+        "name": "Антила",
         "race": 6,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 4
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 190,
     "map_x": 30,
     "map_y": 21
   },
   {
-    "Name": "Лориан",
+    "name": "Лориан",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 555,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 556,
-        "Name": "Дорадэ",
+        "name": "Дорадэ",
         "race": 5,
-        "classNumber": 25,
+        "class_number": 25,
         "aliance": 3
       },
       {
         "id": 557,
-        "Name": "Сугнус",
+        "name": "Сугнус",
         "race": 5,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 191,
     "map_x": 34,
     "map_y": 1
   },
   {
-    "Name": "Порсо",
+    "name": "Порсо",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 560,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 561,
-        "Name": "Велос",
+        "name": "Велос",
         "race": 5,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 192,
     "map_x": 0,
     "map_y": 30
   },
   {
-    "Name": "Регул",
+    "name": "Регул",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 552,
-        "Name": "Пустота",
+        "name": "Пустота",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 553,
-        "Name": "Лео",
+        "name": "Лео",
         "race": 4,
-        "classNumber": 22,
+        "class_number": 22,
         "aliance": 2
       },
       {
         "id": 554,
-        "Name": "Инди",
+        "name": "Инди",
         "race": 4,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 2
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 194,
     "map_x": 29,
     "map_y": 24
   },
   {
-    "Name": "Паротис",
+    "name": "Паротис",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 563,
-        "Name": "Корвус",
+        "name": "Корвус",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       },
       {
         "id": 564,
-        "Name": "Фронк",
+        "name": "Фронк",
         "race": 5,
-        "classNumber": 15,
+        "class_number": 15,
         "aliance": 3
       },
       {
         "id": 565,
-        "Name": "Драко",
+        "name": "Драко",
         "race": 5,
-        "classNumber": 20,
+        "class_number": 20,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 195,
     "map_x": 23,
     "map_y": 26
   },
   {
-    "Name": "Генод",
+    "name": "Генод",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 566,
-        "Name": "HP-566",
+        "name": "HP-566",
         "race": 0,
-        "classNumber": 5,
+        "class_number": 5,
         "aliance": 0
       },
       {
         "id": 567,
-        "Name": "HP-567",
+        "name": "HP-567",
         "race": 5,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 3
       },
       {
         "id": 568,
-        "Name": "HP-568",
+        "name": "HP-568",
         "race": 5,
-        "classNumber": 27,
+        "class_number": 27,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 196,
     "map_x": 27,
     "map_y": 22
   },
   {
-    "Name": "Валий",
+    "name": "Валий",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 569,
-        "Name": "HP-569",
+        "name": "HP-569",
         "race": 0,
-        "classNumber": 2,
+        "class_number": 2,
         "aliance": 0
       },
       {
         "id": 570,
-        "Name": "HP-570",
+        "name": "HP-570",
         "race": 5,
-        "classNumber": 11,
+        "class_number": 11,
         "aliance": 3
       },
       {
         "id": 571,
-        "Name": "HP-571",
+        "name": "HP-571",
         "race": 5,
-        "classNumber": 24,
+        "class_number": 24,
         "aliance": 3
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 197,
     "map_x": 8,
     "map_y": 12
   },
   {
-    "Name": "Сокор",
+    "name": "Сокор",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 572,
-        "Name": "HP-572",
+        "name": "HP-572",
         "race": 0,
-        "classNumber": 3,
+        "class_number": 3,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 198,
     "map_x": 32,
     "map_y": 12
   },
   {
-    "Name": "Мугли",
+    "name": "Мугли",
     "sector": 1,
     "lineTo": 0,
-    "Planets": [
+    "data_planets": [
       {
         "id": 573,
-        "Name": "HP-573",
+        "name": "HP-573",
         "race": 0,
-        "classNumber": 4,
+        "class_number": 4,
         "aliance": 0
       }
     ],
-    "SpaceObjects": [],
+    "data_spaceObjects": [],
     "id": 199,
     "map_x": 14,
     "map_y": 27

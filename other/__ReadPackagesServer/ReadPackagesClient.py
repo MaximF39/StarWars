@@ -1,4 +1,4 @@
-from python.Utils.DotMap import DotMap
+from python.Game._Component.Utils import DotMap
 from python.Static.Type.Package.T_ServerRequest import T_ServerRequest
 
 
@@ -82,7 +82,7 @@ class ReadPackagesClient:
             #     case T_ServerRequest.PLANETS_UPDATE:
             #         return self.planetsUpdate()
             #     case T_ServerRequest.REPOSITORY:
-            #         return self.repository()
+            #         return self.player_repository()
             #     case T_ServerRequest.CLAN_REPOSITORY:
             #         return self.clanrepository()
             #     case T_ServerRequest.WEAPON_TROUBLES:
@@ -701,7 +701,7 @@ class ReadPackagesClient:
     #     #         _loc5_ += 1
     #     #     return decoder.read_package()
     #     #
-    #     # def repository(self) -> list:
+    #     # def player_repository(self) -> list:
     #     #     
     #     #     _loc2_: ItemPackage = None
     #     #     # _loc3_: list = read_items(decoder, False, False)
@@ -817,7 +817,7 @@ class ReadPackagesClient:
     #     #
     #     # def inventory(self) -> list:
     #     #     
-    #     #     _loc2_: Item = None
+    #     #     _loc2_: I_Item = None
     #     #     _loc3_: bytearray = None
     #     #     _loc4_: list = list()
     #     #     _loc5_: int = decoder.read_short()
@@ -1377,7 +1377,7 @@ class ReadPackagesClient:
     #     # def auctionList(self) -> list:
     #     #     
     #     #     _loc2_: int = 0
-    #     #     _loc3_: Item = None
+    #     #     _loc3_: I_Item = None
     #     #     _loc4_ = 0
     #     #     decoder.read_int(_loc4_)
     #     #     _loc5_: list = list()
